@@ -1,6 +1,9 @@
 // map url patterns to exported JSGI app functions
 var urls = [
-    [(/^\/proxy/), require("./proxy").app]
+    [(/^\/proxy/), require("./proxy").app],
+    [(/^\/(image-browser)/), require("./root/image-browser").app],
+    [(/^\/(image-tagger)/), require("./root/image-tagger").app],
+    [(/^\/(image-rectifier)/), require("./root/image-rectifier").app]
 ];
 
 // debug mode loads unminified scripts
