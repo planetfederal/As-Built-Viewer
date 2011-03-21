@@ -1,5 +1,6 @@
 // map url patterns to exported JSGI app functions
 var urls = [
+    [(/^\/(index(.html)?)?/), require("./root/index").app],
     [(/^\/proxy/), require("./proxy").app],
     [(/^\/(image-browser)/), require("./root/image-browser").app],
     [(/^\/(image-tagger)/), require("./root/image-tagger").app],
