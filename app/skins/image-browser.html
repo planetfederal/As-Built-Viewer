@@ -33,27 +33,36 @@
                 region: "center",
                 layout: "border",
                 border: false,
+                tbar: {
+                    id: "paneltbar",
+                    items: [{
+                        iconCls: "icon-geoexplorer",
+                        disabled: true
+                    }, "As-Built Viewer", "-", "-"]
+                },
                 items: [{
                     region: "west",
                     border: false,
-                    layout: "border",
+                    layout: "accordion",
                     split: true,
                     collapsible: true,
                     collapseMode: "mini",
                     header: false,
-                    width: 250,
+                    defaults: {
+                        border: false
+                    },
+                    layoutConfig: {
+                        animate: true,
+                        fill: true
+                    },
+                    width: 210,
                     items: [
                         {
-                            region: "center",
                             id: "tree",
-                            border: false
+                            title: "Layers"
                         }, {
-                            region: "south",
-                            height: 200,
-                            autoScroll: true,
-                            border: false,
-                            id: "legend",
-                            title: "Legend"
+                            id: "search",
+                            title: "Search"
                         }
                     ]
                 }, "map"]
@@ -67,10 +76,6 @@
                     },
                     outputTarget: "tree",
                 }, {
-                    ptype: "gxp_legend",
-                    outputTarget: 'legend',
-                    outputConfig: {title: null}
-                }, {
                     ptype: "gxp_addlayers",
                     actionTarget: "layertree.tbar"
                 }, {
@@ -83,17 +88,26 @@
                     ptype: "gxp_zoomtolayerextent",
                     actionTarget: {target: "layertree.contextMenu", index: 0}
                 }, {
-                    ptype: "gxp_zoom"
+                    ptype: "gxp_zoomtoextent",
+                    actionTarget: {target: "paneltbar", index: 3}
                 }, {
-                    ptype: "gxp_navigation"
+                    ptype: "gxp_navigationhistory",
+                    actionTarget: {target: "paneltbar", index: 4}
                 }, {
-                    ptype: "gxp_zoomtoextent"
+                    ptype: "gxp_measure",
+                    actionTarget: {target: "paneltbar", index: 6},
+                    toggleGroup: "main"
                 }, {
-                    ptype: "gxp_navigationhistory"
+                    ptype: "gxp_wmsgetfeatureinfo",
+                    actionTarget: "paneltbar",
+                    toggleGroup: "main"
                 }, {
-                    ptype: "gxp_wmsgetfeatureinfo"
-                }, {
-                    ptype: "gxp_measure"
+                    ptype: "gxp_googlegeocoder",
+                    outputTarget: "paneltbar",
+                    outputConfig: {
+                        emptyText: "Search for a location ...",
+                        listEmptyText: "- no matches -"
+                    }
                 }
             ],
             mapItems: [{
