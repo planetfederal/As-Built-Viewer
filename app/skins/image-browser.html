@@ -22,7 +22,8 @@
 
     <!-- app resources -->
     <link rel="stylesheet" type="text/css" href="theme/app/style.css" />
-    <!--[if IE]><link rel="stylesheet" type="text/css" href="theme/app/ie.css"/><![endif]-->        
+    <!--[if IE]><link rel="stylesheet" type="text/css" href="theme/app/ie.css"/><![endif]-->
+    <script type="text/javascript" src="script/ImageBrowser.js"></script>
     <script type="text/javascript">
         Ext.BLANK_IMAGE_URL = "externals/openlayers/theme/default/img/blank.gif";
         OpenLayers.ImgPath = "externals/openlayers/img/";
@@ -55,20 +56,34 @@
                         animate: true,
                         fill: true
                     },
-                    width: 210,
+                    width: 280,
                     items: [
                         {
                             id: "tree",
                             title: "Layers"
                         }, {
-                            id: "search",
-                            title: "Search"
+                            id: "search-attribute",
+                            layout: "fit",
+                            title: "Search by image attributes"
+                        }, {
+                            id: "search-street",
+                            layout: "fit",
+                            title: "Search by street"
                         }
                     ]
                 }, "map"]
             }],
             tools: [
                 {
+                    ptype: "app_searchbystreet",
+                    id: "search-by-street",
+                    outputTarget: "search-street"
+                },
+                {
+                    ptype: "app_searchbyattribute",
+                    id: "search-by-attribute",
+                    outputTarget: "search-attribute"
+                }, {
                     ptype: "gxp_layertree",
                     outputConfig: {
                         id: "layertree",
@@ -118,8 +133,16 @@
             proxy: "proxy/?url=",
             defaultSourceType: "gxp_wmssource",
             sources: {
+                local: {    
+                    url: "/geoserver/ows",
+                    title: "Local GeoServer",
+                    version: "1.1.1"
+                },
                 osm: {
                     ptype: "gxp_osmsource"
+                },
+                ol: {
+                    ptype: "gxp_olsource"
                 }
             },
             map: {
@@ -139,6 +162,19 @@
                     name: "mapnik",
                     title: "OpenStreetMap",
                     group: "background"
+                }, {
+                    source: "ol",
+                    group: "background",
+                    fixed: true,
+                    type: "OpenLayers.Layer",
+                    args: [
+                        "None", {visibility: false}
+                    ]
+                }, {
+                    // since we don't have data as yet, use this for dummy data
+                    source: "local",
+                    name: "sfpark:spaces",
+                    selected: true,
                 }],
                 center: [-13629218, 4545403],
                 zoom: 13
