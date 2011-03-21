@@ -42,6 +42,12 @@
                     }, "As-Built Viewer", "-", "-"]
                 },
                 items: [{
+                    id: "south",
+                    xtype: "container",
+                    layout: "fit",
+                    region: "south",
+                    height: 150
+                }, {
                     region: "west",
                     border: false,
                     layout: "accordion",
@@ -56,7 +62,7 @@
                         animate: true,
                         fill: true
                     },
-                    width: 280,
+                    width: 325,
                     items: [
                         {
                             id: "tree",
@@ -75,14 +81,43 @@
             }],
             tools: [
                 {
+                    ptype: "gxp_featuremanager",
+                    id: "image-manager",
+                    paging: false,
+                    autoSetLayer: false,
+                    maxFeatures: 250,
+                    layer: {
+                        source: "local",
+                        name: "sfpark:spaces"
+                    },
+                    symbolizer: {
+                        pointRadius: 6,
+                        fillColor: "#ff0000",
+                        strokeWidth: 2,
+                        strokeColor: "#ffcc33"
+                    }
+                }, {
+                    ptype: "gxp_queryform",
+                    actions: null,
+                    outputTarget: "search-attribute",
+                    featureManager: "image-manager"
+                }, {
                     ptype: "app_searchbystreet",
                     id: "search-by-street",
                     outputTarget: "search-street"
-                },
+                }/*,
                 {
                     ptype: "app_searchbyattribute",
+                    featureManager: "image-manager",
                     id: "search-by-attribute",
                     outputTarget: "search-attribute"
+                }*/, {
+                    ptype: "gxp_featuregrid",
+                    featureManager: "image-manager",
+                    outputConfig: {
+                        id: "featuregrid"
+                    },
+                    outputTarget: "south"
                 }, {
                     ptype: "gxp_layertree",
                     outputConfig: {
