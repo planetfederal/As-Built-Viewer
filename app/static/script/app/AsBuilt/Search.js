@@ -1,13 +1,13 @@
-Ext.ns("ImageBrowser");
+Ext.ns("AsBuilt");
 /** api: constructor
- *  .. class:: SearchByAttribute(config)
+ *  .. class:: Search(config)
  *
- *    Search for images by their attributes.
+ *    Search for images.
  */
-ImageBrowser.SearchByAttribute = Ext.extend(gxp.plugins.Tool, {
+AsBuilt.Search = Ext.extend(gxp.plugins.Tool, {
 
-    /** api: ptype = app_searchbyattribute */
-    ptype: "app_searchbyattribute",
+    /** api: ptype = app_search */
+    ptype: "app_search",
 
     /** api: config[searchLabel]
      *  ``String``
@@ -20,13 +20,13 @@ ImageBrowser.SearchByAttribute = Ext.extend(gxp.plugins.Tool, {
      *  Initialize the plugin.
      */
     init: function(target) {
-        ImageBrowser.SearchByAttribute.superclass.init.apply(this, arguments);
+        AsBuilt.Search.superclass.init.apply(this, arguments);
         this.initContainer();
     },
 
     addActions: function(config) {
         this.addOutput();
-        return ImageBrowser.SearchByAttribute.superclass.addActions.call(this, []);
+        return AsBuilt.Search.superclass.addActions.call(this, []);
     },
 
     /** private: method[initContainer]
@@ -38,7 +38,7 @@ ImageBrowser.SearchByAttribute = Ext.extend(gxp.plugins.Tool, {
             layout: "border",
             items: [{
                 layout: "form",
-                height: 100,
+                height: 200,
                 region: "north",
                 border: false,
                 bodyStyle: "padding: 5px",
@@ -46,10 +46,23 @@ ImageBrowser.SearchByAttribute = Ext.extend(gxp.plugins.Tool, {
                     xtype: "fieldset",
                     title: this.searchLabel,
                     items: [{
-                        xtype: "textfield",
-                        name: "keywords",
-                        anchor: "100%",
-                        hideLabel: true
+                        xtype: "combo",
+                        width: 140,
+                        disabled: true,
+                        name: "streetname",
+                        fieldLabel: "Street name"
+                    }, {
+                        xtype: "combo",
+                        width: 140,
+                        disabled: true,
+                        name: "start_intersection",
+                        fieldLabel: "Starting intersection"
+                    }, {
+                        xtype: "combo",
+                        width: 140,
+                        disabled: true,
+                        name: "end_intersection",
+                        fieldLabel: "Ending intersection"
                     }]
                 }]
             }, {
@@ -65,9 +78,9 @@ ImageBrowser.SearchByAttribute = Ext.extend(gxp.plugins.Tool, {
     /** api: method[addOutput]
      */
     addOutput: function() {
-        return ImageBrowser.SearchByAttribute.superclass.addOutput.call(this, this.container);
+        return AsBuilt.Search.superclass.addOutput.call(this, this.container);
     }
 
 });
 
-Ext.preg(ImageBrowser.SearchByAttribute.prototype.ptype, ImageBrowser.SearchByAttribute);
+Ext.preg(AsBuilt.Search.prototype.ptype, AsBuilt.Search);
