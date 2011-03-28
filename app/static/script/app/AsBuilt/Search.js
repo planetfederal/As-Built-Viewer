@@ -34,6 +34,13 @@ AsBuilt.Search = Ext.extend(gxp.plugins.Tool, {
      *  this when the group feature store is ready.
      */
     initContainer: function() {
+
+        var intersectionsStore = new Ext.data.JsonStore({
+            fields: ['name'],
+            root: 'intersections',
+            url: "/stub/intersections.json"
+        });
+
         this.container = new Ext.Container(Ext.apply({
             layout: "border",
             items: [{
@@ -52,6 +59,17 @@ AsBuilt.Search = Ext.extend(gxp.plugins.Tool, {
                         fieldLabel: "Street name",
                         emptyText: "Select a street",
                         triggerAction: 'all',
+                        listeners: {
+                            "select": function(cmb, rec, idx) {
+                                intersectionsStore.load({params: {'street': cmb.getValue()}});
+                                var cmps = ['start_intersection', 'end_intersection'];
+                                for (var i=0,ii=cmps.length; i<ii; i++) {
+                                    var cmp = Ext.getCmp(cmps[i]);
+                                    cmp.clearValue(); 
+                                    cmp.enable();
+                                }
+                            }
+                        },
                         displayField: 'name',
                         store: new Ext.data.JsonStore({
                             fields: ['name'],
@@ -61,13 +79,23 @@ AsBuilt.Search = Ext.extend(gxp.plugins.Tool, {
                     }, {
                         xtype: "combo",
                         width: 140,
+                        id: 'start_intersection',
                         disabled: true,
+                        displayField: 'name',
+                        triggerAction: 'all',
+                        mode: 'local',
+                        store: intersectionsStore,
                         name: "start_intersection",
                         fieldLabel: "Starting intersection"
                     }, {
                         xtype: "combo",
                         width: 140,
+                        id: 'end_intersection',
                         disabled: true,
+                        displayField: 'name',
+                        triggerAction: 'all',
+                        mode: 'local',
+                        store: intersectionsStore,
                         name: "end_intersection",
                         fieldLabel: "Ending intersection"
                     }]
