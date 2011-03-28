@@ -9,11 +9,29 @@ AsBuilt.Search = Ext.extend(gxp.plugins.Tool, {
     /** api: ptype = app_search */
     ptype: "app_search",
 
+    /** api: config[featureManager]
+     *  ``String`` The id of the :class:`gxp.plugins.FeatureManager` to use
+     *  with this tool.
+     */
+    featureManager: null,
+
     /** api: config[searchLabel]
      *  ``String``
      *  Label for search input (i18n).
      */
     searchLabel: "Search",
+
+    /** api: config[queryActionText]
+     *  ``String``
+     *  Text for query action (i18n).
+     */
+    queryActionText: "Query",
+
+    /** private: cnns
+     * ``Array(String)`` List of center network node identifiers
+     * to use in the search.
+     */
+    cnns: null,
 
     /** api: method[init]
      *  :arg target: ``gxp.Viewer``
@@ -44,8 +62,9 @@ AsBuilt.Search = Ext.extend(gxp.plugins.Tool, {
                         fields: ['id']
                     });
                     var ids = reader.read(response);
+                    this.cnns = [];
                     for (var i=0,ii=ids.records.length;i<ii;i++) {
-                        //console.log(ids.records[i].get('id'));
+                        this.cnns.push(ids.records[i].get('id'));
                     }
                 },
                 failure: function() {
@@ -54,6 +73,41 @@ AsBuilt.Search = Ext.extend(gxp.plugins.Tool, {
                 scope: this
             });
         }
+    },
+
+    performSearch: function() {
+        var featureManager = this.target.tools[this.featureManager];
+        var filters = [];
+        // always use a BBOX filter
+        filters.push(new OpenLayers.Filter.Spatial({
+            type: OpenLayers.Filter.Spatial.BBOX,
+            property: featureManager.featureStore.geometryName,
+            value: this.target.mapPanel.map.getExtent()
+        }));
+        if (this.cnns) {
+            var subFilters = [];
+            for (var i=0,ii=this.cnns.length;i<ii;i++) {
+                subFilters.push(new OpenLayers.Filter.Comparison({
+                    type: OpenLayers.Filter.Comparison.EQUAL_TO,
+                    property: 'cnn',
+                    value: this.cnns[i]
+                }));
+            }
+            if (subFilters.length > 1) {
+                filters.push(new OpenLayers.Filter.Logical({
+                    type: OpenLayers.Filter.Logical.OR,
+                    filters: subFilters
+                }));
+            } else {
+                filters.push(subFilters[0]);
+            }
+        }
+        featureManager.loadFeatures(
+            new OpenLayers.Filter.Logical({
+                type: OpenLayers.Filter.Logical.AND,
+                filters: filters
+            })
+        );
     },
 
     /** private: method[initContainer]
@@ -72,6 +126,7 @@ AsBuilt.Search = Ext.extend(gxp.plugins.Tool, {
             layout: "border",
             items: [{
                 layout: "form",
+                bbar: ["->", {text: this.queryActionText, iconCls: "gxp-icon-find", handler: this.performSearch, scope: this}],
                 height: 200,
                 region: "north",
                 border: false,
