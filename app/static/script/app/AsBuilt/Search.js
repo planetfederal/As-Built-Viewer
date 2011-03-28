@@ -74,18 +74,18 @@ AsBuilt.Search = Ext.extend(gxp.plugins.Tool, {
         var end = Ext.getCmp('end_intersection').getValue();
         if (street != "" && start != "" && end != "") {
             Ext.Ajax.request({
-                url: '/stub/cnn.json',
-                params: {street: street, startIntersection: start, endIntersection: end},
+                url: '/stub/' + street + '-cnn.json',
                 success: function(response) {
-                    var reader = new Ext.data.JsonReader({
-                        root: 'cnns',
-                        idProperty: 'id',
-                        fields: ['id']
-                    });
-                    var ids = reader.read(response);
+                    var cnn = Ext.decode(response.responseText).cnn;
+                    // take all cnn from minIndex to maxIndex - 1
+                    var minIndex = Math.min(start, end);
+                    var maxIndex = Math.max(start, end);
                     this.cnns = [];
-                    for (var i=0,ii=ids.records.length;i<ii;i++) {
-                        this.cnns.push(ids.records[i].get('id'));
+                    for (var key in cnn) {
+                        key = parseInt(key);
+                        if (key >= minIndex && key <= maxIndex-1) {
+                            this.cnns = this.cnns.concat(cnn[key]);
+                        }
                     }
                 },
                 failure: function() {
@@ -137,12 +137,6 @@ AsBuilt.Search = Ext.extend(gxp.plugins.Tool, {
      */
     initContainer: function() {
 
-        var intersectionsStore = new Ext.data.JsonStore({
-            fields: ['name'],
-            root: 'intersections',
-            url: "/stub/intersections.json"
-        });
-
         this.container = new Ext.Container(Ext.apply({
             layout: "fit",
             items: [{
@@ -170,18 +164,26 @@ AsBuilt.Search = Ext.extend(gxp.plugins.Tool, {
                         triggerAction: 'all',
                         listeners: {
                             "select": function(cmb, rec, idx) {
-                                intersectionsStore.load({params: {'street': cmb.getValue()}});
+                                var store = new Ext.data.JsonStore({
+                                    fields: ['name', 'index'],
+                                    root: 'intersections',
+                                    autoLoad: true,
+                                    url: "/stub/"+cmb.getValue()+"-intersections.json"
+                                });
                                 var cmps = ['start_intersection', 'end_intersection'];
                                 for (var i=0,ii=cmps.length; i<ii; i++) {
                                     var cmp = Ext.getCmp(cmps[i]);
-                                    cmp.clearValue(); 
+                                    cmp.clearValue();
+                                    cmp.bindStore(store);
                                     cmp.enable();
                                 }
-                            }
+                            },
+                            scope: this
                         },
                         displayField: 'name',
+                        valueField: 'id',
                         store: new Ext.data.JsonStore({
-                            fields: ['name'],
+                            fields: ['name', 'id'],
                             root: 'streets',
                             url: "/stub/streets.json"
                         })
@@ -190,13 +192,13 @@ AsBuilt.Search = Ext.extend(gxp.plugins.Tool, {
                         id: 'start_intersection',
                         disabled: true,
                         displayField: 'name',
+                        valueField: "index",
                         triggerAction: 'all',
                         listeners: {
                             "select": this.getCnnList,
                             scope: this
                         },
                         mode: 'local',
-                        store: intersectionsStore,
                         name: "start_intersection",
                         fieldLabel: "Starting intersection"
                     }, {
@@ -204,13 +206,13 @@ AsBuilt.Search = Ext.extend(gxp.plugins.Tool, {
                         id: 'end_intersection',
                         disabled: true,
                         displayField: 'name',
+                        valueField: "index",
                         triggerAction: 'all',
                         listeners: {
                             "select": this.getCnnList,
                             scope: this
                         },
                         mode: 'local',
-                        store: intersectionsStore,
                         name: "end_intersection",
                         fieldLabel: "Ending intersection"
                     }]
