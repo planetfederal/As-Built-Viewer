@@ -83,7 +83,7 @@ AsBuilt.Search = Ext.extend(gxp.plugins.Tool, {
                     this.cnns = [];
                     for (var key in cnn) {
                         key = parseInt(key);
-                        if (key >= minIndex && key <= maxIndex-1) {
+                        if (key >= minIndex && key < maxIndex) {
                             this.cnns = this.cnns.concat(cnn[key]);
                         }
                     }
