@@ -48,9 +48,16 @@ AsBuilt.Search = Ext.extend(gxp.plugins.Tool, {
                     items: [{
                         xtype: "combo",
                         width: 140,
-                        disabled: true,
                         name: "streetname",
-                        fieldLabel: "Street name"
+                        fieldLabel: "Street name",
+                        emptyText: "Select a street",
+                        triggerAction: 'all',
+                        displayField: 'name',
+                        store: new Ext.data.JsonStore({
+                            fields: ['name'],
+                            root: 'streets',
+                            url: "/stub/streets.json"
+                        })
                     }, {
                         xtype: "combo",
                         width: 140,
