@@ -1,4 +1,5 @@
 <% extends ./base.html %>
+
 <% subskin extrahead %>
     <title>As-Built Image Browser</title>
     <!-- OpenLayers resources -->
@@ -93,6 +94,21 @@
                         strokeColor: "#ffcc33"
                     }
                 }, {
+                    ptype: "gxp_featureeditor",
+                    readOnly: true,
+                    iconClsEdit: "gxp-icon-getfeatureinfo",
+                    editFeatureActionTip: "Show image preview",
+                    featureManager: "image-manager",
+                    autoLoadFeatures: true,
+                    toggleGroup: "main",
+                    actionTarget: "paneltbar",
+                    tolerance: 6,
+                    outputConfig: {
+                        xtype: "app_imagepopup",
+                        width: 350,
+                        height: 350
+                    }
+                }, {
                     ptype: "app_search",
                     featureManager: "image-manager",
                     outputConfig: {
@@ -134,10 +150,6 @@
                 }, {
                     ptype: "gxp_measure",
                     actionTarget: {target: "paneltbar", index: 6},
-                    toggleGroup: "main"
-                }, {
-                    ptype: "gxp_wmsgetfeatureinfo",
-                    actionTarget: "paneltbar",
                     toggleGroup: "main"
                 }, {
                     ptype: "gxp_googlegeocoder",
