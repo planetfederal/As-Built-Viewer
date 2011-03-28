@@ -109,9 +109,9 @@ AsBuilt.Search = Ext.extend(gxp.plugins.Tool, {
             var subFilters = [];
             for (var i=0,ii=this.cnns.length;i<ii;i++) {
                 subFilters.push(new OpenLayers.Filter.Comparison({
-                    type: OpenLayers.Filter.Comparison.EQUAL_TO,
+                    type: OpenLayers.Filter.Comparison.LIKE,
                     property: 'cnn',
-                    value: this.cnns[i]
+                    value: '*' + this.cnns[i] + '*'
                 }));
             }
             if (subFilters.length > 1) {
