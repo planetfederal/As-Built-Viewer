@@ -1,0 +1,7 @@
+{
+    "intersections": [
+        {"name": "Judah Street", "index": 1},
+        {"name": "Noriega Street", "index": 2},
+        {"name": "Ortega Street", "index": 3}
+    ]
+}

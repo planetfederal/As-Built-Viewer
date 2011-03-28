@@ -1,7 +1,7 @@
 {
-    streets: [
-        {name: "Great Highway"},
-        {name: "Sunset Boulevard"},
-        {name: "Woodside Avenue"}
+    "streets": [
+        {"name": "Great Highway", "id": "1"},
+        {"name": "Sunset Boulevard", "id": "2"},
+        {"name": "Woodside Avenue", "id": "3"}
     ]
 }
