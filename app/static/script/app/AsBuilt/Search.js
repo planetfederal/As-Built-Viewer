@@ -15,11 +15,17 @@ AsBuilt.Search = Ext.extend(gxp.plugins.Tool, {
      */
     featureManager: null,
 
-    /** api: config[searchLabel]
+    /** api: config[attributeLabel]
      *  ``String``
-     *  Label for search input (i18n).
+     *  Label for attributes fieldset (i18n).
      */
-    searchLabel: "Search",
+    attributeLabel: "Image attributes",
+
+    /** api: config[streetLabel]
+     *  ``String``
+     *  Label for street fieldset (i18n).
+     */
+    streetLabel: "Street location",
 
     /** api: config[queryActionText]
      *  ``String``
@@ -123,20 +129,25 @@ AsBuilt.Search = Ext.extend(gxp.plugins.Tool, {
         });
 
         this.container = new Ext.Container(Ext.apply({
-            layout: "border",
+            layout: "fit",
             items: [{
                 layout: "form",
                 bbar: ["->", {text: this.queryActionText, iconCls: "gxp-icon-find", handler: this.performSearch, scope: this}],
-                height: 200,
-                region: "north",
                 border: false,
                 bodyStyle: "padding: 5px",
                 items: [{
                     xtype: "fieldset",
-                    title: this.searchLabel,
+                    title: this.attributeLabel,
                     items: [{
                         xtype: "combo",
-                        width: 140,
+                        disabled: true,
+                        name: 'mechanical_type',
+                        fieldLabel: "Mechanical type"
+                    }]}, {
+                    xtype: "fieldset",
+                    title: this.streetLabel,
+                    items: [{
+                        xtype: "combo",
                         name: "streetname",
                         id: "streetname",
                         fieldLabel: "Street name",
@@ -161,7 +172,6 @@ AsBuilt.Search = Ext.extend(gxp.plugins.Tool, {
                         })
                     }, {
                         xtype: "combo",
-                        width: 140,
                         id: 'start_intersection',
                         disabled: true,
                         displayField: 'name',
@@ -176,7 +186,6 @@ AsBuilt.Search = Ext.extend(gxp.plugins.Tool, {
                         fieldLabel: "Starting intersection"
                     }, {
                         xtype: "combo",
-                        width: 140,
                         id: 'end_intersection',
                         disabled: true,
                         displayField: 'name',
@@ -191,11 +200,6 @@ AsBuilt.Search = Ext.extend(gxp.plugins.Tool, {
                         fieldLabel: "Ending intersection"
                     }]
                 }]
-            }, {
-                xtype: "container",
-                layout: "fit",
-                region: "center",
-                ref: "gridContainer"
             }]
         }, this.outputConfig));
         delete this.outputConfig;
