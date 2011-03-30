@@ -100,11 +100,11 @@ AsBuilt.Search = Ext.extend(gxp.plugins.Tool, {
         var featureManager = this.target.tools[this.featureManager];
         var filters = [];
         // always use a BBOX filter
-        filters.push(new OpenLayers.Filter.Spatial({
+/*        filters.push(new OpenLayers.Filter.Spatial({
             type: OpenLayers.Filter.Spatial.BBOX,
             property: featureManager.featureStore.geometryName,
             value: this.target.mapPanel.map.getExtent()
-        }));
+        }));*/
         if (this.cnns) {
             var subFilters = [];
             for (var i=0,ii=this.cnns.length;i<ii;i++) {
