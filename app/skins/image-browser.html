@@ -80,9 +80,10 @@
                 {
                     ptype: "gxp_featuremanager",
                     id: "image-manager",
-                    paging: false,
+                    paging: true,
+                    pagingType: gxp.plugins.FeatureManager.WFS_PAGING,
                     autoSetLayer: false,
-                    maxFeatures: 250,
+                    maxFeatures: 50,
                     layer: {
                         source: "local",
                         name: "asbuilt:DOCS"

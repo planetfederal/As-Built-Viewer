@@ -99,18 +99,20 @@ AsBuilt.Search = Ext.extend(gxp.plugins.Tool, {
     performSearch: function() {
         var featureManager = this.target.tools[this.featureManager];
         var filters = [];
-        // always use a BBOX filter
-/*        filters.push(new OpenLayers.Filter.Spatial({
-            type: OpenLayers.Filter.Spatial.BBOX,
-            property: featureManager.featureStore.geometryName,
-            value: this.target.mapPanel.map.getExtent()
-        }));*/
+        var type = Ext.getCmp('TYPEDESC').getValue();
+        if (type != "") {
+            filters.push(new OpenLayers.Filter.Comparison({
+                type: OpenLayers.Filter.Comparison.EQUAL_TO,
+                property: 'TYPEDESC',
+                value: type
+            }));
+        }
         if (this.cnns) {
             var subFilters = [];
             for (var i=0,ii=this.cnns.length;i<ii;i++) {
                 subFilters.push(new OpenLayers.Filter.Comparison({
                     type: OpenLayers.Filter.Comparison.LIKE,
-                    property: 'cnn',
+                    property: 'CNNLIST',
                     value: '*' + this.cnns[i] + '*'
                 }));
             }
@@ -137,6 +139,18 @@ AsBuilt.Search = Ext.extend(gxp.plugins.Tool, {
      */
     initContainer: function() {
 
+        var types = [
+            ['MUNI Drawings Numbered Plans (MDNP)'], 
+            ['UnClassified Scans'],
+            ['MUNI SHOP Drawings (MUSH)'],
+            ['MUNI BART Drawings (MUBA)'],
+            ['BOE Numbered Plans']
+        ];
+        var typeDescStore = new Ext.data.ArrayStore({
+            fields: ['type'],
+            data : types
+        });
+
         this.container = new Ext.Container(Ext.apply({
             layout: "fit",
             items: [{
@@ -149,9 +163,15 @@ AsBuilt.Search = Ext.extend(gxp.plugins.Tool, {
                     title: this.attributeLabel,
                     items: [{
                         xtype: "combo",
-                        disabled: true,
-                        name: 'mechanical_type',
-                        fieldLabel: "Mechanical type"
+                        name: 'TYPEDESC',
+                        id: "TYPEDESC",
+                        mode: 'local',
+                        emptyText: "Select a type",
+                        triggerAction: 'all',
+                        store: typeDescStore,
+                        displayField: 'type',
+                        valueField: 'type',
+                        fieldLabel: "Type"
                     }]}, {
                     xtype: "fieldset",
                     title: this.streetLabel,
