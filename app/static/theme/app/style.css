@@ -6,3 +6,9 @@
     bottom: 5px;
     right: 5px;
 }
+
+.x-action-col, .gxp-icon-addfeature {
+    background-image: url(/externals/gxp/src/theme/img/silk/pencil_add.png);
+    width: 16px;
+    height: 16px;
+}
