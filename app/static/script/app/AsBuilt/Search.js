@@ -237,6 +237,7 @@ AsBuilt.Search = Ext.extend(gxp.plugins.Tool, {
             layout: "fit",
             items: [{
                 layout: "form",
+                autoScroll: true,
                 bbar: ["->", {text: this.queryActionText, iconCls: "gxp-icon-find", handler: this.performSearch, scope: this}],
                 border: false,
                 bodyStyle: "padding: 5px",
