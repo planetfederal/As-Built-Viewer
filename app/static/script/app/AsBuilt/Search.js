@@ -77,7 +77,7 @@ AsBuilt.Search = Ext.extend(gxp.plugins.Tool, {
      *  ``String``
      *  Label for attributes fieldset (i18n).
      */
-    attributeLabel: "Image attributes",
+    attributeLabel: "Drawing number",
 
     /** api: config[streetLabel]
      *  ``String``
@@ -187,6 +187,36 @@ AsBuilt.Search = Ext.extend(gxp.plugins.Tool, {
         );
     },
 
+    createAutoCompleteField: function(name, fieldLabel) {
+        var featureManager = this.target.tools[this.featureManager];
+        var url = this.target.initialConfig.sources[featureManager.layer.source].url;
+        var featureInfo = featureManager.layer.name.split(":");
+        var featureStore = new Ext.data.Store({
+            fields: [{name: name}],
+            reader: new AsBuilt.AutoCompleteReader({}, [name]),
+            proxy: new AsBuilt.AutoCompleteProxy({protocol: new OpenLayers.Protocol.WFS({
+                version: "1.1.0",
+                url: url,
+                featureType: featureInfo[1],
+                featurePrefix: featureInfo[0],
+                propertyNames: [name],
+                maxFeatures: 500,
+            }), setParamsAsOptions: true})
+        });
+        return new Ext.form.ComboBox({
+            name: name,
+            id: name,
+            autoHeight: true,
+            valueField: name,
+            displayField: name,
+            tpl: new Ext.XTemplate('<tpl for="."><div class="x-form-field">','{'+name+'}','</div></tpl>'),
+            itemSelector: 'div.x-form-field',
+            store: featureStore,
+            hideTrigger:true,
+            fieldLabel: fieldLabel
+        });
+    },
+
     /** private: method[initContainer]
      *  Create the primary output container.  All other items will be added to 
      *  this when the group feature store is ready.
@@ -203,22 +233,6 @@ AsBuilt.Search = Ext.extend(gxp.plugins.Tool, {
             fields: ['type'],
             data : types
         });
-        var featureManager = this.target.tools[this.featureManager];
-        var url = this.target.initialConfig.sources[featureManager.layer.source].url;
-        var featureInfo = featureManager.layer.name.split(":");
-        var featureStore = new Ext.data.Store({
-            fields: [{name: 'SCONTRACTTITLE'}],
-            reader: new AsBuilt.AutoCompleteReader({}, ['SCONTRACTTITLE']),
-            proxy: new AsBuilt.AutoCompleteProxy({protocol: new OpenLayers.Protocol.WFS({
-                version: "1.1.0",
-                url: url,
-                featureType: featureInfo[1],
-                featurePrefix: featureInfo[0],
-                propertyNames: ['SCONTRACTTITLE'],
-                maxFeatures: 250,
-            }), setParamsAsOptions: true})
-        });
-
         this.container = new Ext.Container(Ext.apply({
             layout: "fit",
             items: [{
@@ -242,20 +256,15 @@ AsBuilt.Search = Ext.extend(gxp.plugins.Tool, {
                         fieldLabel: "Type"
                     }]}, {
                     xtype: "fieldset",
+                    title: "Facility",
+                    items: [
+                        this.createAutoCompleteField('SFACILITYNAME', "Facility name")
+                    ]}, {
+                    xtype: "fieldset",
                     title: "Contracts",
-                    items: [{
-                        xtype: "combo",
-                        name: 'SCONTRACTTITLE',
-                        id: "SCONTRACTTITLE",
-                        autoHeight: true,
-                        valueField: 'SCONTRACTTITLE',
-                        displayField: 'SCONTRACTTITLE',
-                        tpl: new Ext.XTemplate('<tpl for="."><div class="x-form-field">','{SCONTRACTTITLE}','</div></tpl>'),
-                        itemSelector: 'div.x-form-field',
-                        store: featureStore,
-                        hideTrigger:true,
-                        fieldLabel: "Contract title"
-                    }]}, {
+                    items: [
+                        this.createAutoCompleteField('SCONTRACTTITLE', "Contract title")
+                    ]}, {
                     xtype: "fieldset",
                     title: this.streetLabel,
                     items: [{
