@@ -8,6 +8,49 @@
 
 Ext.ns("AsBuilt");
 
+AsBuilt.AutoCompleteReader = Ext.extend(GeoExt.data.FeatureReader, {
+    read: function(response) {
+        // since we cannot do a distinct query on a WFS, filter out duplicates here
+        var recordType = this.recordType, fields = recordType.prototype.fields;
+        var field = fields.keys.pop();
+        this.features = [];
+        for (var i=0,ii=response.features.length;i<ii;++i) {
+            var feature = response.features[i];
+            var value = feature.attributes[field];
+            if (this.isDuplicate(field, value) === false) {
+                this.features.push(feature);
+            } else {
+                feature.destroy();
+            }
+        }
+        response.features = this.features;
+        return AsBuilt.AutoCompleteReader.superclass.read.apply(this, arguments);
+    },
+
+    isDuplicate: function(field, value) {
+        for (var i=0,ii=this.features.length;i<ii;++i) {
+            if (this.features[i].attributes[field] === value) {
+                return true;
+            }
+        }
+        return false;
+    }
+});
+
+AsBuilt.AutoCompleteProxy = Ext.extend(GeoExt.data.ProtocolProxy, {
+    doRequest: function(action, records, params, reader, callback, scope, arg) {
+        if (params.query) {
+            params.filter = new OpenLayers.Filter.Comparison({
+                type: OpenLayers.Filter.Comparison.LIKE,
+                property: this.protocol.propertyNames[0],
+                value: '*' + params.query + '*'
+            });
+            delete params.query;
+        }
+        AsBuilt.AutoCompleteProxy.superclass.doRequest.apply(this, arguments);
+    }
+});
+
 /** api: (define)
  *  module = AsBuilt
  *  class = Search
@@ -138,7 +181,6 @@ AsBuilt.Search = Ext.extend(gxp.plugins.Tool, {
      *  this when the group feature store is ready.
      */
     initContainer: function() {
-
         var types = [
             ['MUNI Drawings Numbered Plans (MDNP)'], 
             ['UnClassified Scans'],
@@ -149,6 +191,21 @@ AsBuilt.Search = Ext.extend(gxp.plugins.Tool, {
         var typeDescStore = new Ext.data.ArrayStore({
             fields: ['type'],
             data : types
+        });
+        var featureManager = this.target.tools[this.featureManager];
+        var url = this.target.initialConfig.sources[featureManager.layer.source].url;
+        var featureInfo = featureManager.layer.name.split(":");
+        var featureStore = new Ext.data.Store({
+            fields: [{name: 'SCONTRACTTITLE'}],
+            reader: new AsBuilt.AutoCompleteReader({}, ['SCONTRACTTITLE']),
+            proxy: new AsBuilt.AutoCompleteProxy({protocol: new OpenLayers.Protocol.WFS({
+                version: "1.1.0",
+                url: url,
+                featureType: featureInfo[1],
+                featurePrefix: featureInfo[0],
+                propertyNames: ['SCONTRACTTITLE'],
+                maxFeatures: 250,
+            }), setParamsAsOptions: true})
         });
 
         this.container = new Ext.Container(Ext.apply({
@@ -172,6 +229,21 @@ AsBuilt.Search = Ext.extend(gxp.plugins.Tool, {
                         displayField: 'type',
                         valueField: 'type',
                         fieldLabel: "Type"
+                    }]}, {
+                    xtype: "fieldset",
+                    title: "Contracts",
+                    items: [{
+                        xtype: "combo",
+                        name: 'SCONTRACTTITLE',
+                        id: "SCONTRACTTITLE",
+                        autoHeight: true,
+                        valueField: 'SCONTRACTTITLE',
+                        displayField: 'SCONTRACTTITLE',
+                        tpl: new Ext.XTemplate('<tpl for="."><div class="x-form-field">','{SCONTRACTTITLE}','</div></tpl>'),
+                        itemSelector: 'div.x-form-field',
+                        store: featureStore,
+                        hideTrigger:true,
+                        fieldLabel: "Contract title"
                     }]}, {
                     xtype: "fieldset",
                     title: this.streetLabel,
