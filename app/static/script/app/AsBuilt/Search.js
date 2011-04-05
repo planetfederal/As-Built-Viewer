@@ -139,16 +139,27 @@ AsBuilt.Search = Ext.extend(gxp.plugins.Tool, {
         }
     },
 
+    getFilter: function(name) {
+        var value = Ext.getCmp(name).getValue();
+        if (value != "") {
+            return new OpenLayers.Filter.Comparison({
+                type: OpenLayers.Filter.Comparison.EQUAL_TO,
+                property: name,
+                value: value
+            });
+        }
+        return null;
+    },
+
     performSearch: function() {
         var featureManager = this.target.tools[this.featureManager];
         var filters = [];
-        var type = Ext.getCmp('TYPEDESC').getValue();
-        if (type != "") {
-            filters.push(new OpenLayers.Filter.Comparison({
-                type: OpenLayers.Filter.Comparison.EQUAL_TO,
-                property: 'TYPEDESC',
-                value: type
-            }));
+        var fields = ['TYPEDESC' ,'SCONTRACTTITLE'];
+        for (var i=0,len=fields.length;i<len;++i) {
+            var filter = this.getFilter(fields[i]);
+            if (filter !== null) {
+                filters.push(filter);
+            }
         }
         if (this.cnns) {
             var subFilters = [];
