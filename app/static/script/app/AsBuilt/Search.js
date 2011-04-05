@@ -154,7 +154,7 @@ AsBuilt.Search = Ext.extend(gxp.plugins.Tool, {
     performSearch: function() {
         var featureManager = this.target.tools[this.featureManager];
         var filters = [];
-        var fields = ['TYPEDESC' ,'SCONTRACTTITLE'];
+        var fields = ['TYPEDESC' ,'SCONTRACTTITLE', 'SFACILITYNAME'];
         for (var i=0,len=fields.length;i<len;++i) {
             var filter = this.getFilter(fields[i]);
             if (filter !== null) {
