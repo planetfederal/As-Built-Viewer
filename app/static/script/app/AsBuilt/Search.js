@@ -35,10 +35,22 @@ AsBuilt.Search = Ext.extend(gxp.plugins.Tool, {
      */
     featureManager: null,
 
-    /** api: config[streetJSONBaseURL]
-     *  ``String`` base URL where the street JSON structures are available.
+    /** api: config[streetsURL]
+     *  ``String`` URL where the JSON with the list of streets can be found.
      */
-    streetJSONBaseURL: "/stub",
+    streetsURL: "/stub/streets.json",
+
+    /** api: config[intersectionsURL]
+     *  ``String`` URL where the JSON with the list of intersections for a 
+     *      certain street can be found.
+     */
+    intersectionsURL: "/stub/{0}-intersections.json",
+
+    /** api: config[cnnURL]
+     *  ``String`` URL where the JSON with the list of CNNs for a 
+     *      certain street can be found.
+     */
+    cnnURL: "/stub/{0}-cnn.json",
 
     /** api: config [typeDescriptionSearchField]
      *  ``String`` The search field to use for drawing type description.
@@ -123,7 +135,7 @@ AsBuilt.Search = Ext.extend(gxp.plugins.Tool, {
         var end = Ext.getCmp('end_intersection').getValue();
         if (street != "" && start != "" && end != "") {
             Ext.Ajax.request({
-                url: this.streetJSONBaseURL + '/' + street + '-cnn.json',
+                url: String.format(this.cnnURL, street),
                 success: function(response) {
                     var cnn = Ext.decode(response.responseText).cnn;
                     // take all cnn from minIndex to maxIndex - 1
@@ -348,7 +360,7 @@ AsBuilt.Search = Ext.extend(gxp.plugins.Tool, {
                                             fields: ['name', 'index'],
                                             root: 'intersections',
                                             autoLoad: true,
-                                            url: this.streetJSONBaseURL + "/" + cmb.getValue() + "-intersections.json"
+                                            url: String.format(this.intersectionsURL, cmb.getValue())
                                         });
                                         var cmps = ['start_intersection', 'end_intersection'];
                                         for (var i=0,ii=cmps.length; i<ii; i++) {
@@ -365,7 +377,7 @@ AsBuilt.Search = Ext.extend(gxp.plugins.Tool, {
                                 store: new Ext.data.JsonStore({
                                     fields: ['name', 'id'],
                                     root: 'streets',
-                                    url: this.streetJSONBaseURL + "/streets.json"
+                                    url: this.streetsURL
                                 })
                             }, {
                                 xtype: "combo",
