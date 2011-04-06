@@ -66,18 +66,27 @@ AsBuilt.Search = Ext.extend(gxp.plugins.Tool, {
 
     /** api: method[init]
      *  :arg target: ``gxp.Viewer``
-     *  Initialize the plugin.
+     *  Initialize the search plugin.
      */
     init: function(target) {
         AsBuilt.Search.superclass.init.apply(this, arguments);
         this.initContainer();
     },
 
+    /** api: method[addActions]
+     *  :arg actions: ``Array`` Optional actions to add. If not provided,
+     *      this.actions will be added.
+     *  :returns: ``Array`` The actions added.
+     */
     addActions: function(config) {
         this.addOutput();
         return AsBuilt.Search.superclass.addActions.call(this, []);
     },
 
+    /** private: method[getCnnList]
+     *
+     *  Get the list of CNN values to use. This is looked up in a JSON file.
+     */
     getCnnList: function() {
         var street = Ext.getCmp('streetname').getValue();
         var start = Ext.getCmp('start_intersection').getValue();
@@ -106,6 +115,13 @@ AsBuilt.Search = Ext.extend(gxp.plugins.Tool, {
         }
     },
 
+    /** private: method[getFilter]
+     *  :arg name: ``String`` Field name to create the filter for. 
+     *  :returns: ``OpenLayers.Filter.Comparison`` The filter created
+     *      for the field specified.
+     *
+     *  Get the filter for a certain form field.
+     */
     getFilter: function(name) {
         var value = Ext.getCmp(name).getValue();
         if (value != "") {
@@ -119,6 +135,10 @@ AsBuilt.Search = Ext.extend(gxp.plugins.Tool, {
         return null;
     },
 
+    /** private: method[performSearch]
+     *
+     *  Build up the request and load up the data through the FeatureManager.
+     */
     performSearch: function() {
         var featureManager = this.target.tools[this.featureManager];
         var filters = [];
@@ -163,6 +183,13 @@ AsBuilt.Search = Ext.extend(gxp.plugins.Tool, {
         );
     },
 
+    /** private: method[createAutoCompleteField]
+     *  :arg name: ``String`` Field name to create the auto complete field for. 
+     *  :arg fieldLabel: ``String`` The fieldLabel to use for the field.
+     *  :returns: ``Ext.form.ComboBox`` The auto complete field created
+     *
+     *  Get an autocomplete field for a certain attribute.
+     */
     createAutoCompleteField: function(name, fieldLabel) {
         var featureManager = this.target.tools[this.featureManager];
         var url = this.target.initialConfig.sources[featureManager.layer.source].url;
@@ -194,8 +221,7 @@ AsBuilt.Search = Ext.extend(gxp.plugins.Tool, {
     },
 
     /** private: method[initContainer]
-     *  Create the primary output container.  All other items will be added to 
-     *  this when the group feature store is ready.
+     *  Create the primary output container.
      */
     initContainer: function() {
         var types = [
@@ -214,7 +240,12 @@ AsBuilt.Search = Ext.extend(gxp.plugins.Tool, {
             items: [{
                 layout: "form",
                 autoScroll: true,
-                bbar: ["->", {text: this.queryActionText, iconCls: "gxp-icon-find", handler: this.performSearch, scope: this}],
+                bbar: ["->", {
+                    text: this.queryActionText, 
+                    iconCls: "gxp-icon-find", 
+                    handler: this.performSearch, 
+                    scope: this
+                }],
                 border: false,
                 bodyStyle: "padding: 5px",
                 items: [
@@ -245,20 +276,24 @@ AsBuilt.Search = Ext.extend(gxp.plugins.Tool, {
                                 valueField: 'type',
                                 fieldLabel: this.documentTypeLabel
                             },
-                            this.createAutoCompleteField('DOCSUBJECT', this.documentSubjectLabel),
-                            this.createAutoCompleteField('FILENO', this.fileNumberLabel)
+                            this.createAutoCompleteField('DOCSUBJECT', 
+                                this.documentSubjectLabel),
+                            this.createAutoCompleteField('FILENO', 
+                                this.fileNumberLabel)
                         ]
                     }, {
                         xtype: "fieldset",
                         title: "Facilities",
                         items: [
-                            this.createAutoCompleteField('SFACILITYNAME', this.facilityNameLabel)
+                            this.createAutoCompleteField('SFACILITYNAME', 
+                                this.facilityNameLabel)
                         ]
                     }, {
                         xtype: "fieldset",
                         title: "Contracts",
                         items: [
-                            this.createAutoCompleteField('SCONTRACTTITLE', this.contractTitleLabel)
+                            this.createAutoCompleteField('SCONTRACTTITLE', 
+                                this.contractTitleLabel)
                         ]
                     }, {
                         xtype: "fieldset",
@@ -277,7 +312,7 @@ AsBuilt.Search = Ext.extend(gxp.plugins.Tool, {
                                             fields: ['name', 'index'],
                                             root: 'intersections',
                                             autoLoad: true,
-                                            url: this.streetJSONBaseURL + "/"+cmb.getValue()+"-intersections.json"
+                                            url: this.streetJSONBaseURL + "/" + cmb.getValue() + "-intersections.json"
                                         });
                                         var cmps = ['start_intersection', 'end_intersection'];
                                         for (var i=0,ii=cmps.length; i<ii; i++) {
