@@ -241,95 +241,104 @@ AsBuilt.Search = Ext.extend(gxp.plugins.Tool, {
                 bbar: ["->", {text: this.queryActionText, iconCls: "gxp-icon-find", handler: this.performSearch, scope: this}],
                 border: false,
                 bodyStyle: "padding: 5px",
-                items: [{
-                    xtype: "fieldset",
-                    title: this.attributeLabel,
-                    items: [{
-                        xtype: "combo",
-                        name: 'TYPEDESC',
-                        id: "TYPEDESC",
-                        mode: 'local',
-                        emptyText: "Select a type",
-                        triggerAction: 'all',
-                        store: typeDescStore,
-                        displayField: 'type',
-                        valueField: 'type',
-                        fieldLabel: "Type"
-                    }]}, {
-                    xtype: "fieldset",
-                    title: "Facility",
-                    items: [
-                        this.createAutoCompleteField('SFACILITYNAME', "Facility name")
-                    ]}, {
-                    xtype: "fieldset",
-                    title: "Contracts",
-                    items: [
-                        this.createAutoCompleteField('SCONTRACTTITLE', "Contract title")
-                    ]}, {
-                    xtype: "fieldset",
-                    title: this.streetLabel,
-                    items: [{
-                        xtype: "combo",
-                        name: "streetname",
-                        id: "streetname",
-                        fieldLabel: "Street name",
-                        emptyText: "Select a street",
-                        triggerAction: 'all',
-                        listeners: {
-                            "select": function(cmb, rec, idx) {
-                                var store = new Ext.data.JsonStore({
-                                    fields: ['name', 'index'],
-                                    root: 'intersections',
-                                    autoLoad: true,
-                                    url: "/stub/"+cmb.getValue()+"-intersections.json"
-                                });
-                                var cmps = ['start_intersection', 'end_intersection'];
-                                for (var i=0,ii=cmps.length; i<ii; i++) {
-                                    var cmp = Ext.getCmp(cmps[i]);
-                                    cmp.clearValue();
-                                    cmp.bindStore(store);
-                                    cmp.enable();
-                                }
-                            },
-                            scope: this
-                        },
-                        displayField: 'name',
-                        valueField: 'id',
-                        store: new Ext.data.JsonStore({
-                            fields: ['name', 'id'],
-                            root: 'streets',
-                            url: "/stub/streets.json"
-                        })
+                items: [
+                    {
+                        xtype: "fieldset",
+                        title: this.attributeLabel,
+                        items: [
+                            {
+                                xtype: "combo",
+                                name: 'TYPEDESC',
+                                id: "TYPEDESC",
+                                mode: 'local',
+                                emptyText: "Select a type",
+                                triggerAction: 'all',
+                                store: typeDescStore,
+                                displayField: 'type',
+                                valueField: 'type',
+                                fieldLabel: "Type"
+                            }
+                        ]
                     }, {
-                        xtype: "combo",
-                        id: 'start_intersection',
-                        disabled: true,
-                        displayField: 'name',
-                        valueField: "index",
-                        triggerAction: 'all',
-                        listeners: {
-                            "select": this.getCnnList,
-                            scope: this
-                        },
-                        mode: 'local',
-                        name: "start_intersection",
-                        fieldLabel: "Starting intersection"
+                        xtype: "fieldset",
+                        title: "Facility",
+                        items: [
+                            this.createAutoCompleteField('SFACILITYNAME', "Facility name")
+                        ]
                     }, {
-                        xtype: "combo",
-                        id: 'end_intersection',
-                        disabled: true,
-                        displayField: 'name',
-                        valueField: "index",
-                        triggerAction: 'all',
-                        listeners: {
-                            "select": this.getCnnList,
-                            scope: this
-                        },
-                        mode: 'local',
-                        name: "end_intersection",
-                        fieldLabel: "Ending intersection"
-                    }]
-                }]
+                        xtype: "fieldset",
+                        title: "Contracts",
+                        items: [
+                            this.createAutoCompleteField('SCONTRACTTITLE', "Contract title")
+                        ]
+                    }, {
+                        xtype: "fieldset",
+                        title: this.streetLabel,
+                        items: [
+                            {
+                                xtype: "combo",
+                                name: "streetname",
+                                id: "streetname",
+                                fieldLabel: "Street name",
+                                emptyText: "Select a street",
+                                triggerAction: 'all',
+                                listeners: {
+                                    "select": function(cmb, rec, idx) {
+                                        var store = new Ext.data.JsonStore({
+                                            fields: ['name', 'index'],
+                                            root: 'intersections',
+                                            autoLoad: true,
+                                            url: "/stub/"+cmb.getValue()+"-intersections.json"
+                                        });
+                                        var cmps = ['start_intersection', 'end_intersection'];
+                                        for (var i=0,ii=cmps.length; i<ii; i++) {
+                                            var cmp = Ext.getCmp(cmps[i]);
+                                            cmp.clearValue();
+                                            cmp.bindStore(store);
+                                            cmp.enable();
+                                        }
+                                    },
+                                    scope: this
+                                },
+                                displayField: 'name',
+                                valueField: 'id',
+                                store: new Ext.data.JsonStore({
+                                    fields: ['name', 'id'],
+                                    root: 'streets',
+                                    url: "/stub/streets.json"
+                                })
+                            }, {
+                                xtype: "combo",
+                                id: 'start_intersection',
+                                disabled: true,
+                                displayField: 'name',
+                                valueField: "index",
+                                triggerAction: 'all',
+                                listeners: {
+                                    "select": this.getCnnList,
+                                    scope: this
+                                },
+                                mode: 'local',
+                                name: "start_intersection",
+                                fieldLabel: "Starting intersection"
+                            }, {
+                                xtype: "combo",
+                                id: 'end_intersection',
+                                disabled: true,
+                                displayField: 'name',
+                                valueField: "index",
+                                triggerAction: 'all',
+                                listeners: {
+                                    "select": this.getCnnList,
+                                    scope: this
+                                },
+                                mode: 'local',
+                                name: "end_intersection",
+                                fieldLabel: "Ending intersection"
+                            }
+                        ]
+                    }
+                ]
             }]
         }, this.outputConfig));
         delete this.outputConfig;
