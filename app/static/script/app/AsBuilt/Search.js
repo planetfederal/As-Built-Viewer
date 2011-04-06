@@ -40,6 +40,36 @@ AsBuilt.Search = Ext.extend(gxp.plugins.Tool, {
      */
     streetJSONBaseURL: "/stub",
 
+    /** api: config [typeDescriptionSearchField]
+     *  ``String`` The search field to use for drawing type description.
+     */
+    typeDescriptionSearchField: 'TYPEDESC',
+
+    /** api: config [documentSubjectSearchField]
+     *  ``String`` The search field to use for document subject.
+     */
+    documentSubjectSearchField: 'DOCSUBJECT',
+
+    /** api: config [fileNumberSearchField]
+     *  ``String`` The search field to use for file number.
+     */
+    fileNumberSearchField: 'FILENO',
+
+    /** api: config [facilitySearchField]
+     *  ``String`` The search field to use for facilility.
+     */
+    facilitySearchField: 'SFACILITYNAME',
+
+    /** api: config [contractSearchField]
+     *  ``String`` The search field to use for contract.
+     */
+    contractSearchField: 'SCONTRACTTITLE',
+
+    /** api: config [cnnField]
+     *  ``String`` The field containing CNN information.
+     */
+    cnnField: 'CNNLIST',
+
     /* i18n start */
     drawingLabel: "Drawing Number",
     streetLabel: "Street location",
@@ -142,7 +172,13 @@ AsBuilt.Search = Ext.extend(gxp.plugins.Tool, {
     performSearch: function() {
         var featureManager = this.target.tools[this.featureManager];
         var filters = [];
-        var fields = ['TYPEDESC' ,'SCONTRACTTITLE', 'SFACILITYNAME', 'DOCSUBJECT', 'FILENO'];
+        var fields = [
+            this.typeDescriptionSearchField, 
+            this.contractSearchField, 
+            this.facilitySearchField, 
+            this.documentSubjectSearchField, 
+            this.fileNumberSearchField
+        ];
         for (var i=0,len=fields.length;i<len;++i) {
             var filter = this.getFilter(fields[i]);
             if (filter !== null) {
@@ -162,7 +198,7 @@ AsBuilt.Search = Ext.extend(gxp.plugins.Tool, {
             for (var i=0,ii=this.cnns.length;i<ii;i++) {
                 subFilters.push(new OpenLayers.Filter.Comparison({
                     type: OpenLayers.Filter.Comparison.LIKE,
-                    property: 'CNNLIST',
+                    property: this.cnnField,
                     value: '*' + this.cnns[i] + '*'
                 }));
             }
@@ -266,8 +302,8 @@ AsBuilt.Search = Ext.extend(gxp.plugins.Tool, {
                         items: [
                             {
                                 xtype: "combo",
-                                name: 'TYPEDESC',
-                                id: "TYPEDESC",
+                                name: this.typeDescriptionSearchField,
+                                id: this.typeDescriptionSearchField,
                                 mode: 'local',
                                 emptyText: this.documentTypeEmpty,
                                 triggerAction: 'all',
@@ -276,23 +312,23 @@ AsBuilt.Search = Ext.extend(gxp.plugins.Tool, {
                                 valueField: 'type',
                                 fieldLabel: this.documentTypeLabel
                             },
-                            this.createAutoCompleteField('DOCSUBJECT', 
+                            this.createAutoCompleteField(this.documentSubjectSearchField, 
                                 this.documentSubjectLabel),
-                            this.createAutoCompleteField('FILENO', 
+                            this.createAutoCompleteField(this.fileNumberSearchField, 
                                 this.fileNumberLabel)
                         ]
                     }, {
                         xtype: "fieldset",
                         title: "Facilities",
                         items: [
-                            this.createAutoCompleteField('SFACILITYNAME', 
+                            this.createAutoCompleteField(this.facilitySearchField, 
                                 this.facilityNameLabel)
                         ]
                     }, {
                         xtype: "fieldset",
                         title: "Contracts",
                         items: [
-                            this.createAutoCompleteField('SCONTRACTTITLE', 
+                            this.createAutoCompleteField(this.contractSearchField, 
                                 this.contractTitleLabel)
                         ]
                     }, {
