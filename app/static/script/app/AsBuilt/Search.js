@@ -77,7 +77,7 @@ AsBuilt.Search = Ext.extend(gxp.plugins.Tool, {
      *  ``String``
      *  Label for attributes fieldset (i18n).
      */
-    attributeLabel: "Drawing number",
+    attributeLabel: "Drawing Number",
 
     /** api: config[streetLabel]
      *  ``String``
@@ -143,9 +143,9 @@ AsBuilt.Search = Ext.extend(gxp.plugins.Tool, {
         var value = Ext.getCmp(name).getValue();
         if (value != "") {
             return new OpenLayers.Filter.Comparison({
-                type: OpenLayers.Filter.Comparison.EQUAL_TO,
+                type: OpenLayers.Filter.Comparison.LIKE,
                 property: name,
-                value: value
+                value: '*' + value + '*'
             });
         }
         return null;
@@ -154,7 +154,7 @@ AsBuilt.Search = Ext.extend(gxp.plugins.Tool, {
     performSearch: function() {
         var featureManager = this.target.tools[this.featureManager];
         var filters = [];
-        var fields = ['TYPEDESC' ,'SCONTRACTTITLE', 'SFACILITYNAME'];
+        var fields = ['TYPEDESC' ,'SCONTRACTTITLE', 'SFACILITYNAME', 'DOCSUBJECT', 'FILENO'];
         for (var i=0,len=fields.length;i<len;++i) {
             var filter = this.getFilter(fields[i]);
             if (filter !== null) {
@@ -256,12 +256,14 @@ AsBuilt.Search = Ext.extend(gxp.plugins.Tool, {
                                 store: typeDescStore,
                                 displayField: 'type',
                                 valueField: 'type',
-                                fieldLabel: "Type"
-                            }
+                                fieldLabel: "Document type"
+                            },
+                            this.createAutoCompleteField('DOCSUBJECT', "General Subject"),
+                            this.createAutoCompleteField('FILENO', "File Number")
                         ]
                     }, {
                         xtype: "fieldset",
-                        title: "Facility",
+                        title: "Facilities",
                         items: [
                             this.createAutoCompleteField('SFACILITYNAME', "Facility name")
                         ]
