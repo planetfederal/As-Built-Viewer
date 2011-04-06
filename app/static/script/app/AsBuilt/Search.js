@@ -35,23 +35,28 @@ AsBuilt.Search = Ext.extend(gxp.plugins.Tool, {
      */
     featureManager: null,
 
-    /** api: config[attributeLabel]
-     *  ``String``
-     *  Label for attributes fieldset (i18n).
+    /** api: config[streetJSONBaseURL]
+     *  ``String`` base URL where the street JSON structures are available.
      */
-    attributeLabel: "Drawing Number",
+    streetJSONBaseURL: "/stub",
 
-    /** api: config[streetLabel]
-     *  ``String``
-     *  Label for street fieldset (i18n).
-     */
+    /* i18n start */
+    drawingLabel: "Drawing Number",
     streetLabel: "Street location",
-
-    /** api: config[queryActionText]
-     *  ``String``
-     *  Text for query action (i18n).
-     */
+    mapExtentLabel: "Map extent",
+    mapExtentCheckbox: "Use map extent",
     queryActionText: "Query",
+    documentTypeEmpty: "Select a type",
+    documentTypeLabel: "Document type",
+    documentSubjectLabel: "General Subject",
+    fileNumberLabel: "File Number",
+    facilityNameLabel: "Facility name",
+    contractTitleLabel: "Contract title",
+    streetNameLabel: "Street name",
+    streetNameEmpty: "Select a street",
+    startIntersectionLabel: "Starting intersection",
+    endIntersectionLabel: "Ending intersection",
+    /* i18n end */
 
     /** private: cnns
      * ``Array(String)`` List of center network node identifiers
@@ -79,7 +84,7 @@ AsBuilt.Search = Ext.extend(gxp.plugins.Tool, {
         var end = Ext.getCmp('end_intersection').getValue();
         if (street != "" && start != "" && end != "") {
             Ext.Ajax.request({
-                url: '/stub/' + street + '-cnn.json',
+                url: this.streetJSONBaseURL + '/' + street + '-cnn.json',
                 success: function(response) {
                     var cnn = Ext.decode(response.responseText).cnn;
                     // take all cnn from minIndex to maxIndex - 1
@@ -215,45 +220,45 @@ AsBuilt.Search = Ext.extend(gxp.plugins.Tool, {
                 items: [
                     {
                         xtype: "fieldset",
-                        title: "Map extent",
+                        title: this.mapExtentLabel,
                         items: [
                             {
                                 xtype: "checkbox",
                                 id: "mapextent",
                                 name: "mapextent",
-                                fieldLabel: "Use map extent"
+                                fieldLabel: this.mapExtentCheckbox
                             }
                         ]
                     }, {
                         xtype: "fieldset",
-                        title: this.attributeLabel,
+                        title: this.drawingLabel,
                         items: [
                             {
                                 xtype: "combo",
                                 name: 'TYPEDESC',
                                 id: "TYPEDESC",
                                 mode: 'local',
-                                emptyText: "Select a type",
+                                emptyText: this.documentTypeEmpty,
                                 triggerAction: 'all',
                                 store: typeDescStore,
                                 displayField: 'type',
                                 valueField: 'type',
-                                fieldLabel: "Document type"
+                                fieldLabel: this.documentTypeLabel
                             },
-                            this.createAutoCompleteField('DOCSUBJECT', "General Subject"),
-                            this.createAutoCompleteField('FILENO', "File Number")
+                            this.createAutoCompleteField('DOCSUBJECT', this.documentSubjectLabel),
+                            this.createAutoCompleteField('FILENO', this.fileNumberLabel)
                         ]
                     }, {
                         xtype: "fieldset",
                         title: "Facilities",
                         items: [
-                            this.createAutoCompleteField('SFACILITYNAME', "Facility name")
+                            this.createAutoCompleteField('SFACILITYNAME', this.facilityNameLabel)
                         ]
                     }, {
                         xtype: "fieldset",
                         title: "Contracts",
                         items: [
-                            this.createAutoCompleteField('SCONTRACTTITLE', "Contract title")
+                            this.createAutoCompleteField('SCONTRACTTITLE', this.contractTitleLabel)
                         ]
                     }, {
                         xtype: "fieldset",
@@ -263,8 +268,8 @@ AsBuilt.Search = Ext.extend(gxp.plugins.Tool, {
                                 xtype: "combo",
                                 name: "streetname",
                                 id: "streetname",
-                                fieldLabel: "Street name",
-                                emptyText: "Select a street",
+                                fieldLabel: this.streetNameLabel,
+                                emptyText: this.streetNameEmpty,
                                 triggerAction: 'all',
                                 listeners: {
                                     "select": function(cmb, rec, idx) {
@@ -272,7 +277,7 @@ AsBuilt.Search = Ext.extend(gxp.plugins.Tool, {
                                             fields: ['name', 'index'],
                                             root: 'intersections',
                                             autoLoad: true,
-                                            url: "/stub/"+cmb.getValue()+"-intersections.json"
+                                            url: this.streetJSONBaseURL + "/"+cmb.getValue()+"-intersections.json"
                                         });
                                         var cmps = ['start_intersection', 'end_intersection'];
                                         for (var i=0,ii=cmps.length; i<ii; i++) {
@@ -289,7 +294,7 @@ AsBuilt.Search = Ext.extend(gxp.plugins.Tool, {
                                 store: new Ext.data.JsonStore({
                                     fields: ['name', 'id'],
                                     root: 'streets',
-                                    url: "/stub/streets.json"
+                                    url: this.streetJSONBaseURL + "/streets.json"
                                 })
                             }, {
                                 xtype: "combo",
@@ -304,7 +309,7 @@ AsBuilt.Search = Ext.extend(gxp.plugins.Tool, {
                                 },
                                 mode: 'local',
                                 name: "start_intersection",
-                                fieldLabel: "Starting intersection"
+                                fieldLabel: this.startIntersectionLabel
                             }, {
                                 xtype: "combo",
                                 id: 'end_intersection',
@@ -318,7 +323,7 @@ AsBuilt.Search = Ext.extend(gxp.plugins.Tool, {
                                 },
                                 mode: 'local',
                                 name: "end_intersection",
-                                fieldLabel: "Ending intersection"
+                                fieldLabel: this.endIntersectionLabel
                             }
                         ]
                     }
