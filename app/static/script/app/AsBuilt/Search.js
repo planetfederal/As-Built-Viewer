@@ -163,6 +163,14 @@ AsBuilt.Search = Ext.extend(gxp.plugins.Tool, {
                 filters.push(filter);
             }
         }
+        var mapextent = Ext.getCmp("mapextent");
+        if (mapextent.getValue() === true) {
+            filters.push(new OpenLayers.Filter.Spatial({
+                type: OpenLayers.Filter.Spatial.BBOX,
+                property: featureManager.featureStore.geometryName,
+                value: this.target.mapPanel.map.getExtent()
+            }));
+        }
         if (this.cnns) {
             var subFilters = [];
             for (var i=0,ii=this.cnns.length;i<ii;i++) {
@@ -245,6 +253,17 @@ AsBuilt.Search = Ext.extend(gxp.plugins.Tool, {
                 bodyStyle: "padding: 5px",
                 items: [
                     {
+                        xtype: "fieldset",
+                        title: "Map extent",
+                        items: [
+                            {
+                                xtype: "checkbox",
+                                id: "mapextent",
+                                name: "mapextent",
+                                fieldLabel: "Use map extent"
+                            }
+                        ]
+                    }, {
                         xtype: "fieldset",
                         title: this.attributeLabel,
                         items: [
