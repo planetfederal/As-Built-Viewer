@@ -42,6 +42,7 @@ AsBuilt.AutoCompleteProxy = Ext.extend(GeoExt.data.ProtocolProxy, {
         if (params.query) {
             params.filter = new OpenLayers.Filter.Comparison({
                 type: OpenLayers.Filter.Comparison.LIKE,
+                matchCase: false,
                 property: this.protocol.propertyNames[0],
                 value: '*' + params.query + '*'
             });
@@ -144,6 +145,7 @@ AsBuilt.Search = Ext.extend(gxp.plugins.Tool, {
         if (value != "") {
             return new OpenLayers.Filter.Comparison({
                 type: OpenLayers.Filter.Comparison.LIKE,
+                matchCase: false,
                 property: name,
                 value: '*' + value + '*'
             });
