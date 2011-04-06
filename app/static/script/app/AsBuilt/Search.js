@@ -6,51 +6,12 @@
  * of the license.
  */
 
+/**
+ * @include AsBuilt/AutoCompleteReader.js
+ * @include AsBuilt/AutoCompleteProxy.js
+ */
+
 Ext.ns("AsBuilt");
-
-AsBuilt.AutoCompleteReader = Ext.extend(GeoExt.data.FeatureReader, {
-    read: function(response) {
-        // since we cannot do a distinct query on a WFS, filter out duplicates here
-        var recordType = this.recordType, fields = recordType.prototype.fields;
-        var field = fields.keys.pop();
-        this.features = [];
-        for (var i=0,ii=response.features.length;i<ii;++i) {
-            var feature = response.features[i];
-            var value = feature.attributes[field];
-            if (this.isDuplicate(field, value) === false) {
-                this.features.push(feature);
-            } else {
-                feature.destroy();
-            }
-        }
-        response.features = this.features;
-        return AsBuilt.AutoCompleteReader.superclass.read.apply(this, arguments);
-    },
-
-    isDuplicate: function(field, value) {
-        for (var i=0,ii=this.features.length;i<ii;++i) {
-            if (this.features[i].attributes[field] === value) {
-                return true;
-            }
-        }
-        return false;
-    }
-});
-
-AsBuilt.AutoCompleteProxy = Ext.extend(GeoExt.data.ProtocolProxy, {
-    doRequest: function(action, records, params, reader, callback, scope, arg) {
-        if (params.query) {
-            params.filter = new OpenLayers.Filter.Comparison({
-                type: OpenLayers.Filter.Comparison.LIKE,
-                matchCase: false,
-                property: this.protocol.propertyNames[0],
-                value: '*' + params.query + '*'
-            });
-            delete params.query;
-        }
-        AsBuilt.AutoCompleteProxy.superclass.doRequest.apply(this, arguments);
-    }
-});
 
 /** api: (define)
  *  module = AsBuilt
