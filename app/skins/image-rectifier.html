@@ -38,8 +38,8 @@
                 pack  : 'start'
              },
              items: [
-                 {id: 'map1', flex: 1, title: "Map1"},
-                 {id: 'map2', flex: 1, title: "Map2"}
+                 {id: 'map2', flex: 1, title: "Source map"},
+                 {id: 'map1', flex: 1, title: "Reference map"}
             ]
         });
 
@@ -116,6 +116,18 @@
                     ptype: "gxp_olsource"
                 }
             },
+            tools: [
+                {
+                    ptype: "app_gcp",
+                    layer: {         
+                        source: "ol",
+                        type: "OpenLayers.Layer.Vector",
+                        args: [
+                            "GCP"
+                        ]
+                    }
+                }
+            ],
             map: {
                 id: "map2",
                 region: "center",
