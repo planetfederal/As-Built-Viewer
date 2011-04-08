@@ -24,12 +24,6 @@ AsBuilt.GCP = Ext.extend(gxp.plugins.Tool, {
     setLayer: function(layerRecord) {
         this.layerRecord = layerRecord;
         var layer = this.layerRecord.get("layer");
-        layer.events.on({
-            "sketchcomplete": function(evt) {
-                this.drawControl.deactivate();
-            },
-            scope: this
-        });
         this.target.mapPanel.map.addLayer(layer);
         this.drawControl.layer = layer;
     },
@@ -39,7 +33,22 @@ AsBuilt.GCP = Ext.extend(gxp.plugins.Tool, {
     addActions: function() {
         this.drawControl = new OpenLayers.Control.DrawFeature(
             new OpenLayers.Layer.Vector(),    
-            OpenLayers.Handler.Point
+            OpenLayers.Handler.Point, {
+                eventListeners: {
+                    featureadded: function(evt) {
+                        var geometry = evt.feature.geometry;
+                        this.drawControl.deactivate();
+                        if (this.coords === "image") {
+                            var pixel = new OpenLayers.Pixel(geometry.x, geometry.y);
+                            this.gcps.push({pixel: pixel});
+                        } else if (this.coords === "world") {
+                            var lonlat = new OpenLayers.LonLat(geometry.x, geometry.y);
+                            this.gcps[this.gcps.length-1].lonlat = lonlat;
+                        }
+                    },
+                    scope: this
+                }
+            }
         );
         var toggleGroup = this.toggleGroup || Ext.id();
         var actions = AsBuilt.GCP.superclass.addActions.call(this, [new GeoExt.Action({
