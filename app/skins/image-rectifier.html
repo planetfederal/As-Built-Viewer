@@ -30,8 +30,22 @@
         OpenLayers.ImgPath = "externals/openlayers/img/";
         OpenLayers.Layer.WMS.prototype.DEFAULT_PARAMS.transparent = true;
         OpenLayers.DOTS_PER_INCH = 25.4 / 0.28;
+
+        new Ext.Viewport({
+            layout:'hbox',
+            layoutConfig: {
+                align : 'stretch',
+                pack  : 'start'
+             },
+             items: [
+                 {id: 'map1', flex: 1, title: "Map1"},
+                 {id: 'map2', flex: 1, title: "Map2"}
+            ]
+        });
+
         var app = new gxp.Viewer({
-            portalItems: ["map", {xtype: 'panel', region: 'west', width: '50%'}],
+            portalConfig: {renderTo: Ext.getCmp('map1').body, height: 800},
+            portalItems: ["map"],
             mapItems: [{
                 xtype: "gx_zoomslider",
                 vertical: true,
@@ -54,6 +68,65 @@
             },
             map: {
                 id: "map",
+                region: "center",
+                projection: "EPSG:900913",
+                units: "m",
+                numZoomLevels: 21,
+                maxResolution: 156543.03390625,
+                maxExtent: [
+                    -20037508.34, -20037508.34,
+                    20037508.34, 20037508.34
+                ],
+                extent: [-13650159, 4534735, -13609227, 4554724],
+                layers: [{
+                    source: "osm",
+                    name: "mapnik",
+                    title: "OpenStreetMap",
+                    group: "background"
+                }, {
+                    source: "ol",
+                    group: "background",
+                    fixed: true,
+                    type: "OpenLayers.Layer",
+                    args: [
+                        "None", {visibility: false}
+                    ]
+                }, {
+                    source: "local",
+                    name: "asbuilt:DOCS",
+                    title: "Images",
+                    selected: true,
+                }],
+                center: [-13629218, 4545403],
+                zoom: 13
+            }
+        });
+
+        var app2 = new gxp.Viewer({
+            portalConfig: {renderTo: Ext.getCmp('map2').body, height: 800},
+            portalItems: ["map2"],
+            mapItems: [{
+                xtype: "gx_zoomslider",
+                vertical: true,
+                height: 100
+            }],
+            proxy: "proxy/?url=",
+            defaultSourceType: "gxp_wmssource",
+            sources: {
+                local: {    
+                    url: "/geoserver/ows",
+                    title: "Local GeoServer",
+                    version: "1.1.1"
+                },
+                osm: {
+                    ptype: "gxp_osmsource"
+                },
+                ol: {
+                    ptype: "gxp_olsource"
+                }
+            },
+            map: {
+                id: "map2",
                 region: "center",
                 projection: "EPSG:900913",
                 units: "m",
