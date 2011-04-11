@@ -138,7 +138,13 @@
                     featureManager: "image-manager",
                     outputConfig: {
                         xtype: "app_addgeometrygrid",
-                        plugins: [{ptype: 'roweditor'}],
+                        plugins: [{
+                            ptype: 'roweditor', listeners: {
+                                'afteredit': function() { 
+                                    this.grid.store.save(); 
+                                }
+                            }
+                        }],
                         id: "featuregrid"
                     },
                     outputTarget: "south"
