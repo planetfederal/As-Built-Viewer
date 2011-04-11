@@ -14,6 +14,16 @@ AsBuilt.plugins.GCP = Ext.extend(gxp.plugins.Tool, {
 
     constructor: function(config) {
         this.addEvents(
+            /** api: event[beforegcpadded]
+             *  Fired before a (part of a) gcp has been added. Return false 
+             *  to cancel.
+             *
+             *  Listener arguments:
+             *  * tool - :class:`AsBuilt.plugins.GCP` this tool
+             *  * geometry - :class: `OpenLayers.Geometry` the geometry created
+             */
+            "beforegcpadded",
+
             /** api: event[gcpadded]
              *  Fired when a (part of a) gcp has been added.
              *
@@ -30,6 +40,9 @@ AsBuilt.plugins.GCP = Ext.extend(gxp.plugins.Tool, {
      */
     addActions: function() {
         this.layer = new OpenLayers.Layer.Vector();
+        this.layer.events.on({"sketchcomplete": function(evt) {
+            return this.fireEvent("beforegcpadded", this, evt.feature.geometry);
+        }, scope: this});
         this.drawControl = new OpenLayers.Control.DrawFeature(
             this.layer,    
             OpenLayers.Handler.Point, {
