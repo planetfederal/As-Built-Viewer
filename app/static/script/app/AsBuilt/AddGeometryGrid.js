@@ -39,6 +39,7 @@ AsBuilt.AddGeometryGrid = Ext.extend(gxp.grid.FeatureGrid, {
                 }
             },
             handler: function(grid, rowIndex, colIndex) {
+                grid.getSelectionModel().selectRow(rowIndex);
                 this.record = store.getAt(rowIndex);
                 this.feature = this.record.get("feature");
                 if (this.feature.geometry === null) {
