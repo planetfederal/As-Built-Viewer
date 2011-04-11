@@ -6,6 +6,8 @@
     <link rel="stylesheet" type="text/css" href="externals/openlayers/theme/default/style.css" />
     <script type="text/javascript" src="script/OpenLayers.js"></script>
 
+    <link rel="stylesheet" type="text/css" href="theme/ux/css/RowEditor.css" />
+
     <!-- GeoExt resources -->
     <link rel="stylesheet" type="text/css" href="externals/geoext/resources/css/popup.css" />
     <link rel="stylesheet" type="text/css" href="externals/geoext/resources/css/layerlegend.css" />
@@ -15,6 +17,9 @@
     <!-- gxp resources -->
     <link rel="stylesheet" type="text/css" href="externals/gxp/src/theme/all.css" />
     <script type="text/javascript" src="script/gxp.js"></script> 
+
+    <!-- ux resources -->
+    <script type="text/javascript" src="script/ux.js"></script>
         
     <!-- proj4js resources -->
     <!--
@@ -133,6 +138,7 @@
                     featureManager: "image-manager",
                     outputConfig: {
                         xtype: "app_addgeometrygrid",
+                        plugins: [{ptype: 'roweditor'}],
                         id: "featuregrid"
                     },
                     outputTarget: "south"

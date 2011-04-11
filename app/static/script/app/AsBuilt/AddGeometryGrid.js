@@ -30,6 +30,12 @@ AsBuilt.AddGeometryGrid = Ext.extend(gxp.grid.FeatureGrid, {
      */
     getColumns: function(store){
         var columns = AsBuilt.AddGeometryGrid.superclass.getColumns.apply(this, arguments);
+        for (var i=0, ii=columns.length; i<ii; i++) {
+            var column = columns[i];
+            column.editor = {
+                xtype: 'textfield'
+            };
+        }
         columns.unshift({xtype: 'actioncolumn', width: 30, items: [{
             getClass: function(v, meta, rec) {
                 if (rec.get("feature").geometry == null) {
