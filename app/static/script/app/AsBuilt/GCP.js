@@ -1,9 +1,30 @@
-Ext.namespace("AsBuilt");
+Ext.namespace("AsBuilt.plugins");
 
-AsBuilt.GCP = Ext.extend(gxp.plugins.Tool, {
+AsBuilt.plugins.GCP = Ext.extend(gxp.plugins.Tool, {
 
     /** api: ptype = app_gcp */
     ptype: "app_gcp",
+
+    /** api: config[type]
+     * ``Integer`` Coordinate system type to use, one of: 
+     * AsBuilt.plugins.GCP.WORLD_COORDS or
+     * AsBuilt.plugins.GCP.IMAGE_COORDS
+     */
+    type: null,
+
+    constructor: function(config) {
+        this.addEvents(
+            /** api: event[gcpadded]
+             *  Fired when a (part of a) gcp has been added.
+             *
+             *  Listener arguments:
+             *  * tool - :class:`AsBuilt.plugins.GCP` this tool
+             *  * geometry - :class: `OpenLayers.Geometry` the geometry created
+             */
+            "gcpadded"
+        );
+        AsBuilt.plugins.GCP.superclass.constructor.apply(this, arguments);
+    },
 
     /** api: method[addActions]
      */
@@ -19,11 +40,7 @@ AsBuilt.GCP = Ext.extend(gxp.plugins.Tool, {
                         }
                         var geometry = evt.feature.geometry;
                         this.drawControl.deactivate();
-                        if (this.coords === "image") {
-                            this.gcps.push({pixel: geometry});
-                        } else if (this.coords === "world") {
-                            this.gcps[this.gcps.length-1].lonlat = geometry;
-                        }
+                        this.fireEvent("gcpadded", this, geometry);
                     },
                     scope: this
                 }
@@ -33,7 +50,7 @@ AsBuilt.GCP = Ext.extend(gxp.plugins.Tool, {
             this.layer
         );    
         var toggleGroup = this.toggleGroup || Ext.id();
-        var actions = AsBuilt.GCP.superclass.addActions.call(this, [new GeoExt.Action({
+        var actions = AsBuilt.plugins.GCP.superclass.addActions.call(this, [new GeoExt.Action({
             tooltip: "Draw GCP",
             text: "Draw GCP",
             toggleGroup: toggleGroup,
@@ -56,4 +73,10 @@ AsBuilt.GCP = Ext.extend(gxp.plugins.Tool, {
 
 });
 
-Ext.preg(AsBuilt.GCP.prototype.ptype, AsBuilt.GCP);
+/**
+ * Coordinate types
+ */
+AsBuilt.plugins.GCP.WORLD_COORDS = 0;
+AsBuilt.plugins.GCP.IMAGE_COORDS = 1;
+
+Ext.preg(AsBuilt.plugins.GCP.prototype.ptype, AsBuilt.plugins.GCP);

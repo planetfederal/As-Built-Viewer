@@ -31,9 +31,6 @@
         OpenLayers.Layer.WMS.prototype.DEFAULT_PARAMS.transparent = true;
         OpenLayers.DOTS_PER_INCH = 25.4 / 0.28;
 
-        Ext.ns("AsBuilt");
-        AsBuilt.gcps = [];
-
         new Ext.Viewport({
             layout:'hbox',
             layoutConfig: {
@@ -72,8 +69,10 @@
             tools: [
                 {
                     ptype: "app_gcp",
-                    coords: "world",
-                    gcps: AsBuilt.gcps
+                    type: AsBuilt.plugins.GCP.WORLD_COORDS,
+                    listeners: {
+                        "gcpadded": AsBuilt.GCPManager.handleGCPAdded
+                    }
                 }
             ],
             map: {
@@ -129,8 +128,10 @@
             tools: [
                 {
                     ptype: "app_gcp",
-                    coords: "image",
-                    gcps: AsBuilt.gcps
+                    type: AsBuilt.plugins.GCP.IMAGE_COORDS,
+                    listeners: {
+                        "gcpadded": AsBuilt.GCPManager.handleGCPAdded
+                    }
                 }
             ],
             map: {
