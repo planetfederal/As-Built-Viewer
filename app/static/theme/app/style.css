@@ -12,3 +12,9 @@
     width: 16px;
     height: 16px;
 }
+
+.x-action-col, .gxp-icon-modifyfeature {
+    background-image: url(img/pencil.png);
+    width: 16px;
+    height: 16px;
+}

@@ -35,30 +35,50 @@ AsBuilt.AddGeometryGrid = Ext.extend(gxp.grid.FeatureGrid, {
                 if (rec.get("feature").geometry == null) {
                     return "gxp-icon-addfeature";
                 } else {
-                    return "";
+                    return "gxp-icon-modifyfeature";
                 }
             },
             handler: function(grid, rowIndex, colIndex) {
                 this.record = store.getAt(rowIndex);
                 this.feature = this.record.get("feature");
-                if (this.drawControl == null) {
-                    this.drawControl = new OpenLayers.Control.DrawFeature(
-                        new OpenLayers.Layer.Vector(),
-                        OpenLayers.Handler.Point, {
-                        eventListeners: {
-                            featureadded: function(evt) {
-                                this.drawControl.deactivate();
-                                this.feature.geometry = evt.feature.geometry.clone();
-                                this.feature.state =  OpenLayers.State.UPDATE;
-                                this.record.set("state", this.feature.state);
-                                store.save();
-                            },
-                            scope: this
-                        }
-                     });
-                     this.feature.layer.map.addControl(this.drawControl);
+                if (this.feature.geometry === null) {
+                    if (this.drawControl == null) {
+                        this.drawControl = new OpenLayers.Control.DrawFeature(
+                            new OpenLayers.Layer.Vector(),
+                            OpenLayers.Handler.Point, {
+                            eventListeners: {
+                                featureadded: function(evt) {
+                                    this.drawControl.deactivate();
+                                    this.feature.geometry = evt.feature.geometry.clone();
+                                    this.feature.state =  OpenLayers.State.UPDATE;
+                                    this.record.set("state", this.feature.state);
+                                    store.save();
+                                },
+                                scope: this
+                            }
+                         });
+                         this.feature.layer.map.addControl(this.drawControl);
+                    }
+                    this.drawControl.activate();
+                } else {
+                    if (this.modifyControl == null) {
+                        this.modifyControl = new OpenLayers.Control.ModifyFeature(
+                            this.feature.layer,
+                            {standalone: true}
+                        );
+                        this.feature.layer.map.addControl(this.modifyControl);
+                    }
+                    this.feature.layer.events.on({
+                        "featuremodified": function() {
+                            this.feature.layer.events.unregister("featuremodified", this, arguments.callee);
+                            this.modifyControl.deactivate();
+                            store.save();
+                        },
+                        scope: this
+                    });
+                    this.modifyControl.activate();
+                    this.modifyControl.selectFeature(this.feature);
                 }
-                this.drawControl.activate();
             },
             scope: this
         }]});
