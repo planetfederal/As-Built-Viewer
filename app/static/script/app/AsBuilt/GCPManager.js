@@ -8,6 +8,8 @@ AsBuilt.GCPManager = function(){
 
     var lastType = null;
 
+    var counter = 1;
+
     return Ext.apply(new Ext.util.Observable, {
         handleBeforeGCPAdded: function(tool, feature) {
             if (lastType !== null && tool.type === lastType) {
@@ -23,6 +25,7 @@ AsBuilt.GCPManager = function(){
             } else {
                 gcp.target = feature;
                 gcps.push(gcp);
+                counter += 1;
             }
             lastType = tool.type;
         },
@@ -42,6 +45,9 @@ AsBuilt.GCPManager = function(){
                     layer && layer.destroyFeatures([source]);
                 }
             }
+        },
+        getCounter: function() {
+            return counter;
         },
         getGCPs: function() {
             var result = [];

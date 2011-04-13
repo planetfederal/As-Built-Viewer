@@ -126,8 +126,26 @@ AsBuilt.plugins.GCP = Ext.extend(gxp.plugins.Tool, {
             "gcpadded": this.gcpManager.handleGCPAdded,
             "gcpremoved": this.gcpManager.handleGCPRemoved
         });
-        this.layer = new OpenLayers.Layer.Vector();
+        this.layer = new OpenLayers.Layer.Vector(null, {
+            styleMap: new OpenLayers.StyleMap({'default':{
+                strokeColor: "#00FF00",
+                strokeOpacity: 1,
+                strokeWidth: 3,
+                fillColor: "#FF5500",
+                fillOpacity: 0.5,
+                pointRadius: 6,
+                label : "${count}",
+                labelAlign: "lm",
+                labelXOffset: 10,
+                fontSize: "12px",
+                fontFamily: "Courier New, monospace",
+                fontWeight: "bold"
+            }})
+        });
         this.layer.events.on({
+            "beforefeatureadded": function(evt) {
+                evt.feature.attributes.count = this.gcpManager.getCounter();
+            },
             "sketchcomplete": function(evt) {
                 return this.fireEvent("beforegcpadded", this, evt.feature);
             },
