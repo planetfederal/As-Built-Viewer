@@ -22,3 +22,7 @@
 .x-btn .gxp-icon-deletefeature, .x-menu-item .gxp-icon-deletefeature {
     background-image: url(img/silk/pencil_delete.png);
 }
+
+.x-btn .gxp-icon-rectifier, .x-menu-item .gxp-icon-rectifier {
+    background-image: url(img/silk/bullet_picture.png);
+}

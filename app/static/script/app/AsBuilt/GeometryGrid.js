@@ -23,6 +23,56 @@ Ext.ns("AsBuilt");
  */
 AsBuilt.GeometryGrid = Ext.extend(gxp.grid.FeatureGrid, {
 
+    /** private: method[handleAddGeometry]
+     *  :arg store: ``GeoExt.data.FeatureStore``
+     *  Use a DrawFeature Control to add new geometries.
+     */
+    handleAddGeometry: function(store) {
+        if (this.drawControl == null) {
+            this.drawControl = new OpenLayers.Control.DrawFeature(
+                new OpenLayers.Layer.Vector(),
+                OpenLayers.Handler.Point, {
+                eventListeners: {
+                    "featureadded": function(evt) {
+                        this.drawControl.deactivate();
+                        this.feature.geometry = evt.feature.geometry.clone();
+                        this.feature.state =  OpenLayers.State.UPDATE;
+                        this.record.set("state", this.feature.state);
+                        store.save();
+                    },
+                    scope: this
+                }
+            });
+            this.feature.layer.map.addControl(this.drawControl);
+        }
+        this.drawControl.activate();
+    },
+
+    /** private: method[handleModifyGeometry]
+     *  :arg store: ``GeoExt.data.FeatureStore``
+     *  Use a ModifyFeature Control to modify existing geometries.
+     */
+    handleModifyGeometry: function(store) {
+        if (this.modifyControl == null) {
+            this.modifyControl = new OpenLayers.Control.ModifyFeature(
+                this.feature.layer,
+                {standalone: true}
+            );
+            this.feature.layer.map.addControl(this.modifyControl);
+        }
+        var layer = this.feature.layer;
+        layer.events.on({
+            "featuremodified": function() {
+                layer.events.unregister("featuremodified", this, arguments.callee);
+                this.modifyControl.deactivate();
+                store.save();
+            },
+            scope: this
+        });
+        this.modifyControl.activate();
+        this.modifyControl.selectFeature(this.feature);
+    },
+
     /** api: method[getColumns]
      *  :arg store: ``GeoExt.data.FeatureStore``
      *  :return: ``Array``
@@ -50,42 +100,9 @@ AsBuilt.GeometryGrid = Ext.extend(gxp.grid.FeatureGrid, {
                 this.record = store.getAt(rowIndex);
                 this.feature = this.record.get("feature");
                 if (this.feature.geometry === null) {
-                    if (this.drawControl == null) {
-                        this.drawControl = new OpenLayers.Control.DrawFeature(
-                            new OpenLayers.Layer.Vector(),
-                            OpenLayers.Handler.Point, {
-                            eventListeners: {
-                                featureadded: function(evt) {
-                                    this.drawControl.deactivate();
-                                    this.feature.geometry = evt.feature.geometry.clone();
-                                    this.feature.state =  OpenLayers.State.UPDATE;
-                                    this.record.set("state", this.feature.state);
-                                    store.save();
-                                },
-                                scope: this
-                            }
-                         });
-                         this.feature.layer.map.addControl(this.drawControl);
-                    }
-                    this.drawControl.activate();
+                    this.handleAddGeometry(store);
                 } else {
-                    if (this.modifyControl == null) {
-                        this.modifyControl = new OpenLayers.Control.ModifyFeature(
-                            this.feature.layer,
-                            {standalone: true}
-                        );
-                        this.feature.layer.map.addControl(this.modifyControl);
-                    }
-                    this.feature.layer.events.on({
-                        "featuremodified": function() {
-                            this.feature.layer.events.unregister("featuremodified", this, arguments.callee);
-                            this.modifyControl.deactivate();
-                            store.save();
-                        },
-                        scope: this
-                    });
-                    this.modifyControl.activate();
-                    this.modifyControl.selectFeature(this.feature);
+                    this.handleModifyGeometry(store);
                 }
             },
             scope: this
@@ -99,6 +116,7 @@ AsBuilt.GeometryGrid = Ext.extend(gxp.grid.FeatureGrid, {
     onDestroy: function() {
         // clean up references
         this.drawControl = null;
+        this.modifyControl = null;
         this.feature = null;
         this.record = null;
         AsBuilt.GeometryGrid.superclass.onDestroy.apply(this, arguments);
