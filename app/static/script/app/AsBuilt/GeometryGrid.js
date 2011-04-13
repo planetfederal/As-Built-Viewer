@@ -10,17 +10,18 @@ Ext.ns("AsBuilt");
 
 /** api: (define)
  *  module = AsBuilt
- *  class = AddGeometryGrid
+ *  class = GeometryGrid
  *  extends = gxp.grid.FeatureGrid
  */
 
 /** api: constructor
- *  .. class:: AddGeometryGrid(config)
+ *  .. class:: GeometryGrid(config)
  *
  *    A FeatureGrid which has an action column which contains a tool to draw
  *    a new geometry, this can be used for features that have a null geometry.
+ *    In case a feature has a geometry, it can be modified.
  */
-AsBuilt.AddGeometryGrid = Ext.extend(gxp.grid.FeatureGrid, {
+AsBuilt.GeometryGrid = Ext.extend(gxp.grid.FeatureGrid, {
 
     /** api: method[getColumns]
      *  :arg store: ``GeoExt.data.FeatureStore``
@@ -29,7 +30,7 @@ AsBuilt.AddGeometryGrid = Ext.extend(gxp.grid.FeatureGrid, {
      *  Gets the configuration for the column model.
      */
     getColumns: function(store){
-        var columns = AsBuilt.AddGeometryGrid.superclass.getColumns.apply(this, arguments);
+        var columns = AsBuilt.GeometryGrid.superclass.getColumns.apply(this, arguments);
         for (var i=0, ii=columns.length; i<ii; i++) {
             var column = columns[i];
             column.editor = {
@@ -100,10 +101,10 @@ AsBuilt.AddGeometryGrid = Ext.extend(gxp.grid.FeatureGrid, {
         this.drawControl = null;
         this.feature = null;
         this.record = null;
-        AsBuilt.AddGeometryGrid.superclass.onDestroy.apply(this, arguments);
+        AsBuilt.GeometryGrid.superclass.onDestroy.apply(this, arguments);
     }
 
 });
 
-/** api: xtype = app_featuregrid */
-Ext.reg('app_addgeometrygrid', AsBuilt.AddGeometryGrid);
+/** api: xtype = app_geometrygrid */
+Ext.reg('app_geometrygrid', AsBuilt.GeometryGrid);
