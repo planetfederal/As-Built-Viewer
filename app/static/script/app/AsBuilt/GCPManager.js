@@ -1,5 +1,24 @@
+/**
+ * Copyright (c) 2008-2011 The Open Planning Project
+ * 
+ * Published under the BSD license.
+ * See https://github.com/opengeo/gxp/raw/master/license.txt for the full text
+ * of the license.
+ */
+
 Ext.ns("AsBuilt");
 
+/** api: (define)
+ *  module = AsBuilt
+ *  class = GCPManager
+ *  extends = Ext.util.Observable
+ */
+
+/** api: constructor
+ *  .. class:: GCPManager()
+ *
+ *    A singelton class to manage several GCP plugins.
+ */
 AsBuilt.GCPManager = function(){
 
     var gcp = null;
