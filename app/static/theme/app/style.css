@@ -14,7 +14,11 @@
 }
 
 .x-action-col, .gxp-icon-modifyfeature {
-    background-image: url(img/pencil.png);
+    background-image: url(img/silk/pencil.png);
     width: 16px;
     height: 16px;
+}
+
+.x-btn .gxp-icon-deletefeature, .x-menu-item .gxp-icon-deletefeature {
+    background-image: url(img/silk/pencil_delete.png);
 }

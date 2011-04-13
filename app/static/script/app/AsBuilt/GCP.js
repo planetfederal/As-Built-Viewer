@@ -1,81 +1,37 @@
-Ext.namespace("AsBuilt.plugins");
+/**
+ * Copyright (c) 2008-2011 The Open Planning Project
+ * 
+ * Published under the BSD license.
+ * See https://github.com/opengeo/gxp/raw/master/license.txt for the full text
+ * of the license.
+ */
 
 /**
- * Class: OpenLayers.Control.DeleteFeature
- * Deletes vector features from a given layer on click. 
- *
- * Inherits from:
- *  - <OpenLayers.Control>
+ * @include AsBuilt/DeleteFeature.js
  */
-OpenLayers.Control.DeleteFeature = OpenLayers.Class(OpenLayers.Control, {
 
-    /**
-     * Property: layer
-     * {<OpenLayers.Layer.Vector>}
-     */
-    layer: null,
-    
-    /**
-     * APIProperty: callbacks
-     * {Object} The functions that are sent to the handler for callback
-     */
-    callbacks: null,
-    
-    /**
-     * Property: handler
-     * {<OpenLayers.Handler.Feature>}
-     */
-    handler: null,
+Ext.ns("AsBuilt.plugins");
 
-    /**
-     * Constructor: <OpenLayers.Control.DeleteFeature>
-     *
-     * Parameters:
-     * layer - {<OpenLayers.Layer.Vector>} 
-     * options - {Object} 
-     */
-    initialize: function(layer, options) {
-        OpenLayers.Control.prototype.initialize.apply(this, [options]);
-        this.layer = layer;
-        this.callbacks = OpenLayers.Util.extend({
-            click: this.clickFeature
-        }, this.callbacks);
-        this.handler = new OpenLayers.Handler.Feature(this, layer,
-                                                      this.callbacks);
-    },
+/** api: (define)
+ *  module = AsBuilt.plugins
+ *  class = GCP
+ *  extends = gxp.plugins.Tool
+ */
 
-    /**
-     * Method: clickFeature
-     * Called on click in a feature
-     * Only responds if this.hover is false.
-     *
-     * Parameters:
-     * feature - {<OpenLayers.Feature.Vector>} 
-     */
-    clickFeature: function(feature) {
-        this.layer.destroyFeatures([feature]);
-    },
-
-    /** 
-     * Method: setMap
-     * Set the map property for the control. 
-     * 
-     * Parameters:
-     * map - {<OpenLayers.Map>} 
-     */
-    setMap: function(map) {
-        this.handler.setMap(map);
-        OpenLayers.Control.prototype.setMap.apply(this, arguments);
-    },
-
-    CLASS_NAME: "OpenLayers.Control.DeleteFeature"
-});
-
+/** api: constructor
+ *  .. class:: GCP(config)
+ *
+ *    Add, modify and delete Ground Control Points.
+ */
 AsBuilt.plugins.GCP = Ext.extend(gxp.plugins.Tool, {
 
     /** api: ptype = app_gcp */
     ptype: "app_gcp",
 
+    /** api: config[gcpManager]
+     * ``AsBuilt.GCPManager`` The GCP Manager that should take care
+     * of managing the actions of this GCP tool.
+     */
     gcpManager: null,
 
     /** api: config[type]
@@ -84,6 +40,15 @@ AsBuilt.plugins.GCP = Ext.extend(gxp.plugins.Tool, {
      * AsBuilt.plugins.GCP.IMAGE_COORDS
      */
     type: null,
+
+    /* start i18n */
+    addTooltip: "Add Ground Control Point (GCP)",
+    addText: "Add GCP",
+    editTooltip: "Edit Ground Control Point (GCP)",
+    editText: "Edit GCP",
+    deleteTooltip: "Delete Ground Control Point (GCP)",
+    deleteText: "Delete GCP",
+    /* end i18n */
 
     constructor: function(config) {
         this.addEvents(
@@ -177,8 +142,9 @@ AsBuilt.plugins.GCP = Ext.extend(gxp.plugins.Tool, {
         );
         var toggleGroup = this.toggleGroup || Ext.id();
         var actions = AsBuilt.plugins.GCP.superclass.addActions.call(this, [new GeoExt.Action({
-            tooltip: "Draw GCP",
-            text: "Draw GCP",
+            tooltip: this.addTooltip,
+            iconCls: "gxp-icon-addfeature",
+            text: this.addText,
             toggleGroup: toggleGroup,
             enableToggle: true,
             allowDepress: true,
@@ -186,8 +152,9 @@ AsBuilt.plugins.GCP = Ext.extend(gxp.plugins.Tool, {
             deactivateOnDisable: true,
             map: this.target.mapPanel.map
         }), new GeoExt.Action({
-            tooltip: "Edit GCP",
-            text: "Edit GCP",
+            tooltip: this.editTooltip,
+            text: this.editText,
+            iconCls: "gxp-icon-modifyfeature",
             toggleGroup: toggleGroup,
             enableToggle: true,
             allowDepress: true,
@@ -195,8 +162,9 @@ AsBuilt.plugins.GCP = Ext.extend(gxp.plugins.Tool, {
             deactivateOnDisable: true,
             map: this.target.mapPanel.map
         }), new GeoExt.Action({
-            tooltip: "Delete GCP",
-            text: "Delete GCP",
+            tooltip: this.deleteTooltip,
+            text: this.deleteText,
+            iconCls: "gxp-icon-deletefeature",
             toggleGroup: toggleGroup,
             enableToggle: true,
             allowDepress: true,
