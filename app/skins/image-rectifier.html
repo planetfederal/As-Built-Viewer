@@ -69,11 +69,8 @@
             tools: [
                 {
                     ptype: "app_gcp",
-                    type: AsBuilt.plugins.GCP.WORLD_COORDS,
-                    listeners: {
-                        "beforegcpadded": AsBuilt.GCPManager.handleBeforeGCPAdded,
-                        "gcpadded": AsBuilt.GCPManager.handleGCPAdded
-                    }
+                    gcpManager: AsBuilt.GCPManager,
+                    type: AsBuilt.plugins.GCP.WORLD_COORDS
                 }
             ],
             map: {
@@ -130,10 +127,7 @@
                 {
                     ptype: "app_gcp",
                     type: AsBuilt.plugins.GCP.IMAGE_COORDS,
-                    listeners: {
-                        "beforegcpadded": AsBuilt.GCPManager.handleBeforeGCPAdded,
-                        "gcpadded": AsBuilt.GCPManager.handleGCPAdded
-                    }
+                    gcpManager: AsBuilt.GCPManager
                 }
             ],
             map: {
