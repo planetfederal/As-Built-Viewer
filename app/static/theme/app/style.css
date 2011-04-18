@@ -19,12 +19,14 @@
     height: 16px;
 }
 
-.x-btn .gxp-icon-deletefeature, .x-menu-item .gxp-icon-deletefeature {
-    background-image: url(img/silk/pencil_delete.png);
+.x-action-col, .gxp-icon-rectifier {
+    background-image: url(img/silk/bullet_picture.png);
+    width: 16px;
+    height: 16px;
 }
 
-.x-btn .gxp-icon-rectifier, .x-menu-item .gxp-icon-rectifier {
-    background-image: url(img/silk/bullet_picture.png);
+.x-btn .gxp-icon-deletefeature, .x-menu-item .gxp-icon-deletefeature {
+    background-image: url(img/silk/pencil_delete.png);
 }
 
 .x-btn .gxp-icon-save, .x-menu-item .gxp-icon-save {

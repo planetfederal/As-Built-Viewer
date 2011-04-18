@@ -23,6 +23,16 @@ Ext.ns("AsBuilt");
  */
 AsBuilt.GeometryGrid = Ext.extend(gxp.grid.FeatureGrid, {
 
+    /** api: config[rectifierUrl]
+     * ``String`` The URL of the rectifier application.
+     */
+    rectifierUrl: null,
+
+    /* start i18n */
+    popupBlockerTitle: "Popup blocked",
+    popupBlockerMsg: "Popup window could not be opened.",
+    /* end i18n */
+
     /** private: method[handleAddGeometry]
      *  :arg store: ``GeoExt.data.FeatureStore``
      *  Use a DrawFeature Control to add new geometries.
@@ -103,6 +113,23 @@ AsBuilt.GeometryGrid = Ext.extend(gxp.grid.FeatureGrid, {
                     this.handleAddGeometry(store);
                 } else {
                     this.handleModifyGeometry(store);
+                }
+            },
+            scope: this
+        }]});
+        columns.unshift({xtype: 'actioncolumn', width: 30, items: [{
+            getClass: function(v, meta, rec) {
+                return "gxp-icon-rectifier";
+            },
+            handler: function(grid, rowIndex, colIndex) {
+                if (this.rectifierUrl !== null) {
+                    var record = store.getAt(rowIndex);
+                    // TODO urlEncode
+                    var url = new Ext.Template(this.rectifierUrl).applyTemplate(record.get("feature").attributes);
+                    var wh = window.open(url);
+                    if (!wh) {
+                        Ext.Msg.alert(this.popupBlockerTitle, this.popupBlockerMsg);
+                    }
                 }
             },
             scope: this
