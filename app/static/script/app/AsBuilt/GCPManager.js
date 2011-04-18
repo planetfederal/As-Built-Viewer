@@ -29,7 +29,11 @@ AsBuilt.GCPManager = function(){
 
     var counter = 1;
 
-    return Ext.apply(new Ext.util.Observable, {
+    var me = Ext.apply(new Ext.util.Observable, {
+        constructor: function() {
+            this.addEvents("gcpchanged");
+            Ext.util.Observable.prototype.constructor.call(this, arguments);
+        },
         handleBeforeGCPAdded: function(tool, feature) {
             if (lastType !== null && tool.type === lastType) {
                  // TODO instruct the user that he should first digitize a point
@@ -45,6 +49,7 @@ AsBuilt.GCPManager = function(){
                 gcp.target = feature;
                 gcps.push(gcp);
                 counter += 1;
+                me.fireEvent("gcpchanged", me, me.getGCPs().length);
             }
             lastType = tool.type;
         },
@@ -64,6 +69,7 @@ AsBuilt.GCPManager = function(){
                     layer && layer.destroyFeatures([source]);
                 }
             }
+            me.fireEvent("gcpchanged", me, me.getGCPs().length);
         },
         getCounter: function() {
             return counter;
@@ -78,5 +84,6 @@ AsBuilt.GCPManager = function(){
             }
             return result;
         }
-    })
+    });
+    return me;
 }();
