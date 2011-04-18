@@ -34,10 +34,14 @@ AsBuilt.plugins.GCPImagePreview = Ext.extend(gxp.plugins.Tool, {
     /* start i18n */
     previewTooltip: "Preview warped image",
     previewText: "Preview",
+    saveTooltip: "Save the warped image",
+    saveText: "Save",
     /* end i18n */
 
     enableButton: function(mgr, count) {
-        this.actions[0].setDisabled(count < 3);
+        Ext.each(this.actions, function(action) {
+            action.setDisabled(count < 3);
+        });
     },
 
     /** api: method[addActions]
@@ -52,6 +56,11 @@ AsBuilt.plugins.GCPImagePreview = Ext.extend(gxp.plugins.Tool, {
                 iconCls: "gxp-icon-preview",
                 disabled: true,
                 text: this.previewText
+            }, {
+                tooltip: this.saveTooltip,
+                iconCls: "gxp-icon-save",
+                disabled: true,
+                text: this.saveText
             }
         ]);
     }

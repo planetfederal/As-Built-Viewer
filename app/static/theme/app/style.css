@@ -26,3 +26,7 @@
 .x-btn .gxp-icon-rectifier, .x-menu-item .gxp-icon-rectifier {
     background-image: url(img/silk/bullet_picture.png);
 }
+
+.x-btn .gxp-icon-save, .x-menu-item .gxp-icon-save {
+    background-image: url(img/silk/disk.png);
+}
