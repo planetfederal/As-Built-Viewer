@@ -44,7 +44,7 @@
         });
 
         var app = new gxp.Viewer({
-            portalConfig: {renderTo: Ext.getCmp('map1').body, height: 800},
+            portalConfig: {renderTo: Ext.getCmp('map1').body, height: Ext.getCmp('map1').getHeight()},
             portalItems: ["map"],
             mapItems: [{
                 xtype: "gx_zoomslider",
@@ -110,7 +110,7 @@
         });
 
         var app2 = new gxp.Viewer({
-            portalConfig: {renderTo: Ext.getCmp('map2').body, height: 800},
+            portalConfig: {renderTo: Ext.getCmp('map2').body, height: Ext.getCmp('map2').getHeight()},
             portalItems: ["map2"],
             mapItems: [{
                 xtype: "gx_zoomslider",
