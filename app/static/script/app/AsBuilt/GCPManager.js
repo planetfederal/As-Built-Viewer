@@ -34,7 +34,7 @@ AsBuilt.GCPManager = function(){
             this.addEvents("gcpchanged");
             Ext.util.Observable.prototype.constructor.call(this, arguments);
         },
-        handleBeforeGCPAdded: function(tool, feature) {
+        handleBeforeAdd: function(tool, feature) {
             if (lastType !== null && tool.type === lastType) {
                  // TODO instruct the user that he should first digitize a point
                  // in the Source Map followed by a corresponding point in the
@@ -42,7 +42,7 @@ AsBuilt.GCPManager = function(){
                  return false;
             }
         },
-        handleGCPAdded: function(tool, feature) {
+        handleAdd: function(tool, feature) {
             if (tool.type === AsBuilt.plugins.GCP.IMAGE_COORDS) {
                 gcp = {source: feature};
             } else {
@@ -53,7 +53,7 @@ AsBuilt.GCPManager = function(){
             }
             lastType = tool.type;
         },
-        handleGCPRemoved: function(tool, feature) {
+        handleRemove: function(tool, feature) {
             lastType = null;
             for (var i=0, ii=gcps.length; i<ii; ++i) {
                 if (gcps[i].source === feature) {

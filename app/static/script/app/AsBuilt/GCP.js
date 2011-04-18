@@ -52,33 +52,33 @@ AsBuilt.plugins.GCP = Ext.extend(gxp.plugins.Tool, {
 
     constructor: function(config) {
         this.addEvents(
-            /** api: event[beforegcpadded]
-             *  Fired before a (part of a) gcp has been added. Return false 
+            /** api: event[beforepartialgcpadded]
+             *  Fired before a part of a gcp has been added. Return false 
              *  to cancel.
              *
              *  Listener arguments:
              *  * tool - :class:`AsBuilt.plugins.GCP` this tool
              *  * feature - :class: `OpenLayers.Feature.Vector` the feature created
              */
-            "beforegcpadded",
+            "beforepartialgcpadded",
 
-            /** api: event[gcpadded]
-             *  Fired when a (part of a) gcp has been added.
+            /** api: event[partialgcpadded]
+             *  Fired when a part of a gcp has been added.
              *
              *  Listener arguments:
              *  * tool - :class:`AsBuilt.plugins.GCP` this tool
              *  * feature - :class: `OpenLayers.Feature.Vector` the feature created
              */
-            "gcpadded",
+            "partialgcpadded",
 
-            /** api: event[gcpremoved]
-             *  Fired when a (part of a) gcp has been removed.
+            /** api: event[partialgcpremoved]
+             *  Fired when a part of a gcp has been removed.
              *
              *  Listener arguments:
              *  * tool - :class:`AsBuilt.plugins.GCP` this tool
              *  * feature - :class: `OpenLayers.Feature.Vector` the feature created
              */
-            "gcpremoved"
+            "partialgcpremoved"
         );
         AsBuilt.plugins.GCP.superclass.constructor.apply(this, arguments);
     },
@@ -87,9 +87,9 @@ AsBuilt.plugins.GCP = Ext.extend(gxp.plugins.Tool, {
      */
     addActions: function() {
         this.on({
-            "beforegcpadded": this.gcpManager.handleBeforeGCPAdded,
-            "gcpadded": this.gcpManager.handleGCPAdded,
-            "gcpremoved": this.gcpManager.handleGCPRemoved
+            "beforepartialgcpadded": this.gcpManager.handleBeforeAdd,
+            "partialgcpadded": this.gcpManager.handleAdd,
+            "partialgcpremoved": this.gcpManager.handleRemove
         });
         this.layer = new OpenLayers.Layer.Vector(null, {
             styleMap: new OpenLayers.StyleMap({'default':{
@@ -112,10 +112,10 @@ AsBuilt.plugins.GCP = Ext.extend(gxp.plugins.Tool, {
                 evt.feature.attributes.count = this.gcpManager.getCounter();
             },
             "sketchcomplete": function(evt) {
-                return this.fireEvent("beforegcpadded", this, evt.feature);
+                return this.fireEvent("beforepartialgcpadded", this, evt.feature);
             },
             "featureremoved": function(evt) { 
-                this.fireEvent("gcpremoved", this, evt.feature);
+                this.fireEvent("partialgcpremoved", this, evt.feature);
             },
             scope: this
         });
@@ -128,7 +128,7 @@ AsBuilt.plugins.GCP = Ext.extend(gxp.plugins.Tool, {
                             this.target.mapPanel.map.addLayer(this.layer);
                         }
                         this.drawControl.deactivate();
-                        this.fireEvent("gcpadded", this, evt.feature);
+                        this.fireEvent("partialgcpadded", this, evt.feature);
                     },
                     scope: this
                 }
