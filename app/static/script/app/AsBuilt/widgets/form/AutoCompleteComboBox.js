@@ -29,11 +29,15 @@ AsBuilt.form.AutoCompleteComboBox = Ext.extend(Ext.form.ComboBox, {
     /** api: xtype = app_autocompletecombo */
     xtype: "app_autocompletecombo",
 
+    id: null,
+
     featureType: null,
 
     featurePrefix: null,
 
     fieldLabel: null,
+
+    geometryName: null,
 
     maxFeatures: 500,
 
@@ -47,18 +51,25 @@ AsBuilt.form.AutoCompleteComboBox = Ext.extend(Ext.form.ComboBox, {
      *  Override
      */
     initComponent: function() {
+        var fields = [{name: this.id}];
+        var propertyNames = [this.id];
+        if (this.geometryName !== null) {
+            fields.push({name: this.geometryName});
+            propertyNames.push(this.geometryName);
+        }
         this.name = this.valueField = this.displayField = this.id;
         this.tpl = new Ext.XTemplate('<tpl for="."><div class="x-form-field">','{'+this.name+'}','</div></tpl>');
         this.itemSelector = 'div.x-form-field';
         this.store = new Ext.data.Store({
-            fields: [{name: this.id}],
-            reader: new AsBuilt.data.AutoCompleteReader({}, [this.id]),
+            fields: fields,
+            reader: new AsBuilt.data.AutoCompleteReader({uniqueField: this.id}, propertyNames),
             proxy: new AsBuilt.data.AutoCompleteProxy({protocol: new OpenLayers.Protocol.WFS({
                 version: "1.1.0",
                 url: this.url,
                 featureType: this.featureType,
+                srsName: null,
                 featurePrefix: this.featurePrefix,
-                propertyNames: [this.id],
+                propertyNames: propertyNames,
                 maxFeatures: this.maxFeatures,
             }), setParamsAsOptions: true})
         });

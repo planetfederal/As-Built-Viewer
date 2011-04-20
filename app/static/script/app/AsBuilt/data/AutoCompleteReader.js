@@ -33,8 +33,7 @@ AsBuilt.data.AutoCompleteReader = Ext.extend(GeoExt.data.FeatureReader, {
      */
     read: function(response) {
         // since we cannot do a distinct query on a WFS, filter out duplicates here
-        var recordType = this.recordType, fields = recordType.prototype.fields;
-        var field = fields.keys.pop();
+        var field = this.meta.uniqueField;
         this.features = [];
         for (var i=0,ii=response.features.length;i<ii;++i) {
             var feature = response.features[i];
