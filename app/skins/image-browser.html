@@ -80,18 +80,6 @@
             }],
             tools: [
                 {
-                    ptype: "app_geocoder",
-                    outputTarget: "paneltbar",
-                    outputConfig: {
-                        url: "/geoserver/wfs",
-                        featureType: "SFADDRESSPOINTS",
-                        featurePrefix: "asbuilt",
-                        id: "ADDRESS",
-                        geometryName: "GEOM",
-                        emptyText: "Search for a location ...",
-                        listEmptyText: "- no matches -"
-                    }
-                }, {
                     ptype: "gxp_featuremanager",
                     id: "image-manager",
                     paging: true,
@@ -124,6 +112,18 @@
                         height: 350
                     }
                 }, {
+                    ptype: "app_geocoder",
+                    outputTarget: "paneltbar",
+                    outputConfig: {
+                        url: "/geoserver/wfs",
+                        featureType: "SFADDRESSPOINTS",
+                        featurePrefix: "asbuilt",
+                        id: "ADDRESS",
+                        geometryName: "GEOM",
+                        emptyText: "Search for a location ...",
+                        listEmptyText: "- no matches -"
+                    }
+                }, { 
                     ptype: "app_search",
                     featureManager: "image-manager",
                     outputConfig: {
