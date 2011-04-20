@@ -7,7 +7,7 @@
  */
 
 /**
- * @include AsBuilt/AutoCompleteComboBox.js
+ * @include AsBuilt/widgets/form/AutoCompleteComboBox.js
  */
 
 Ext.ns("AsBuilt.plugins");
