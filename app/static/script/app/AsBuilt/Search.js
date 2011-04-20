@@ -7,8 +7,7 @@
  */
 
 /**
- * @include AsBuilt/AutoCompleteReader.js
- * @include AsBuilt/AutoCompleteProxy.js
+ * @include AsBuilt/AutoCompleteComboBox.js
  */
 
 Ext.ns("AsBuilt");
@@ -231,43 +230,6 @@ AsBuilt.Search = Ext.extend(gxp.plugins.Tool, {
         );
     },
 
-    /** private: method[createAutoCompleteField]
-     *  :arg name: ``String`` Field name to create the auto complete field for. 
-     *  :arg fieldLabel: ``String`` The fieldLabel to use for the field.
-     *  :returns: ``Ext.form.ComboBox`` The auto complete field created
-     *
-     *  Get an autocomplete field for a certain attribute.
-     */
-    createAutoCompleteField: function(name, fieldLabel) {
-        var featureManager = this.target.tools[this.featureManager];
-        var url = this.target.initialConfig.sources[featureManager.layer.source].url;
-        var featureInfo = featureManager.layer.name.split(":");
-        var featureStore = new Ext.data.Store({
-            fields: [{name: name}],
-            reader: new AsBuilt.AutoCompleteReader({}, [name]),
-            proxy: new AsBuilt.AutoCompleteProxy({protocol: new OpenLayers.Protocol.WFS({
-                version: "1.1.0",
-                url: url,
-                featureType: featureInfo[1],
-                featurePrefix: featureInfo[0],
-                propertyNames: [name],
-                maxFeatures: 500,
-            }), setParamsAsOptions: true})
-        });
-        return new Ext.form.ComboBox({
-            name: name,
-            id: name,
-            autoHeight: true,
-            valueField: name,
-            displayField: name,
-            tpl: new Ext.XTemplate('<tpl for="."><div class="x-form-field">','{'+name+'}','</div></tpl>'),
-            itemSelector: 'div.x-form-field',
-            store: featureStore,
-            hideTrigger:true,
-            fieldLabel: fieldLabel
-        });
-    },
-
     /** private: method[initContainer]
      *  Create the primary output container.
      */
@@ -283,6 +245,9 @@ AsBuilt.Search = Ext.extend(gxp.plugins.Tool, {
             fields: ['type'],
             data : types
         });
+        var featureManager = this.target.tools[this.featureManager];
+        var url = this.target.initialConfig.sources[featureManager.layer.source].url;
+        var featureInfo = featureManager.layer.name.split(":");
         this.container = new Ext.Container(Ext.apply({
             layout: "fit",
             items: [{
@@ -323,25 +288,47 @@ AsBuilt.Search = Ext.extend(gxp.plugins.Tool, {
                                 displayField: 'type',
                                 valueField: 'type',
                                 fieldLabel: this.documentTypeLabel
-                            },
-                            this.createAutoCompleteField(this.documentSubjectSearchField, 
-                                this.documentSubjectLabel),
-                            this.createAutoCompleteField(this.fileNumberSearchField, 
-                                this.fileNumberLabel)
+                            }, {
+                                xtype: "app_autocompletecombo",
+                                id: this.documentSubjectSearchField,
+                                url: url,
+                                featureType: featureInfo[1],
+                                featurePrefix: featureInfo[0],
+                                fieldLabel: this.documentSubjectLabel
+                            }, {
+                                xtype: "app_autocompletecombo",
+                                id: this.fileNumberSearchField,
+                                url: url,
+                                featureType: featureInfo[1],
+                                featurePrefix: featureInfo[0],
+                                fieldLabel: this.fileNumberLabel
+                            }
                         ]
                     }, {
                         xtype: "fieldset",
                         title: "Facilities",
                         items: [
-                            this.createAutoCompleteField(this.facilitySearchField, 
-                                this.facilityNameLabel)
+                            {
+                                xtype: "app_autocompletecombo",
+                                id: this.facilitySearchField,
+                                url: url,
+                                featureType: featureInfo[1],
+                                featurePrefix: featureInfo[0],
+                                fieldLabel: this.facilityNameLabel
+                            }
                         ]
                     }, {
                         xtype: "fieldset",
                         title: "Contracts",
                         items: [
-                            this.createAutoCompleteField(this.contractSearchField, 
-                                this.contractTitleLabel)
+                            {
+                                xtype: "app_autocompletecombo",
+                                id: this.contractSearchField,
+                                url: url,
+                                featureType: featureInfo[1],
+                                featurePrefix: featureInfo[0],
+                                fieldLabel: this.contractTitleLabel
+                            }
                         ]
                     }, {
                         xtype: "fieldset",
