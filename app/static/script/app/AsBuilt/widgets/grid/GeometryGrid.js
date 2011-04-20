@@ -97,27 +97,30 @@ AsBuilt.grid.GeometryGrid = Ext.extend(gxp.grid.FeatureGrid, {
                 xtype: 'textfield'
             };
         }
+        var addOrModify = function(grid, rowIndex, colIndex) {
+            grid.getSelectionModel().selectRow(rowIndex);
+            this.record = store.getAt(rowIndex);
+            this.feature = this.record.get("feature");
+            if (this.feature.geometry === null) {
+                this.handleAddGeometry(store);
+            } else {
+                this.handleModifyGeometry(store);
+            }
+        };
         columns.unshift({xtype: 'actioncolumn', width: 30, items: [{
             getClass: function(v, meta, rec) {
                 if (rec.get("feature").geometry == null) {
+                    this.items[0].tooltip = 'Add a new geometry by clicking in the map';
                     return "gxp-icon-addfeature";
                 } else {
+                    this.items[0].tooltip = 'Modify an existing geometry';
                     return "gxp-icon-modifyfeature";
                 }
             },
-            handler: function(grid, rowIndex, colIndex) {
-                grid.getSelectionModel().selectRow(rowIndex);
-                this.record = store.getAt(rowIndex);
-                this.feature = this.record.get("feature");
-                if (this.feature.geometry === null) {
-                    this.handleAddGeometry(store);
-                } else {
-                    this.handleModifyGeometry(store);
-                }
-            },
-            scope: this
+            handler: addOrModify.createDelegate(this)
         }]});
         columns.unshift({xtype: 'actioncolumn', width: 30, items: [{
+            tooltip: "Open up the image in the rectifier application",
             getClass: function(v, meta, rec) {
                 return "gxp-icon-rectifier";
             },
