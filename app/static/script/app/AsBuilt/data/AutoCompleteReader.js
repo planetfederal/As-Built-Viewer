@@ -6,10 +6,10 @@
  * of the license.
  */
 
-Ext.ns("AsBuilt");
+Ext.ns("AsBuilt.data");
 
 /** api: (define)
- *  module = AsBuilt
+ *  module = AsBuilt.data
  *  class = AutoCompleteReader
  *  extends = GeoExt.data.FeatureReader
  */
@@ -20,7 +20,7 @@ Ext.ns("AsBuilt");
  *    A feature reader which filters out duplicates. Used for autocomplete
  *    search fields.
  */
-AsBuilt.AutoCompleteReader = Ext.extend(GeoExt.data.FeatureReader, {
+AsBuilt.data.AutoCompleteReader = Ext.extend(GeoExt.data.FeatureReader, {
 
     /** private: method[read]
      *  :param response: ``OpenLayers.Protocol.Response``
@@ -46,7 +46,7 @@ AsBuilt.AutoCompleteReader = Ext.extend(GeoExt.data.FeatureReader, {
             }
         }
         response.features = this.features;
-        return AsBuilt.AutoCompleteReader.superclass.read.apply(this, arguments);
+        return AsBuilt.data.AutoCompleteReader.superclass.read.apply(this, arguments);
     },
 
     /** private: method[isDuplicate]

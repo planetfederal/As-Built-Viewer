@@ -6,10 +6,10 @@
  * of the license.
  */
 
-Ext.ns("AsBuilt");
+Ext.ns("AsBuilt.data");
 
 /** api: (define)
- *  module = AsBuilt
+ *  module = AsBuilt.data
  *  class = AutoCompleteProxy
  *  extends = GeoExt.data.ProtocolProxy
  */
@@ -21,7 +21,7 @@ Ext.ns("AsBuilt");
  *    params.query contains the text entered by the user, when he enters more
  *    than minChars characters.
  */
-AsBuilt.AutoCompleteProxy = Ext.extend(GeoExt.data.ProtocolProxy, {
+AsBuilt.data.AutoCompleteProxy = Ext.extend(GeoExt.data.ProtocolProxy, {
 
     /** private: method[doRequest]
      *  :param action: ``String`` The crud action type (create, read, update, 
@@ -47,7 +47,7 @@ AsBuilt.AutoCompleteProxy = Ext.extend(GeoExt.data.ProtocolProxy, {
             });
             delete params.query;
         }
-        AsBuilt.AutoCompleteProxy.superclass.doRequest.apply(this, arguments);
+        AsBuilt.data.AutoCompleteProxy.superclass.doRequest.apply(this, arguments);
     }
 
 });

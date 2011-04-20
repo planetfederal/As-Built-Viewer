@@ -7,8 +7,8 @@
  */
 
 /**
- * @include AsBuilt/AutoCompleteReader.js
- * @include AsBuilt/AutoCompleteProxy.js
+ * @include AsBuilt/data/AutoCompleteReader.js
+ * @include AsBuilt/data/AutoCompleteProxy.js
  */
 
 /** api: (define)
@@ -52,8 +52,8 @@ AsBuilt.form.AutoCompleteComboBox = Ext.extend(Ext.form.ComboBox, {
         this.itemSelector = 'div.x-form-field';
         this.store = new Ext.data.Store({
             fields: [{name: this.id}],
-            reader: new AsBuilt.AutoCompleteReader({}, [this.id]),
-            proxy: new AsBuilt.AutoCompleteProxy({protocol: new OpenLayers.Protocol.WFS({
+            reader: new AsBuilt.data.AutoCompleteReader({}, [this.id]),
+            proxy: new AsBuilt.data.AutoCompleteProxy({protocol: new OpenLayers.Protocol.WFS({
                 version: "1.1.0",
                 url: this.url,
                 featureType: this.featureType,
