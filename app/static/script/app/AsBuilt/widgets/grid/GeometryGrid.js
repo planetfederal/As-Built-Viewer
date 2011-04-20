@@ -6,10 +6,10 @@
  * of the license.
  */
 
-Ext.ns("AsBuilt");
+Ext.ns("AsBuilt.grid");
 
 /** api: (define)
- *  module = AsBuilt
+ *  module = AsBuilt.grid
  *  class = GeometryGrid
  *  extends = gxp.grid.FeatureGrid
  */
@@ -21,7 +21,7 @@ Ext.ns("AsBuilt");
  *    a new geometry, this can be used for features that have a null geometry.
  *    In case a feature has a geometry, it can be modified.
  */
-AsBuilt.GeometryGrid = Ext.extend(gxp.grid.FeatureGrid, {
+AsBuilt.grid.GeometryGrid = Ext.extend(gxp.grid.FeatureGrid, {
 
     /** api: config[rectifierUrl]
      * ``String`` The URL of the rectifier application.
@@ -90,7 +90,7 @@ AsBuilt.GeometryGrid = Ext.extend(gxp.grid.FeatureGrid, {
      *  Gets the configuration for the column model.
      */
     getColumns: function(store){
-        var columns = AsBuilt.GeometryGrid.superclass.getColumns.apply(this, arguments);
+        var columns = AsBuilt.grid.GeometryGrid.superclass.getColumns.apply(this, arguments);
         for (var i=0, ii=columns.length; i<ii; i++) {
             var column = columns[i];
             column.editor = {
@@ -146,10 +146,10 @@ AsBuilt.GeometryGrid = Ext.extend(gxp.grid.FeatureGrid, {
         this.modifyControl = null;
         this.feature = null;
         this.record = null;
-        AsBuilt.GeometryGrid.superclass.onDestroy.apply(this, arguments);
+        AsBuilt.grid.GeometryGrid.superclass.onDestroy.apply(this, arguments);
     }
 
 });
 
 /** api: xtype = app_geometrygrid */
-Ext.reg('app_geometrygrid', AsBuilt.GeometryGrid);
+Ext.reg('app_geometrygrid', AsBuilt.grid.GeometryGrid);
