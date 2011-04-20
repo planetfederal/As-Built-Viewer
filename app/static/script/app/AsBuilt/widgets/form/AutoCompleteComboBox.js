@@ -47,6 +47,8 @@ AsBuilt.form.AutoCompleteComboBox = Ext.extend(Ext.form.ComboBox, {
 
     hideTrigger: true,
 
+    srsName: null,
+
     /** private: method[initComponent]
      *  Override
      */
@@ -67,8 +69,8 @@ AsBuilt.form.AutoCompleteComboBox = Ext.extend(Ext.form.ComboBox, {
                 version: "1.1.0",
                 url: this.url,
                 featureType: this.featureType,
-                srsName: null,
                 featurePrefix: this.featurePrefix,
+                srsName: this.srsName,
                 propertyNames: propertyNames,
                 maxFeatures: this.maxFeatures,
             }), setParamsAsOptions: true})
