@@ -38,19 +38,23 @@
                 pack  : 'start'
              },
              items: [
-                 {id: 'map2', flex: 1, title: "Source map"},
-                 {id: 'map1', flex: 1, title: "Reference map"}
+                 {id: 'map1', flex: 1, title: "Base map"},
+                 {id: 'map2', flex: 1, title: "Georeference: " + OpenLayers.Util.getParameters()["imagepath"]}
             ]
         });
 
         var app = new gxp.Viewer({
-            portalConfig: {renderTo: Ext.getCmp('map1').body, height: Ext.getCmp('map1').getHeight()},
+            portalConfig: {renderTo: Ext.getCmp('map1').body, height: Ext.getCmp('map1').body.getHeight()},
             portalItems: ["map"],
-            mapItems: [{
-                xtype: "gx_zoomslider",
-                vertical: true,
-                height: 100
-            }],
+            mapItems: [
+                {
+                    xtype: "gxp_scaleoverlay"
+                }, {
+                    xtype: "gx_zoomslider",
+                    vertical: true,
+                    height: 100
+                }
+            ],
             proxy: "proxy/?url=",
             defaultSourceType: "gxp_wmssource",
             sources: {
@@ -110,7 +114,7 @@
         });
 
         var app2 = new gxp.Viewer({
-            portalConfig: {renderTo: Ext.getCmp('map2').body, height: Ext.getCmp('map2').getHeight()},
+            portalConfig: {renderTo: Ext.getCmp('map2').body, height: Ext.getCmp('map2').body.getHeight()},
             portalItems: ["map2"],
             mapItems: [{
                 xtype: "gx_zoomslider",
