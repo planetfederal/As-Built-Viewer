@@ -10,10 +10,10 @@
  * @include AsBuilt/AutoCompleteComboBox.js
  */
 
-Ext.ns("AsBuilt");
+Ext.ns("AsBuilt.plugins");
 
 /** api: (define)
- *  module = AsBuilt
+ *  module = AsBuilt.plugins
  *  class = Search
  *  extends = gxp.plugins.Tool
  */
@@ -23,7 +23,7 @@ Ext.ns("AsBuilt");
  *
  *    Search for images.
  */
-AsBuilt.Search = Ext.extend(gxp.plugins.Tool, {
+AsBuilt.plugins.Search = Ext.extend(gxp.plugins.Tool, {
 
     /** api: ptype = app_search */
     ptype: "app_search",
@@ -110,7 +110,7 @@ AsBuilt.Search = Ext.extend(gxp.plugins.Tool, {
      *  Initialize the search plugin.
      */
     init: function(target) {
-        AsBuilt.Search.superclass.init.apply(this, arguments);
+        AsBuilt.plugins.Search.superclass.init.apply(this, arguments);
         this.initContainer();
     },
 
@@ -121,7 +121,7 @@ AsBuilt.Search = Ext.extend(gxp.plugins.Tool, {
      */
     addActions: function(config) {
         this.addOutput();
-        return AsBuilt.Search.superclass.addActions.call(this, []);
+        return AsBuilt.plugins.Search.superclass.addActions.call(this, []);
     },
 
     /** private: method[getCnnList]
@@ -406,9 +406,9 @@ AsBuilt.Search = Ext.extend(gxp.plugins.Tool, {
     /** api: method[addOutput]
      */
     addOutput: function() {
-        return AsBuilt.Search.superclass.addOutput.call(this, this.container);
+        return AsBuilt.plugins.Search.superclass.addOutput.call(this, this.container);
     }
 
 });
 
-Ext.preg(AsBuilt.Search.prototype.ptype, AsBuilt.Search);
+Ext.preg(AsBuilt.plugins.Search.prototype.ptype, AsBuilt.plugins.Search);
