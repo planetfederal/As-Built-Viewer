@@ -70,7 +70,6 @@ AsBuilt.plugins.Geocoder = Ext.extend(gxp.plugins.Tool, {
     onComboSelect: function(combo, record) {
         var map = this.target.mapPanel.map;
         var location = record.get("feature").geometry;
-        console.log(location);
         if (location instanceof OpenLayers.Geometry.Point) {
             map.setCenter(new OpenLayers.LonLat(location.x, location.y));
         }
