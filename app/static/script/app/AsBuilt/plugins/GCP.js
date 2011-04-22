@@ -51,6 +51,7 @@ AsBuilt.plugins.GCP = Ext.extend(gxp.plugins.Tool, {
     /* end i18n */
 
     constructor: function(config) {
+        this.controls = [];
         this.addEvents(
             /** api: event[beforepartialgcpadded]
              *  Fired before a part of a gcp has been added. Return false 
@@ -80,13 +81,9 @@ AsBuilt.plugins.GCP = Ext.extend(gxp.plugins.Tool, {
              */
             "partialgcpremoved",
 
-            "startmodify",
+            "activate",
 
-            "startadd",
-
-            "endadd",
-
-            "endmodify"
+            "deactivate"
         );
         AsBuilt.plugins.GCP.superclass.constructor.apply(this, arguments);
     },
@@ -127,11 +124,11 @@ AsBuilt.plugins.GCP = Ext.extend(gxp.plugins.Tool, {
             this.layer,    
             OpenLayers.Handler.Point, {
                 eventListeners: {
-                    "activate": function() {
-                        this.fireEvent("startadd", this);
+                    "activate": function(evt) {
+                        this.fireEvent(evt.type, this, evt.object);
                     },
-                    "deactivate": function() {
-                        this.fireEvent("endadd", this);
+                    "deactivate": function(evt) {
+                        this.fireEvent(evt.type, this, evt.object);
                     },
                     "featureadded": function(evt) {
                         if (!this.layer.map) {
@@ -147,11 +144,11 @@ AsBuilt.plugins.GCP = Ext.extend(gxp.plugins.Tool, {
         this.modifyControl = new OpenLayers.Control.ModifyFeature(
             this.layer, {
                 eventListeners: {
-                    "activate": function() {
-                        this.fireEvent("startmodify", this);
+                    "activate": function(evt) {
+                        this.fireEvent(evt.type, this, evt.object);
                     },
-                    "deactivate": function() {
-                        this.fireEvent("endmodify", this);
+                    "deactivate": function(evt) {
+                        this.fireEvent(evt.type, this, evt.object);
                     },
                     scope: this
                 }
@@ -160,6 +157,7 @@ AsBuilt.plugins.GCP = Ext.extend(gxp.plugins.Tool, {
         this.deleteControl = new OpenLayers.Control.DeleteFeature(
             this.layer
         );
+        this.controls.push(this.drawControl, this.modifyControl, this.deleteControl);
         var toggleGroup = this.toggleGroup || Ext.id();
         var actions = AsBuilt.plugins.GCP.superclass.addActions.call(this, [new GeoExt.Action({
             tooltip: this.addTooltip,

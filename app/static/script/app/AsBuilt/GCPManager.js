@@ -42,30 +42,26 @@ AsBuilt.GCPManager = function(){
                 "beforepartialgcpadded": this.handleBeforeAdd,
                 "partialgcpadded": this.handleAdd,
                 "partialgcpremoved": this.handleRemove,
-                "startmodify": this.handleStartModify,
-                "startadd": this.handleStartAdd,
-                "endadd": this.handleEndAdd,
-                "endmodify": this.handleEndModify
+                "activate": this.handleActivate,
+                "deactivate": this.handleDeactivate
             });
         },
-        handleEndModify: function(tool) {
+        handleActivate: function(tool, control) {
             for (var i=0,ii=tools.length; i<ii; ++i) {
-                tools[i].modifyControl.deactivate();
+                for (var j=0, jj=tools[i].controls.length; j<jj; ++j) {
+                    if (tools[i].controls[j].CLASS_NAME === control.CLASS_NAME) {
+                        tools[i].controls[j].activate();
+                    }
+                }
             }
         },
-        handleEndAdd: function(tool) {
+        handleDeactivate: function(tool, control) {
             for (var i=0,ii=tools.length; i<ii; ++i) {
-                tools[i].drawControl.deactivate();
-            }
-        },
-        handleStartAdd: function(tool) {
-            for (var i=0,ii=tools.length; i<ii; ++i) {
-                tools[i].drawControl.activate();
-            }
-        },
-        handleStartModify: function(tool) {
-            if (tool.type === AsBuilt.plugins.GCP.IMAGE_COORDS) {
-                me.getTool(AsBuilt.plugins.GCP.WORLD_COORDS).modifyControl.activate();
+                for (var j=0, jj=tools[i].controls.length; j<jj; ++j) {
+                    if (tools[i].controls[j].CLASS_NAME === control.CLASS_NAME) {
+                        tools[i].controls[j].deactivate();
+                    }
+                }
             }
         },
         handleBeforeAdd: function(tool, feature) {
