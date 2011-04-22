@@ -158,41 +158,42 @@ AsBuilt.plugins.GCP = Ext.extend(gxp.plugins.Tool, {
             this.layer
         );
         this.controls.push(this.drawControl, this.modifyControl, this.deleteControl);
-        var toggleGroup = this.toggleGroup || Ext.id();
-        var actions = AsBuilt.plugins.GCP.superclass.addActions.call(this, [new GeoExt.Action({
-            tooltip: this.addTooltip,
-            iconCls: "gxp-icon-addfeature",
-            text: this.addText,
-            toggleGroup: toggleGroup,
-            enableToggle: true,
-            hidden: this.hidden,
-            allowDepress: true,
-            control: this.drawControl,
-            deactivateOnDisable: true,
-            map: this.target.mapPanel.map
-        }), new GeoExt.Action({
-            tooltip: this.editTooltip,
-            text: this.editText,
-            iconCls: "gxp-icon-modifyfeature",
-            toggleGroup: toggleGroup,
-            enableToggle: true,
-            hidden: this.hidden,
-            allowDepress: true,
-            control: this.modifyControl,
-            deactivateOnDisable: true,
-            map: this.target.mapPanel.map
-        }), new GeoExt.Action({
-            tooltip: this.deleteTooltip,
-            text: this.deleteText,
-            iconCls: "gxp-icon-deletefeature",
-            toggleGroup: toggleGroup,
-            enableToggle: true,
-            hidden: this.hidden,
-            allowDepress: true,
-            control: this.deleteControl,
-            deactivateOnDisable: true,
-            map: this.target.mapPanel.map
-        })]);
+        if (this.hidden !== true) {
+            var toggleGroup = this.toggleGroup || Ext.id();
+            var actions = AsBuilt.plugins.GCP.superclass.addActions.call(this, [new GeoExt.Action({
+                tooltip: this.addTooltip,
+                iconCls: "gxp-icon-addfeature",
+                text: this.addText,
+                toggleGroup: toggleGroup,
+                enableToggle: true,
+                allowDepress: true,
+                control: this.drawControl,
+                deactivateOnDisable: true,
+                map: this.target.mapPanel.map
+            }), new GeoExt.Action({
+                tooltip: this.editTooltip,
+                text: this.editText,
+                iconCls: "gxp-icon-modifyfeature",
+                toggleGroup: toggleGroup,
+                enableToggle: true,
+                allowDepress: true,
+                control: this.modifyControl,
+                deactivateOnDisable: true,
+                map: this.target.mapPanel.map
+            }), new GeoExt.Action({
+                tooltip: this.deleteTooltip,
+                text: this.deleteText,
+                iconCls: "gxp-icon-deletefeature",
+                toggleGroup: toggleGroup,
+                enableToggle: true,
+                allowDepress: true,
+                control: this.deleteControl,
+                deactivateOnDisable: true,
+                map: this.target.mapPanel.map
+            })]);
+        } else {
+            this.target.mapPanel.map.addControls(this.controls);
+        }
     }
 
 });
