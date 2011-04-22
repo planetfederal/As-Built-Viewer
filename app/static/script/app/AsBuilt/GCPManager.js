@@ -31,10 +31,23 @@ AsBuilt.GCPManager = function(){
 
     var tools = [];
 
+    var store = new Ext.data.ArrayStore({
+        fields: [
+           {name: 'id', type: 'int'},
+           {name: 'imagex', type: 'float'},
+           {name: 'imagey', type: 'float'},
+           {name: 'worldx',  type: 'float'},
+           {name: 'worldy', type: 'float'}
+        ]
+    });
+
     var me = Ext.apply(new Ext.util.Observable, {
         constructor: function() {
             this.addEvents("gcpchanged");
             Ext.util.Observable.prototype.constructor.call(this, arguments);
+        },
+        getStore: function() {
+            return store;
         },
         registerTool: function(tool) {
             tools.push(tool);
@@ -84,6 +97,8 @@ AsBuilt.GCPManager = function(){
                 gcp = {source: feature};
             } else {
                 gcp.target = feature;
+                gcp.id = counter;
+                store.loadData([[counter, gcp.source.geometry.x, gcp.source.geometry.y, gcp.target.geometry.x, gcp.target.geometry.y]], true);
                 gcps.push(gcp);
                 counter += 1;
                 me.fireEvent("gcpchanged", me, me.getGCPs().length);
@@ -94,12 +109,14 @@ AsBuilt.GCPManager = function(){
             lastType = null;
             for (var i=0, ii=gcps.length; i<ii; ++i) {
                 if (gcps[i].source === feature) {
+                    store.remove(store.getAt(store.find("id", gcps[i].id)));
                     // automatically remove the corresponding target
                     var target = gcps[i].target;
                     var layer = target.layer;
                     layer && layer.destroyFeatures([target]);
                 }
                 if (gcps[i].target === feature) {
+                    store.remove(store.getAt(store.find("id", gcps[i].id)));
                     // automatically remove the corresponding source
                     var source = gcps[i].source;
                     var layer = source.layer;

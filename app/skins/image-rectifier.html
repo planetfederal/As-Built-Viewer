@@ -116,7 +116,26 @@
 
         var app2 = new gxp.Viewer({
             portalConfig: {renderTo: Ext.getCmp('map2').body, height: Ext.getCmp('map2').body.getHeight()},
-            portalItems: ["imagemap"],
+            portalItems: ["imagemap", {xtype: "grid", region: "south", height: 150, title: "Control points", store: AsBuilt.GCPManager.getStore(),
+                columns: [
+                    {
+                        header: 'Point',
+                        dataIndex: 'id'
+                    }, {
+                        header: 'Image X',
+                        dataIndex: 'imagex'
+                    }, {
+                        header: 'Image Y',
+                        dataIndex: 'imagey'
+                    }, {
+                        header: 'Latitude',
+                        dataIndex: 'worldx'
+                    }, {
+                        header: 'Longitude',
+                        dataIndex: 'worldy'
+                    }
+                ]
+            }],
             mapItems: [{
                 xtype: "gx_zoomslider",
                 vertical: true,
