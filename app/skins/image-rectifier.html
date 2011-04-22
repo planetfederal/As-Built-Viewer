@@ -115,7 +115,7 @@
 
         var app2 = new gxp.Viewer({
             portalConfig: {renderTo: Ext.getCmp('map2').body, height: Ext.getCmp('map2').body.getHeight()},
-            portalItems: ["map2"],
+            portalItems: ["imagemap"],
             mapItems: [{
                 xtype: "gx_zoomslider",
                 vertical: true,
@@ -138,7 +138,7 @@
                 }
             ],
             map: {
-                id: "map2",
+                id: "imagemap",
                 region: "center",
                 units: "m",
                 maxExtent: [
