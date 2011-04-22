@@ -116,7 +116,7 @@
 
         var app2 = new gxp.Viewer({
             portalConfig: {renderTo: Ext.getCmp('map2').body, height: Ext.getCmp('map2').body.getHeight()},
-            portalItems: ["imagemap", {xtype: "grid", region: "south", height: 150, title: "Control points", store: AsBuilt.GCPManager.getStore(),
+            portalItems: ["imagemap", {xtype: "grid", id: "gcpgrid", bbar: ["->"], region: "south", height: 150, title: "Control points", store: AsBuilt.GCPManager.getStore(),
                 columns: [
                     {
                         header: 'Point',
@@ -154,6 +154,7 @@
                     gcpManager: AsBuilt.GCPManager
                 }, {
                     ptype: "app_preview",
+                    actionTarget: "gcpgrid.bbar",
                     gcpManager: AsBuilt.GCPManager
                 }
             ],
