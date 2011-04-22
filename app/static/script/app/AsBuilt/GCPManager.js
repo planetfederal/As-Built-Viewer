@@ -55,6 +55,7 @@ AsBuilt.GCPManager = function(){
                 "beforepartialgcpadded": this.handleBeforeAdd,
                 "partialgcpadded": this.handleAdd,
                 "partialgcpremoved": this.handleRemove,
+                "partialgcpmodified": this.handleModified,
                 "activate": this.handleActivate,
                 "deactivate": this.handleDeactivate
             });
@@ -75,6 +76,17 @@ AsBuilt.GCPManager = function(){
                         tools[i].controls[j].deactivate();
                     }
                 }
+            }
+        },
+        handleModified: function(tool, feature) {
+            var id = feature.attributes.count;
+            var record = store.getAt(store.find("id", id));
+            if (tool.type === AsBuilt.plugins.GCP.IMAGE_COORDS) {
+                record.set("imagex", feature.geometry.x);
+                record.set("imagey", feature.geometry.y);
+            } else {
+                record.set("worldx", feature.geometry.x);
+                record.set("worldy", feature.geometry.y);
             }
         },
         handleBeforeAdd: function(tool, feature) {

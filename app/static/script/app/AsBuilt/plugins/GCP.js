@@ -81,6 +81,8 @@ AsBuilt.plugins.GCP = Ext.extend(gxp.plugins.Tool, {
              */
             "partialgcpremoved",
 
+            "partialgcpmodified",
+
             "activate",
 
             "deactivate"
@@ -114,6 +116,9 @@ AsBuilt.plugins.GCP = Ext.extend(gxp.plugins.Tool, {
             "featureremoved": function(evt) { 
                 this.fireEvent("partialgcpremoved", this, evt.feature);
             },
+            "afterfeaturemodified": function(evt) {
+                this.fireEvent("partialgcpmodified", this, evt.feature);
+            },
             scope: this
         });
         this.drawControl = new OpenLayers.Control.DrawFeature(
@@ -130,7 +135,6 @@ AsBuilt.plugins.GCP = Ext.extend(gxp.plugins.Tool, {
                         if (!this.layer.map) {
                             this.target.mapPanel.map.addLayer(this.layer);
                         }
-                        //this.drawControl.deactivate();
                         this.fireEvent("partialgcpadded", this, evt.feature);
                     },
                     scope: this
