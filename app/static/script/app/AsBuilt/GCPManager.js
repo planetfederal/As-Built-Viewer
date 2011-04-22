@@ -29,10 +29,20 @@ AsBuilt.GCPManager = function(){
 
     var counter = 1;
 
+    var tools = [];
+
     var me = Ext.apply(new Ext.util.Observable, {
         constructor: function() {
             this.addEvents("gcpchanged");
             Ext.util.Observable.prototype.constructor.call(this, arguments);
+        },
+        registerTool: function(tool) {
+            tools.push(tool);
+            tool.on({
+                "beforepartialgcpadded": this.handleBeforeAdd,
+                "partialgcpadded": this.handleAdd,
+                "partialgcpremoved": this.handleRemove
+            });
         },
         handleBeforeAdd: function(tool, feature) {
             if (lastType !== null && tool.type === lastType) {

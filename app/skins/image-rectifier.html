@@ -38,8 +38,8 @@
                 pack  : 'start'
              },
              items: [
-                 {id: 'map1', flex: 1, title: "Base map"},
-                 {id: 'map2', flex: 1, title: "Georeference: " + OpenLayers.Util.getParameters()["imagepath"]}
+                 {id: 'map2', flex: 1, title: "Georeference: " + OpenLayers.Util.getParameters()["imagepath"]},
+                 {id: 'map1', flex: 1, title: "Base map"}
             ]
         });
 
@@ -130,6 +130,7 @@
             tools: [
                 {
                     ptype: "app_gcp",
+                    /*hidden: true,*/
                     type: AsBuilt.plugins.GCP.IMAGE_COORDS,
                     gcpManager: AsBuilt.GCPManager
                 }, {

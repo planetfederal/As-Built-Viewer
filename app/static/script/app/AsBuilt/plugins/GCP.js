@@ -86,11 +86,7 @@ AsBuilt.plugins.GCP = Ext.extend(gxp.plugins.Tool, {
     /** api: method[addActions]
      */
     addActions: function() {
-        this.on({
-            "beforepartialgcpadded": this.gcpManager.handleBeforeAdd,
-            "partialgcpadded": this.gcpManager.handleAdd,
-            "partialgcpremoved": this.gcpManager.handleRemove
-        });
+        this.gcpManager.registerTool(this);
         this.layer = new OpenLayers.Layer.Vector(null, {
             styleMap: new OpenLayers.StyleMap({'default':{
                 strokeColor: "#00FF00",
@@ -147,6 +143,7 @@ AsBuilt.plugins.GCP = Ext.extend(gxp.plugins.Tool, {
             text: this.addText,
             toggleGroup: toggleGroup,
             enableToggle: true,
+            hidden: this.hidden,
             allowDepress: true,
             control: this.drawControl,
             deactivateOnDisable: true,
@@ -157,6 +154,7 @@ AsBuilt.plugins.GCP = Ext.extend(gxp.plugins.Tool, {
             iconCls: "gxp-icon-modifyfeature",
             toggleGroup: toggleGroup,
             enableToggle: true,
+            hidden: this.hidden,
             allowDepress: true,
             control: this.modifyControl,
             deactivateOnDisable: true,
@@ -167,6 +165,7 @@ AsBuilt.plugins.GCP = Ext.extend(gxp.plugins.Tool, {
             iconCls: "gxp-icon-deletefeature",
             toggleGroup: toggleGroup,
             enableToggle: true,
+            hidden: this.hidden,
             allowDepress: true,
             control: this.deleteControl,
             deactivateOnDisable: true,
