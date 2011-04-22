@@ -134,13 +134,17 @@
                 }, {
                     ptype: "gxp_featuregrid",
                     alwaysDisplayOnMap: true,
-                    showZoomToSelected: true,
                     showTotalResults: true,
                     featureManager: "image-manager",
                     outputConfig: {
                         id: "featuregrid"
                     },
                     outputTarget: "south"
+                }, {
+                    ptype: "gxp_zoomtoselectedfeatures",
+                    buttonText: "Zoom to selected",
+                    featureManager: "image-manager",
+                    actionTarget: "featuregrid.bbar"
                 }, {
                     ptype: "gxp_layertree",
                     outputConfig: {
