@@ -94,12 +94,8 @@ AsBuilt.plugins.GCP = Ext.extend(gxp.plugins.Tool, {
         this.gcpManager.registerTool(this);
         this.layer = new OpenLayers.Layer.Vector(null, {
             styleMap: new OpenLayers.StyleMap({'default':{
-                strokeColor: "#00FF00",
-                strokeOpacity: 1,
-                strokeWidth: 3,
-                fillColor: "#FF5500",
-                fillOpacity: 0.5,
-                pointRadius: 6,
+                externalGraphic: "theme/app/img/geosilk/marker.png",
+                pointRadius: 8,
                 label : "${count}",
                 labelAlign: "lm",
                 labelXOffset: 10,
