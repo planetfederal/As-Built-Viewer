@@ -61,7 +61,6 @@ AsBuilt.GCPManager = function(){
         handleStartAdd: function(tool) {
             for (var i=0,ii=tools.length; i<ii; ++i) {
                 tools[i].drawControl.activate();
-                //tools[i].modifyControl.deactivate();
             }
         },
         handleStartModify: function(tool) {
@@ -87,8 +86,6 @@ AsBuilt.GCPManager = function(){
         handleAdd: function(tool, feature) {
             if (tool.type === AsBuilt.plugins.GCP.IMAGE_COORDS) {
                 gcp = {source: feature};
-                // activate the drawControl
-                me.getTool(AsBuilt.plugins.GCP.WORLD_COORDS).drawControl.activate();
             } else {
                 gcp.target = feature;
                 gcps.push(gcp);
