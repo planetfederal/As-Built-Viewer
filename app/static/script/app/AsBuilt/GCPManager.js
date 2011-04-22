@@ -41,8 +41,33 @@ AsBuilt.GCPManager = function(){
             tool.on({
                 "beforepartialgcpadded": this.handleBeforeAdd,
                 "partialgcpadded": this.handleAdd,
-                "partialgcpremoved": this.handleRemove
+                "partialgcpremoved": this.handleRemove,
+                "startmodify": this.handleStartModify,
+                "startadd": this.handleStartAdd,
+                "endadd": this.handleEndAdd,
+                "endmodify": this.handleEndModify
             });
+        },
+        handleEndModify: function(tool) {
+            for (var i=0,ii=tools.length; i<ii; ++i) {
+                tools[i].modifyControl.deactivate();
+            }
+        },
+        handleEndAdd: function(tool) {
+            for (var i=0,ii=tools.length; i<ii; ++i) {
+                tools[i].drawControl.deactivate();
+            }
+        },
+        handleStartAdd: function(tool) {
+            for (var i=0,ii=tools.length; i<ii; ++i) {
+                tools[i].drawControl.activate();
+                //tools[i].modifyControl.deactivate();
+            }
+        },
+        handleStartModify: function(tool) {
+            if (tool.type === AsBuilt.plugins.GCP.IMAGE_COORDS) {
+                me.getTool(AsBuilt.plugins.GCP.WORLD_COORDS).modifyControl.activate();
+            }
         },
         handleBeforeAdd: function(tool, feature) {
             if (lastType !== null && tool.type === lastType) {
@@ -52,9 +77,18 @@ AsBuilt.GCPManager = function(){
                  return false;
             }
         },
+        getTool: function(type) {
+            for (var i=0, ii=tools.length; i<ii; ++i) {
+                if (tools[i].type === type) {
+                    return tools[i];
+                }
+            }
+        },
         handleAdd: function(tool, feature) {
             if (tool.type === AsBuilt.plugins.GCP.IMAGE_COORDS) {
                 gcp = {source: feature};
+                // activate the drawControl
+                me.getTool(AsBuilt.plugins.GCP.WORLD_COORDS).drawControl.activate();
             } else {
                 gcp.target = feature;
                 gcps.push(gcp);

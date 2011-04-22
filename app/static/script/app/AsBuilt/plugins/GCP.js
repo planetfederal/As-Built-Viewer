@@ -78,7 +78,15 @@ AsBuilt.plugins.GCP = Ext.extend(gxp.plugins.Tool, {
              *  * tool - :class:`AsBuilt.plugins.GCP` this tool
              *  * feature - :class: `OpenLayers.Feature.Vector` the feature created
              */
-            "partialgcpremoved"
+            "partialgcpremoved",
+
+            "startmodify",
+
+            "startadd",
+
+            "endadd",
+
+            "endmodify"
         );
         AsBuilt.plugins.GCP.superclass.constructor.apply(this, arguments);
     },
@@ -119,11 +127,17 @@ AsBuilt.plugins.GCP = Ext.extend(gxp.plugins.Tool, {
             this.layer,    
             OpenLayers.Handler.Point, {
                 eventListeners: {
-                    featureadded: function(evt) {
+                    "activate": function() {
+                        this.fireEvent("startadd", this);
+                    },
+                    "deactivate": function() {
+                        this.fireEvent("endadd", this);
+                    },
+                    "featureadded": function(evt) {
                         if (!this.layer.map) {
                             this.target.mapPanel.map.addLayer(this.layer);
                         }
-                        this.drawControl.deactivate();
+                        //this.drawControl.deactivate();
                         this.fireEvent("partialgcpadded", this, evt.feature);
                     },
                     scope: this
@@ -131,7 +145,17 @@ AsBuilt.plugins.GCP = Ext.extend(gxp.plugins.Tool, {
             }
         );
         this.modifyControl = new OpenLayers.Control.ModifyFeature(
-            this.layer
+            this.layer, {
+                eventListeners: {
+                    "activate": function() {
+                        this.fireEvent("startmodify", this);
+                    },
+                    "deactivate": function() {
+                        this.fireEvent("endmodify", this);
+                    },
+                    scope: this
+                }
+            }
         );
         this.deleteControl = new OpenLayers.Control.DeleteFeature(
             this.layer
