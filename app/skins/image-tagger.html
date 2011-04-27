@@ -145,11 +145,7 @@
                         xtype: "app_geometrygrid",
                         rectifierUrl: './image-rectifier?imagepath={PATH}',
                         plugins: [{
-                            ptype: 'roweditor', listeners: {
-                                'afteredit': function() { 
-                                    this.grid.store.save(); 
-                                }
-                            }
+                            ptype: 'app_georoweditor'
                         }],
                         id: "featuregrid"
                     },
