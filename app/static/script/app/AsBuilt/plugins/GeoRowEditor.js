@@ -108,7 +108,7 @@ AsBuilt.plugins.GeoRowEditor = Ext.extend(Ext.ux.grid.RowEditor, {
                 this.drawControl && this.drawControl.deactivate();
             }, this);
         this.on('canceledit', function() {
-                this.grid.store.commitChanges();
+                this.grid.store.rejectChanges();
                 // restore the original geometry
                 if (this.feature) {
                     this.feature.layer.eraseFeatures([this.feature]);
