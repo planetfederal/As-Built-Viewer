@@ -11,6 +11,7 @@ AsBuilt.plugins.GeoRowEditor = Ext.extend(Ext.ux.grid.RowEditor, {
         this.drawControl = null;
         this.modifyControl = null;
         this.feature = null;
+        this.geometry = null;
         AsBuilt.plugins.GeoRowEditor.superclass.beforedestroy.apply(this, arguments);       
     },
 
@@ -132,10 +133,6 @@ AsBuilt.plugins.GeoRowEditor = Ext.extend(Ext.ux.grid.RowEditor, {
                 }
                 return true;
             }, this);
-    },
-
-    beforedestroy: function() {
-        AsBuilt.plugins.GeoRowEditor.superclass.beforedestroy.call(this);
     },
 
     onRender: function(){
