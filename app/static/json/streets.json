@@ -1,0 +1,8776 @@
+{
+  "streets" : [
+    {
+      "street_id" : 1,
+      "street_name" : "Harrison St"
+    },
+    {
+      "street_id" : 2,
+      "street_name" : "Harriet St"
+    },
+    {
+      "street_id" : 3,
+      "street_name" : "Harris Pl"
+    },
+    {
+      "street_id" : 4,
+      "street_name" : "6th Ave"
+    },
+    {
+      "street_id" : 5,
+      "street_name" : "5th St"
+    },
+    {
+      "street_id" : 6,
+      "street_name" : "West Halleck St"
+    },
+    {
+      "street_id" : 7,
+      "street_name" : "Wool Ct"
+    },
+    {
+      "street_id" : 8,
+      "street_name" : "Unnamed 076"
+    },
+    {
+      "street_id" : 9,
+      "street_name" : "Todd St"
+    },
+    {
+      "street_id" : 10,
+      "street_name" : "Torney Ave"
+    },
+    {
+      "street_id" : 11,
+      "street_name" : "Unnamed 053"
+    },
+    {
+      "street_id" : 12,
+      "street_name" : "Veterans Dr"
+    },
+    {
+      "street_id" : 13,
+      "street_name" : "Fort Miley 3"
+    },
+    {
+      "street_id" : 14,
+      "street_name" : "Pope St"
+    },
+    {
+      "street_id" : 15,
+      "street_name" : "North Hughes Ln"
+    },
+    {
+      "street_id" : 16,
+      "street_name" : "Thomas Ave"
+    },
+    {
+      "street_id" : 17,
+      "street_name" : "Marshall St"
+    },
+    {
+      "street_id" : 18,
+      "street_name" : "Mcdowell Ave"
+    },
+    {
+      "street_id" : 19,
+      "street_name" : "Johnstone Dr"
+    },
+    {
+      "street_id" : 20,
+      "street_name" : "Peek Ln"
+    },
+    {
+      "street_id" : 21,
+      "street_name" : "Mesa St"
+    },
+    {
+      "street_id" : 22,
+      "street_name" : "Richardson Ave"
+    },
+    {
+      "street_id" : 23,
+      "street_name" : "Funston Rd"
+    },
+    {
+      "street_id" : 24,
+      "street_name" : "Girard Rd"
+    },
+    {
+      "street_id" : 25,
+      "street_name" : "Hays St"
+    },
+    {
+      "street_id" : 26,
+      "street_name" : "Clarke Ln"
+    },
+    {
+      "street_id" : 27,
+      "street_name" : "Gilroy St"
+    },
+    {
+      "street_id" : 28,
+      "street_name" : "Anza Ave"
+    },
+    {
+      "street_id" : 29,
+      "street_name" : "Arguello Blvd"
+    },
+    {
+      "street_id" : 30,
+      "street_name" : "Barnard Ave"
+    },
+    {
+      "street_id" : 31,
+      "street_name" : "Edie Rd"
+    },
+    {
+      "street_id" : 32,
+      "street_name" : "Forsyth Ln"
+    },
+    {
+      "street_id" : 33,
+      "street_name" : "Fort Mason 13"
+    },
+    {
+      "street_id" : 34,
+      "street_name" : "Fort Mason 8"
+    },
+    {
+      "street_id" : 35,
+      "street_name" : "Beale St"
+    },
+    {
+      "street_id" : 36,
+      "street_name" : "Nimitz Ln"
+    },
+    {
+      "street_id" : 37,
+      "street_name" : "Forest Rd"
+    },
+    {
+      "street_id" : 38,
+      "street_name" : "South Gate Rd"
+    },
+    {
+      "street_id" : 39,
+      "street_name" : "Mission Bay North Blvd"
+    },
+    {
+      "street_id" : 40,
+      "street_name" : "Fort Mason 21"
+    },
+    {
+      "street_id" : 41,
+      "street_name" : "Mission Rock St"
+    },
+    {
+      "street_id" : 42,
+      "street_name" : "Bayside Dr"
+    },
+    {
+      "street_id" : 43,
+      "street_name" : "Hutchins Ct"
+    },
+    {
+      "street_id" : 44,
+      "street_name" : "Westside Dr"
+    },
+    {
+      "street_id" : 45,
+      "street_name" : "Flounder Ct"
+    },
+    {
+      "street_id" : 46,
+      "street_name" : "Avenue C"
+    },
+    {
+      "street_id" : 47,
+      "street_name" : "Worcester Ave"
+    },
+    {
+      "street_id" : 48,
+      "street_name" : "Worden St"
+    },
+    {
+      "street_id" : 49,
+      "street_name" : "Wiese St"
+    },
+    {
+      "street_id" : 50,
+      "street_name" : "Wildwood Way"
+    },
+    {
+      "street_id" : 51,
+      "street_name" : "Webster St"
+    },
+    {
+      "street_id" : 52,
+      "street_name" : "Westbrook Ct"
+    },
+    {
+      "street_id" : 53,
+      "street_name" : "Wattson Pl"
+    },
+    {
+      "street_id" : 54,
+      "street_name" : "Topaz Way"
+    },
+    {
+      "street_id" : 55,
+      "street_name" : "Topeka Ave"
+    },
+    {
+      "street_id" : 56,
+      "street_name" : "Townsend St"
+    },
+    {
+      "street_id" : 57,
+      "street_name" : "Thomas Mellon Dr"
+    },
+    {
+      "street_id" : 58,
+      "street_name" : "Sparta St"
+    },
+    {
+      "street_id" : 59,
+      "street_name" : "Spring St"
+    },
+    {
+      "street_id" : 60,
+      "street_name" : "Temple St"
+    },
+    {
+      "street_id" : 61,
+      "street_name" : "Silver Ave"
+    },
+    {
+      "street_id" : 62,
+      "street_name" : "Rudden Ave"
+    },
+    {
+      "street_id" : 63,
+      "street_name" : "Safira Ln"
+    },
+    {
+      "street_id" : 64,
+      "street_name" : "Saint Elmo Way"
+    },
+    {
+      "street_id" : 65,
+      "street_name" : "Utah St"
+    },
+    {
+      "street_id" : 66,
+      "street_name" : "Oak St"
+    },
+    {
+      "street_id" : 67,
+      "street_name" : "Shipley St"
+    },
+    {
+      "street_id" : 68,
+      "street_name" : "Russian Hill Pl"
+    },
+    {
+      "street_id" : 69,
+      "street_name" : "Unnamed 173"
+    },
+    {
+      "street_id" : 70,
+      "street_name" : "De Haro St"
+    },
+    {
+      "street_id" : 71,
+      "street_name" : "Unnamed 043"
+    },
+    {
+      "street_id" : 72,
+      "street_name" : "Sylvan Dr"
+    },
+    {
+      "street_id" : 73,
+      "street_name" : "Surrey St"
+    },
+    {
+      "street_id" : 74,
+      "street_name" : "Sergeant John V Young St"
+    },
+    {
+      "street_id" : 75,
+      "street_name" : "Seymour St"
+    },
+    {
+      "street_id" : 76,
+      "street_name" : "Rome St"
+    },
+    {
+      "street_id" : 77,
+      "street_name" : "Shephard Pl"
+    },
+    {
+      "street_id" : 78,
+      "street_name" : "Sunset Blvd Off Ramp"
+    },
+    {
+      "street_id" : 79,
+      "street_name" : "Sunset Blvd On Ramp"
+    },
+    {
+      "street_id" : 80,
+      "street_name" : "Rosewood Dr"
+    },
+    {
+      "street_id" : 81,
+      "street_name" : "Storrie St"
+    },
+    {
+      "street_id" : 82,
+      "street_name" : "Stockton St"
+    },
+    {
+      "street_id" : 83,
+      "street_name" : "Vine Ter"
+    },
+    {
+      "street_id" : 84,
+      "street_name" : "Tunnel Ave"
+    },
+    {
+      "street_id" : 85,
+      "street_name" : "Staples Ave"
+    },
+    {
+      "street_id" : 86,
+      "street_name" : "Santa Cruz Ave"
+    },
+    {
+      "street_id" : 87,
+      "street_name" : "Vicksburg St"
+    },
+    {
+      "street_id" : 88,
+      "street_name" : "Transverse Dr"
+    },
+    {
+      "street_id" : 89,
+      "street_name" : "Stanyan St"
+    },
+    {
+      "street_id" : 90,
+      "street_name" : "Tompkins Ave"
+    },
+    {
+      "street_id" : 91,
+      "street_name" : "Varennes St"
+    },
+    {
+      "street_id" : 92,
+      "street_name" : "Varney Pl"
+    },
+    {
+      "street_id" : 93,
+      "street_name" : "Venard Aly"
+    },
+    {
+      "street_id" : 94,
+      "street_name" : "Ofarrell St"
+    },
+    {
+      "street_id" : 95,
+      "street_name" : "Mirando Way"
+    },
+    {
+      "street_id" : 96,
+      "street_name" : "Prentiss St"
+    },
+    {
+      "street_id" : 97,
+      "street_name" : "Princeton St"
+    },
+    {
+      "street_id" : 98,
+      "street_name" : "Prospect Ave"
+    },
+    {
+      "street_id" : 99,
+      "street_name" : "Nordhoff St"
+    },
+    {
+      "street_id" : 100,
+      "street_name" : "Powhattan Ave"
+    },
+    {
+      "street_id" : 101,
+      "street_name" : "Neptune St"
+    },
+    {
+      "street_id" : 102,
+      "street_name" : "Mercedes Way"
+    },
+    {
+      "street_id" : 103,
+      "street_name" : "Mercury St"
+    },
+    {
+      "street_id" : 104,
+      "street_name" : "Merlin St"
+    },
+    {
+      "street_id" : 105,
+      "street_name" : "Nahua Ave"
+    },
+    {
+      "street_id" : 106,
+      "street_name" : "Ortega St"
+    },
+    {
+      "street_id" : 107,
+      "street_name" : "Mount Vernon Ave"
+    },
+    {
+      "street_id" : 108,
+      "street_name" : "Maywood Dr"
+    },
+    {
+      "street_id" : 109,
+      "street_name" : "Museum Way"
+    },
+    {
+      "street_id" : 110,
+      "street_name" : "Myra Way"
+    },
+    {
+      "street_id" : 111,
+      "street_name" : "Alice B Toklas Pl"
+    },
+    {
+      "street_id" : 112,
+      "street_name" : "Masonic Ave"
+    },
+    {
+      "street_id" : 113,
+      "street_name" : "Mary St"
+    },
+    {
+      "street_id" : 114,
+      "street_name" : "Pollard Pl"
+    },
+    {
+      "street_id" : 115,
+      "street_name" : "Olympia Way"
+    },
+    {
+      "street_id" : 116,
+      "street_name" : "Opal Pl"
+    },
+    {
+      "street_id" : 117,
+      "street_name" : "Ophir Aly"
+    },
+    {
+      "street_id" : 118,
+      "street_name" : "Moultrie St"
+    },
+    {
+      "street_id" : 119,
+      "street_name" : "Moraga St"
+    },
+    {
+      "street_id" : 120,
+      "street_name" : "Mccarthy Ave"
+    },
+    {
+      "street_id" : 121,
+      "street_name" : "Pinehurst Way"
+    },
+    {
+      "street_id" : 122,
+      "street_name" : "Pink Aly"
+    },
+    {
+      "street_id" : 123,
+      "street_name" : "Oliver St"
+    },
+    {
+      "street_id" : 124,
+      "street_name" : "Ocean Ave"
+    },
+    {
+      "street_id" : 125,
+      "street_name" : "Plaza St"
+    },
+    {
+      "street_id" : 126,
+      "street_name" : "Pleasant St"
+    },
+    {
+      "street_id" : 127,
+      "street_name" : "Moneta Way"
+    },
+    {
+      "street_id" : 128,
+      "street_name" : "Ridge Ln"
+    },
+    {
+      "street_id" : 129,
+      "street_name" : "Rhode Island St"
+    },
+    {
+      "street_id" : 130,
+      "street_name" : "Rice St"
+    },
+    {
+      "street_id" : 131,
+      "street_name" : "Oakwood St"
+    },
+    {
+      "street_id" : 132,
+      "street_name" : "Red Rock Way"
+    },
+    {
+      "street_id" : 133,
+      "street_name" : "Redwood St"
+    },
+    {
+      "street_id" : 134,
+      "street_name" : "Reposa Way"
+    },
+    {
+      "street_id" : 135,
+      "street_name" : "Randall St"
+    },
+    {
+      "street_id" : 136,
+      "street_name" : "Paraiso Pl"
+    },
+    {
+      "street_id" : 137,
+      "street_name" : "Paramount Ter"
+    },
+    {
+      "street_id" : 138,
+      "street_name" : "Northridge Rd"
+    },
+    {
+      "street_id" : 139,
+      "street_name" : "Jennings St"
+    },
+    {
+      "street_id" : 140,
+      "street_name" : "Madison St"
+    },
+    {
+      "street_id" : 141,
+      "street_name" : "La Playa"
+    },
+    {
+      "street_id" : 142,
+      "street_name" : "Lake Merced Blvd"
+    },
+    {
+      "street_id" : 143,
+      "street_name" : "Hawthorne St"
+    },
+    {
+      "street_id" : 144,
+      "street_name" : "Lulu Aly"
+    },
+    {
+      "street_id" : 145,
+      "street_name" : "Jefferson St"
+    },
+    {
+      "street_id" : 146,
+      "street_name" : "Harvard St"
+    },
+    {
+      "street_id" : 147,
+      "street_name" : "Lopez Ave"
+    },
+    {
+      "street_id" : 148,
+      "street_name" : "Los Palmos Dr"
+    },
+    {
+      "street_id" : 149,
+      "street_name" : "Louisburg St"
+    },
+    {
+      "street_id" : 150,
+      "street_name" : "Kiska Rd"
+    },
+    {
+      "street_id" : 151,
+      "street_name" : "Greenwich St"
+    },
+    {
+      "street_id" : 152,
+      "street_name" : "Lindsay Cir"
+    },
+    {
+      "street_id" : 153,
+      "street_name" : "Isis St"
+    },
+    {
+      "street_id" : 154,
+      "street_name" : "Inverness Dr"
+    },
+    {
+      "street_id" : 155,
+      "street_name" : "Iowa St"
+    },
+    {
+      "street_id" : 156,
+      "street_name" : "Hare St"
+    },
+    {
+      "street_id" : 157,
+      "street_name" : "Hahn St"
+    },
+    {
+      "street_id" : 158,
+      "street_name" : "Kelloch Ave"
+    },
+    {
+      "street_id" : 159,
+      "street_name" : "Kenwood Way"
+    },
+    {
+      "street_id" : 160,
+      "street_name" : "Kearny St"
+    },
+    {
+      "street_id" : 161,
+      "street_name" : "Hamerton Ave"
+    },
+    {
+      "street_id" : 162,
+      "street_name" : "Leona Ter"
+    },
+    {
+      "street_id" : 163,
+      "street_name" : "Lily St"
+    },
+    {
+      "street_id" : 164,
+      "street_name" : "Grove St"
+    },
+    {
+      "street_id" : 165,
+      "street_name" : "Lech Walesa St"
+    },
+    {
+      "street_id" : 166,
+      "street_name" : "Huntington Dr"
+    },
+    {
+      "street_id" : 167,
+      "street_name" : "Hubbell St"
+    },
+    {
+      "street_id" : 168,
+      "street_name" : "Holly Park Cir"
+    },
+    {
+      "street_id" : 169,
+      "street_name" : "Hiliritas Ave"
+    },
+    {
+      "street_id" : 170,
+      "street_name" : "Malta Dr"
+    },
+    {
+      "street_id" : 171,
+      "street_name" : "Hemlock St"
+    },
+    {
+      "street_id" : 172,
+      "street_name" : "Manor Dr"
+    },
+    {
+      "street_id" : 173,
+      "street_name" : "Magellan Ave"
+    },
+    {
+      "street_id" : 174,
+      "street_name" : "Main St"
+    },
+    {
+      "street_id" : 175,
+      "street_name" : "Folsom St"
+    },
+    {
+      "street_id" : 176,
+      "street_name" : "Edinburg St"
+    },
+    {
+      "street_id" : 177,
+      "street_name" : "Eagle St"
+    },
+    {
+      "street_id" : 178,
+      "street_name" : "Coventry Ct"
+    },
+    {
+      "street_id" : 179,
+      "street_name" : "Cragmont Ave"
+    },
+    {
+      "street_id" : 180,
+      "street_name" : "Crags Ct"
+    },
+    {
+      "street_id" : 181,
+      "street_name" : "Flournoy St"
+    },
+    {
+      "street_id" : 182,
+      "street_name" : "Dorcas Way"
+    },
+    {
+      "street_id" : 183,
+      "street_name" : "Costa St"
+    },
+    {
+      "street_id" : 184,
+      "street_name" : "Fitzgerald Ave"
+    },
+    {
+      "street_id" : 185,
+      "street_name" : "Congo St"
+    },
+    {
+      "street_id" : 186,
+      "street_name" : "Genebern Way"
+    },
+    {
+      "street_id" : 187,
+      "street_name" : "Constanso Way"
+    },
+    {
+      "street_id" : 188,
+      "street_name" : "Faith St"
+    },
+    {
+      "street_id" : 189,
+      "street_name" : "Farnsworth Ln"
+    },
+    {
+      "street_id" : 190,
+      "street_name" : "Ewer Pl"
+    },
+    {
+      "street_id" : 191,
+      "street_name" : "Diaz Ave"
+    },
+    {
+      "street_id" : 192,
+      "street_name" : "Garrison Ave"
+    },
+    {
+      "street_id" : 193,
+      "street_name" : "Evelyn Way"
+    },
+    {
+      "street_id" : 194,
+      "street_name" : "Digby St"
+    },
+    {
+      "street_id" : 195,
+      "street_name" : "Clipper Ter"
+    },
+    {
+      "street_id" : 196,
+      "street_name" : "Emerson St"
+    },
+    {
+      "street_id" : 197,
+      "street_name" : "Ervine St"
+    },
+    {
+      "street_id" : 198,
+      "street_name" : "Ellis St"
+    },
+    {
+      "street_id" : 199,
+      "street_name" : "Deming St"
+    },
+    {
+      "street_id" : 200,
+      "street_name" : "Denslowe Dr"
+    },
+    {
+      "street_id" : 201,
+      "street_name" : "Decker Aly"
+    },
+    {
+      "street_id" : 202,
+      "street_name" : "Darien Way"
+    },
+    {
+      "street_id" : 203,
+      "street_name" : "Cuba Aly"
+    },
+    {
+      "street_id" : 204,
+      "street_name" : "Cunningham Pl"
+    },
+    {
+      "street_id" : 205,
+      "street_name" : "Gorham St"
+    },
+    {
+      "street_id" : 206,
+      "street_name" : "Gold St"
+    },
+    {
+      "street_id" : 207,
+      "street_name" : "Eddy St"
+    },
+    {
+      "street_id" : 208,
+      "street_name" : "Edgehill Way"
+    },
+    {
+      "street_id" : 209,
+      "street_name" : "Crisp Rd"
+    },
+    {
+      "street_id" : 210,
+      "street_name" : "Bryant St"
+    },
+    {
+      "street_id" : 211,
+      "street_name" : "Broderick St"
+    },
+    {
+      "street_id" : 212,
+      "street_name" : "Baden St"
+    },
+    {
+      "street_id" : 213,
+      "street_name" : "Brooklyn Pl"
+    },
+    {
+      "street_id" : 214,
+      "street_name" : "Brotherhood Way"
+    },
+    {
+      "street_id" : 215,
+      "street_name" : "43rd Ave"
+    },
+    {
+      "street_id" : 216,
+      "street_name" : "Carolina St"
+    },
+    {
+      "street_id" : 217,
+      "street_name" : "30th Ave"
+    },
+    {
+      "street_id" : 218,
+      "street_name" : "Campbell Ave"
+    },
+    {
+      "street_id" : 219,
+      "street_name" : "Armory Dr"
+    },
+    {
+      "street_id" : 220,
+      "street_name" : "Campton Pl"
+    },
+    {
+      "street_id" : 221,
+      "street_name" : "Capitol Ave"
+    },
+    {
+      "street_id" : 222,
+      "street_name" : "Bonview St"
+    },
+    {
+      "street_id" : 223,
+      "street_name" : "Borica St"
+    },
+    {
+      "street_id" : 224,
+      "street_name" : "Arch St"
+    },
+    {
+      "street_id" : 225,
+      "street_name" : "Argent Aly"
+    },
+    {
+      "street_id" : 226,
+      "street_name" : "37th Ave"
+    },
+    {
+      "street_id" : 227,
+      "street_name" : "Bertha Ln"
+    },
+    {
+      "street_id" : 228,
+      "street_name" : "Blackstone Ct"
+    },
+    {
+      "street_id" : 229,
+      "street_name" : "29th St"
+    },
+    {
+      "street_id" : 230,
+      "street_name" : "Blythdale Ave"
+    },
+    {
+      "street_id" : 231,
+      "street_name" : "Benton Ave"
+    },
+    {
+      "street_id" : 232,
+      "street_name" : "Annie St"
+    },
+    {
+      "street_id" : 233,
+      "street_name" : "Anthony St"
+    },
+    {
+      "street_id" : 234,
+      "street_name" : "Calhoun Ter"
+    },
+    {
+      "street_id" : 235,
+      "street_name" : "Niantic Ave"
+    },
+    {
+      "street_id" : 236,
+      "street_name" : "Andover St"
+    },
+    {
+      "street_id" : 237,
+      "street_name" : "Beach St"
+    },
+    {
+      "street_id" : 238,
+      "street_name" : "Alton Ave"
+    },
+    {
+      "street_id" : 239,
+      "street_name" : "Cityview Way"
+    },
+    {
+      "street_id" : 240,
+      "street_name" : "Clairview Ct"
+    },
+    {
+      "street_id" : 241,
+      "street_name" : "Buena Vista East Ave"
+    },
+    {
+      "street_id" : 242,
+      "street_name" : "Child St"
+    },
+    {
+      "street_id" : 243,
+      "street_name" : "Christmas Tree Point Rd"
+    },
+    {
+      "street_id" : 244,
+      "street_name" : "Christopher Dr"
+    },
+    {
+      "street_id" : 245,
+      "street_name" : "Buckingham Way"
+    },
+    {
+      "street_id" : 246,
+      "street_name" : "Bartol St"
+    },
+    {
+      "street_id" : 247,
+      "street_name" : "Bass Ct"
+    },
+    {
+      "street_id" : 248,
+      "street_name" : "Balmy St"
+    },
+    {
+      "street_id" : 249,
+      "street_name" : "Chapman St"
+    },
+    {
+      "street_id" : 250,
+      "street_name" : "Chaves Ave"
+    },
+    {
+      "street_id" : 251,
+      "street_name" : "Adair St"
+    },
+    {
+      "street_id" : 252,
+      "street_name" : "Adolph Sutro Ct"
+    },
+    {
+      "street_id" : 253,
+      "street_name" : "Agua Way"
+    },
+    {
+      "street_id" : 254,
+      "street_name" : "15th St"
+    },
+    {
+      "street_id" : 255,
+      "street_name" : "24th Ave"
+    },
+    {
+      "street_id" : 256,
+      "street_name" : "12th St"
+    },
+    {
+      "street_id" : 257,
+      "street_name" : "10th Ave"
+    },
+    {
+      "street_id" : 258,
+      "street_name" : "11th Ave"
+    },
+    {
+      "street_id" : 259,
+      "street_name" : "20th Ave"
+    },
+    {
+      "street_id" : 260,
+      "street_name" : "8th St"
+    },
+    {
+      "street_id" : 261,
+      "street_name" : "Unnamed 187"
+    },
+    {
+      "street_id" : 262,
+      "street_name" : "27th St"
+    },
+    {
+      "street_id" : 263,
+      "street_name" : "17th Ave"
+    },
+    {
+      "street_id" : 264,
+      "street_name" : "3rd St"
+    },
+    {
+      "street_id" : 265,
+      "street_name" : "Hamilton St"
+    },
+    {
+      "street_id" : 266,
+      "street_name" : "Harbor Rd"
+    },
+    {
+      "street_id" : 267,
+      "street_name" : "6th St"
+    },
+    {
+      "street_id" : 268,
+      "street_name" : "5th Ave"
+    },
+    {
+      "street_id" : 269,
+      "street_name" : "Weston Ct"
+    },
+    {
+      "street_id" : 270,
+      "street_name" : "Unnamed 152"
+    },
+    {
+      "street_id" : 271,
+      "street_name" : "Thornburg Rd"
+    },
+    {
+      "street_id" : 272,
+      "street_name" : "Truby St"
+    },
+    {
+      "street_id" : 273,
+      "street_name" : "Unnamed 001"
+    },
+    {
+      "street_id" : 274,
+      "street_name" : "Unnamed 052"
+    },
+    {
+      "street_id" : 275,
+      "street_name" : "Old Mason St"
+    },
+    {
+      "street_id" : 276,
+      "street_name" : "Schofield Ct"
+    },
+    {
+      "street_id" : 277,
+      "street_name" : "Keyes Ave"
+    },
+    {
+      "street_id" : 278,
+      "street_name" : "Merriam Ln"
+    },
+    {
+      "street_id" : 279,
+      "street_name" : "Muir Ct"
+    },
+    {
+      "street_id" : 280,
+      "street_name" : "Nauman Rd"
+    },
+    {
+      "street_id" : 281,
+      "street_name" : "Long Ave"
+    },
+    {
+      "street_id" : 282,
+      "street_name" : "Gibbon Ln"
+    },
+    {
+      "street_id" : 283,
+      "street_name" : "Graham St"
+    },
+    {
+      "street_id" : 284,
+      "street_name" : "Harrison Blvd"
+    },
+    {
+      "street_id" : 285,
+      "street_name" : "Hoffman St"
+    },
+    {
+      "street_id" : 286,
+      "street_name" : "Canby Ln"
+    },
+    {
+      "street_id" : 287,
+      "street_name" : "Crissy Field Ave"
+    },
+    {
+      "street_id" : 288,
+      "street_name" : "Amatury Loop"
+    },
+    {
+      "street_id" : 289,
+      "street_name" : "Baker Ct"
+    },
+    {
+      "street_id" : 290,
+      "street_name" : "Fort Mason 15"
+    },
+    {
+      "street_id" : 291,
+      "street_name" : "Fort Mason 16"
+    },
+    {
+      "street_id" : 292,
+      "street_name" : "Franklin St"
+    },
+    {
+      "street_id" : 293,
+      "street_name" : "Battery East Rd"
+    },
+    {
+      "street_id" : 294,
+      "street_name" : "Bliss Ct"
+    },
+    {
+      "street_id" : 295,
+      "street_name" : "Brush Ln"
+    },
+    {
+      "street_id" : 296,
+      "street_name" : "Terry A Francois Blvd"
+    },
+    {
+      "street_id" : 297,
+      "street_name" : "Perimeter Path"
+    },
+    {
+      "street_id" : 298,
+      "street_name" : "Miller Rd"
+    },
+    {
+      "street_id" : 299,
+      "street_name" : "Mcrae St"
+    },
+    {
+      "street_id" : 300,
+      "street_name" : "Fort Mason 18"
+    },
+    {
+      "street_id" : 301,
+      "street_name" : "El Dorado St"
+    },
+    {
+      "street_id" : 302,
+      "street_name" : "Northpoint Dr"
+    },
+    {
+      "street_id" : 303,
+      "street_name" : "Ozbourn Ct"
+    },
+    {
+      "street_id" : 304,
+      "street_name" : "Halyburton Ct"
+    },
+    {
+      "street_id" : 305,
+      "street_name" : "Halibut Ct"
+    },
+    {
+      "street_id" : 306,
+      "street_name" : "Harriet Ln"
+    },
+    {
+      "street_id" : 307,
+      "street_name" : "Yukon St"
+    },
+    {
+      "street_id" : 308,
+      "street_name" : "Bitting Ave"
+    },
+    {
+      "street_id" : 309,
+      "street_name" : "Woolsey St"
+    },
+    {
+      "street_id" : 310,
+      "street_name" : "Wisconsin St"
+    },
+    {
+      "street_id" : 311,
+      "street_name" : "White St"
+    },
+    {
+      "street_id" : 312,
+      "street_name" : "Whitfield Ct"
+    },
+    {
+      "street_id" : 313,
+      "street_name" : "Wilde Ave"
+    },
+    {
+      "street_id" : 314,
+      "street_name" : "Wool St"
+    },
+    {
+      "street_id" : 315,
+      "street_name" : "Water St"
+    },
+    {
+      "street_id" : 316,
+      "street_name" : "Watt Ave"
+    },
+    {
+      "street_id" : 317,
+      "street_name" : "Whipple Ave"
+    },
+    {
+      "street_id" : 318,
+      "street_name" : "Thomas More Way"
+    },
+    {
+      "street_id" : 319,
+      "street_name" : "Spencer St"
+    },
+    {
+      "street_id" : 320,
+      "street_name" : "Springfield Dr"
+    },
+    {
+      "street_id" : 321,
+      "street_name" : "Martin Luther King Jr Dr"
+    },
+    {
+      "street_id" : 322,
+      "street_name" : "Thrift St"
+    },
+    {
+      "street_id" : 323,
+      "street_name" : "San Bruno Av On Ramp"
+    },
+    {
+      "street_id" : 324,
+      "street_name" : "Skyline Blvd"
+    },
+    {
+      "street_id" : 325,
+      "street_name" : "Salinas Ave"
+    },
+    {
+      "street_id" : 326,
+      "street_name" : "San Anselmo Ave"
+    },
+    {
+      "street_id" : 327,
+      "street_name" : "Valmar Ter"
+    },
+    {
+      "street_id" : 328,
+      "street_name" : "Taylor St"
+    },
+    {
+      "street_id" : 329,
+      "street_name" : "Ross Aly"
+    },
+    {
+      "street_id" : 330,
+      "street_name" : "Rossi Ave"
+    },
+    {
+      "street_id" : 331,
+      "street_name" : "Elmhurst Dr"
+    },
+    {
+      "street_id" : 332,
+      "street_name" : "Rockdale Dr"
+    },
+    {
+      "street_id" : 333,
+      "street_name" : "Rockland St"
+    },
+    {
+      "street_id" : 334,
+      "street_name" : "Urbano Dr"
+    },
+    {
+      "street_id" : 335,
+      "street_name" : "Saint Charles Ave"
+    },
+    {
+      "street_id" : 336,
+      "street_name" : "I-280 N Off Ramp"
+    },
+    {
+      "street_id" : 337,
+      "street_name" : "Sweeny St"
+    },
+    {
+      "street_id" : 338,
+      "street_name" : "Shotwell St"
+    },
+    {
+      "street_id" : 339,
+      "street_name" : "Sacramento St"
+    },
+    {
+      "street_id" : 340,
+      "street_name" : "Swiss Ave"
+    },
+    {
+      "street_id" : 341,
+      "street_name" : "Seward St"
+    },
+    {
+      "street_id" : 342,
+      "street_name" : "Sutro Heights Ave"
+    },
+    {
+      "street_id" : 343,
+      "street_name" : "Sharp Pl"
+    },
+    {
+      "street_id" : 344,
+      "street_name" : "Scotia Ave"
+    },
+    {
+      "street_id" : 345,
+      "street_name" : "Scotland St"
+    },
+    {
+      "street_id" : 346,
+      "street_name" : "Stoneyford Ave"
+    },
+    {
+      "street_id" : 347,
+      "street_name" : "Wall Pl"
+    },
+    {
+      "street_id" : 348,
+      "street_name" : "Sunrise Way"
+    },
+    {
+      "street_id" : 349,
+      "street_name" : "Stillings Ave"
+    },
+    {
+      "street_id" : 350,
+      "street_name" : "Stillman St"
+    },
+    {
+      "street_id" : 351,
+      "street_name" : "Saturn St"
+    },
+    {
+      "street_id" : 352,
+      "street_name" : "Santa Rita Ave"
+    },
+    {
+      "street_id" : 353,
+      "street_name" : "Walnut St"
+    },
+    {
+      "street_id" : 354,
+      "street_name" : "Visitacion Ave"
+    },
+    {
+      "street_id" : 355,
+      "street_name" : "Wabash Ter"
+    },
+    {
+      "street_id" : 356,
+      "street_name" : "Tulane St"
+    },
+    {
+      "street_id" : 357,
+      "street_name" : "Turk St"
+    },
+    {
+      "street_id" : 358,
+      "street_name" : "Santa Clara Ave"
+    },
+    {
+      "street_id" : 359,
+      "street_name" : "Santa Fe Ave"
+    },
+    {
+      "street_id" : 360,
+      "street_name" : "Santa Marina St"
+    },
+    {
+      "street_id" : 361,
+      "street_name" : "Tubbs St"
+    },
+    {
+      "street_id" : 362,
+      "street_name" : "Toland St"
+    },
+    {
+      "street_id" : 363,
+      "street_name" : "Tomaso Ct"
+    },
+    {
+      "street_id" : 364,
+      "street_name" : "San Jose Av On Ramp"
+    },
+    {
+      "street_id" : 365,
+      "street_name" : "San Juan Ave"
+    },
+    {
+      "street_id" : 366,
+      "street_name" : "San Leandro Way"
+    },
+    {
+      "street_id" : 367,
+      "street_name" : "Venus St"
+    },
+    {
+      "street_id" : 368,
+      "street_name" : "Parker Ave"
+    },
+    {
+      "street_id" : 369,
+      "street_name" : "Panama St"
+    },
+    {
+      "street_id" : 370,
+      "street_name" : "Nido Ave"
+    },
+    {
+      "street_id" : 371,
+      "street_name" : "Miller Pl"
+    },
+    {
+      "street_id" : 372,
+      "street_name" : "Mendell St"
+    },
+    {
+      "street_id" : 373,
+      "street_name" : "Mendosa Ave"
+    },
+    {
+      "street_id" : 374,
+      "street_name" : "Precita Ave"
+    },
+    {
+      "street_id" : 375,
+      "street_name" : "Nevada St"
+    },
+    {
+      "street_id" : 376,
+      "street_name" : "Newburg St"
+    },
+    {
+      "street_id" : 377,
+      "street_name" : "Nantucket Ave"
+    },
+    {
+      "street_id" : 378,
+      "street_name" : "Market St"
+    },
+    {
+      "street_id" : 379,
+      "street_name" : "Martha Ave"
+    },
+    {
+      "street_id" : 380,
+      "street_name" : "Post St"
+    },
+    {
+      "street_id" : 381,
+      "street_name" : "Ottawa Ave"
+    },
+    {
+      "street_id" : 382,
+      "street_name" : "Melra Ct"
+    },
+    {
+      "street_id" : 383,
+      "street_name" : "Maynard St"
+    },
+    {
+      "street_id" : 384,
+      "street_name" : "Myrtle St"
+    },
+    {
+      "street_id" : 385,
+      "street_name" : "Mateo St"
+    },
+    {
+      "street_id" : 386,
+      "street_name" : "Mayflower St"
+    },
+    {
+      "street_id" : 387,
+      "street_name" : "Polk St"
+    },
+    {
+      "street_id" : 388,
+      "street_name" : "Oneida Ave"
+    },
+    {
+      "street_id" : 389,
+      "street_name" : "Orben Pl"
+    },
+    {
+      "street_id" : 390,
+      "street_name" : "Ord Ct"
+    },
+    {
+      "street_id" : 391,
+      "street_name" : "Olive St"
+    },
+    {
+      "street_id" : 392,
+      "street_name" : "Moreland St"
+    },
+    {
+      "street_id" : 393,
+      "street_name" : "Morningside Dr"
+    },
+    {
+      "street_id" : 394,
+      "street_name" : "Morrell Pl"
+    },
+    {
+      "street_id" : 395,
+      "street_name" : "Pixley St"
+    },
+    {
+      "street_id" : 396,
+      "street_name" : "Monticello St"
+    },
+    {
+      "street_id" : 397,
+      "street_name" : "Moore Pl"
+    },
+    {
+      "street_id" : 398,
+      "street_name" : "Montezuma St"
+    },
+    {
+      "street_id" : 399,
+      "street_name" : "Robinhood Dr"
+    },
+    {
+      "street_id" : 400,
+      "street_name" : "Rickard St"
+    },
+    {
+      "street_id" : 401,
+      "street_name" : "Montana St"
+    },
+    {
+      "street_id" : 402,
+      "street_name" : "Ridgewood Ave"
+    },
+    {
+      "street_id" : 403,
+      "street_name" : "Rio Verde St"
+    },
+    {
+      "street_id" : 404,
+      "street_name" : "Perry St"
+    },
+    {
+      "street_id" : 405,
+      "street_name" : "Peters Ave"
+    },
+    {
+      "street_id" : 406,
+      "street_name" : "Peninsula Ave"
+    },
+    {
+      "street_id" : 407,
+      "street_name" : "Raycliff Ter"
+    },
+    {
+      "street_id" : 408,
+      "street_name" : "Regent St"
+    },
+    {
+      "street_id" : 409,
+      "street_name" : "Rae Ave"
+    },
+    {
+      "street_id" : 410,
+      "street_name" : "Raleigh St"
+    },
+    {
+      "street_id" : 411,
+      "street_name" : "Paradise Ave"
+    },
+    {
+      "street_id" : 412,
+      "street_name" : "Laidley St"
+    },
+    {
+      "street_id" : 413,
+      "street_name" : "Head St"
+    },
+    {
+      "street_id" : 414,
+      "street_name" : "Macedonia St"
+    },
+    {
+      "street_id" : 415,
+      "street_name" : "Madera St"
+    },
+    {
+      "street_id" : 416,
+      "street_name" : "Hawkins Ln"
+    },
+    {
+      "street_id" : 417,
+      "street_name" : "Lusk St"
+    },
+    {
+      "street_id" : 418,
+      "street_name" : "Longview Ct"
+    },
+    {
+      "street_id" : 419,
+      "street_name" : "Lafayette St"
+    },
+    {
+      "street_id" : 420,
+      "street_name" : "Jade Pl"
+    },
+    {
+      "street_id" : 421,
+      "street_name" : "Jack Kerouac Aly"
+    },
+    {
+      "street_id" : 422,
+      "street_name" : "Jack London Aly"
+    },
+    {
+      "street_id" : 423,
+      "street_name" : "Kissling St"
+    },
+    {
+      "street_id" : 424,
+      "street_name" : "Knott Ct"
+    },
+    {
+      "street_id" : 425,
+      "street_name" : "Irving St"
+    },
+    {
+      "street_id" : 426,
+      "street_name" : "Linden St"
+    },
+    {
+      "street_id" : 427,
+      "street_name" : "Ingalls St"
+    },
+    {
+      "street_id" : 428,
+      "street_name" : "Ingerson Ave"
+    },
+    {
+      "street_id" : 429,
+      "street_name" : "Innes Ave"
+    },
+    {
+      "street_id" : 430,
+      "street_name" : "Harkness Ave"
+    },
+    {
+      "street_id" : 431,
+      "street_name" : "Locust St"
+    },
+    {
+      "street_id" : 432,
+      "street_name" : "King St"
+    },
+    {
+      "street_id" : 433,
+      "street_name" : "Iron Aly"
+    },
+    {
+      "street_id" : 434,
+      "street_name" : "Ignacio Ave"
+    },
+    {
+      "street_id" : 435,
+      "street_name" : "Indiana St"
+    },
+    {
+      "street_id" : 436,
+      "street_name" : "Leroy Pl"
+    },
+    {
+      "street_id" : 437,
+      "street_name" : "Ledyard St"
+    },
+    {
+      "street_id" : 438,
+      "street_name" : "Hunters Point Blvd"
+    },
+    {
+      "street_id" : 439,
+      "street_name" : "Holloway Ave"
+    },
+    {
+      "street_id" : 440,
+      "street_name" : "Homestead St"
+    },
+    {
+      "street_id" : 441,
+      "street_name" : "Hotaling Pl"
+    },
+    {
+      "street_id" : 442,
+      "street_name" : "Hollister Ave"
+    },
+    {
+      "street_id" : 443,
+      "street_name" : "Marietta Dr"
+    },
+    {
+      "street_id" : 444,
+      "street_name" : "Larkin St"
+    },
+    {
+      "street_id" : 445,
+      "street_name" : "Laskie St"
+    },
+    {
+      "street_id" : 446,
+      "street_name" : "Juan Bautista Cir"
+    },
+    {
+      "street_id" : 447,
+      "street_name" : "Manchester St"
+    },
+    {
+      "street_id" : 448,
+      "street_name" : "Langton St"
+    },
+    {
+      "street_id" : 449,
+      "street_name" : "Lapham Way"
+    },
+    {
+      "street_id" : 450,
+      "street_name" : "Lapu-Lapu St"
+    },
+    {
+      "street_id" : 451,
+      "street_name" : "Larch St"
+    },
+    {
+      "street_id" : 452,
+      "street_name" : "Hilton St"
+    },
+    {
+      "street_id" : 453,
+      "street_name" : "Hodges Aly"
+    },
+    {
+      "street_id" : 454,
+      "street_name" : "Hoffman Ave"
+    },
+    {
+      "street_id" : 455,
+      "street_name" : "John St"
+    },
+    {
+      "street_id" : 456,
+      "street_name" : "Henry Adams St"
+    },
+    {
+      "street_id" : 457,
+      "street_name" : "Hermann St"
+    },
+    {
+      "street_id" : 458,
+      "street_name" : "Madrone Ave"
+    },
+    {
+      "street_id" : 459,
+      "street_name" : "Malden Aly"
+    },
+    {
+      "street_id" : 460,
+      "street_name" : "Craut St"
+    },
+    {
+      "street_id" : 461,
+      "street_name" : "Goettingen St"
+    },
+    {
+      "street_id" : 462,
+      "street_name" : "George Ct"
+    },
+    {
+      "street_id" : 463,
+      "street_name" : "Gerke Aly"
+    },
+    {
+      "street_id" : 464,
+      "street_name" : "Getz St"
+    },
+    {
+      "street_id" : 465,
+      "street_name" : "Giants Dr"
+    },
+    {
+      "street_id" : 466,
+      "street_name" : "Gilbert St"
+    },
+    {
+      "street_id" : 467,
+      "street_name" : "Flood Ave"
+    },
+    {
+      "street_id" : 468,
+      "street_name" : "Flora St"
+    },
+    {
+      "street_id" : 469,
+      "street_name" : "Florence St"
+    },
+    {
+      "street_id" : 470,
+      "street_name" : "Cortland Ave"
+    },
+    {
+      "street_id" : 471,
+      "street_name" : "Cosgrove St"
+    },
+    {
+      "street_id" : 472,
+      "street_name" : "Gilman Ave"
+    },
+    {
+      "street_id" : 473,
+      "street_name" : "Doric Aly"
+    },
+    {
+      "street_id" : 474,
+      "street_name" : "Dorland St"
+    },
+    {
+      "street_id" : 475,
+      "street_name" : "Douglass St"
+    },
+    {
+      "street_id" : 476,
+      "street_name" : "Downey St"
+    },
+    {
+      "street_id" : 477,
+      "street_name" : "Dolores Ter"
+    },
+    {
+      "street_id" : 478,
+      "street_name" : "Cortes Ave"
+    },
+    {
+      "street_id" : 479,
+      "street_name" : "Cook St"
+    },
+    {
+      "street_id" : 480,
+      "street_name" : "Fargo Pl"
+    },
+    {
+      "street_id" : 481,
+      "street_name" : "Ewing Ter"
+    },
+    {
+      "street_id" : 482,
+      "street_name" : "Clearfield Dr"
+    },
+    {
+      "street_id" : 483,
+      "street_name" : "Garcia Ave"
+    },
+    {
+      "street_id" : 484,
+      "street_name" : "Garlington Ct"
+    },
+    {
+      "street_id" : 485,
+      "street_name" : "Eureka St"
+    },
+    {
+      "street_id" : 486,
+      "street_name" : "Gates St"
+    },
+    {
+      "street_id" : 487,
+      "street_name" : "Devonshire Way"
+    },
+    {
+      "street_id" : 488,
+      "street_name" : "Galvez Ave"
+    },
+    {
+      "street_id" : 489,
+      "street_name" : "Garces Dr"
+    },
+    {
+      "street_id" : 490,
+      "street_name" : "Delmar St"
+    },
+    {
+      "street_id" : 491,
+      "street_name" : "Graystone Ter"
+    },
+    {
+      "street_id" : 492,
+      "street_name" : "Enterprise St"
+    },
+    {
+      "street_id" : 493,
+      "street_name" : "Entrada Ct"
+    },
+    {
+      "street_id" : 494,
+      "street_name" : "Erie St"
+    },
+    {
+      "street_id" : 495,
+      "street_name" : "Estero Ave"
+    },
+    {
+      "street_id" : 496,
+      "street_name" : "De Montfort Ave"
+    },
+    {
+      "street_id" : 497,
+      "street_name" : "Grand View Ter"
+    },
+    {
+      "street_id" : 498,
+      "street_name" : "Ellsworth St"
+    },
+    {
+      "street_id" : 499,
+      "street_name" : "El Mirasol Pl"
+    },
+    {
+      "street_id" : 500,
+      "street_name" : "Decatur St"
+    },
+    {
+      "street_id" : 501,
+      "street_name" : "Frederick St"
+    },
+    {
+      "street_id" : 502,
+      "street_name" : "Elk St"
+    },
+    {
+      "street_id" : 503,
+      "street_name" : "Dawson Pl"
+    },
+    {
+      "street_id" : 504,
+      "street_name" : "De Boom St"
+    },
+    {
+      "street_id" : 505,
+      "street_name" : "Custer Ave"
+    },
+    {
+      "street_id" : 506,
+      "street_name" : "Goleta Ave"
+    },
+    {
+      "street_id" : 507,
+      "street_name" : "Fountain St"
+    },
+    {
+      "street_id" : 508,
+      "street_name" : "Francis St"
+    },
+    {
+      "street_id" : 509,
+      "street_name" : "Edna St"
+    },
+    {
+      "street_id" : 510,
+      "street_name" : "Daggett St"
+    },
+    {
+      "street_id" : 511,
+      "street_name" : "Continuum Way"
+    },
+    {
+      "street_id" : 512,
+      "street_name" : "Edgardo Pl"
+    },
+    {
+      "street_id" : 513,
+      "street_name" : "Cross St"
+    },
+    {
+      "street_id" : 514,
+      "street_name" : "Gloria Ct"
+    },
+    {
+      "street_id" : 515,
+      "street_name" : "Augusta St"
+    },
+    {
+      "street_id" : 516,
+      "street_name" : "Casitas Ave"
+    },
+    {
+      "street_id" : 517,
+      "street_name" : "Bright St"
+    },
+    {
+      "street_id" : 518,
+      "street_name" : "Avila St"
+    },
+    {
+      "street_id" : 519,
+      "street_name" : "Castillo St"
+    },
+    {
+      "street_id" : 520,
+      "street_name" : "Carrie St"
+    },
+    {
+      "street_id" : 521,
+      "street_name" : "Britton St"
+    },
+    {
+      "street_id" : 522,
+      "street_name" : "Broadmoor Dr"
+    },
+    {
+      "street_id" : 523,
+      "street_name" : "Ashton Ave"
+    },
+    {
+      "street_id" : 524,
+      "street_name" : "Carson St"
+    },
+    {
+      "street_id" : 525,
+      "street_name" : "34th Ave"
+    },
+    {
+      "street_id" : 526,
+      "street_name" : "Capra Way"
+    },
+    {
+      "street_id" : 527,
+      "street_name" : "Carmelita St"
+    },
+    {
+      "street_id" : 528,
+      "street_name" : "Carnelian Way"
+    },
+    {
+      "street_id" : 529,
+      "street_name" : "Cesar Chavez On Ramp"
+    },
+    {
+      "street_id" : 530,
+      "street_name" : "Arlington St"
+    },
+    {
+      "street_id" : 531,
+      "street_name" : "38th Ave"
+    },
+    {
+      "street_id" : 532,
+      "street_name" : "Canyon Dr"
+    },
+    {
+      "street_id" : 533,
+      "street_name" : "Capistrano Ave"
+    },
+    {
+      "street_id" : 534,
+      "street_name" : "Birch St"
+    },
+    {
+      "street_id" : 535,
+      "street_name" : "Anza St"
+    },
+    {
+      "street_id" : 536,
+      "street_name" : "Apollo St"
+    },
+    {
+      "street_id" : 537,
+      "street_name" : "Cameo Way"
+    },
+    {
+      "street_id" : 538,
+      "street_name" : "Arago St"
+    },
+    {
+      "street_id" : 539,
+      "street_name" : "Cadell Pl"
+    },
+    {
+      "street_id" : 540,
+      "street_name" : "Beckett St"
+    },
+    {
+      "street_id" : 541,
+      "street_name" : "Amherst St"
+    },
+    {
+      "street_id" : 542,
+      "street_name" : "Belvedere St"
+    },
+    {
+      "street_id" : 543,
+      "street_name" : "Burke Ave"
+    },
+    {
+      "street_id" : 544,
+      "street_name" : "Battery St"
+    },
+    {
+      "street_id" : 545,
+      "street_name" : "Chase Ct"
+    },
+    {
+      "street_id" : 546,
+      "street_name" : "Chattanooga St"
+    },
+    {
+      "street_id" : 547,
+      "street_name" : "Agnon Ave"
+    },
+    {
+      "street_id" : 548,
+      "street_name" : "13th St"
+    },
+    {
+      "street_id" : 549,
+      "street_name" : "Jauss St"
+    },
+    {
+      "street_id" : 550,
+      "street_name" : "Telegraph Hill Blvd"
+    },
+    {
+      "street_id" : 551,
+      "street_name" : "17th St"
+    },
+    {
+      "street_id" : 552,
+      "street_name" : "18th Ave"
+    },
+    {
+      "street_id" : 553,
+      "street_name" : "3rd Ave"
+    },
+    {
+      "street_id" : 554,
+      "street_name" : "Hardie Pl"
+    },
+    {
+      "street_id" : 555,
+      "street_name" : "Harlow St"
+    },
+    {
+      "street_id" : 556,
+      "street_name" : "Delancey St"
+    },
+    {
+      "street_id" : 557,
+      "street_name" : "Burnett North Ave"
+    },
+    {
+      "street_id" : 558,
+      "street_name" : "Martinez St"
+    },
+    {
+      "street_id" : 559,
+      "street_name" : "Unnamed 165"
+    },
+    {
+      "street_id" : 560,
+      "street_name" : "Vista Ct"
+    },
+    {
+      "street_id" : 561,
+      "street_name" : "Wallen St"
+    },
+    {
+      "street_id" : 562,
+      "street_name" : "West Broadway"
+    },
+    {
+      "street_id" : 563,
+      "street_name" : "Wisser Ct"
+    },
+    {
+      "street_id" : 564,
+      "street_name" : "Young Ct"
+    },
+    {
+      "street_id" : 565,
+      "street_name" : "Lois Ln"
+    },
+    {
+      "street_id" : 566,
+      "street_name" : "Unnamed 148"
+    },
+    {
+      "street_id" : 567,
+      "street_name" : "Unnamed 077"
+    },
+    {
+      "street_id" : 568,
+      "street_name" : "Unnamed 016"
+    },
+    {
+      "street_id" : 569,
+      "street_name" : "Muir Loop"
+    },
+    {
+      "street_id" : 570,
+      "street_name" : "North 15th Ave"
+    },
+    {
+      "street_id" : 571,
+      "street_name" : "North Van Horn Ln"
+    },
+    {
+      "street_id" : 572,
+      "street_name" : "Soule Ln"
+    },
+    {
+      "street_id" : 573,
+      "street_name" : "Sternberg Rd"
+    },
+    {
+      "street_id" : 574,
+      "street_name" : "Stilwell Rd"
+    },
+    {
+      "street_id" : 575,
+      "street_name" : "Lombard St"
+    },
+    {
+      "street_id" : 576,
+      "street_name" : "Kearny Ln"
+    },
+    {
+      "street_id" : 577,
+      "street_name" : "Park Blvd"
+    },
+    {
+      "street_id" : 578,
+      "street_name" : "Merrie Way"
+    },
+    {
+      "street_id" : 579,
+      "street_name" : "Miles Ct"
+    },
+    {
+      "street_id" : 580,
+      "street_name" : "Montgomery St"
+    },
+    {
+      "street_id" : 581,
+      "street_name" : "Gorgas Ave"
+    },
+    {
+      "street_id" : 582,
+      "street_name" : "Clarke St"
+    },
+    {
+      "street_id" : 583,
+      "street_name" : "Campus Ln"
+    },
+    {
+      "street_id" : 584,
+      "street_name" : "Belles St"
+    },
+    {
+      "street_id" : 585,
+      "street_name" : "Armistead Rd"
+    },
+    {
+      "street_id" : 586,
+      "street_name" : "El Polin Loop"
+    },
+    {
+      "street_id" : 587,
+      "street_name" : "Fauntleroy Ln"
+    },
+    {
+      "street_id" : 588,
+      "street_name" : "Fort Mason 11"
+    },
+    {
+      "street_id" : 589,
+      "street_name" : "Berry Extension St"
+    },
+    {
+      "street_id" : 590,
+      "street_name" : "Hunter Rd"
+    },
+    {
+      "street_id" : 591,
+      "street_name" : "Fort Mason 17"
+    },
+    {
+      "street_id" : 592,
+      "street_name" : "Mason Ct"
+    },
+    {
+      "street_id" : 593,
+      "street_name" : "Sturgeon St"
+    },
+    {
+      "street_id" : 594,
+      "street_name" : "Whiting Way"
+    },
+    {
+      "street_id" : 595,
+      "street_name" : "Garden Way"
+    },
+    {
+      "street_id" : 596,
+      "street_name" : "Yerba Buena Rd"
+    },
+    {
+      "street_id" : 597,
+      "street_name" : "Avenue E"
+    },
+    {
+      "street_id" : 598,
+      "street_name" : "Lydia Ave"
+    },
+    {
+      "street_id" : 599,
+      "street_name" : "California Ave"
+    },
+    {
+      "street_id" : 600,
+      "street_name" : "8th Ti St"
+    },
+    {
+      "street_id" : 601,
+      "street_name" : "Whittier St"
+    },
+    {
+      "street_id" : 602,
+      "street_name" : "Welsh St"
+    },
+    {
+      "street_id" : 603,
+      "street_name" : "Wentworth Pl"
+    },
+    {
+      "street_id" : 604,
+      "street_name" : "West Clay St"
+    },
+    {
+      "street_id" : 605,
+      "street_name" : "Westgate Dr"
+    },
+    {
+      "street_id" : 606,
+      "street_name" : "Winding Way"
+    },
+    {
+      "street_id" : 607,
+      "street_name" : "Washington St"
+    },
+    {
+      "street_id" : 608,
+      "street_name" : "Waterloo St"
+    },
+    {
+      "street_id" : 609,
+      "street_name" : "Waterville St"
+    },
+    {
+      "street_id" : 610,
+      "street_name" : "Wawona St"
+    },
+    {
+      "street_id" : 611,
+      "street_name" : "Warren Dr"
+    },
+    {
+      "street_id" : 612,
+      "street_name" : "Wheat St"
+    },
+    {
+      "street_id" : 613,
+      "street_name" : "Thornton Ave"
+    },
+    {
+      "street_id" : 614,
+      "street_name" : "Van Ness Ave"
+    },
+    {
+      "street_id" : 615,
+      "street_name" : "Terra Vista Ave"
+    },
+    {
+      "street_id" : 616,
+      "street_name" : "Sloat Blvd"
+    },
+    {
+      "street_id" : 617,
+      "street_name" : "Telegraph Pl"
+    },
+    {
+      "street_id" : 618,
+      "street_name" : "Sala Ter"
+    },
+    {
+      "street_id" : 619,
+      "street_name" : "Upper Ter"
+    },
+    {
+      "street_id" : 620,
+      "street_name" : "Tehama St"
+    },
+    {
+      "street_id" : 621,
+      "street_name" : "Taraval St"
+    },
+    {
+      "street_id" : 622,
+      "street_name" : "Ruth St"
+    },
+    {
+      "street_id" : 623,
+      "street_name" : "Bay Shore Blvd"
+    },
+    {
+      "street_id" : 624,
+      "street_name" : "Taber Pl"
+    },
+    {
+      "street_id" : 625,
+      "street_name" : "Tapia Dr"
+    },
+    {
+      "street_id" : 626,
+      "street_name" : "Severn St"
+    },
+    {
+      "street_id" : 627,
+      "street_name" : "Shafter Ave"
+    },
+    {
+      "street_id" : 628,
+      "street_name" : "Unnamed 080"
+    },
+    {
+      "street_id" : 629,
+      "street_name" : "Plymouth Ave"
+    },
+    {
+      "street_id" : 630,
+      "street_name" : "Faxon Ave"
+    },
+    {
+      "street_id" : 631,
+      "street_name" : "Sherman St"
+    },
+    {
+      "street_id" : 632,
+      "street_name" : "Seal Rock Dr"
+    },
+    {
+      "street_id" : 633,
+      "street_name" : "Sears St"
+    },
+    {
+      "street_id" : 634,
+      "street_name" : "Stoneman St"
+    },
+    {
+      "street_id" : 635,
+      "street_name" : "Seneca Ave"
+    },
+    {
+      "street_id" : 636,
+      "street_name" : "Sequoia Way"
+    },
+    {
+      "street_id" : 637,
+      "street_name" : "Rosie Lee Ln"
+    },
+    {
+      "street_id" : 638,
+      "street_name" : "Ulloa St"
+    },
+    {
+      "street_id" : 639,
+      "street_name" : "Sumner St"
+    },
+    {
+      "street_id" : 640,
+      "street_name" : "Sunnydale Ave"
+    },
+    {
+      "street_id" : 641,
+      "street_name" : "Wallace Ave"
+    },
+    {
+      "street_id" : 642,
+      "street_name" : "Santa Rosa Ave"
+    },
+    {
+      "street_id" : 643,
+      "street_name" : "Wanda St"
+    },
+    {
+      "street_id" : 644,
+      "street_name" : "Virginia Ave"
+    },
+    {
+      "street_id" : 645,
+      "street_name" : "Turquoise Way"
+    },
+    {
+      "street_id" : 646,
+      "street_name" : "Stonecrest Dr"
+    },
+    {
+      "street_id" : 647,
+      "street_name" : "Vista Verde Ct"
+    },
+    {
+      "street_id" : 648,
+      "street_name" : "San Rafael Way"
+    },
+    {
+      "street_id" : 649,
+      "street_name" : "Stanford St"
+    },
+    {
+      "street_id" : 650,
+      "street_name" : "Verna St"
+    },
+    {
+      "street_id" : 651,
+      "street_name" : "Vernon St"
+    },
+    {
+      "street_id" : 652,
+      "street_name" : "Vesta St"
+    },
+    {
+      "street_id" : 653,
+      "street_name" : "Troy Aly"
+    },
+    {
+      "street_id" : 654,
+      "street_name" : "Ventura Ave"
+    },
+    {
+      "street_id" : 655,
+      "street_name" : "Mission St"
+    },
+    {
+      "street_id" : 656,
+      "street_name" : "Minnesota St"
+    },
+    {
+      "street_id" : 657,
+      "street_name" : "Racine Ln"
+    },
+    {
+      "street_id" : 658,
+      "street_name" : "Quesada Ave"
+    },
+    {
+      "street_id" : 659,
+      "street_name" : "Quincy St"
+    },
+    {
+      "street_id" : 660,
+      "street_name" : "Pacific Ave"
+    },
+    {
+      "street_id" : 661,
+      "street_name" : "Middle East Dr"
+    },
+    {
+      "street_id" : 662,
+      "street_name" : "Middle Point Rd"
+    },
+    {
+      "street_id" : 663,
+      "street_name" : "Miguel St"
+    },
+    {
+      "street_id" : 664,
+      "street_name" : "Presidio Ave"
+    },
+    {
+      "street_id" : 665,
+      "street_name" : "Norfolk St"
+    },
+    {
+      "street_id" : 666,
+      "street_name" : "Newhall St"
+    },
+    {
+      "street_id" : 667,
+      "street_name" : "Ney St"
+    },
+    {
+      "street_id" : 668,
+      "street_name" : "Mill St"
+    },
+    {
+      "street_id" : 669,
+      "street_name" : "Milton St"
+    },
+    {
+      "street_id" : 670,
+      "street_name" : "Merced Ave"
+    },
+    {
+      "street_id" : 671,
+      "street_name" : "Prosper St"
+    },
+    {
+      "street_id" : 672,
+      "street_name" : "Pratt Pl"
+    },
+    {
+      "street_id" : 673,
+      "street_name" : "Merchant St"
+    },
+    {
+      "street_id" : 674,
+      "street_name" : "Mesa Ave"
+    },
+    {
+      "street_id" : 675,
+      "street_name" : "Meade Ave"
+    },
+    {
+      "street_id" : 676,
+      "street_name" : "Mars St"
+    },
+    {
+      "street_id" : 677,
+      "street_name" : "Otis St"
+    },
+    {
+      "street_id" : 678,
+      "street_name" : "Mountview Ct"
+    },
+    {
+      "street_id" : 679,
+      "street_name" : "Meadowbrook Dr"
+    },
+    {
+      "street_id" : 680,
+      "street_name" : "Morse St"
+    },
+    {
+      "street_id" : 681,
+      "street_name" : "Mayfair Dr"
+    },
+    {
+      "street_id" : 682,
+      "street_name" : "Omar Way"
+    },
+    {
+      "street_id" : 683,
+      "street_name" : "Point Lobos Ave"
+    },
+    {
+      "street_id" : 684,
+      "street_name" : "Ogden Ave"
+    },
+    {
+      "street_id" : 685,
+      "street_name" : "Monument Way"
+    },
+    {
+      "street_id" : 686,
+      "street_name" : "Dashiell Hammett St"
+    },
+    {
+      "street_id" : 687,
+      "street_name" : "Rizal St"
+    },
+    {
+      "street_id" : 688,
+      "street_name" : "Rockaway Ave"
+    },
+    {
+      "street_id" : 689,
+      "street_name" : "Persia Ave"
+    },
+    {
+      "street_id" : 690,
+      "street_name" : "Missouri St"
+    },
+    {
+      "street_id" : 691,
+      "street_name" : "Mistral St"
+    },
+    {
+      "street_id" : 692,
+      "street_name" : "Mizpah St"
+    },
+    {
+      "street_id" : 693,
+      "street_name" : "Mojave St"
+    },
+    {
+      "street_id" : 694,
+      "street_name" : "Rausch St"
+    },
+    {
+      "street_id" : 695,
+      "street_name" : "Pennsylvania Ave"
+    },
+    {
+      "street_id" : 696,
+      "street_name" : "Parkhurst Aly"
+    },
+    {
+      "street_id" : 697,
+      "street_name" : "Randolph St"
+    },
+    {
+      "street_id" : 698,
+      "street_name" : "Paulding St"
+    },
+    {
+      "street_id" : 699,
+      "street_name" : "Northgate Dr"
+    },
+    {
+      "street_id" : 700,
+      "street_name" : "Jerrold Ave"
+    },
+    {
+      "street_id" : 701,
+      "street_name" : "Norwich St"
+    },
+    {
+      "street_id" : 702,
+      "street_name" : "Lakewood Ave"
+    },
+    {
+      "street_id" : 703,
+      "street_name" : "Lamartine St"
+    },
+    {
+      "street_id" : 704,
+      "street_name" : "Hattie St"
+    },
+    {
+      "street_id" : 705,
+      "street_name" : "Havelock St"
+    },
+    {
+      "street_id" : 706,
+      "street_name" : "Mabel Aly"
+    },
+    {
+      "street_id" : 707,
+      "street_name" : "Jamestown Ave"
+    },
+    {
+      "street_id" : 708,
+      "street_name" : "Havenside Dr"
+    },
+    {
+      "street_id" : 709,
+      "street_name" : "Lucerne St"
+    },
+    {
+      "street_id" : 710,
+      "street_name" : "Lucky St"
+    },
+    {
+      "street_id" : 711,
+      "street_name" : "Lupine Ave"
+    },
+    {
+      "street_id" : 712,
+      "street_name" : "Lurline St"
+    },
+    {
+      "street_id" : 713,
+      "street_name" : "Lynch St"
+    },
+    {
+      "street_id" : 714,
+      "street_name" : "Loraine Ct"
+    },
+    {
+      "street_id" : 715,
+      "street_name" : "Jakey Ct"
+    },
+    {
+      "street_id" : 716,
+      "street_name" : "Kittredge Ter"
+    },
+    {
+      "street_id" : 717,
+      "street_name" : "Lisbon St"
+    },
+    {
+      "street_id" : 718,
+      "street_name" : "Grijalva Dr"
+    },
+    {
+      "street_id" : 719,
+      "street_name" : "Greenview Ct"
+    },
+    {
+      "street_id" : 720,
+      "street_name" : "Lenox Way"
+    },
+    {
+      "street_id" : 721,
+      "street_name" : "Liebig St"
+    },
+    {
+      "street_id" : 722,
+      "street_name" : "Junipero Serra  Blvd Off Ramp"
+    },
+    {
+      "street_id" : 723,
+      "street_name" : "Junipero Serra Blvd On Ramp"
+    },
+    {
+      "street_id" : 724,
+      "street_name" : "Juri St"
+    },
+    {
+      "street_id" : 725,
+      "street_name" : "Hulbert Aly"
+    },
+    {
+      "street_id" : 726,
+      "street_name" : "Leidesdorff St"
+    },
+    {
+      "street_id" : 727,
+      "street_name" : "Julia St"
+    },
+    {
+      "street_id" : 728,
+      "street_name" : "Hunters Point Expy"
+    },
+    {
+      "street_id" : 729,
+      "street_name" : "Huron Ave"
+    },
+    {
+      "street_id" : 730,
+      "street_name" : "Howard St"
+    },
+    {
+      "street_id" : 731,
+      "street_name" : "Laurel St"
+    },
+    {
+      "street_id" : 732,
+      "street_name" : "Lawrence Ave"
+    },
+    {
+      "street_id" : 733,
+      "street_name" : "Hopkins Ave"
+    },
+    {
+      "street_id" : 734,
+      "street_name" : "Marcy Pl"
+    },
+    {
+      "street_id" : 735,
+      "street_name" : "Jordan Ave"
+    },
+    {
+      "street_id" : 736,
+      "street_name" : "Joice St"
+    },
+    {
+      "street_id" : 737,
+      "street_name" : "Hillview Ct"
+    },
+    {
+      "street_id" : 738,
+      "street_name" : "Lakeshore Dr"
+    },
+    {
+      "street_id" : 739,
+      "street_name" : "Daniel Burnham Ct"
+    },
+    {
+      "street_id" : 740,
+      "street_name" : "Hemway Ter"
+    },
+    {
+      "street_id" : 741,
+      "street_name" : "Henry St"
+    },
+    {
+      "street_id" : 742,
+      "street_name" : "Heron St"
+    },
+    {
+      "street_id" : 743,
+      "street_name" : "Hidalgo Ter"
+    },
+    {
+      "street_id" : 744,
+      "street_name" : "Magnolia St"
+    },
+    {
+      "street_id" : 745,
+      "street_name" : "Maiden Ln"
+    },
+    {
+      "street_id" : 746,
+      "street_name" : "Majestic Ave"
+    },
+    {
+      "street_id" : 747,
+      "street_name" : "Font Blvd"
+    },
+    {
+      "street_id" : 748,
+      "street_name" : "Cranleigh Dr"
+    },
+    {
+      "street_id" : 749,
+      "street_name" : "Gibb St"
+    },
+    {
+      "street_id" : 750,
+      "street_name" : "Drumm St"
+    },
+    {
+      "street_id" : 751,
+      "street_name" : "Duboce Ave"
+    },
+    {
+      "street_id" : 752,
+      "street_name" : "Cosmo Pl"
+    },
+    {
+      "street_id" : 753,
+      "street_name" : "Congdon St"
+    },
+    {
+      "street_id" : 754,
+      "street_name" : "Conkling St"
+    },
+    {
+      "street_id" : 755,
+      "street_name" : "Clement St"
+    },
+    {
+      "street_id" : 756,
+      "street_name" : "Clementina St"
+    },
+    {
+      "street_id" : 757,
+      "street_name" : "Clay St"
+    },
+    {
+      "street_id" : 758,
+      "street_name" : "Conservatory West Dr"
+    },
+    {
+      "street_id" : 759,
+      "street_name" : "Collins St"
+    },
+    {
+      "street_id" : 760,
+      "street_name" : "Colonial Way"
+    },
+    {
+      "street_id" : 761,
+      "street_name" : "Farragut Ave"
+    },
+    {
+      "street_id" : 762,
+      "street_name" : "Clayton St"
+    },
+    {
+      "street_id" : 763,
+      "street_name" : "Gardenside Dr"
+    },
+    {
+      "street_id" : 764,
+      "street_name" : "Exeter St"
+    },
+    {
+      "street_id" : 765,
+      "street_name" : "Fairfax Ave"
+    },
+    {
+      "street_id" : 766,
+      "street_name" : "Eugenia Ave"
+    },
+    {
+      "street_id" : 767,
+      "street_name" : "Concord St"
+    },
+    {
+      "street_id" : 768,
+      "street_name" : "Cole St"
+    },
+    {
+      "street_id" : 769,
+      "street_name" : "Clinton Park"
+    },
+    {
+      "street_id" : 770,
+      "street_name" : "Clyde St"
+    },
+    {
+      "street_id" : 771,
+      "street_name" : "Escolta Way"
+    },
+    {
+      "street_id" : 772,
+      "street_name" : "Esmeralda Ave"
+    },
+    {
+      "street_id" : 773,
+      "street_name" : "Grand View Ave"
+    },
+    {
+      "street_id" : 774,
+      "street_name" : "Elmira St"
+    },
+    {
+      "street_id" : 775,
+      "street_name" : "Dearborn St"
+    },
+    {
+      "street_id" : 776,
+      "street_name" : "Gould St"
+    },
+    {
+      "street_id" : 777,
+      "street_name" : "Fredson Ct"
+    },
+    {
+      "street_id" : 778,
+      "street_name" : "Dawnview Way"
+    },
+    {
+      "street_id" : 779,
+      "street_name" : "Day St"
+    },
+    {
+      "street_id" : 780,
+      "street_name" : "Gonzalez Dr"
+    },
+    {
+      "street_id" : 781,
+      "street_name" : "Gordon St"
+    },
+    {
+      "street_id" : 782,
+      "street_name" : "Forest Side Ave"
+    },
+    {
+      "street_id" : 783,
+      "street_name" : "Cutler Ave"
+    },
+    {
+      "street_id" : 784,
+      "street_name" : "Crestlake Dr"
+    },
+    {
+      "street_id" : 785,
+      "street_name" : "Crestline Dr"
+    },
+    {
+      "street_id" : 786,
+      "street_name" : "Gladeview Way"
+    },
+    {
+      "street_id" : 787,
+      "street_name" : "Gladstone Dr"
+    },
+    {
+      "street_id" : 788,
+      "street_name" : "Godeus St"
+    },
+    {
+      "street_id" : 789,
+      "street_name" : "Bromley Pl"
+    },
+    {
+      "street_id" : 790,
+      "street_name" : "Bronte St"
+    },
+    {
+      "street_id" : 791,
+      "street_name" : "48th Ave"
+    },
+    {
+      "street_id" : 792,
+      "street_name" : "Chabot Ter"
+    },
+    {
+      "street_id" : 793,
+      "street_name" : "Castro St"
+    },
+    {
+      "street_id" : 794,
+      "street_name" : "Broadway"
+    },
+    {
+      "street_id" : 795,
+      "street_name" : "Brighton Ave"
+    },
+    {
+      "street_id" : 796,
+      "street_name" : "Bacon St"
+    },
+    {
+      "street_id" : 797,
+      "street_name" : "Ashbury St"
+    },
+    {
+      "street_id" : 798,
+      "street_name" : "Castle Manor Ave"
+    },
+    {
+      "street_id" : 799,
+      "street_name" : "41st Ave"
+    },
+    {
+      "street_id" : 800,
+      "street_name" : "Carroll Ave"
+    },
+    {
+      "street_id" : 801,
+      "street_name" : "Carter St"
+    },
+    {
+      "street_id" : 802,
+      "street_name" : "Caselli Ave"
+    },
+    {
+      "street_id" : 803,
+      "street_name" : "Bret Harte Ter"
+    },
+    {
+      "street_id" : 804,
+      "street_name" : "Cardenas Ave"
+    },
+    {
+      "street_id" : 805,
+      "street_name" : "Bowman Ct"
+    },
+    {
+      "street_id" : 806,
+      "street_name" : "Ardenwood Way"
+    },
+    {
+      "street_id" : 807,
+      "street_name" : "Arellano Ave"
+    },
+    {
+      "street_id" : 808,
+      "street_name" : "Camellia Ave"
+    },
+    {
+      "street_id" : 809,
+      "street_name" : "Bird St"
+    },
+    {
+      "street_id" : 810,
+      "street_name" : "Aptos Ave"
+    },
+    {
+      "street_id" : 811,
+      "street_name" : "Arballo Dr"
+    },
+    {
+      "street_id" : 812,
+      "street_name" : "Belle Ave"
+    },
+    {
+      "street_id" : 813,
+      "street_name" : "Ames St"
+    },
+    {
+      "street_id" : 814,
+      "street_name" : "Alta St"
+    },
+    {
+      "street_id" : 815,
+      "street_name" : "Beachmont Dr"
+    },
+    {
+      "street_id" : 816,
+      "street_name" : "Beacon St"
+    },
+    {
+      "street_id" : 817,
+      "street_name" : "Circular Ave"
+    },
+    {
+      "street_id" : 818,
+      "street_name" : "Clara St"
+    },
+    {
+      "street_id" : 819,
+      "street_name" : "Allen St"
+    },
+    {
+      "street_id" : 820,
+      "street_name" : "Aloha Ave"
+    },
+    {
+      "street_id" : 821,
+      "street_name" : "Chicago Way"
+    },
+    {
+      "street_id" : 822,
+      "street_name" : "Burns Pl"
+    },
+    {
+      "street_id" : 823,
+      "street_name" : "Burnside Ave"
+    },
+    {
+      "street_id" : 824,
+      "street_name" : "Buena Vista Ter"
+    },
+    {
+      "street_id" : 825,
+      "street_name" : "Balceta Ave"
+    },
+    {
+      "street_id" : 826,
+      "street_name" : "Charles St"
+    },
+    {
+      "street_id" : 827,
+      "street_name" : "Charter Oak Ave"
+    },
+    {
+      "street_id" : 828,
+      "street_name" : "Chelsea Pl"
+    },
+    {
+      "street_id" : 829,
+      "street_name" : "Brumiss Ter"
+    },
+    {
+      "street_id" : 830,
+      "street_name" : "Brunswick St"
+    },
+    {
+      "street_id" : 831,
+      "street_name" : "Ada Ct"
+    },
+    {
+      "street_id" : 832,
+      "street_name" : "Adele Ct"
+    },
+    {
+      "street_id" : 833,
+      "street_name" : "Central Ave"
+    },
+    {
+      "street_id" : 834,
+      "street_name" : "Century Pl"
+    },
+    {
+      "street_id" : 835,
+      "street_name" : "Ceres St"
+    },
+    {
+      "street_id" : 836,
+      "street_name" : "23rd Ave"
+    },
+    {
+      "street_id" : 837,
+      "street_name" : "10th St"
+    },
+    {
+      "street_id" : 838,
+      "street_name" : "21st St"
+    },
+    {
+      "street_id" : 839,
+      "street_name" : "19th St"
+    },
+    {
+      "street_id" : 840,
+      "street_name" : "26th Ave"
+    },
+    {
+      "street_id" : 841,
+      "street_name" : "25th St"
+    },
+    {
+      "street_id" : 842,
+      "street_name" : "Harding Rd"
+    },
+    {
+      "street_id" : 843,
+      "street_name" : "Harper St"
+    },
+    {
+      "street_id" : 844,
+      "street_name" : "4th St"
+    },
+    {
+      "street_id" : 845,
+      "street_name" : "Rod Rd"
+    },
+    {
+      "street_id" : 846,
+      "street_name" : "Unnamed 185"
+    },
+    {
+      "street_id" : 847,
+      "street_name" : "Unnamed 142"
+    },
+    {
+      "street_id" : 848,
+      "street_name" : "Unnamed 004"
+    },
+    {
+      "street_id" : 849,
+      "street_name" : "Sheridan Ave"
+    },
+    {
+      "street_id" : 850,
+      "street_name" : "Piper Loop"
+    },
+    {
+      "street_id" : 851,
+      "street_name" : "Quarry Rd"
+    },
+    {
+      "street_id" : 852,
+      "street_name" : "Smith Ln"
+    },
+    {
+      "street_id" : 853,
+      "street_name" : "Stone St"
+    },
+    {
+      "street_id" : 854,
+      "street_name" : "Storey Ave"
+    },
+    {
+      "street_id" : 855,
+      "street_name" : "Rawles St"
+    },
+    {
+      "street_id" : 856,
+      "street_name" : "Shafter Rd"
+    },
+    {
+      "street_id" : 857,
+      "street_name" : "Mcnair Ct"
+    },
+    {
+      "street_id" : 858,
+      "street_name" : "Morton St"
+    },
+    {
+      "street_id" : 859,
+      "street_name" : "Infantry Ter"
+    },
+    {
+      "street_id" : 860,
+      "street_name" : "Letterman Dr"
+    },
+    {
+      "street_id" : 861,
+      "street_name" : "Howard Rd"
+    },
+    {
+      "street_id" : 862,
+      "street_name" : "Greely Ct"
+    },
+    {
+      "street_id" : 863,
+      "street_name" : "Compton Rd"
+    },
+    {
+      "street_id" : 864,
+      "street_name" : "Cowles St"
+    },
+    {
+      "street_id" : 865,
+      "street_name" : "Bank St"
+    },
+    {
+      "street_id" : 866,
+      "street_name" : "Brooks St"
+    },
+    {
+      "street_id" : 867,
+      "street_name" : "Battery Crosby Rd"
+    },
+    {
+      "street_id" : 868,
+      "street_name" : "Exchange Pl"
+    },
+    {
+      "street_id" : 869,
+      "street_name" : "Keppler Ct"
+    },
+    {
+      "street_id" : 870,
+      "street_name" : "Lester Ct"
+    },
+    {
+      "street_id" : 871,
+      "street_name" : "Treasure Island Rd"
+    },
+    {
+      "street_id" : 872,
+      "street_name" : "Unnamed 4"
+    },
+    {
+      "street_id" : 873,
+      "street_name" : "Gateview Ave"
+    },
+    {
+      "street_id" : 874,
+      "street_name" : "Zircon Pl"
+    },
+    {
+      "street_id" : 875,
+      "street_name" : "Zoo Rd"
+    },
+    {
+      "street_id" : 876,
+      "street_name" : "Clipper Cove Way"
+    },
+    {
+      "street_id" : 877,
+      "street_name" : "Yorba St"
+    },
+    {
+      "street_id" : 878,
+      "street_name" : "Winthrop St"
+    },
+    {
+      "street_id" : 879,
+      "street_name" : "Avenue Of The Palms"
+    },
+    {
+      "street_id" : 880,
+      "street_name" : "4th Ti St"
+    },
+    {
+      "street_id" : 881,
+      "street_name" : "9th Ti St"
+    },
+    {
+      "street_id" : 882,
+      "street_name" : "Whitney St"
+    },
+    {
+      "street_id" : 883,
+      "street_name" : "Whitney Young Cir"
+    },
+    {
+      "street_id" : 884,
+      "street_name" : "Willow St"
+    },
+    {
+      "street_id" : 885,
+      "street_name" : "Washburn St"
+    },
+    {
+      "street_id" : 886,
+      "street_name" : "Wetmore St"
+    },
+    {
+      "street_id" : 887,
+      "street_name" : "Southwood Dr"
+    },
+    {
+      "street_id" : 888,
+      "street_name" : "Spruce St"
+    },
+    {
+      "street_id" : 889,
+      "street_name" : "San Jose Ave"
+    },
+    {
+      "street_id" : 890,
+      "street_name" : "The Embarcadero"
+    },
+    {
+      "street_id" : 891,
+      "street_name" : "Hagiwara Tea Garden Dr"
+    },
+    {
+      "street_id" : 892,
+      "street_name" : "San Jacinto Way"
+    },
+    {
+      "street_id" : 893,
+      "street_name" : "Tennessee St"
+    },
+    {
+      "street_id" : 894,
+      "street_name" : "Sotelo Ave"
+    },
+    {
+      "street_id" : 895,
+      "street_name" : "Saint Marys Ave"
+    },
+    {
+      "street_id" : 896,
+      "street_name" : "San Aleso Ave"
+    },
+    {
+      "street_id" : 897,
+      "street_name" : "Valerton Ct"
+    },
+    {
+      "street_id" : 898,
+      "street_name" : "Russ St"
+    },
+    {
+      "street_id" : 899,
+      "street_name" : "Rodgers St"
+    },
+    {
+      "street_id" : 900,
+      "street_name" : "Roemer Way"
+    },
+    {
+      "street_id" : 901,
+      "street_name" : "San Benito Way"
+    },
+    {
+      "street_id" : 902,
+      "street_name" : "Junipero Serra Blvd"
+    },
+    {
+      "street_id" : 903,
+      "street_name" : "Rutland St"
+    },
+    {
+      "street_id" : 904,
+      "street_name" : "Humboldt St"
+    },
+    {
+      "street_id" : 905,
+      "street_name" : "Candlestick Point Sra"
+    },
+    {
+      "street_id" : 906,
+      "street_name" : "Talbert St"
+    },
+    {
+      "street_id" : 907,
+      "street_name" : "Tamalpais Ter"
+    },
+    {
+      "street_id" : 908,
+      "street_name" : "Tandang Sora"
+    },
+    {
+      "street_id" : 909,
+      "street_name" : "Serrano Dr"
+    },
+    {
+      "street_id" : 910,
+      "street_name" : "Rondel Pl"
+    },
+    {
+      "street_id" : 911,
+      "street_name" : "Unnamed 010"
+    },
+    {
+      "street_id" : 912,
+      "street_name" : "Sharon St"
+    },
+    {
+      "street_id" : 913,
+      "street_name" : "Sheridan St"
+    },
+    {
+      "street_id" : 914,
+      "street_name" : "Sherwood Ct"
+    },
+    {
+      "street_id" : 915,
+      "street_name" : "Alemany Blvd"
+    },
+    {
+      "street_id" : 916,
+      "street_name" : "20th St"
+    },
+    {
+      "street_id" : 917,
+      "street_name" : "Union St"
+    },
+    {
+      "street_id" : 918,
+      "street_name" : "Rosemary Ct"
+    },
+    {
+      "street_id" : 919,
+      "street_name" : "Rosenkranz St"
+    },
+    {
+      "street_id" : 920,
+      "street_name" : "Sawyer St"
+    },
+    {
+      "street_id" : 921,
+      "street_name" : "Scenic Way"
+    },
+    {
+      "street_id" : 922,
+      "street_name" : "Walter St"
+    },
+    {
+      "street_id" : 923,
+      "street_name" : "Virgil St"
+    },
+    {
+      "street_id" : 924,
+      "street_name" : "Sterling St"
+    },
+    {
+      "street_id" : 925,
+      "street_name" : "Vicente St"
+    },
+    {
+      "street_id" : 926,
+      "street_name" : "Still St"
+    },
+    {
+      "street_id" : 927,
+      "street_name" : "Stark St"
+    },
+    {
+      "street_id" : 928,
+      "street_name" : "Santa Barbara Ave"
+    },
+    {
+      "street_id" : 929,
+      "street_name" : "Santa Monica Way"
+    },
+    {
+      "street_id" : 930,
+      "street_name" : "Vienna St"
+    },
+    {
+      "street_id" : 931,
+      "street_name" : "Kenneth Rexroth Pl"
+    },
+    {
+      "street_id" : 932,
+      "street_name" : "Stanley St"
+    },
+    {
+      "street_id" : 933,
+      "street_name" : "Stanyan Blvd"
+    },
+    {
+      "street_id" : 934,
+      "street_name" : "Verdi Pl"
+    },
+    {
+      "street_id" : 935,
+      "street_name" : "Paris St"
+    },
+    {
+      "street_id" : 936,
+      "street_name" : "Noriega St"
+    },
+    {
+      "street_id" : 937,
+      "street_name" : "Nob Hill Pl"
+    },
+    {
+      "street_id" : 938,
+      "street_name" : "Via Ferlinghetti"
+    },
+    {
+      "street_id" : 939,
+      "street_name" : "Palm Ave"
+    },
+    {
+      "street_id" : 940,
+      "street_name" : "Pacheco St"
+    },
+    {
+      "street_id" : 941,
+      "street_name" : "Newton St"
+    },
+    {
+      "street_id" : 942,
+      "street_name" : "Milan Ter"
+    },
+    {
+      "street_id" : 943,
+      "street_name" : "Milton I Ross St"
+    },
+    {
+      "street_id" : 944,
+      "street_name" : "Mercato Ct"
+    },
+    {
+      "street_id" : 945,
+      "street_name" : "Niagara Ave"
+    },
+    {
+      "street_id" : 946,
+      "street_name" : "Nebraska St"
+    },
+    {
+      "street_id" : 947,
+      "street_name" : "Nellie St"
+    },
+    {
+      "street_id" : 948,
+      "street_name" : "Newcomb Ave"
+    },
+    {
+      "street_id" : 949,
+      "street_name" : "Merritt St"
+    },
+    {
+      "street_id" : 950,
+      "street_name" : "Mersey St"
+    },
+    {
+      "street_id" : 951,
+      "street_name" : "Mckinnon Ave"
+    },
+    {
+      "street_id" : 952,
+      "street_name" : "Meacham Pl"
+    },
+    {
+      "street_id" : 953,
+      "street_name" : "Powell St"
+    },
+    {
+      "street_id" : 954,
+      "street_name" : "Marvel Ct"
+    },
+    {
+      "street_id" : 955,
+      "street_name" : "Marview Way"
+    },
+    {
+      "street_id" : 956,
+      "street_name" : "Powers Ave"
+    },
+    {
+      "street_id" : 957,
+      "street_name" : "Osceola Ln"
+    },
+    {
+      "street_id" : 958,
+      "street_name" : "Otsego Ave"
+    },
+    {
+      "street_id" : 959,
+      "street_name" : "Navajo Ave"
+    },
+    {
+      "street_id" : 960,
+      "street_name" : "Mountain Spring Ave"
+    },
+    {
+      "street_id" : 961,
+      "street_name" : "Meda Ave"
+    },
+    {
+      "street_id" : 962,
+      "street_name" : "Overlook Dr"
+    },
+    {
+      "street_id" : 963,
+      "street_name" : "Matthew Ct"
+    },
+    {
+      "street_id" : 964,
+      "street_name" : "Morris St"
+    },
+    {
+      "street_id" : 965,
+      "street_name" : "Olmstead St"
+    },
+    {
+      "street_id" : 966,
+      "street_name" : "Robinson Dr"
+    },
+    {
+      "street_id" : 967,
+      "street_name" : "Pico Ave"
+    },
+    {
+      "street_id" : 968,
+      "street_name" : "Montague Pl"
+    },
+    {
+      "street_id" : 969,
+      "street_name" : "Montalvo Ave"
+    },
+    {
+      "street_id" : 970,
+      "street_name" : "Montecito Ave"
+    },
+    {
+      "street_id" : 971,
+      "street_name" : "Rincon St"
+    },
+    {
+      "street_id" : 972,
+      "street_name" : "Ripley St"
+    },
+    {
+      "street_id" : 973,
+      "street_name" : "Perego Ter"
+    },
+    {
+      "street_id" : 974,
+      "street_name" : "Modoc Ave"
+    },
+    {
+      "street_id" : 975,
+      "street_name" : "Moncada Way"
+    },
+    {
+      "street_id" : 976,
+      "street_name" : "Peter Yorke Way"
+    },
+    {
+      "street_id" : 977,
+      "street_name" : "Pearl St"
+    },
+    {
+      "street_id" : 978,
+      "street_name" : "Reddy St"
+    },
+    {
+      "street_id" : 979,
+      "street_name" : "Reed St"
+    },
+    {
+      "street_id" : 980,
+      "street_name" : "Ramsell St"
+    },
+    {
+      "street_id" : 981,
+      "street_name" : "Parque Dr"
+    },
+    {
+      "street_id" : 982,
+      "street_name" : "Parsons St"
+    },
+    {
+      "street_id" : 983,
+      "street_name" : "Pasadena St"
+    },
+    {
+      "street_id" : 984,
+      "street_name" : "Patton St"
+    },
+    {
+      "street_id" : 985,
+      "street_name" : "Nottingham Pl"
+    },
+    {
+      "street_id" : 986,
+      "street_name" : "Lamson Ln"
+    },
+    {
+      "street_id" : 987,
+      "street_name" : "Landers St"
+    },
+    {
+      "street_id" : 988,
+      "street_name" : "Hearst Ave"
+    },
+    {
+      "street_id" : 989,
+      "street_name" : "Lake Forest Ct"
+    },
+    {
+      "street_id" : 990,
+      "street_name" : "Jansen St"
+    },
+    {
+      "street_id" : 991,
+      "street_name" : "Jarboe Ave"
+    },
+    {
+      "street_id" : 992,
+      "street_name" : "Lunado Way"
+    },
+    {
+      "street_id" : 993,
+      "street_name" : "7th Ave"
+    },
+    {
+      "street_id" : 994,
+      "street_name" : "Lomita Ave"
+    },
+    {
+      "street_id" : 995,
+      "street_name" : "London St"
+    },
+    {
+      "street_id" : 996,
+      "street_name" : "Lowell St"
+    },
+    {
+      "street_id" : 997,
+      "street_name" : "Kirkwood Ave"
+    },
+    {
+      "street_id" : 998,
+      "street_name" : "Ivy St"
+    },
+    {
+      "street_id" : 999,
+      "street_name" : "7th St"
+    },
+    {
+      "street_id" : 1000,
+      "street_name" : "Knollview Way"
+    },
+    {
+      "street_id" : 1001,
+      "street_name" : "Kronquist Ct"
+    },
+    {
+      "street_id" : 1002,
+      "street_name" : "Griffith St"
+    },
+    {
+      "street_id" : 1003,
+      "street_name" : "Lippard Ave"
+    },
+    {
+      "street_id" : 1004,
+      "street_name" : "Keystone Way"
+    },
+    {
+      "street_id" : 1005,
+      "street_name" : "Guerrero St"
+    },
+    {
+      "street_id" : 1006,
+      "street_name" : "Kempton Ave"
+    },
+    {
+      "street_id" : 1007,
+      "street_name" : "Kaplan Ln"
+    },
+    {
+      "street_id" : 1008,
+      "street_name" : "Hyde St"
+    },
+    {
+      "street_id" : 1009,
+      "street_name" : "Lessing St"
+    },
+    {
+      "street_id" : 1010,
+      "street_name" : "Justin Dr"
+    },
+    {
+      "street_id" : 1011,
+      "street_name" : "Hugo St"
+    },
+    {
+      "street_id" : 1012,
+      "street_name" : "Grote Pl"
+    },
+    {
+      "street_id" : 1013,
+      "street_name" : "Leese St"
+    },
+    {
+      "street_id" : 1014,
+      "street_name" : "Le Conte Ave"
+    },
+    {
+      "street_id" : 1015,
+      "street_name" : "Howth St"
+    },
+    {
+      "street_id" : 1016,
+      "street_name" : "Holyoke St"
+    },
+    {
+      "street_id" : 1017,
+      "street_name" : "Manzanita Ave"
+    },
+    {
+      "street_id" : 1018,
+      "street_name" : "Lathrop Ave"
+    },
+    {
+      "street_id" : 1019,
+      "street_name" : "Josepha Ave"
+    },
+    {
+      "street_id" : 1020,
+      "street_name" : "High St"
+    },
+    {
+      "street_id" : 1021,
+      "street_name" : "Hillway Ave"
+    },
+    {
+      "street_id" : 1022,
+      "street_name" : "Himmelmann Pl"
+    },
+    {
+      "street_id" : 1023,
+      "street_name" : "Madrid St"
+    },
+    {
+      "street_id" : 1024,
+      "street_name" : "Jessie St"
+    },
+    {
+      "street_id" : 1025,
+      "street_name" : "Hester Ave"
+    },
+    {
+      "street_id" : 1026,
+      "street_name" : "Heyman Ave"
+    },
+    {
+      "street_id" : 1027,
+      "street_name" : "Duncan St"
+    },
+    {
+      "street_id" : 1028,
+      "street_name" : "Earl St"
+    },
+    {
+      "street_id" : 1029,
+      "street_name" : "Geneva Ave"
+    },
+    {
+      "street_id" : 1030,
+      "street_name" : "Florentine Ave"
+    },
+    {
+      "street_id" : 1031,
+      "street_name" : "Florida St"
+    },
+    {
+      "street_id" : 1032,
+      "street_name" : "Eaton Pl"
+    },
+    {
+      "street_id" : 1033,
+      "street_name" : "Dublin St"
+    },
+    {
+      "street_id" : 1034,
+      "street_name" : "Dorantes Ave"
+    },
+    {
+      "street_id" : 1035,
+      "street_name" : "Dormitory Rd"
+    },
+    {
+      "street_id" : 1036,
+      "street_name" : "Cornwall St"
+    },
+    {
+      "street_id" : 1037,
+      "street_name" : "Divisadero St"
+    },
+    {
+      "street_id" : 1038,
+      "street_name" : "Cora St"
+    },
+    {
+      "street_id" : 1039,
+      "street_name" : "Coleridge St"
+    },
+    {
+      "street_id" : 1040,
+      "street_name" : "Diana St"
+    },
+    {
+      "street_id" : 1041,
+      "street_name" : "Commonwealth Ave"
+    },
+    {
+      "street_id" : 1042,
+      "street_name" : "Detroit St"
+    },
+    {
+      "street_id" : 1043,
+      "street_name" : "Dewey Blvd"
+    },
+    {
+      "street_id" : 1044,
+      "street_name" : "Cleveland St"
+    },
+    {
+      "street_id" : 1045,
+      "street_name" : "Dellbrook Ave"
+    },
+    {
+      "street_id" : 1046,
+      "street_name" : "Fresno St"
+    },
+    {
+      "street_id" : 1047,
+      "street_name" : "Fuente Ave"
+    },
+    {
+      "street_id" : 1048,
+      "street_name" : "Esquina Dr"
+    },
+    {
+      "street_id" : 1049,
+      "street_name" : "Elsie St"
+    },
+    {
+      "street_id" : 1050,
+      "street_name" : "Freelon St"
+    },
+    {
+      "street_id" : 1051,
+      "street_name" : "Franconia St"
+    },
+    {
+      "street_id" : 1052,
+      "street_name" : "Frank Norris St"
+    },
+    {
+      "street_id" : 1053,
+      "street_name" : "Golden Gate Ave"
+    },
+    {
+      "street_id" : 1054,
+      "street_name" : "Golding Ln"
+    },
+    {
+      "street_id" : 1055,
+      "street_name" : "Edward St"
+    },
+    {
+      "street_id" : 1056,
+      "street_name" : "Egbert Ave"
+    },
+    {
+      "street_id" : 1057,
+      "street_name" : "Glover St"
+    },
+    {
+      "street_id" : 1058,
+      "street_name" : "Brompton Ave"
+    },
+    {
+      "street_id" : 1059,
+      "street_name" : "47th Ave"
+    },
+    {
+      "street_id" : 1060,
+      "street_name" : "Cervantes Blvd"
+    },
+    {
+      "street_id" : 1061,
+      "street_name" : "Avalon Ave"
+    },
+    {
+      "street_id" : 1062,
+      "street_name" : "Abbey St"
+    },
+    {
+      "street_id" : 1063,
+      "street_name" : "Robert C Levy Tunl"
+    },
+    {
+      "street_id" : 1064,
+      "street_name" : "Castle St"
+    },
+    {
+      "street_id" : 1065,
+      "street_name" : "Ashbury Ter"
+    },
+    {
+      "street_id" : 1066,
+      "street_name" : "Atalaya Ter"
+    },
+    {
+      "street_id" : 1067,
+      "street_name" : "Casa Way"
+    },
+    {
+      "street_id" : 1068,
+      "street_name" : "Brentwood Ave"
+    },
+    {
+      "street_id" : 1069,
+      "street_name" : "Brewster St"
+    },
+    {
+      "street_id" : 1070,
+      "street_name" : "Boutwell St"
+    },
+    {
+      "street_id" : 1071,
+      "street_name" : "Bowdoin St"
+    },
+    {
+      "street_id" : 1072,
+      "street_name" : "31st Ave"
+    },
+    {
+      "street_id" : 1073,
+      "street_name" : "Armstrong Ave"
+    },
+    {
+      "street_id" : 1074,
+      "street_name" : "Bocana St"
+    },
+    {
+      "street_id" : 1075,
+      "street_name" : "Berry St"
+    },
+    {
+      "street_id" : 1076,
+      "street_name" : "Beverly St"
+    },
+    {
+      "street_id" : 1077,
+      "street_name" : "Apparel Way"
+    },
+    {
+      "street_id" : 1078,
+      "street_name" : "29th Ave"
+    },
+    {
+      "street_id" : 1079,
+      "street_name" : "Berkeley Way"
+    },
+    {
+      "street_id" : 1080,
+      "street_name" : "Berkshire Way"
+    },
+    {
+      "street_id" : 1081,
+      "street_name" : "Antonio St"
+    },
+    {
+      "street_id" : 1082,
+      "street_name" : "Beideman St"
+    },
+    {
+      "street_id" : 1083,
+      "street_name" : "Amethyst Way"
+    },
+    {
+      "street_id" : 1084,
+      "street_name" : "Anderson St"
+    },
+    {
+      "street_id" : 1085,
+      "street_name" : "Byxbee St"
+    },
+    {
+      "street_id" : 1086,
+      "street_name" : "Belmont Ave"
+    },
+    {
+      "street_id" : 1087,
+      "street_name" : "Bay View St"
+    },
+    {
+      "street_id" : 1088,
+      "street_name" : "Bay Shore Blvd On Ramp"
+    },
+    {
+      "street_id" : 1089,
+      "street_name" : "Allston Way"
+    },
+    {
+      "street_id" : 1090,
+      "street_name" : "15th Ave"
+    },
+    {
+      "street_id" : 1091,
+      "street_name" : "Chestnut St"
+    },
+    {
+      "street_id" : 1092,
+      "street_name" : "Alameda St"
+    },
+    {
+      "street_id" : 1093,
+      "street_name" : "Alana Way"
+    },
+    {
+      "street_id" : 1094,
+      "street_name" : "Albion St"
+    },
+    {
+      "street_id" : 1095,
+      "street_name" : "Brush Pl"
+    },
+    {
+      "street_id" : 1096,
+      "street_name" : "Cedar St"
+    },
+    {
+      "street_id" : 1097,
+      "street_name" : "Cedro Ave"
+    },
+    {
+      "street_id" : 1098,
+      "street_name" : "25th Ave"
+    },
+    {
+      "street_id" : 1099,
+      "street_name" : "26th St"
+    },
+    {
+      "street_id" : 1100,
+      "street_name" : "25th North Ave"
+    },
+    {
+      "street_id" : 1101,
+      "street_name" : "Hanover St"
+    },
+    {
+      "street_id" : 1102,
+      "street_name" : "Harrington St"
+    },
+    {
+      "street_id" : 1103,
+      "street_name" : "1st St"
+    },
+    {
+      "street_id" : 1104,
+      "street_name" : "4th Ave"
+    },
+    {
+      "street_id" : 1105,
+      "street_name" : "Gibbon Ct"
+    },
+    {
+      "street_id" : 1106,
+      "street_name" : "Letterman Hospital Access"
+    },
+    {
+      "street_id" : 1107,
+      "street_name" : "Battery Wagner Rd"
+    },
+    {
+      "street_id" : 1108,
+      "street_name" : "Kendall Dr"
+    },
+    {
+      "street_id" : 1109,
+      "street_name" : "Fort Miley 5"
+    },
+    {
+      "street_id" : 1110,
+      "street_name" : "Sibert Ln"
+    },
+    {
+      "street_id" : 1111,
+      "street_name" : "Simonds Loop"
+    },
+    {
+      "street_id" : 1112,
+      "street_name" : "South Hughes Ln"
+    },
+    {
+      "street_id" : 1113,
+      "street_name" : "South Van Horn Ln"
+    },
+    {
+      "street_id" : 1114,
+      "street_name" : "Sumner Ave"
+    },
+    {
+      "street_id" : 1115,
+      "street_name" : "Riley Ave"
+    },
+    {
+      "street_id" : 1116,
+      "street_name" : "Rodriguez St"
+    },
+    {
+      "street_id" : 1117,
+      "street_name" : "Lincoln Blvd"
+    },
+    {
+      "street_id" : 1118,
+      "street_name" : "Patton Ct"
+    },
+    {
+      "street_id" : 1119,
+      "street_name" : "Mcrae Ln"
+    },
+    {
+      "street_id" : 1120,
+      "street_name" : "Kobbe Ave"
+    },
+    {
+      "street_id" : 1121,
+      "street_name" : "Incinerator Rd"
+    },
+    {
+      "street_id" : 1122,
+      "street_name" : "Howard Ct"
+    },
+    {
+      "street_id" : 1123,
+      "street_name" : "Halleck St"
+    },
+    {
+      "street_id" : 1124,
+      "street_name" : "Portola Dr"
+    },
+    {
+      "street_id" : 1125,
+      "street_name" : "Barry Ct"
+    },
+    {
+      "street_id" : 1126,
+      "street_name" : "Battery Caulfield Rd"
+    },
+    {
+      "street_id" : 1127,
+      "street_name" : "Battery Cranston Rd"
+    },
+    {
+      "street_id" : 1128,
+      "street_name" : "Deens Rd"
+    },
+    {
+      "street_id" : 1129,
+      "street_name" : "Fisher Loop"
+    },
+    {
+      "street_id" : 1130,
+      "street_name" : "Fort Mason 10"
+    },
+    {
+      "street_id" : 1131,
+      "street_name" : "Fort Mason 12"
+    },
+    {
+      "street_id" : 1132,
+      "street_name" : "16th St"
+    },
+    {
+      "street_id" : 1133,
+      "street_name" : "Signal Rd"
+    },
+    {
+      "street_id" : 1134,
+      "street_name" : "Reeves Ct"
+    },
+    {
+      "street_id" : 1135,
+      "street_name" : "Central Magazine Rd"
+    },
+    {
+      "street_id" : 1136,
+      "street_name" : "Hicks Rd"
+    },
+    {
+      "street_id" : 1137,
+      "street_name" : "Dove Loop"
+    },
+    {
+      "street_id" : 1138,
+      "street_name" : "South St"
+    },
+    {
+      "street_id" : 1139,
+      "street_name" : "Striped Bass St"
+    },
+    {
+      "street_id" : 1140,
+      "street_name" : "Croaker Ct"
+    },
+    {
+      "street_id" : 1141,
+      "street_name" : "Healy Ave"
+    },
+    {
+      "street_id" : 1142,
+      "street_name" : "Fresnel Way"
+    },
+    {
+      "street_id" : 1143,
+      "street_name" : "York St"
+    },
+    {
+      "street_id" : 1144,
+      "street_name" : "Winter Pl"
+    },
+    {
+      "street_id" : 1145,
+      "street_name" : "14th Ti St"
+    },
+    {
+      "street_id" : 1146,
+      "street_name" : "Willard St"
+    },
+    {
+      "street_id" : 1147,
+      "street_name" : "West View Ave"
+    },
+    {
+      "street_id" : 1148,
+      "street_name" : "Woodacre Dr"
+    },
+    {
+      "street_id" : 1149,
+      "street_name" : "Williar Ave"
+    },
+    {
+      "street_id" : 1150,
+      "street_name" : "Wilson St"
+    },
+    {
+      "street_id" : 1151,
+      "street_name" : "Winfield St"
+    },
+    {
+      "street_id" : 1152,
+      "street_name" : "Waverly Pl"
+    },
+    {
+      "street_id" : 1153,
+      "street_name" : "Thomas Mellon Cir"
+    },
+    {
+      "street_id" : 1154,
+      "street_name" : "Spear St"
+    },
+    {
+      "street_id" : 1155,
+      "street_name" : "Spofford St"
+    },
+    {
+      "street_id" : 1156,
+      "street_name" : "Sproule Ln"
+    },
+    {
+      "street_id" : 1157,
+      "street_name" : "Tioga Ave"
+    },
+    {
+      "street_id" : 1158,
+      "street_name" : "South Hill Blvd"
+    },
+    {
+      "street_id" : 1159,
+      "street_name" : "South Van Ness Ave"
+    },
+    {
+      "street_id" : 1160,
+      "street_name" : "San Bruno Av Off Ramp"
+    },
+    {
+      "street_id" : 1161,
+      "street_name" : "San Diego Ave"
+    },
+    {
+      "street_id" : 1162,
+      "street_name" : "Terrace Dr"
+    },
+    {
+      "street_id" : 1163,
+      "street_name" : "Texas St"
+    },
+    {
+      "street_id" : 1164,
+      "street_name" : "Valletta Ct"
+    },
+    {
+      "street_id" : 1165,
+      "street_name" : "Rossmoor Dr"
+    },
+    {
+      "street_id" : 1166,
+      "street_name" : "Rotteck St"
+    },
+    {
+      "street_id" : 1167,
+      "street_name" : "Rousseau St"
+    },
+    {
+      "street_id" : 1168,
+      "street_name" : "Royal Ln"
+    },
+    {
+      "street_id" : 1169,
+      "street_name" : "Rolph St"
+    },
+    {
+      "street_id" : 1170,
+      "street_name" : "Sadowa St"
+    },
+    {
+      "street_id" : 1171,
+      "street_name" : "Valdez Ave"
+    },
+    {
+      "street_id" : 1172,
+      "street_name" : "Short St"
+    },
+    {
+      "street_id" : 1173,
+      "street_name" : "Mullen Ave"
+    },
+    {
+      "street_id" : 1174,
+      "street_name" : "Unnamed 044"
+    },
+    {
+      "street_id" : 1175,
+      "street_name" : "Sycamore St"
+    },
+    {
+      "street_id" : 1176,
+      "street_name" : "Talbert Ct"
+    },
+    {
+      "street_id" : 1177,
+      "street_name" : "Tara St"
+    },
+    {
+      "street_id" : 1178,
+      "street_name" : "Roosevelt Way"
+    },
+    {
+      "street_id" : 1179,
+      "street_name" : "Shakespeare St"
+    },
+    {
+      "street_id" : 1180,
+      "street_name" : "Seacliff Ave"
+    },
+    {
+      "street_id" : 1181,
+      "street_name" : "Sea View Ter"
+    },
+    {
+      "street_id" : 1182,
+      "street_name" : "Saint George Aly"
+    },
+    {
+      "street_id" : 1183,
+      "street_name" : "Saint Josephs Ave"
+    },
+    {
+      "street_id" : 1184,
+      "street_name" : "Sabin Pl"
+    },
+    {
+      "street_id" : 1185,
+      "street_name" : "Rosella Ct"
+    },
+    {
+      "street_id" : 1186,
+      "street_name" : "Stratford Dr"
+    },
+    {
+      "street_id" : 1187,
+      "street_name" : "Underwood Ave"
+    },
+    {
+      "street_id" : 1188,
+      "street_name" : "Vinton Ct"
+    },
+    {
+      "street_id" : 1189,
+      "street_name" : "Steuart St"
+    },
+    {
+      "street_id" : 1190,
+      "street_name" : "Starview Way"
+    },
+    {
+      "street_id" : 1191,
+      "street_name" : "Victoria St"
+    },
+    {
+      "street_id" : 1192,
+      "street_name" : "Treat Ave"
+    },
+    {
+      "street_id" : 1193,
+      "street_name" : "Trenton St"
+    },
+    {
+      "street_id" : 1194,
+      "street_name" : "Trinity St"
+    },
+    {
+      "street_id" : 1195,
+      "street_name" : "Truett St"
+    },
+    {
+      "street_id" : 1196,
+      "street_name" : "San Jose Av Off Ramp"
+    },
+    {
+      "street_id" : 1197,
+      "street_name" : "San Lorenzo Way"
+    },
+    {
+      "street_id" : 1198,
+      "street_name" : "Velasco Ave"
+    },
+    {
+      "street_id" : 1199,
+      "street_name" : "Ver Mehr Pl"
+    },
+    {
+      "street_id" : 1200,
+      "street_name" : "Park St"
+    },
+    {
+      "street_id" : 1201,
+      "street_name" : "Mint Plz"
+    },
+    {
+      "street_id" : 1202,
+      "street_name" : "Miramar Ave"
+    },
+    {
+      "street_id" : 1203,
+      "street_name" : "Quintara St"
+    },
+    {
+      "street_id" : 1204,
+      "street_name" : "Midway St"
+    },
+    {
+      "street_id" : 1205,
+      "street_name" : "Progress St"
+    },
+    {
+      "street_id" : 1206,
+      "street_name" : "Pueblo St"
+    },
+    {
+      "street_id" : 1207,
+      "street_name" : "Nichols Way"
+    },
+    {
+      "street_id" : 1208,
+      "street_name" : "Metson Rd"
+    },
+    {
+      "street_id" : 1209,
+      "street_name" : "Mclaren Ave"
+    },
+    {
+      "street_id" : 1210,
+      "street_name" : "Bernice Rodgers Way"
+    },
+    {
+      "street_id" : 1211,
+      "street_name" : "Naglee Ave"
+    },
+    {
+      "street_id" : 1212,
+      "street_name" : "Osgood Pl"
+    },
+    {
+      "street_id" : 1213,
+      "street_name" : "Melba Ave"
+    },
+    {
+      "street_id" : 1214,
+      "street_name" : "Massasoit St"
+    },
+    {
+      "street_id" : 1215,
+      "street_name" : "Onondaga Ave"
+    },
+    {
+      "street_id" : 1216,
+      "street_name" : "Ora Way"
+    },
+    {
+      "street_id" : 1217,
+      "street_name" : "Monterey Blvd"
+    },
+    {
+      "street_id" : 1218,
+      "street_name" : "Richland Ave"
+    },
+    {
+      "street_id" : 1219,
+      "street_name" : "Piedmont St"
+    },
+    {
+      "street_id" : 1220,
+      "street_name" : "Revere Ave"
+    },
+    {
+      "street_id" : 1221,
+      "street_name" : "Oak Park Dr"
+    },
+    {
+      "street_id" : 1222,
+      "street_name" : "Oakdale Ave"
+    },
+    {
+      "street_id" : 1223,
+      "street_name" : "Rex Ave"
+    },
+    {
+      "street_id" : 1224,
+      "street_name" : "Rhine St"
+    },
+    {
+      "street_id" : 1225,
+      "street_name" : "Peru Ave"
+    },
+    {
+      "street_id" : 1226,
+      "street_name" : "Petrarch Pl"
+    },
+    {
+      "street_id" : 1227,
+      "street_name" : "Phelan Ave"
+    },
+    {
+      "street_id" : 1228,
+      "street_name" : "Rayburn St"
+    },
+    {
+      "street_id" : 1229,
+      "street_name" : "Rebecca Ln"
+    },
+    {
+      "street_id" : 1230,
+      "street_name" : "Redondo St"
+    },
+    {
+      "street_id" : 1231,
+      "street_name" : "Restani Way"
+    },
+    {
+      "street_id" : 1232,
+      "street_name" : "Retiro Way"
+    },
+    {
+      "street_id" : 1233,
+      "street_name" : "Reuel Ct"
+    },
+    {
+      "street_id" : 1234,
+      "street_name" : "Ramona Ave"
+    },
+    {
+      "street_id" : 1235,
+      "street_name" : "Payson St"
+    },
+    {
+      "street_id" : 1236,
+      "street_name" : "Norton St"
+    },
+    {
+      "street_id" : 1237,
+      "street_name" : "Mabini St"
+    },
+    {
+      "street_id" : 1238,
+      "street_name" : "Hawes St"
+    },
+    {
+      "street_id" : 1239,
+      "street_name" : "Great Hwy"
+    },
+    {
+      "street_id" : 1240,
+      "street_name" : "Lunado Ct"
+    },
+    {
+      "street_id" : 1241,
+      "street_name" : "Lundys Ln"
+    },
+    {
+      "street_id" : 1242,
+      "street_name" : "Laguna Honda Blvd"
+    },
+    {
+      "street_id" : 1243,
+      "street_name" : "Lagunitas Dr"
+    },
+    {
+      "street_id" : 1244,
+      "street_name" : "Jackson St"
+    },
+    {
+      "street_id" : 1245,
+      "street_name" : "Hartford St"
+    },
+    {
+      "street_id" : 1246,
+      "street_name" : "Bob Kaufman Aly"
+    },
+    {
+      "street_id" : 1247,
+      "street_name" : "Isadora Duncan Ln"
+    },
+    {
+      "street_id" : 1248,
+      "street_name" : "Industrial St On Ramp"
+    },
+    {
+      "street_id" : 1249,
+      "street_name" : "Keith St"
+    },
+    {
+      "street_id" : 1250,
+      "street_name" : "Kern St"
+    },
+    {
+      "street_id" : 1251,
+      "street_name" : "Grant Ave"
+    },
+    {
+      "street_id" : 1252,
+      "street_name" : "Granville Way"
+    },
+    {
+      "street_id" : 1253,
+      "street_name" : "Kansas St"
+    },
+    {
+      "street_id" : 1254,
+      "street_name" : "Kate St"
+    },
+    {
+      "street_id" : 1255,
+      "street_name" : "Hale St"
+    },
+    {
+      "street_id" : 1256,
+      "street_name" : "Hallam St"
+    },
+    {
+      "street_id" : 1257,
+      "street_name" : "Lettuce Ln"
+    },
+    {
+      "street_id" : 1258,
+      "street_name" : "Lillian St"
+    },
+    {
+      "street_id" : 1259,
+      "street_name" : "Linares Ave"
+    },
+    {
+      "street_id" : 1260,
+      "street_name" : "Julian Ave"
+    },
+    {
+      "street_id" : 1261,
+      "street_name" : "Marina Green Dr"
+    },
+    {
+      "street_id" : 1262,
+      "street_name" : "Mark Ln"
+    },
+    {
+      "street_id" : 1263,
+      "street_name" : "Margrave Pl"
+    },
+    {
+      "street_id" : 1264,
+      "street_name" : "Latona St"
+    },
+    {
+      "street_id" : 1265,
+      "street_name" : "Laura St"
+    },
+    {
+      "street_id" : 1266,
+      "street_name" : "Josiah Ave"
+    },
+    {
+      "street_id" : 1267,
+      "street_name" : "John F Shelley Dr"
+    },
+    {
+      "street_id" : 1268,
+      "street_name" : "Lane St"
+    },
+    {
+      "street_id" : 1269,
+      "street_name" : "Lansdale Ave"
+    },
+    {
+      "street_id" : 1270,
+      "street_name" : "Lapidge St"
+    },
+    {
+      "street_id" : 1271,
+      "street_name" : "Hill Point Ave"
+    },
+    {
+      "street_id" : 1272,
+      "street_name" : "Hobart Aly"
+    },
+    {
+      "street_id" : 1273,
+      "street_name" : "Heather Ave"
+    },
+    {
+      "street_id" : 1274,
+      "street_name" : "Helen St"
+    },
+    {
+      "street_id" : 1275,
+      "street_name" : "Helena St"
+    },
+    {
+      "street_id" : 1276,
+      "street_name" : "Mallorca Way"
+    },
+    {
+      "street_id" : 1277,
+      "street_name" : "Genoa Pl"
+    },
+    {
+      "street_id" : 1278,
+      "street_name" : "Flower St"
+    },
+    {
+      "street_id" : 1279,
+      "street_name" : "Fisher Aly"
+    },
+    {
+      "street_id" : 1280,
+      "street_name" : "Dukes Ct"
+    },
+    {
+      "street_id" : 1281,
+      "street_name" : "Cordelia St"
+    },
+    {
+      "street_id" : 1282,
+      "street_name" : "Cordova St"
+    },
+    {
+      "street_id" : 1283,
+      "street_name" : "Flint St"
+    },
+    {
+      "street_id" : 1284,
+      "street_name" : "Dolores St"
+    },
+    {
+      "street_id" : 1285,
+      "street_name" : "Connecticut St"
+    },
+    {
+      "street_id" : 1286,
+      "street_name" : "Fernwood Dr"
+    },
+    {
+      "street_id" : 1287,
+      "street_name" : "Copper Aly"
+    },
+    {
+      "street_id" : 1288,
+      "street_name" : "Columbus Ave"
+    },
+    {
+      "street_id" : 1289,
+      "street_name" : "Fella Pl"
+    },
+    {
+      "street_id" : 1290,
+      "street_name" : "Colon Ave"
+    },
+    {
+      "street_id" : 1291,
+      "street_name" : "Garfield St"
+    },
+    {
+      "street_id" : 1292,
+      "street_name" : "Fair Ave"
+    },
+    {
+      "street_id" : 1293,
+      "street_name" : "Fairfield Way"
+    },
+    {
+      "street_id" : 1294,
+      "street_name" : "Everglade Dr"
+    },
+    {
+      "street_id" : 1295,
+      "street_name" : "Clifford Ter"
+    },
+    {
+      "street_id" : 1296,
+      "street_name" : "Gambier St"
+    },
+    {
+      "street_id" : 1297,
+      "street_name" : "Euclid Ave"
+    },
+    {
+      "street_id" : 1298,
+      "street_name" : "Delgado Pl"
+    },
+    {
+      "street_id" : 1299,
+      "street_name" : "Front St"
+    },
+    {
+      "street_id" : 1300,
+      "street_name" : "Gough St"
+    },
+    {
+      "street_id" : 1301,
+      "street_name" : "De Wolf St"
+    },
+    {
+      "street_id" : 1302,
+      "street_name" : "Davis St"
+    },
+    {
+      "street_id" : 1303,
+      "street_name" : "Elliot St"
+    },
+    {
+      "street_id" : 1304,
+      "street_name" : "Cuesta Ct"
+    },
+    {
+      "street_id" : 1305,
+      "street_name" : "Cumberland St"
+    },
+    {
+      "street_id" : 1306,
+      "street_name" : "Fortuna Ave"
+    },
+    {
+      "street_id" : 1307,
+      "street_name" : "El Plazuela Way"
+    },
+    {
+      "street_id" : 1308,
+      "street_name" : "Custom House Pl"
+    },
+    {
+      "street_id" : 1309,
+      "street_name" : "Cyril Magnin St"
+    },
+    {
+      "street_id" : 1310,
+      "street_name" : "Dakota St"
+    },
+    {
+      "street_id" : 1311,
+      "street_name" : "Gold Mine Dr"
+    },
+    {
+      "street_id" : 1312,
+      "street_name" : "Brussels St"
+    },
+    {
+      "street_id" : 1313,
+      "street_name" : "Chain Of Lakes Dr"
+    },
+    {
+      "street_id" : 1314,
+      "street_name" : "Brosnan St"
+    },
+    {
+      "street_id" : 1315,
+      "street_name" : "Baker St"
+    },
+    {
+      "street_id" : 1316,
+      "street_name" : "45th Ave"
+    },
+    {
+      "street_id" : 1317,
+      "street_name" : "Arthur Ave"
+    },
+    {
+      "street_id" : 1318,
+      "street_name" : "42nd Ave"
+    },
+    {
+      "street_id" : 1319,
+      "street_name" : "44th Ave"
+    },
+    {
+      "street_id" : 1320,
+      "street_name" : "Carpenter Ct"
+    },
+    {
+      "street_id" : 1321,
+      "street_name" : "Brannan St"
+    },
+    {
+      "street_id" : 1322,
+      "street_name" : "40th Ave"
+    },
+    {
+      "street_id" : 1323,
+      "street_name" : "Carrizal St"
+    },
+    {
+      "street_id" : 1324,
+      "street_name" : "Bernal Heights Blvd"
+    },
+    {
+      "street_id" : 1325,
+      "street_name" : "Carver St"
+    },
+    {
+      "street_id" : 1326,
+      "street_name" : "Capp St"
+    },
+    {
+      "street_id" : 1327,
+      "street_name" : "Cargo Way"
+    },
+    {
+      "street_id" : 1328,
+      "street_name" : "Carmel St"
+    },
+    {
+      "street_id" : 1329,
+      "street_name" : "Arnold Ave"
+    },
+    {
+      "street_id" : 1330,
+      "street_name" : "Burrows Dr"
+    },
+    {
+      "street_id" : 1331,
+      "street_name" : "Bertita St"
+    },
+    {
+      "street_id" : 1332,
+      "street_name" : "Bessie St"
+    },
+    {
+      "street_id" : 1333,
+      "street_name" : "Black Pl"
+    },
+    {
+      "street_id" : 1334,
+      "street_name" : "Anzavista Ave"
+    },
+    {
+      "street_id" : 1335,
+      "street_name" : "Caine Ave"
+    },
+    {
+      "street_id" : 1336,
+      "street_name" : "Behr Ave"
+    },
+    {
+      "street_id" : 1337,
+      "street_name" : "Belcher St"
+    },
+    {
+      "street_id" : 1338,
+      "street_name" : "Bellair Pl"
+    },
+    {
+      "street_id" : 1339,
+      "street_name" : "33rd Ave"
+    },
+    {
+      "street_id" : 1340,
+      "street_name" : "Bemis St"
+    },
+    {
+      "street_id" : 1341,
+      "street_name" : "Alpine Ter"
+    },
+    {
+      "street_id" : 1342,
+      "street_name" : "Alviso St"
+    },
+    {
+      "street_id" : 1343,
+      "street_name" : "Amazon Ave"
+    },
+    {
+      "street_id" : 1344,
+      "street_name" : "Burlwood Dr"
+    },
+    {
+      "street_id" : 1345,
+      "street_name" : "Chula Ln"
+    },
+    {
+      "street_id" : 1346,
+      "street_name" : "Burritt St"
+    },
+    {
+      "street_id" : 1347,
+      "street_name" : "Barneveld Ave"
+    },
+    {
+      "street_id" : 1348,
+      "street_name" : "Baldwin Ct"
+    },
+    {
+      "street_id" : 1349,
+      "street_name" : "Alder St"
+    },
+    {
+      "street_id" : 1350,
+      "street_name" : "Ambrose Bierce St"
+    },
+    {
+      "street_id" : 1351,
+      "street_name" : "Charles J Brenham Pl"
+    },
+    {
+      "street_id" : 1352,
+      "street_name" : "Chenery St"
+    },
+    {
+      "street_id" : 1353,
+      "street_name" : "Bancroft Ave"
+    },
+    {
+      "street_id" : 1354,
+      "street_name" : "Bannock St"
+    },
+    {
+      "street_id" : 1355,
+      "street_name" : "Acorn Aly"
+    },
+    {
+      "street_id" : 1356,
+      "street_name" : "Cecelia Ave"
+    },
+    {
+      "street_id" : 1357,
+      "street_name" : "27th Ave"
+    },
+    {
+      "street_id" : 1358,
+      "street_name" : "Hampshire St"
+    },
+    {
+      "street_id" : 1359,
+      "street_name" : "Harlem Aly"
+    },
+    {
+      "street_id" : 1360,
+      "street_name" : "Unnamed 161"
+    },
+    {
+      "street_id" : 1361,
+      "street_name" : "Finley Rd"
+    },
+    {
+      "street_id" : 1362,
+      "street_name" : "Walker Ct"
+    },
+    {
+      "street_id" : 1363,
+      "street_name" : "Bepler St"
+    },
+    {
+      "street_id" : 1364,
+      "street_name" : "Wright Loop"
+    },
+    {
+      "street_id" : 1365,
+      "street_name" : "Palace Of Fine Arts"
+    },
+    {
+      "street_id" : 1366,
+      "street_name" : "Unnamed 150"
+    },
+    {
+      "street_id" : 1367,
+      "street_name" : "Unnamed 151"
+    },
+    {
+      "street_id" : 1368,
+      "street_name" : "Unnamed 078"
+    },
+    {
+      "street_id" : 1369,
+      "street_name" : "Treat Ln"
+    },
+    {
+      "street_id" : 1370,
+      "street_name" : "Fort Miley 6"
+    },
+    {
+      "street_id" : 1371,
+      "street_name" : "Sibley Rd"
+    },
+    {
+      "street_id" : 1372,
+      "street_name" : "Pope Rd"
+    },
+    {
+      "street_id" : 1373,
+      "street_name" : "Portola St"
+    },
+    {
+      "street_id" : 1374,
+      "street_name" : "Presidio Blvd"
+    },
+    {
+      "street_id" : 1375,
+      "street_name" : "Ord St"
+    },
+    {
+      "street_id" : 1376,
+      "street_name" : "Taylor Rd"
+    },
+    {
+      "street_id" : 1377,
+      "street_name" : "Ramsel Ct"
+    },
+    {
+      "street_id" : 1378,
+      "street_name" : "Macarthur Ave"
+    },
+    {
+      "street_id" : 1379,
+      "street_name" : "General Kennedy Ave"
+    },
+    {
+      "street_id" : 1380,
+      "street_name" : "Patten Rd"
+    },
+    {
+      "street_id" : 1381,
+      "street_name" : "Merchant Rd"
+    },
+    {
+      "street_id" : 1382,
+      "street_name" : "Moraga Ave"
+    },
+    {
+      "street_id" : 1383,
+      "street_name" : "Lendrum Ct"
+    },
+    {
+      "street_id" : 1384,
+      "street_name" : "Funston Ave"
+    },
+    {
+      "street_id" : 1385,
+      "street_name" : "Hitchcock Ln"
+    },
+    {
+      "street_id" : 1386,
+      "street_name" : "Hitchcock St"
+    },
+    {
+      "street_id" : 1387,
+      "street_name" : "Canby St"
+    },
+    {
+      "street_id" : 1388,
+      "street_name" : "Craig Ct"
+    },
+    {
+      "street_id" : 1389,
+      "street_name" : "Battery Blaney Rd"
+    },
+    {
+      "street_id" : 1390,
+      "street_name" : "El Camino Del Mar"
+    },
+    {
+      "street_id" : 1391,
+      "street_name" : "Birmingham Rd"
+    },
+    {
+      "street_id" : 1392,
+      "street_name" : "Bowley St"
+    },
+    {
+      "street_id" : 1393,
+      "street_name" : "Vara St"
+    },
+    {
+      "street_id" : 1394,
+      "street_name" : "Battery Safford Rd"
+    },
+    {
+      "street_id" : 1395,
+      "street_name" : "Fort Mason 19"
+    },
+    {
+      "street_id" : 1396,
+      "street_name" : "Fort Mason 20"
+    },
+    {
+      "street_id" : 1397,
+      "street_name" : "Mariner Dr"
+    },
+    {
+      "street_id" : 1398,
+      "street_name" : "Bigelow Ct"
+    },
+    {
+      "street_id" : 1399,
+      "street_name" : "Macalla Rd"
+    },
+    {
+      "street_id" : 1400,
+      "street_name" : "Avenue I"
+    },
+    {
+      "street_id" : 1401,
+      "street_name" : "Yosemite Ave"
+    },
+    {
+      "street_id" : 1402,
+      "street_name" : "Kalmanovitz St"
+    },
+    {
+      "street_id" : 1403,
+      "street_name" : "Yacht Rd"
+    },
+    {
+      "street_id" : 1404,
+      "street_name" : "Yerba Buena Ave"
+    },
+    {
+      "street_id" : 1405,
+      "street_name" : "12th Ti St"
+    },
+    {
+      "street_id" : 1406,
+      "street_name" : "3rd Ti St"
+    },
+    {
+      "street_id" : 1407,
+      "street_name" : "Whiting St"
+    },
+    {
+      "street_id" : 1408,
+      "street_name" : "Woodward St"
+    },
+    {
+      "street_id" : 1409,
+      "street_name" : "Wilmot St"
+    },
+    {
+      "street_id" : 1410,
+      "street_name" : "Tingley St"
+    },
+    {
+      "street_id" : 1411,
+      "street_name" : "San Felipe Ave"
+    },
+    {
+      "street_id" : 1412,
+      "street_name" : "San Fernando Way"
+    },
+    {
+      "street_id" : 1413,
+      "street_name" : "San Gabriel Ave"
+    },
+    {
+      "street_id" : 1414,
+      "street_name" : "Sonoma St"
+    },
+    {
+      "street_id" : 1415,
+      "street_name" : "Valley St"
+    },
+    {
+      "street_id" : 1416,
+      "street_name" : "Valparaiso St"
+    },
+    {
+      "street_id" : 1417,
+      "street_name" : "Valencia St"
+    },
+    {
+      "street_id" : 1418,
+      "street_name" : "Uranus Ter"
+    },
+    {
+      "street_id" : 1419,
+      "street_name" : "Teddy Ave"
+    },
+    {
+      "street_id" : 1420,
+      "street_name" : "Sierra St"
+    },
+    {
+      "street_id" : 1421,
+      "street_name" : "Saint Francis Blvd"
+    },
+    {
+      "street_id" : 1422,
+      "street_name" : "Vale Ave"
+    },
+    {
+      "street_id" : 1423,
+      "street_name" : "Marina Blvd"
+    },
+    {
+      "street_id" : 1424,
+      "street_name" : "Fell St"
+    },
+    {
+      "street_id" : 1425,
+      "street_name" : "Russia Ave"
+    },
+    {
+      "street_id" : 1426,
+      "street_name" : "Upland Dr"
+    },
+    {
+      "street_id" : 1427,
+      "street_name" : "State Dr"
+    },
+    {
+      "street_id" : 1428,
+      "street_name" : "Sussex St"
+    },
+    {
+      "street_id" : 1429,
+      "street_name" : "Rivera St"
+    },
+    {
+      "street_id" : 1430,
+      "street_name" : "Fort Funston Rd"
+    },
+    {
+      "street_id" : 1431,
+      "street_name" : "Shannon St"
+    },
+    {
+      "street_id" : 1432,
+      "street_name" : "Shaw Aly"
+    },
+    {
+      "street_id" : 1433,
+      "street_name" : "Shawnee Ave"
+    },
+    {
+      "street_id" : 1434,
+      "street_name" : "Sunview Dr"
+    },
+    {
+      "street_id" : 1435,
+      "street_name" : "Schwerin St"
+    },
+    {
+      "street_id" : 1436,
+      "street_name" : "Rosemont Pl"
+    },
+    {
+      "street_id" : 1437,
+      "street_name" : "Summit St"
+    },
+    {
+      "street_id" : 1438,
+      "street_name" : "Santiago St"
+    },
+    {
+      "street_id" : 1439,
+      "street_name" : "Santos St"
+    },
+    {
+      "street_id" : 1440,
+      "street_name" : "Waller St"
+    },
+    {
+      "street_id" : 1441,
+      "street_name" : "Turner Ter"
+    },
+    {
+      "street_id" : 1442,
+      "street_name" : "Santa Ynez Ave"
+    },
+    {
+      "street_id" : 1443,
+      "street_name" : "Ward St"
+    },
+    {
+      "street_id" : 1444,
+      "street_name" : "Warner Pl"
+    },
+    {
+      "street_id" : 1445,
+      "street_name" : "Stockton Tunl"
+    },
+    {
+      "street_id" : 1446,
+      "street_name" : "States St"
+    },
+    {
+      "street_id" : 1447,
+      "street_name" : "Toyon Ln"
+    },
+    {
+      "street_id" : 1448,
+      "street_name" : "Trainor St"
+    },
+    {
+      "street_id" : 1449,
+      "street_name" : "Trumbull St"
+    },
+    {
+      "street_id" : 1450,
+      "street_name" : "Tucker Ave"
+    },
+    {
+      "street_id" : 1451,
+      "street_name" : "Southard Pl"
+    },
+    {
+      "street_id" : 1452,
+      "street_name" : "Southern Heights Ave"
+    },
+    {
+      "street_id" : 1453,
+      "street_name" : "San Marcos Ave"
+    },
+    {
+      "street_id" : 1454,
+      "street_name" : "San Miguel St"
+    },
+    {
+      "street_id" : 1455,
+      "street_name" : "Minna St"
+    },
+    {
+      "street_id" : 1456,
+      "street_name" : "Mirabel Ave"
+    },
+    {
+      "street_id" : 1457,
+      "street_name" : "Miraloma Dr"
+    },
+    {
+      "street_id" : 1458,
+      "street_name" : "Quane St"
+    },
+    {
+      "street_id" : 1459,
+      "street_name" : "Palou Ave"
+    },
+    {
+      "street_id" : 1460,
+      "street_name" : "Normandie Ter"
+    },
+    {
+      "street_id" : 1461,
+      "street_name" : "Michigan St"
+    },
+    {
+      "street_id" : 1462,
+      "street_name" : "Middlefield Dr"
+    },
+    {
+      "street_id" : 1463,
+      "street_name" : "Page St"
+    },
+    {
+      "street_id" : 1464,
+      "street_name" : "Pagoda Pl"
+    },
+    {
+      "street_id" : 1465,
+      "street_name" : "Newman St"
+    },
+    {
+      "street_id" : 1466,
+      "street_name" : "Minerva St"
+    },
+    {
+      "street_id" : 1467,
+      "street_name" : "New Montgomery St"
+    },
+    {
+      "street_id" : 1468,
+      "street_name" : "Merrill St"
+    },
+    {
+      "street_id" : 1469,
+      "street_name" : "Mccoppin St"
+    },
+    {
+      "street_id" : 1470,
+      "street_name" : "Potrero Ave"
+    },
+    {
+      "street_id" : 1471,
+      "street_name" : "Newell St"
+    },
+    {
+      "street_id" : 1472,
+      "street_name" : "Marsily St"
+    },
+    {
+      "street_id" : 1473,
+      "street_name" : "Napoleon St"
+    },
+    {
+      "street_id" : 1474,
+      "street_name" : "Natick St"
+    },
+    {
+      "street_id" : 1475,
+      "street_name" : "Munich St"
+    },
+    {
+      "street_id" : 1476,
+      "street_name" : "Mcallister St"
+    },
+    {
+      "street_id" : 1477,
+      "street_name" : "Moscow St"
+    },
+    {
+      "street_id" : 1478,
+      "street_name" : "Pond St"
+    },
+    {
+      "street_id" : 1479,
+      "street_name" : "Poplar St"
+    },
+    {
+      "street_id" : 1480,
+      "street_name" : "Orange Aly"
+    },
+    {
+      "street_id" : 1481,
+      "street_name" : "Diamond Heights Blvd"
+    },
+    {
+      "street_id" : 1482,
+      "street_name" : "Geary Blvd"
+    },
+    {
+      "street_id" : 1483,
+      "street_name" : "Pine St"
+    },
+    {
+      "street_id" : 1484,
+      "street_name" : "Pinto Ave"
+    },
+    {
+      "street_id" : 1485,
+      "street_name" : "Pioche St"
+    },
+    {
+      "street_id" : 1486,
+      "street_name" : "Plum St"
+    },
+    {
+      "street_id" : 1487,
+      "street_name" : "Mono St"
+    },
+    {
+      "street_id" : 1488,
+      "street_name" : "Riverton Dr"
+    },
+    {
+      "street_id" : 1489,
+      "street_name" : "Rivoli St"
+    },
+    {
+      "street_id" : 1490,
+      "street_name" : "Roanoke St"
+    },
+    {
+      "street_id" : 1491,
+      "street_name" : "Robert Kirk Ln"
+    },
+    {
+      "street_id" : 1492,
+      "street_name" : "Ringold St"
+    },
+    {
+      "street_id" : 1493,
+      "street_name" : "Rio Ct"
+    },
+    {
+      "street_id" : 1494,
+      "street_name" : "Rivas Ave"
+    },
+    {
+      "street_id" : 1495,
+      "street_name" : "Perine Pl"
+    },
+    {
+      "street_id" : 1496,
+      "street_name" : "Mississippi St"
+    },
+    {
+      "street_id" : 1497,
+      "street_name" : "Moffitt St"
+    },
+    {
+      "street_id" : 1498,
+      "street_name" : "Molimo Dr"
+    },
+    {
+      "street_id" : 1499,
+      "street_name" : "Richards Cir"
+    },
+    {
+      "street_id" : 1500,
+      "street_name" : "Rankin St"
+    },
+    {
+      "street_id" : 1501,
+      "street_name" : "Ravenwood Dr"
+    },
+    {
+      "street_id" : 1502,
+      "street_name" : "Reardon Rd"
+    },
+    {
+      "street_id" : 1503,
+      "street_name" : "Reservoir St"
+    },
+    {
+      "street_id" : 1504,
+      "street_name" : "Parnassus Ave"
+    },
+    {
+      "street_id" : 1505,
+      "street_name" : "Paul Ave"
+    },
+    {
+      "street_id" : 1506,
+      "street_name" : "Northwood Dr"
+    },
+    {
+      "street_id" : 1507,
+      "street_name" : "Macondray Ln"
+    },
+    {
+      "street_id" : 1508,
+      "street_name" : "Maddux Ave"
+    },
+    {
+      "street_id" : 1509,
+      "street_name" : "Loyola Ter"
+    },
+    {
+      "street_id" : 1510,
+      "street_name" : "Java St"
+    },
+    {
+      "street_id" : 1511,
+      "street_name" : "Loomis St"
+    },
+    {
+      "street_id" : 1512,
+      "street_name" : "Isola Way"
+    },
+    {
+      "street_id" : 1513,
+      "street_name" : "Italy Ave"
+    },
+    {
+      "street_id" : 1514,
+      "street_name" : "La Bica Way"
+    },
+    {
+      "street_id" : 1515,
+      "street_name" : "Greenwood Ave"
+    },
+    {
+      "street_id" : 1516,
+      "street_name" : "Green St"
+    },
+    {
+      "street_id" : 1517,
+      "street_name" : "Linda St"
+    },
+    {
+      "street_id" : 1518,
+      "street_name" : "Irwin St"
+    },
+    {
+      "street_id" : 1519,
+      "street_name" : "Guy Pl"
+    },
+    {
+      "street_id" : 1520,
+      "street_name" : "Lobos St"
+    },
+    {
+      "street_id" : 1521,
+      "street_name" : "Loehr St"
+    },
+    {
+      "street_id" : 1522,
+      "street_name" : "Lincoln Way"
+    },
+    {
+      "street_id" : 1523,
+      "street_name" : "Kezar Dr"
+    },
+    {
+      "street_id" : 1524,
+      "street_name" : "Kent St"
+    },
+    {
+      "street_id" : 1525,
+      "street_name" : "Illinois St"
+    },
+    {
+      "street_id" : 1526,
+      "street_name" : "Ina Ct"
+    },
+    {
+      "street_id" : 1527,
+      "street_name" : "Key Ave"
+    },
+    {
+      "street_id" : 1528,
+      "street_name" : "Karen Ct"
+    },
+    {
+      "street_id" : 1529,
+      "street_name" : "Levant St"
+    },
+    {
+      "street_id" : 1530,
+      "street_name" : "Leavenworth St"
+    },
+    {
+      "street_id" : 1531,
+      "street_name" : "Hunt St"
+    },
+    {
+      "street_id" : 1532,
+      "street_name" : "Lawton St"
+    },
+    {
+      "street_id" : 1533,
+      "street_name" : "Judah St"
+    },
+    {
+      "street_id" : 1534,
+      "street_name" : "Judson Ave"
+    },
+    {
+      "street_id" : 1535,
+      "street_name" : "Jules Ave"
+    },
+    {
+      "street_id" : 1536,
+      "street_name" : "Junior Ter"
+    },
+    {
+      "street_id" : 1537,
+      "street_name" : "Joost Ave"
+    },
+    {
+      "street_id" : 1538,
+      "street_name" : "Hooker Aly"
+    },
+    {
+      "street_id" : 1539,
+      "street_name" : "Hooper St"
+    },
+    {
+      "street_id" : 1540,
+      "street_name" : "Mansell St"
+    },
+    {
+      "street_id" : 1541,
+      "street_name" : "Marengo St"
+    },
+    {
+      "street_id" : 1542,
+      "street_name" : "Lassen Aly"
+    },
+    {
+      "street_id" : 1543,
+      "street_name" : "Hill St"
+    },
+    {
+      "street_id" : 1544,
+      "street_name" : "Malvina Pl"
+    },
+    {
+      "street_id" : 1545,
+      "street_name" : "Mangels Ave"
+    },
+    {
+      "street_id" : 1546,
+      "street_name" : "Lansing St"
+    },
+    {
+      "street_id" : 1547,
+      "street_name" : "Hernandez Ave"
+    },
+    {
+      "street_id" : 1548,
+      "street_name" : "Hickory St"
+    },
+    {
+      "street_id" : 1549,
+      "street_name" : "Foote Ave"
+    },
+    {
+      "street_id" : 1550,
+      "street_name" : "Ford St"
+    },
+    {
+      "street_id" : 1551,
+      "street_name" : "Dunnes Aly"
+    },
+    {
+      "street_id" : 1552,
+      "street_name" : "Dwight St"
+    },
+    {
+      "street_id" : 1553,
+      "street_name" : "Eastman St"
+    },
+    {
+      "street_id" : 1554,
+      "street_name" : "Crossover Dr"
+    },
+    {
+      "street_id" : 1555,
+      "street_name" : "Crown Ter"
+    },
+    {
+      "street_id" : 1556,
+      "street_name" : "Crystal St"
+    },
+    {
+      "street_id" : 1557,
+      "street_name" : "Cotter St"
+    },
+    {
+      "street_id" : 1558,
+      "street_name" : "Crescent Ave"
+    },
+    {
+      "street_id" : 1559,
+      "street_name" : "Gillette Ave"
+    },
+    {
+      "street_id" : 1560,
+      "street_name" : "Ecker St"
+    },
+    {
+      "street_id" : 1561,
+      "street_name" : "Corwin St"
+    },
+    {
+      "street_id" : 1562,
+      "street_name" : "Foerster St"
+    },
+    {
+      "street_id" : 1563,
+      "street_name" : "Fillmore St"
+    },
+    {
+      "street_id" : 1564,
+      "street_name" : "Double Rock St"
+    },
+    {
+      "street_id" : 1565,
+      "street_name" : "Geary St"
+    },
+    {
+      "street_id" : 1566,
+      "street_name" : "Filbert St"
+    },
+    {
+      "street_id" : 1567,
+      "street_name" : "Dow Pl"
+    },
+    {
+      "street_id" : 1568,
+      "street_name" : "Conservatory East Dr"
+    },
+    {
+      "street_id" : 1569,
+      "street_name" : "Converse St"
+    },
+    {
+      "street_id" : 1570,
+      "street_name" : "Coral Rd"
+    },
+    {
+      "street_id" : 1571,
+      "street_name" : "Felton St"
+    },
+    {
+      "street_id" : 1572,
+      "street_name" : "Farallones St"
+    },
+    {
+      "street_id" : 1573,
+      "street_name" : "Dodge St"
+    },
+    {
+      "street_id" : 1574,
+      "street_name" : "Gaviota Way"
+    },
+    {
+      "street_id" : 1575,
+      "street_name" : "Federal St"
+    },
+    {
+      "street_id" : 1576,
+      "street_name" : "Garden St"
+    },
+    {
+      "street_id" : 1577,
+      "street_name" : "Gateview Ct"
+    },
+    {
+      "street_id" : 1578,
+      "street_name" : "Fulton St"
+    },
+    {
+      "street_id" : 1579,
+      "street_name" : "Eucalyptus Dr"
+    },
+    {
+      "street_id" : 1580,
+      "street_name" : "Dichiera Ct"
+    },
+    {
+      "street_id" : 1581,
+      "street_name" : "Desmond St"
+    },
+    {
+      "street_id" : 1582,
+      "street_name" : "Clipper St"
+    },
+    {
+      "street_id" : 1583,
+      "street_name" : "Clover Ln"
+    },
+    {
+      "street_id" : 1584,
+      "street_name" : "Codman Pl"
+    },
+    {
+      "street_id" : 1585,
+      "street_name" : "Emery Ln"
+    },
+    {
+      "street_id" : 1586,
+      "street_name" : "Delta St"
+    },
+    {
+      "street_id" : 1587,
+      "street_name" : "Fremont St"
+    },
+    {
+      "street_id" : 1588,
+      "street_name" : "Encanto Ave"
+    },
+    {
+      "street_id" : 1589,
+      "street_name" : "Encline Ct"
+    },
+    {
+      "street_id" : 1590,
+      "street_name" : "Erkson Ct"
+    },
+    {
+      "street_id" : 1591,
+      "street_name" : "Escondido Ave"
+    },
+    {
+      "street_id" : 1592,
+      "street_name" : "Derby St"
+    },
+    {
+      "street_id" : 1593,
+      "street_name" : "Dedman Ct"
+    },
+    {
+      "street_id" : 1594,
+      "street_name" : "Del Vale Ave"
+    },
+    {
+      "street_id" : 1595,
+      "street_name" : "Grace St"
+    },
+    {
+      "street_id" : 1596,
+      "street_name" : "Grafton Ave"
+    },
+    {
+      "street_id" : 1597,
+      "street_name" : "Francisco St"
+    },
+    {
+      "street_id" : 1598,
+      "street_name" : "Elizabeth St"
+    },
+    {
+      "street_id" : 1599,
+      "street_name" : "France Ave"
+    },
+    {
+      "street_id" : 1600,
+      "street_name" : "Cresta Vista Dr"
+    },
+    {
+      "street_id" : 1601,
+      "street_name" : "El Verano Way"
+    },
+    {
+      "street_id" : 1602,
+      "street_name" : "Edgar Ave"
+    },
+    {
+      "street_id" : 1603,
+      "street_name" : "Edgewood Ave"
+    },
+    {
+      "street_id" : 1604,
+      "street_name" : "Gladys St"
+    },
+    {
+      "street_id" : 1605,
+      "street_name" : "Balboa St"
+    },
+    {
+      "street_id" : 1606,
+      "street_name" : "Badger St"
+    },
+    {
+      "street_id" : 1607,
+      "street_name" : "Aladdin Ter"
+    },
+    {
+      "street_id" : 1608,
+      "street_name" : "Brookdale Ave"
+    },
+    {
+      "street_id" : 1609,
+      "street_name" : "Acadia St"
+    },
+    {
+      "street_id" : 1610,
+      "street_name" : "Acevedo Ave"
+    },
+    {
+      "street_id" : 1611,
+      "street_name" : "Acme Aly"
+    },
+    {
+      "street_id" : 1612,
+      "street_name" : "Cashmere St"
+    },
+    {
+      "street_id" : 1613,
+      "street_name" : "Castelo Ave"
+    },
+    {
+      "street_id" : 1614,
+      "street_name" : "Ash St"
+    },
+    {
+      "street_id" : 1615,
+      "street_name" : "Carr St"
+    },
+    {
+      "street_id" : 1616,
+      "street_name" : "Broad St"
+    },
+    {
+      "street_id" : 1617,
+      "street_name" : "Auburn St"
+    },
+    {
+      "street_id" : 1618,
+      "street_name" : "August Aly"
+    },
+    {
+      "street_id" : 1619,
+      "street_name" : "Brant Aly"
+    },
+    {
+      "street_id" : 1620,
+      "street_name" : "Breen Pl"
+    },
+    {
+      "street_id" : 1621,
+      "street_name" : "Card Aly"
+    },
+    {
+      "street_id" : 1622,
+      "street_name" : "Brady St"
+    },
+    {
+      "street_id" : 1623,
+      "street_name" : "Ardath Ct"
+    },
+    {
+      "street_id" : 1624,
+      "street_name" : "Berwick Pl"
+    },
+    {
+      "street_id" : 1625,
+      "street_name" : "Beulah St"
+    },
+    {
+      "street_id" : 1626,
+      "street_name" : "Bishop St"
+    },
+    {
+      "street_id" : 1627,
+      "street_name" : "Blanken Ave"
+    },
+    {
+      "street_id" : 1628,
+      "street_name" : "Aquavista Way"
+    },
+    {
+      "street_id" : 1629,
+      "street_name" : "Calgary St"
+    },
+    {
+      "street_id" : 1630,
+      "street_name" : "Beaver St"
+    },
+    {
+      "street_id" : 1631,
+      "street_name" : "Bellevue Ave"
+    },
+    {
+      "street_id" : 1632,
+      "street_name" : "Amber Dr"
+    },
+    {
+      "street_id" : 1633,
+      "street_name" : "Amity Aly"
+    },
+    {
+      "street_id" : 1634,
+      "street_name" : "Anglo Aly"
+    },
+    {
+      "street_id" : 1635,
+      "street_name" : "Ankeny St"
+    },
+    {
+      "street_id" : 1636,
+      "street_name" : "Alpha St"
+    },
+    {
+      "street_id" : 1637,
+      "street_name" : "Alvarado St"
+    },
+    {
+      "street_id" : 1638,
+      "street_name" : "Burrows St"
+    },
+    {
+      "street_id" : 1639,
+      "street_name" : "Cielito Dr"
+    },
+    {
+      "street_id" : 1640,
+      "street_name" : "Burgoyne St"
+    },
+    {
+      "street_id" : 1641,
+      "street_name" : "Alhambra St"
+    },
+    {
+      "street_id" : 1642,
+      "street_name" : "Almaden Ct"
+    },
+    {
+      "street_id" : 1643,
+      "street_name" : "Chilton Ave"
+    },
+    {
+      "street_id" : 1644,
+      "street_name" : "Burr Ave"
+    },
+    {
+      "street_id" : 1645,
+      "street_name" : "Buchanan St"
+    },
+    {
+      "street_id" : 1646,
+      "street_name" : "Cherry St"
+    },
+    {
+      "street_id" : 1647,
+      "street_name" : "Balhi Ct"
+    },
+    {
+      "street_id" : 1648,
+      "street_name" : "Charlton Ct"
+    },
+    {
+      "street_id" : 1649,
+      "street_name" : "Bucareli Dr"
+    },
+    {
+      "street_id" : 1650,
+      "street_name" : "Barcelona Ave"
+    },
+    {
+      "street_id" : 1651,
+      "street_name" : "Acton St"
+    },
+    {
+      "street_id" : 1652,
+      "street_name" : "Addison St"
+    },
+    {
+      "street_id" : 1653,
+      "street_name" : "Aerial Way"
+    },
+    {
+      "street_id" : 1654,
+      "street_name" : "12th Ave"
+    },
+    {
+      "street_id" : 1655,
+      "street_name" : "21st Ave"
+    },
+    {
+      "street_id" : 1656,
+      "street_name" : "8th Ave"
+    },
+    {
+      "street_id" : 1657,
+      "street_name" : "Unnamed 188"
+    },
+    {
+      "street_id" : 1658,
+      "street_name" : "Zanowitz Ave"
+    },
+    {
+      "street_id" : 1659,
+      "street_name" : "19th Ave"
+    },
+    {
+      "street_id" : 1660,
+      "street_name" : "Aztec St"
+    },
+    {
+      "street_id" : 1661,
+      "street_name" : "28th St"
+    },
+    {
+      "street_id" : 1662,
+      "street_name" : "Harlan Pl"
+    },
+    {
+      "street_id" : 1663,
+      "street_name" : "Harold Ave"
+    },
+    {
+      "street_id" : 1664,
+      "street_name" : "Owens St"
+    },
+    {
+      "street_id" : 1665,
+      "street_name" : "Appleton St"
+    },
+    {
+      "street_id" : 1666,
+      "street_name" : "Vallejo St"
+    },
+    {
+      "street_id" : 1667,
+      "street_name" : "Sal St"
+    },
+    {
+      "street_id" : 1668,
+      "street_name" : "Unnamed 163"
+    },
+    {
+      "street_id" : 1669,
+      "street_name" : "Washington Blvd"
+    },
+    {
+      "street_id" : 1670,
+      "street_name" : "West Pacific Ave"
+    },
+    {
+      "street_id" : 1671,
+      "street_name" : "Wright Ct"
+    },
+    {
+      "street_id" : 1672,
+      "street_name" : "Wyman Ave"
+    },
+    {
+      "street_id" : 1673,
+      "street_name" : "Unnamed 144"
+    },
+    {
+      "street_id" : 1674,
+      "street_name" : "Unnamed 145"
+    },
+    {
+      "street_id" : 1675,
+      "street_name" : "Unnamed 075"
+    },
+    {
+      "street_id" : 1676,
+      "street_name" : "Fort Miley 7"
+    },
+    {
+      "street_id" : 1677,
+      "street_name" : "Lundeen St"
+    },
+    {
+      "street_id" : 1678,
+      "street_name" : "Pershing Dr"
+    },
+    {
+      "street_id" : 1679,
+      "street_name" : "Ralston Ave"
+    },
+    {
+      "street_id" : 1680,
+      "street_name" : "Crook St"
+    },
+    {
+      "street_id" : 1681,
+      "street_name" : "Ruger St"
+    },
+    {
+      "street_id" : 1682,
+      "street_name" : "Melrose Ave"
+    },
+    {
+      "street_id" : 1683,
+      "street_name" : "Menoher Ln"
+    },
+    {
+      "street_id" : 1684,
+      "street_name" : "Moore Ln"
+    },
+    {
+      "street_id" : 1685,
+      "street_name" : "Murray Ln"
+    },
+    {
+      "street_id" : 1686,
+      "street_name" : "French Ct"
+    },
+    {
+      "street_id" : 1687,
+      "street_name" : "Greenough Ave"
+    },
+    {
+      "street_id" : 1688,
+      "street_name" : "Ruckman Ave"
+    },
+    {
+      "street_id" : 1689,
+      "street_name" : "Dewitt Rd"
+    },
+    {
+      "street_id" : 1690,
+      "street_name" : "Blatchford Ln"
+    },
+    {
+      "street_id" : 1691,
+      "street_name" : "Bliss Rd"
+    },
+    {
+      "street_id" : 1692,
+      "street_name" : "Bowley Ct"
+    },
+    {
+      "street_id" : 1693,
+      "street_name" : "Brown St"
+    },
+    {
+      "street_id" : 1694,
+      "street_name" : "Hillcrest Rd"
+    },
+    {
+      "street_id" : 1695,
+      "street_name" : "Merrimac St"
+    },
+    {
+      "street_id" : 1696,
+      "street_name" : "Mission Bay South Blvd"
+    },
+    {
+      "street_id" : 1697,
+      "street_name" : "Pena St"
+    },
+    {
+      "street_id" : 1698,
+      "street_name" : "China Basin St"
+    },
+    {
+      "street_id" : 1699,
+      "street_name" : "Chinook Ct"
+    },
+    {
+      "street_id" : 1700,
+      "street_name" : "Avenue M"
+    },
+    {
+      "street_id" : 1701,
+      "street_name" : "Avenue N"
+    },
+    {
+      "street_id" : 1702,
+      "street_name" : "Exposition Dr"
+    },
+    {
+      "street_id" : 1703,
+      "street_name" : "Avenue B"
+    },
+    {
+      "street_id" : 1704,
+      "street_name" : "Avenue H"
+    },
+    {
+      "street_id" : 1705,
+      "street_name" : "Orsi Cir"
+    },
+    {
+      "street_id" : 1706,
+      "street_name" : "Worth St"
+    },
+    {
+      "street_id" : 1707,
+      "street_name" : "Wright St"
+    },
+    {
+      "street_id" : 1708,
+      "street_name" : "Winston Dr"
+    },
+    {
+      "street_id" : 1709,
+      "street_name" : "11th Ti St"
+    },
+    {
+      "street_id" : 1710,
+      "street_name" : "13th Ti St"
+    },
+    {
+      "street_id" : 1711,
+      "street_name" : "6th Ti St"
+    },
+    {
+      "street_id" : 1712,
+      "street_name" : "Wilder St"
+    },
+    {
+      "street_id" : 1713,
+      "street_name" : "West Portal Ave"
+    },
+    {
+      "street_id" : 1714,
+      "street_name" : "Woodland Ave"
+    },
+    {
+      "street_id" : 1715,
+      "street_name" : "Wayland St"
+    },
+    {
+      "street_id" : 1716,
+      "street_name" : "Wayne Pl"
+    },
+    {
+      "street_id" : 1717,
+      "street_name" : "Thor Ave"
+    },
+    {
+      "street_id" : 1718,
+      "street_name" : "Sparrow St"
+    },
+    {
+      "street_id" : 1719,
+      "street_name" : "San Buenaventura Way"
+    },
+    {
+      "street_id" : 1720,
+      "street_name" : "Van Dyke Ave"
+    },
+    {
+      "street_id" : 1721,
+      "street_name" : "Theresa St"
+    },
+    {
+      "street_id" : 1722,
+      "street_name" : "Somerset St"
+    },
+    {
+      "street_id" : 1723,
+      "street_name" : "Temescal Ter"
+    },
+    {
+      "street_id" : 1724,
+      "street_name" : "Salmon St"
+    },
+    {
+      "street_id" : 1725,
+      "street_name" : "San Andreas Way"
+    },
+    {
+      "street_id" : 1726,
+      "street_name" : "Rockwood Ct"
+    },
+    {
+      "street_id" : 1727,
+      "street_name" : "Upton St"
+    },
+    {
+      "street_id" : 1728,
+      "street_name" : "Sickles Ave"
+    },
+    {
+      "street_id" : 1729,
+      "street_name" : "Silliman St"
+    },
+    {
+      "street_id" : 1730,
+      "street_name" : "Ggp Access Road"
+    },
+    {
+      "street_id" : 1731,
+      "street_name" : "Concourse Dr"
+    },
+    {
+      "street_id" : 1732,
+      "street_name" : "Unnamed 139"
+    },
+    {
+      "street_id" : 1733,
+      "street_name" : "Sunset Blvd"
+    },
+    {
+      "street_id" : 1734,
+      "street_name" : "Sutter St"
+    },
+    {
+      "street_id" : 1735,
+      "street_name" : "Shields St"
+    },
+    {
+      "street_id" : 1736,
+      "street_name" : "Shore View Ave"
+    },
+    {
+      "street_id" : 1737,
+      "street_name" : "Unnamed 042"
+    },
+    {
+      "street_id" : 1738,
+      "street_name" : "Seville St"
+    },
+    {
+      "street_id" : 1739,
+      "street_name" : "Romain St"
+    },
+    {
+      "street_id" : 1740,
+      "street_name" : "University St"
+    },
+    {
+      "street_id" : 1741,
+      "street_name" : "Selby St"
+    },
+    {
+      "street_id" : 1742,
+      "street_name" : "Saint Francis Pl"
+    },
+    {
+      "street_id" : 1743,
+      "street_name" : "Channel St"
+    },
+    {
+      "street_id" : 1744,
+      "street_name" : "Unnamed 018"
+    },
+    {
+      "street_id" : 1745,
+      "street_name" : "Seminole Ave"
+    },
+    {
+      "street_id" : 1746,
+      "street_name" : "Rose St"
+    },
+    {
+      "street_id" : 1747,
+      "street_name" : "Stoneybrook Ave"
+    },
+    {
+      "street_id" : 1748,
+      "street_name" : "Stow Lake Dr"
+    },
+    {
+      "street_id" : 1749,
+      "street_name" : "Sargent St"
+    },
+    {
+      "street_id" : 1750,
+      "street_name" : "Turk Blvd"
+    },
+    {
+      "street_id" : 1751,
+      "street_name" : "Walter U Lum Pl"
+    },
+    {
+      "street_id" : 1752,
+      "street_name" : "Twin Peaks Blvd"
+    },
+    {
+      "street_id" : 1753,
+      "street_name" : "Steveloe Pl"
+    },
+    {
+      "street_id" : 1754,
+      "street_name" : "Waithman Way"
+    },
+    {
+      "street_id" : 1755,
+      "street_name" : "Waldo Aly"
+    },
+    {
+      "street_id" : 1756,
+      "street_name" : "Starr King Way"
+    },
+    {
+      "street_id" : 1757,
+      "street_name" : "Santa Paula Ave"
+    },
+    {
+      "street_id" : 1758,
+      "street_name" : "San Ramon Way"
+    },
+    {
+      "street_id" : 1759,
+      "street_name" : "Trader Vic Aly"
+    },
+    {
+      "street_id" : 1760,
+      "street_name" : "Treasury Pl"
+    },
+    {
+      "street_id" : 1761,
+      "street_name" : "Stanton St"
+    },
+    {
+      "street_id" : 1762,
+      "street_name" : "Varela Ave"
+    },
+    {
+      "street_id" : 1763,
+      "street_name" : "Park Presidio Bypass Dr"
+    },
+    {
+      "street_id" : 1764,
+      "street_name" : "Putnam St"
+    },
+    {
+      "street_id" : 1765,
+      "street_name" : "Quartz Way"
+    },
+    {
+      "street_id" : 1766,
+      "street_name" : "Quint St"
+    },
+    {
+      "street_id" : 1767,
+      "street_name" : "Palos Pl"
+    },
+    {
+      "street_id" : 1768,
+      "street_name" : "Nobles Aly"
+    },
+    {
+      "street_id" : 1769,
+      "street_name" : "Noe St"
+    },
+    {
+      "street_id" : 1770,
+      "street_name" : "Midcrest Way"
+    },
+    {
+      "street_id" : 1771,
+      "street_name" : "Prescott Ct"
+    },
+    {
+      "street_id" : 1772,
+      "street_name" : "Pretor Way"
+    },
+    {
+      "street_id" : 1773,
+      "street_name" : "Palmetto Ave"
+    },
+    {
+      "street_id" : 1774,
+      "street_name" : "Prague St"
+    },
+    {
+      "street_id" : 1775,
+      "street_name" : "Oxford St"
+    },
+    {
+      "street_id" : 1776,
+      "street_name" : "Nibbi Ct"
+    },
+    {
+      "street_id" : 1777,
+      "street_name" : "Navy Rd"
+    },
+    {
+      "street_id" : 1778,
+      "street_name" : "Naylor St"
+    },
+    {
+      "street_id" : 1779,
+      "street_name" : "Mccormick St"
+    },
+    {
+      "street_id" : 1780,
+      "street_name" : "Mclea Ct"
+    },
+    {
+      "street_id" : 1781,
+      "street_name" : "Naples St"
+    },
+    {
+      "street_id" : 1782,
+      "street_name" : "Marston Ave"
+    },
+    {
+      "street_id" : 1783,
+      "street_name" : "Osage Aly"
+    },
+    {
+      "street_id" : 1784,
+      "street_name" : "Natoma St"
+    },
+    {
+      "street_id" : 1785,
+      "street_name" : "Orizaba Ave"
+    },
+    {
+      "street_id" : 1786,
+      "street_name" : "Murray St"
+    },
+    {
+      "street_id" : 1787,
+      "street_name" : "Moss St"
+    },
+    {
+      "street_id" : 1788,
+      "street_name" : "Pomona St"
+    },
+    {
+      "street_id" : 1789,
+      "street_name" : "Poppy Ln"
+    },
+    {
+      "street_id" : 1790,
+      "street_name" : "Polaris Way"
+    },
+    {
+      "street_id" : 1791,
+      "street_name" : "Octavia St"
+    },
+    {
+      "street_id" : 1792,
+      "street_name" : "Ohlone Way"
+    },
+    {
+      "street_id" : 1793,
+      "street_name" : "Dr Carlton B Goodlett Pl"
+    },
+    {
+      "street_id" : 1794,
+      "street_name" : "Pizarro Way"
+    },
+    {
+      "street_id" : 1795,
+      "street_name" : "Pilgrim Ave"
+    },
+    {
+      "street_id" : 1796,
+      "street_name" : "Rico Way"
+    },
+    {
+      "street_id" : 1797,
+      "street_name" : "Phelps St"
+    },
+    {
+      "street_id" : 1798,
+      "street_name" : "Montcalm St"
+    },
+    {
+      "street_id" : 1799,
+      "street_name" : "Ritch St"
+    },
+    {
+      "street_id" : 1800,
+      "street_name" : "Peralta Ave"
+    },
+    {
+      "street_id" : 1801,
+      "street_name" : "Pfeiffer St"
+    },
+    {
+      "street_id" : 1802,
+      "street_name" : "Peabody St"
+    },
+    {
+      "street_id" : 1803,
+      "street_name" : "Moneta Ct"
+    },
+    {
+      "street_id" : 1804,
+      "street_name" : "Parkridge Dr"
+    },
+    {
+      "street_id" : 1805,
+      "street_name" : "Patterson St"
+    },
+    {
+      "street_id" : 1806,
+      "street_name" : "Lakeview Ave"
+    },
+    {
+      "street_id" : 1807,
+      "street_name" : "Lake St"
+    },
+    {
+      "street_id" : 1808,
+      "street_name" : "Hazelwood Ave"
+    },
+    {
+      "street_id" : 1809,
+      "street_name" : "Mabrey Ct"
+    },
+    {
+      "street_id" : 1810,
+      "street_name" : "Laguna St"
+    },
+    {
+      "street_id" : 1811,
+      "street_name" : "Jasper Pl"
+    },
+    {
+      "street_id" : 1812,
+      "street_name" : "Lower Ter"
+    },
+    {
+      "street_id" : 1813,
+      "street_name" : "Kramer Pl"
+    },
+    {
+      "street_id" : 1814,
+      "street_name" : "Guttenberg St"
+    },
+    {
+      "street_id" : 1815,
+      "street_name" : "Haight St"
+    },
+    {
+      "street_id" : 1816,
+      "street_name" : "Lloyd St"
+    },
+    {
+      "street_id" : 1817,
+      "street_name" : "Locksley Ave"
+    },
+    {
+      "street_id" : 1818,
+      "street_name" : "Iris Ave"
+    },
+    {
+      "street_id" : 1819,
+      "street_name" : "Industrial St Off Ramp"
+    },
+    {
+      "street_id" : 1820,
+      "street_name" : "Ils Ln"
+    },
+    {
+      "street_id" : 1821,
+      "street_name" : "Icehouse Aly"
+    },
+    {
+      "street_id" : 1822,
+      "street_name" : "Hudson Ave"
+    },
+    {
+      "street_id" : 1823,
+      "street_name" : "Via Bufano"
+    },
+    {
+      "street_id" : 1824,
+      "street_name" : "Julius St"
+    },
+    {
+      "street_id" : 1825,
+      "street_name" : "Juniper St"
+    },
+    {
+      "street_id" : 1826,
+      "street_name" : "Juanita Way"
+    },
+    {
+      "street_id" : 1827,
+      "street_name" : "Jones St"
+    },
+    {
+      "street_id" : 1828,
+      "street_name" : "Horace St"
+    },
+    {
+      "street_id" : 1829,
+      "street_name" : "Houston St"
+    },
+    {
+      "street_id" : 1830,
+      "street_name" : "Holladay Ave"
+    },
+    {
+      "street_id" : 1831,
+      "street_name" : "Hollis St"
+    },
+    {
+      "street_id" : 1832,
+      "street_name" : "Marcela Ave"
+    },
+    {
+      "street_id" : 1833,
+      "street_name" : "Margaret Ave"
+    },
+    {
+      "street_id" : 1834,
+      "street_name" : "John Muir Dr"
+    },
+    {
+      "street_id" : 1835,
+      "street_name" : "Jersey St"
+    },
+    {
+      "street_id" : 1836,
+      "street_name" : "Forest Knolls Dr"
+    },
+    {
+      "street_id" : 1837,
+      "street_name" : "Edith St"
+    },
+    {
+      "street_id" : 1838,
+      "street_name" : "Cowell Pl"
+    },
+    {
+      "street_id" : 1839,
+      "street_name" : "Crane St"
+    },
+    {
+      "street_id" : 1840,
+      "street_name" : "Germania St"
+    },
+    {
+      "street_id" : 1841,
+      "street_name" : "Eastwood Dr"
+    },
+    {
+      "street_id" : 1842,
+      "street_name" : "Crespi Dr"
+    },
+    {
+      "street_id" : 1843,
+      "street_name" : "Coso Ave"
+    },
+    {
+      "street_id" : 1844,
+      "street_name" : "Girard St"
+    },
+    {
+      "street_id" : 1845,
+      "street_name" : "Donahue St"
+    },
+    {
+      "street_id" : 1846,
+      "street_name" : "Conrad St"
+    },
+    {
+      "street_id" : 1847,
+      "street_name" : "Fairmount St"
+    },
+    {
+      "street_id" : 1848,
+      "street_name" : "Falmouth St"
+    },
+    {
+      "street_id" : 1849,
+      "street_name" : "Fanning Way"
+    },
+    {
+      "street_id" : 1850,
+      "street_name" : "Colin Pl"
+    },
+    {
+      "street_id" : 1851,
+      "street_name" : "Columbia Square St"
+    },
+    {
+      "street_id" : 1852,
+      "street_name" : "Farnum St"
+    },
+    {
+      "street_id" : 1853,
+      "street_name" : "Farview Ct"
+    },
+    {
+      "street_id" : 1854,
+      "street_name" : "Everson St"
+    },
+    {
+      "street_id" : 1855,
+      "street_name" : "Diamond St"
+    },
+    {
+      "street_id" : 1856,
+      "street_name" : "Cleary Ct"
+    },
+    {
+      "street_id" : 1857,
+      "street_name" : "Dicha Aly"
+    },
+    {
+      "street_id" : 1858,
+      "street_name" : "Clover St"
+    },
+    {
+      "street_id" : 1859,
+      "street_name" : "Gallagher Ln"
+    },
+    {
+      "street_id" : 1860,
+      "street_name" : "Delano Ave"
+    },
+    {
+      "street_id" : 1861,
+      "street_name" : "Del Sur Ave"
+    },
+    {
+      "street_id" : 1862,
+      "street_name" : "Essex St"
+    },
+    {
+      "street_id" : 1863,
+      "street_name" : "Elm St"
+    },
+    {
+      "street_id" : 1864,
+      "street_name" : "De Soto St"
+    },
+    {
+      "street_id" : 1865,
+      "street_name" : "Dartmouth St"
+    },
+    {
+      "street_id" : 1866,
+      "street_name" : "Austin St"
+    },
+    {
+      "street_id" : 1867,
+      "street_name" : "Cushman St"
+    },
+    {
+      "street_id" : 1868,
+      "street_name" : "Forest View Dr"
+    },
+    {
+      "street_id" : 1869,
+      "street_name" : "El Sereno Ct"
+    },
+    {
+      "street_id" : 1870,
+      "street_name" : "Cuvier St"
+    },
+    {
+      "street_id" : 1871,
+      "street_name" : "Cypress St"
+    },
+    {
+      "street_id" : 1872,
+      "street_name" : "Cyrus Pl"
+    },
+    {
+      "street_id" : 1873,
+      "street_name" : "Dalewood Way"
+    },
+    {
+      "street_id" : 1874,
+      "street_name" : "Danton St"
+    },
+    {
+      "street_id" : 1875,
+      "street_name" : "Danvers St"
+    },
+    {
+      "street_id" : 1876,
+      "street_name" : "Crestmont Dr"
+    },
+    {
+      "street_id" : 1877,
+      "street_name" : "Glenview Dr"
+    },
+    {
+      "street_id" : 1878,
+      "street_name" : "Brook St"
+    },
+    {
+      "street_id" : 1879,
+      "street_name" : "Alabama St"
+    },
+    {
+      "street_id" : 1880,
+      "street_name" : "Cayuga Ave"
+    },
+    {
+      "street_id" : 1881,
+      "street_name" : "46th Ave"
+    },
+    {
+      "street_id" : 1882,
+      "street_name" : "Bache St"
+    },
+    {
+      "street_id" : 1883,
+      "street_name" : "Arroyo Way"
+    },
+    {
+      "street_id" : 1884,
+      "street_name" : "Athens St"
+    },
+    {
+      "street_id" : 1885,
+      "street_name" : "Cesar Chavez St"
+    },
+    {
+      "street_id" : 1886,
+      "street_name" : "Brazil Ave"
+    },
+    {
+      "street_id" : 1887,
+      "street_name" : "30th St"
+    },
+    {
+      "street_id" : 1888,
+      "street_name" : "Carl St"
+    },
+    {
+      "street_id" : 1889,
+      "street_name" : "Bowling Green Dr"
+    },
+    {
+      "street_id" : 1890,
+      "street_name" : "Bradford St"
+    },
+    {
+      "street_id" : 1891,
+      "street_name" : "Arkansas St"
+    },
+    {
+      "street_id" : 1892,
+      "street_name" : "39th Ave"
+    },
+    {
+      "street_id" : 1893,
+      "street_name" : "Bonita St"
+    },
+    {
+      "street_id" : 1894,
+      "street_name" : "Bosworth St"
+    },
+    {
+      "street_id" : 1895,
+      "street_name" : "Argonaut Ave"
+    },
+    {
+      "street_id" : 1896,
+      "street_name" : "35th Ave"
+    },
+    {
+      "street_id" : 1897,
+      "street_name" : "Cambon Dr"
+    },
+    {
+      "street_id" : 1898,
+      "street_name" : "Blanche St"
+    },
+    {
+      "street_id" : 1899,
+      "street_name" : "Bluxome St"
+    },
+    {
+      "street_id" : 1900,
+      "street_name" : "Appleton Ave"
+    },
+    {
+      "street_id" : 1901,
+      "street_name" : "Bernard St"
+    },
+    {
+      "street_id" : 1902,
+      "street_name" : "Anson Pl"
+    },
+    {
+      "street_id" : 1903,
+      "street_name" : "Belden St"
+    },
+    {
+      "street_id" : 1904,
+      "street_name" : "Belgrave Ave"
+    },
+    {
+      "street_id" : 1905,
+      "street_name" : "Bella Vista Way"
+    },
+    {
+      "street_id" : 1906,
+      "street_name" : "Butte Pl"
+    },
+    {
+      "street_id" : 1907,
+      "street_name" : "Byron Ct"
+    },
+    {
+      "street_id" : 1908,
+      "street_name" : "Beatrice Ln"
+    },
+    {
+      "street_id" : 1909,
+      "street_name" : "Church St"
+    },
+    {
+      "street_id" : 1910,
+      "street_name" : "Claremont Blvd"
+    },
+    {
+      "street_id" : 1911,
+      "street_name" : "Bay St"
+    },
+    {
+      "street_id" : 1912,
+      "street_name" : "Alert Aly"
+    },
+    {
+      "street_id" : 1913,
+      "street_name" : "Clarence Pl"
+    },
+    {
+      "street_id" : 1914,
+      "street_name" : "Chumasero Dr"
+    },
+    {
+      "street_id" : 1915,
+      "street_name" : "Chesley St"
+    },
+    {
+      "street_id" : 1916,
+      "street_name" : "Alberta St"
+    },
+    {
+      "street_id" : 1917,
+      "street_name" : "Chatham Pl"
+    },
+    {
+      "street_id" : 1918,
+      "street_name" : "Bruce Ave"
+    },
+    {
+      "street_id" : 1919,
+      "street_name" : "Baltimore Way"
+    },
+    {
+      "street_id" : 1920,
+      "street_name" : "Banks St"
+    },
+    {
+      "street_id" : 1921,
+      "street_name" : "Admiral Ave"
+    },
+    {
+      "street_id" : 1922,
+      "street_name" : "24th St"
+    },
+    {
+      "street_id" : 1923,
+      "street_name" : "14th St"
+    },
+    {
+      "street_id" : 1924,
+      "street_name" : "11th St"
+    },
+    {
+      "street_id" : 1925,
+      "street_name" : "28th Ave"
+    },
+    {
+      "street_id" : 1926,
+      "street_name" : "2nd Ave"
+    },
+    {
+      "street_id" : 1927,
+      "street_name" : "2nd St"
+    },
+    {
+      "street_id" : 1928,
+      "street_name" : "Saint Germain Ave"
+    },
+    {
+      "street_id" : 1929,
+      "street_name" : "Hamlin St"
+    },
+    {
+      "street_id" : 1930,
+      "street_name" : "Hancock St"
+    },
+    {
+      "street_id" : 1931,
+      "street_name" : "Harney Way"
+    },
+    {
+      "street_id" : 1932,
+      "street_name" : "Owen St"
+    },
+    {
+      "street_id" : 1933,
+      "street_name" : "Young St"
+    },
+    {
+      "street_id" : 1934,
+      "street_name" : "Upton Ave"
+    },
+    {
+      "street_id" : 1935,
+      "street_name" : "Channel"
+    },
+    {
+      "street_id" : 1936,
+      "street_name" : "Wedemeyer St"
+    },
+    {
+      "street_id" : 1937,
+      "street_name" : "Winn Way"
+    },
+    {
+      "street_id" : 1938,
+      "street_name" : "Mason St"
+    },
+    {
+      "street_id" : 1939,
+      "street_name" : "Unnamed 146"
+    },
+    {
+      "street_id" : 1940,
+      "street_name" : "Unnamed 003"
+    },
+    {
+      "street_id" : 1941,
+      "street_name" : "Unnamed 015"
+    },
+    {
+      "street_id" : 1942,
+      "street_name" : "Fort Miley 4"
+    },
+    {
+      "street_id" : 1943,
+      "street_name" : "Sherman Rd"
+    },
+    {
+      "street_id" : 1944,
+      "street_name" : "Sibert Loop"
+    },
+    {
+      "street_id" : 1945,
+      "street_name" : "Pope Ct"
+    },
+    {
+      "street_id" : 1946,
+      "street_name" : "Oreilly Ave"
+    },
+    {
+      "street_id" : 1947,
+      "street_name" : "Thomas Ct"
+    },
+    {
+      "street_id" : 1948,
+      "street_name" : "Sanches St"
+    },
+    {
+      "street_id" : 1949,
+      "street_name" : "Schofield Rd"
+    },
+    {
+      "street_id" : 1950,
+      "street_name" : "Seawell Ln"
+    },
+    {
+      "street_id" : 1951,
+      "street_name" : "Marine Dr"
+    },
+    {
+      "street_id" : 1952,
+      "street_name" : "Kinzey St"
+    },
+    {
+      "street_id" : 1953,
+      "street_name" : "Legion Of Honor Dr"
+    },
+    {
+      "street_id" : 1954,
+      "street_name" : "Liggett Ave"
+    },
+    {
+      "street_id" : 1955,
+      "street_name" : "Gibson Rd"
+    },
+    {
+      "street_id" : 1956,
+      "street_name" : "14th Ave"
+    },
+    {
+      "street_id" : 1957,
+      "street_name" : "Battery Chamberlin Rd"
+    },
+    {
+      "street_id" : 1958,
+      "street_name" : "Battery Dynamite Rd"
+    },
+    {
+      "street_id" : 1959,
+      "street_name" : "Langdon Ct"
+    },
+    {
+      "street_id" : 1960,
+      "street_name" : "Fernandez St"
+    },
+    {
+      "street_id" : 1961,
+      "street_name" : "Fort Mason 9"
+    },
+    {
+      "street_id" : 1962,
+      "street_name" : "Bell Ct"
+    },
+    {
+      "street_id" : 1963,
+      "street_name" : "Nimitz Dr"
+    },
+    {
+      "street_id" : 1964,
+      "street_name" : "Macalla Ct"
+    },
+    {
+      "street_id" : 1965,
+      "street_name" : "Long Bridge St"
+    },
+    {
+      "street_id" : 1966,
+      "street_name" : "Dudley Rd"
+    },
+    {
+      "street_id" : 1967,
+      "street_name" : "North Gate Rd"
+    },
+    {
+      "street_id" : 1968,
+      "street_name" : "Avenue D"
+    },
+    {
+      "street_id" : 1969,
+      "street_name" : "Avenue F"
+    },
+    {
+      "street_id" : 1970,
+      "street_name" : "Zoe St"
+    },
+    {
+      "street_id" : 1971,
+      "street_name" : "Issleib Ave"
+    },
+    {
+      "street_id" : 1972,
+      "street_name" : "Yale St"
+    },
+    {
+      "street_id" : 1973,
+      "street_name" : "5th Ti St"
+    },
+    {
+      "street_id" : 1974,
+      "street_name" : "10th Ti St"
+    },
+    {
+      "street_id" : 1975,
+      "street_name" : "Willard North St"
+    },
+    {
+      "street_id" : 1976,
+      "street_name" : "West Point Rd"
+    },
+    {
+      "street_id" : 1977,
+      "street_name" : "Wood St"
+    },
+    {
+      "street_id" : 1978,
+      "street_name" : "Woodhaven Ct"
+    },
+    {
+      "street_id" : 1979,
+      "street_name" : "Woodside Ave"
+    },
+    {
+      "street_id" : 1980,
+      "street_name" : "Williams Ave"
+    },
+    {
+      "street_id" : 1981,
+      "street_name" : "Wills St"
+    },
+    {
+      "street_id" : 1982,
+      "street_name" : "Watchman Way"
+    },
+    {
+      "street_id" : 1983,
+      "street_name" : "Westmoorland Dr"
+    },
+    {
+      "street_id" : 1984,
+      "street_name" : "Westwood Dr"
+    },
+    {
+      "street_id" : 1985,
+      "street_name" : "Wheeler Ave"
+    },
+    {
+      "street_id" : 1986,
+      "street_name" : "Spreckels Lake Dr"
+    },
+    {
+      "street_id" : 1987,
+      "street_name" : "Vermont St"
+    },
+    {
+      "street_id" : 1988,
+      "street_name" : "Thorp Ln"
+    },
+    {
+      "street_id" : 1989,
+      "street_name" : "Tiffany Ave"
+    },
+    {
+      "street_id" : 1990,
+      "street_name" : "South Park"
+    },
+    {
+      "street_id" : 1991,
+      "street_name" : "San Bruno Ave"
+    },
+    {
+      "street_id" : 1992,
+      "street_name" : "San Carlos St"
+    },
+    {
+      "street_id" : 1993,
+      "street_name" : "Vandewater St"
+    },
+    {
+      "street_id" : 1994,
+      "street_name" : "Sola Ave"
+    },
+    {
+      "street_id" : 1995,
+      "street_name" : "Teresita Blvd"
+    },
+    {
+      "street_id" : 1996,
+      "street_name" : "Skyview Way"
+    },
+    {
+      "street_id" : 1997,
+      "street_name" : "Samoset St"
+    },
+    {
+      "street_id" : 1998,
+      "street_name" : "Van Buren St"
+    },
+    {
+      "street_id" : 1999,
+      "street_name" : "Rockridge Dr"
+    },
+    {
+      "street_id" : 2000,
+      "street_name" : "Shrader St"
+    },
+    {
+      "street_id" : 2001,
+      "street_name" : "Sagamore St"
+    },
+    {
+      "street_id" : 2002,
+      "street_name" : "Unnamed 107"
+    },
+    {
+      "street_id" : 2003,
+      "street_name" : "John F Kennedy Dr"
+    },
+    {
+      "street_id" : 2004,
+      "street_name" : "Unnamed 136"
+    },
+    {
+      "street_id" : 2005,
+      "street_name" : "Russell St"
+    },
+    {
+      "street_id" : 2006,
+      "street_name" : "Vidal Dr"
+    },
+    {
+      "street_id" : 2007,
+      "street_name" : "22nd St"
+    },
+    {
+      "street_id" : 2008,
+      "street_name" : "Sydney Way"
+    },
+    {
+      "street_id" : 2009,
+      "street_name" : "Tacoma St"
+    },
+    {
+      "street_id" : 2010,
+      "street_name" : "Romolo St"
+    },
+    {
+      "street_id" : 2011,
+      "street_name" : "Scott St"
+    },
+    {
+      "street_id" : 2012,
+      "street_name" : "Rutledge St"
+    },
+    {
+      "street_id" : 2013,
+      "street_name" : "Roscoe St"
+    },
+    {
+      "street_id" : 2014,
+      "street_name" : "Roselyn Ter"
+    },
+    {
+      "street_id" : 2015,
+      "street_name" : "Turk Murphy Ln"
+    },
+    {
+      "street_id" : 2016,
+      "street_name" : "Security Pacific Pl"
+    },
+    {
+      "street_id" : 2017,
+      "street_name" : "Santa Ysabel Ave"
+    },
+    {
+      "street_id" : 2018,
+      "street_name" : "Villa Ter"
+    },
+    {
+      "street_id" : 2019,
+      "street_name" : "Steiner St"
+    },
+    {
+      "street_id" : 2020,
+      "street_name" : "Stevenson St"
+    },
+    {
+      "street_id" : 2021,
+      "street_name" : "Sansome St"
+    },
+    {
+      "street_id" : 2022,
+      "street_name" : "Santa Ana Ave"
+    },
+    {
+      "street_id" : 2023,
+      "street_name" : "Sanchez St"
+    },
+    {
+      "street_id" : 2024,
+      "street_name" : "Division St"
+    },
+    {
+      "street_id" : 2025,
+      "street_name" : "Stanford Heights Ave"
+    },
+    {
+      "street_id" : 2026,
+      "street_name" : "Tocoloma Ave"
+    },
+    {
+      "street_id" : 2027,
+      "street_name" : "Toledo Way"
+    },
+    {
+      "street_id" : 2028,
+      "street_name" : "San Pablo Ave"
+    },
+    {
+      "street_id" : 2029,
+      "street_name" : "Vasquez Ave"
+    },
+    {
+      "street_id" : 2030,
+      "street_name" : "Vassar Pl"
+    },
+    {
+      "street_id" : 2031,
+      "street_name" : "Vega St"
+    },
+    {
+      "street_id" : 2032,
+      "street_name" : "Park Hill Ave"
+    },
+    {
+      "street_id" : 2033,
+      "street_name" : "Park Presidio Blvd"
+    },
+    {
+      "street_id" : 2034,
+      "street_name" : "Mint St"
+    },
+    {
+      "street_id" : 2035,
+      "street_name" : "Raccoon Dr"
+    },
+    {
+      "street_id" : 2036,
+      "street_name" : "Radio Ter"
+    },
+    {
+      "street_id" : 2037,
+      "street_name" : "Palo Alto Ave"
+    },
+    {
+      "street_id" : 2038,
+      "street_name" : "Paloma Ave"
+    },
+    {
+      "street_id" : 2039,
+      "street_name" : "Panorama Dr"
+    },
+    {
+      "street_id" : 2040,
+      "street_name" : "North Point St"
+    },
+    {
+      "street_id" : 2041,
+      "street_name" : "Middle West Dr"
+    },
+    {
+      "street_id" : 2042,
+      "street_name" : "Miley St"
+    },
+    {
+      "street_id" : 2043,
+      "street_name" : "Prado St"
+    },
+    {
+      "street_id" : 2044,
+      "street_name" : "Marne Ave"
+    },
+    {
+      "street_id" : 2045,
+      "street_name" : "Potomac St"
+    },
+    {
+      "street_id" : 2046,
+      "street_name" : "Moulton St"
+    },
+    {
+      "street_id" : 2047,
+      "street_name" : "Porter St"
+    },
+    {
+      "street_id" : 2048,
+      "street_name" : "Ordway St"
+    },
+    {
+      "street_id" : 2049,
+      "street_name" : "Pierce St"
+    },
+    {
+      "street_id" : 2050,
+      "street_name" : "Roach St"
+    },
+    {
+      "street_id" : 2051,
+      "street_name" : "Robblee Ave"
+    },
+    {
+      "street_id" : 2052,
+      "street_name" : "Montclair Ter"
+    },
+    {
+      "street_id" : 2053,
+      "street_name" : "Rey St"
+    },
+    {
+      "street_id" : 2054,
+      "street_name" : "Oshaughnessy Blvd"
+    },
+    {
+      "street_id" : 2055,
+      "street_name" : "Raymond Ave"
+    },
+    {
+      "street_id" : 2056,
+      "street_name" : "Oak Grove St"
+    },
+    {
+      "street_id" : 2057,
+      "street_name" : "Ralston St"
+    },
+    {
+      "street_id" : 2058,
+      "street_name" : "Nueva Ave"
+    },
+    {
+      "street_id" : 2059,
+      "street_name" : "Jennings Ct"
+    },
+    {
+      "street_id" : 2060,
+      "street_name" : "Hayes St"
+    },
+    {
+      "street_id" : 2061,
+      "street_name" : "Lyon St"
+    },
+    {
+      "street_id" : 2062,
+      "street_name" : "Lucy St"
+    },
+    {
+      "street_id" : 2063,
+      "street_name" : "Lurmont Ter"
+    },
+    {
+      "street_id" : 2064,
+      "street_name" : "Lyell St"
+    },
+    {
+      "street_id" : 2065,
+      "street_name" : "La Salle Ave"
+    },
+    {
+      "street_id" : 2066,
+      "street_name" : "La Grande Ave"
+    },
+    {
+      "street_id" : 2067,
+      "street_name" : "Kirkham St"
+    },
+    {
+      "street_id" : 2068,
+      "street_name" : "Loma Vista Ter"
+    },
+    {
+      "street_id" : 2069,
+      "street_name" : "Kimball Pl"
+    },
+    {
+      "street_id" : 2070,
+      "street_name" : "Kingston St"
+    },
+    {
+      "street_id" : 2071,
+      "street_name" : "Industrial St"
+    },
+    {
+      "street_id" : 2072,
+      "street_name" : "Kensington Way"
+    },
+    {
+      "street_id" : 2073,
+      "street_name" : "Grattan St"
+    },
+    {
+      "street_id" : 2074,
+      "street_name" : "Leland Ave"
+    },
+    {
+      "street_id" : 2075,
+      "street_name" : "Leo St"
+    },
+    {
+      "street_id" : 2076,
+      "street_name" : "Lexington St"
+    },
+    {
+      "street_id" : 2077,
+      "street_name" : "Liberty St"
+    },
+    {
+      "street_id" : 2078,
+      "street_name" : "Lilac St"
+    },
+    {
+      "street_id" : 2079,
+      "street_name" : "Junipero Serra  Blvd On Ramp"
+    },
+    {
+      "street_id" : 2080,
+      "street_name" : "Junipero Serra Blvd Off Ramp"
+    },
+    {
+      "street_id" : 2081,
+      "street_name" : "Idora Ave"
+    },
+    {
+      "street_id" : 2082,
+      "street_name" : "Lee Ave"
+    },
+    {
+      "street_id" : 2083,
+      "street_name" : "Mariposa St"
+    },
+    {
+      "street_id" : 2084,
+      "street_name" : "Laussat St"
+    },
+    {
+      "street_id" : 2085,
+      "street_name" : "Hollywood Ct"
+    },
+    {
+      "street_id" : 2086,
+      "street_name" : "Homer St"
+    },
+    {
+      "street_id" : 2087,
+      "street_name" : "Homewood Ct"
+    },
+    {
+      "street_id" : 2088,
+      "street_name" : "Mansfield St"
+    },
+    {
+      "street_id" : 2089,
+      "street_name" : "Maple St"
+    },
+    {
+      "street_id" : 2090,
+      "street_name" : "Highland Ave"
+    },
+    {
+      "street_id" : 2091,
+      "street_name" : "Higuera Ave"
+    },
+    {
+      "street_id" : 2092,
+      "street_name" : "Marin St"
+    },
+    {
+      "street_id" : 2093,
+      "street_name" : "Hillcrest Ct"
+    },
+    {
+      "street_id" : 2094,
+      "street_name" : "Hoff St"
+    },
+    {
+      "street_id" : 2095,
+      "street_name" : "Lyndhurst Dr"
+    },
+    {
+      "street_id" : 2096,
+      "street_name" : "Dunsmuir St"
+    },
+    {
+      "street_id" : 2097,
+      "street_name" : "Country Club Dr"
+    },
+    {
+      "street_id" : 2098,
+      "street_name" : "Gennessee St"
+    },
+    {
+      "street_id" : 2099,
+      "street_name" : "Drake St"
+    },
+    {
+      "street_id" : 2100,
+      "street_name" : "Arelious Walker Dr"
+    },
+    {
+      "street_id" : 2101,
+      "street_name" : "Dorchester Way"
+    },
+    {
+      "street_id" : 2102,
+      "street_name" : "Dore St"
+    },
+    {
+      "street_id" : 2103,
+      "street_name" : "Dorman Ave"
+    },
+    {
+      "street_id" : 2104,
+      "street_name" : "Corbett Ave"
+    },
+    {
+      "street_id" : 2105,
+      "street_name" : "Corbin Pl"
+    },
+    {
+      "street_id" : 2106,
+      "street_name" : "Corona St"
+    },
+    {
+      "street_id" : 2107,
+      "street_name" : "Gellert Dr"
+    },
+    {
+      "street_id" : 2108,
+      "street_name" : "Donner Ave"
+    },
+    {
+      "street_id" : 2109,
+      "street_name" : "Dorado Ter"
+    },
+    {
+      "street_id" : 2110,
+      "street_name" : "Conservatory Access Rd"
+    },
+    {
+      "street_id" : 2111,
+      "street_name" : "Fern St"
+    },
+    {
+      "street_id" : 2112,
+      "street_name" : "Colin P Kelly Jr St"
+    },
+    {
+      "street_id" : 2113,
+      "street_name" : "College Ave"
+    },
+    {
+      "street_id" : 2114,
+      "street_name" : "Collingwood St"
+    },
+    {
+      "street_id" : 2115,
+      "street_name" : "Colton St"
+    },
+    {
+      "street_id" : 2116,
+      "street_name" : "Cleo Rand Ave"
+    },
+    {
+      "street_id" : 2117,
+      "street_name" : "Gaven St"
+    },
+    {
+      "street_id" : 2118,
+      "street_name" : "Excelsior Ave"
+    },
+    {
+      "street_id" : 2119,
+      "street_name" : "Executive Park Blvd"
+    },
+    {
+      "street_id" : 2120,
+      "street_name" : "Fair Oaks St"
+    },
+    {
+      "street_id" : 2121,
+      "street_name" : "Colusa Pl"
+    },
+    {
+      "street_id" : 2122,
+      "street_name" : "Commer Ct"
+    },
+    {
+      "street_id" : 2123,
+      "street_name" : "Commercial St"
+    },
+    {
+      "street_id" : 2124,
+      "street_name" : "Evans Ave"
+    },
+    {
+      "street_id" : 2125,
+      "street_name" : "Colby St"
+    },
+    {
+      "street_id" : 2126,
+      "street_name" : "Gabilan Way"
+    },
+    {
+      "street_id" : 2127,
+      "street_name" : "Galindo Ave"
+    },
+    {
+      "street_id" : 2128,
+      "street_name" : "Emma St"
+    },
+    {
+      "street_id" : 2129,
+      "street_name" : "Espanola St"
+    },
+    {
+      "street_id" : 2130,
+      "street_name" : "De Long St"
+    },
+    {
+      "street_id" : 2131,
+      "street_name" : "Elmwood Way"
+    },
+    {
+      "street_id" : 2132,
+      "street_name" : "Elwood St"
+    },
+    {
+      "street_id" : 2133,
+      "street_name" : "Dehon St"
+    },
+    {
+      "street_id" : 2134,
+      "street_name" : "Del Monte St"
+    },
+    {
+      "street_id" : 2135,
+      "street_name" : "Granada Ave"
+    },
+    {
+      "street_id" : 2136,
+      "street_name" : "Elgin Park"
+    },
+    {
+      "street_id" : 2137,
+      "street_name" : "Ellert St"
+    },
+    {
+      "street_id" : 2138,
+      "street_name" : "Ellington Ave"
+    },
+    {
+      "street_id" : 2139,
+      "street_name" : "Davidson Ave"
+    },
+    {
+      "street_id" : 2140,
+      "street_name" : "Curtis St"
+    },
+    {
+      "street_id" : 2141,
+      "street_name" : "Fowler Ave"
+    },
+    {
+      "street_id" : 2142,
+      "street_name" : "Glenbrook Ave"
+    },
+    {
+      "street_id" : 2143,
+      "street_name" : "Glendale St"
+    },
+    {
+      "street_id" : 2144,
+      "street_name" : "Goethe St"
+    },
+    {
+      "street_id" : 2145,
+      "street_name" : "Easement"
+    },
+    {
+      "street_id" : 2146,
+      "street_name" : "Castenada Ave"
+    },
+    {
+      "street_id" : 2147,
+      "street_name" : "Bridgeview Dr"
+    },
+    {
+      "street_id" : 2148,
+      "street_name" : "Bosworth Way"
+    },
+    {
+      "street_id" : 2149,
+      "street_name" : "Cameron Way"
+    },
+    {
+      "street_id" : 2150,
+      "street_name" : "Camp St"
+    },
+    {
+      "street_id" : 2151,
+      "street_name" : "Boylston St"
+    },
+    {
+      "street_id" : 2152,
+      "street_name" : "Boardman Pl"
+    },
+    {
+      "street_id" : 2153,
+      "street_name" : "Arleta Ave"
+    },
+    {
+      "street_id" : 2154,
+      "street_name" : "Bonifacio St"
+    },
+    {
+      "street_id" : 2155,
+      "street_name" : "Arbor St"
+    },
+    {
+      "street_id" : 2156,
+      "street_name" : "Arco Way"
+    },
+    {
+      "street_id" : 2157,
+      "street_name" : "36th Ave"
+    },
+    {
+      "street_id" : 2158,
+      "street_name" : "California St"
+    },
+    {
+      "street_id" : 2159,
+      "street_name" : "Cambridge St"
+    },
+    {
+      "street_id" : 2160,
+      "street_name" : "Blake St"
+    },
+    {
+      "street_id" : 2161,
+      "street_name" : "32nd Ave"
+    },
+    {
+      "street_id" : 2162,
+      "street_name" : "Bennington St"
+    },
+    {
+      "street_id" : 2163,
+      "street_name" : "Bergen Aly"
+    },
+    {
+      "street_id" : 2164,
+      "street_name" : "Cabrillo St"
+    },
+    {
+      "street_id" : 2165,
+      "street_name" : "Caledonia St"
+    },
+    {
+      "street_id" : 2166,
+      "street_name" : "Bernice St"
+    },
+    {
+      "street_id" : 2167,
+      "street_name" : "Bush St"
+    },
+    {
+      "street_id" : 2168,
+      "street_name" : "Annapolis Ter"
+    },
+    {
+      "street_id" : 2169,
+      "street_name" : "Alta Mar Way"
+    },
+    {
+      "street_id" : 2170,
+      "street_name" : "Clarendon Ave"
+    },
+    {
+      "street_id" : 2171,
+      "street_name" : "Clarion Aly"
+    },
+    {
+      "street_id" : 2172,
+      "street_name" : "Claude Ln"
+    },
+    {
+      "street_id" : 2173,
+      "street_name" : "Beaumont Ave"
+    },
+    {
+      "street_id" : 2174,
+      "street_name" : "Buena Vista West Ave"
+    },
+    {
+      "street_id" : 2175,
+      "street_name" : "Burnett Ave"
+    },
+    {
+      "street_id" : 2176,
+      "street_name" : "Bay Shore Blvd Off Ramp"
+    },
+    {
+      "street_id" : 2177,
+      "street_name" : "Alemany Blvd Off Ramp"
+    },
+    {
+      "street_id" : 2178,
+      "street_name" : "Allison St"
+    },
+    {
+      "street_id" : 2179,
+      "street_name" : "Alma St"
+    },
+    {
+      "street_id" : 2180,
+      "street_name" : "Bartlett St"
+    },
+    {
+      "street_id" : 2181,
+      "street_name" : "Chester Ave"
+    },
+    {
+      "street_id" : 2182,
+      "street_name" : "Banbury Dr"
+    },
+    {
+      "street_id" : 2183,
+      "street_name" : "Bannan Pl"
+    },
+    {
+      "street_id" : 2184,
+      "street_name" : "Balance St"
+    },
+    {
+      "street_id" : 2185,
+      "street_name" : "Ahern Way"
+    },
+    {
+      "street_id" : 2186,
+      "street_name" : "Cerritos Ave"
+    },
+    {
+      "street_id" : 2187,
+      "street_name" : "16th Ave"
+    },
+    {
+      "street_id" : 2188,
+      "street_name" : "23rd St"
+    },
+    {
+      "street_id" : 2189,
+      "street_name" : "22nd Ave"
+    },
+    {
+      "street_id" : 2190,
+      "street_name" : "9th Ave"
+    },
+    {
+      "street_id" : 2191,
+      "street_name" : "9th St"
+    },
+    {
+      "street_id" : 2192,
+      "street_name" : "Unnamed 064"
+    },
+    {
+      "street_id" : 2193,
+      "street_name" : "18th St"
+    }
+  ]
+}
