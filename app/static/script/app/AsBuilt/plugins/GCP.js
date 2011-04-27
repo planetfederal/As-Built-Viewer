@@ -116,9 +116,6 @@ AsBuilt.plugins.GCP = Ext.extend(gxp.plugins.Tool, {
             "featureremoved": function(evt) { 
                 this.fireEvent("partialgcpremoved", this, evt.feature);
             },
-            "afterfeaturemodified": function(evt) {
-                this.fireEvent("partialgcpmodified", this, evt.feature);
-            },
             scope: this
         });
         this.drawControl = new OpenLayers.Control.DrawFeature(
@@ -135,8 +132,12 @@ AsBuilt.plugins.GCP = Ext.extend(gxp.plugins.Tool, {
                 }
             }
         );
-        this.modifyControl = new OpenLayers.Control.ModifyFeature(
+        var onComplete = function(feature) {
+            this.fireEvent("partialgcpmodified", this, feature);
+        };
+        this.modifyControl = new OpenLayers.Control.DragFeature(
             this.layer, {
+                onComplete: onComplete.createDelegate(this),
                 eventListeners: {
                     "activate": function(evt) {
                         this.fireEvent(evt.type, this, evt.object);
