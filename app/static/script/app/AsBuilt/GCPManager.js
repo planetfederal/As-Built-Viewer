@@ -52,7 +52,6 @@ AsBuilt.GCPManager = function(){
         registerTool: function(tool) {
             tools.push(tool);
             tool.on({
-                "beforepartialgcpadded": this.handleBeforeAdd,
                 "partialgcpadded": this.handleAdd,
                 "partialgcpremoved": this.handleRemove,
                 "partialgcpmodified": this.handleModified,
@@ -62,20 +61,12 @@ AsBuilt.GCPManager = function(){
         },
         handleActivate: function(tool, control) {
             for (var i=0,ii=tools.length; i<ii; ++i) {
-                for (var j=0, jj=tools[i].controls.length; j<jj; ++j) {
-                    if (tools[i].controls[j].CLASS_NAME === control.CLASS_NAME) {
-                        tools[i].controls[j].activate();
-                    }
-                }
+                me.findControl(tools[i], control.CLASS_NAME).activate();
             }
         },
         handleDeactivate: function(tool, control) {
             for (var i=0,ii=tools.length; i<ii; ++i) {
-                for (var j=0, jj=tools[i].controls.length; j<jj; ++j) {
-                    if (tools[i].controls[j].CLASS_NAME === control.CLASS_NAME) {
-                        tools[i].controls[j].deactivate();
-                    }
-                }
+                me.findControl(tools[i], control.CLASS_NAME).deactivate();
             }
         },
         handleModified: function(tool, feature) {
@@ -89,14 +80,6 @@ AsBuilt.GCPManager = function(){
                 record.set("worldy", feature.geometry.y);
             }
         },
-        handleBeforeAdd: function(tool, feature) {
-            if (lastType !== null && tool.type === lastType) {
-                 // TODO instruct the user that he should first digitize a point
-                 // in the Source Map followed by a corresponding point in the
-                 // Reference Map 
-                 return false;
-            }
-        },
         getTool: function(type) {
             for (var i=0, ii=tools.length; i<ii; ++i) {
                 if (tools[i].type === type) {
@@ -104,10 +87,21 @@ AsBuilt.GCPManager = function(){
                 }
             }
         },
+        findControl: function(tool, type) {
+            for (var i=0, ii=tool.controls.length; i<ii; ++i) {
+                if (tool.controls[i].CLASS_NAME === type) {
+                    return tool.controls[i];
+                }
+            }
+        },
         handleAdd: function(tool, feature) {
             if (tool.type === AsBuilt.plugins.GCP.IMAGE_COORDS) {
                 gcp = {source: feature};
+                me.findControl(tool, 'OpenLayers.Control.DrawFeature').deactivate();
+                me.findControl(me.getTool(AsBuilt.plugins.GCP.WORLD_COORDS), 'OpenLayers.Control.DrawFeature').activate();
             } else {
+                me.findControl(tool, 'OpenLayers.Control.DrawFeature').deactivate();
+                me.findControl(me.getTool(AsBuilt.plugins.GCP.IMAGE_COORDS), 'OpenLayers.Control.DrawFeature').activate();
                 gcp.target = feature;
                 gcp.id = counter;
                 store.loadData([[counter, gcp.source.geometry.x, gcp.source.geometry.y, gcp.target.geometry.x, gcp.target.geometry.y]], true);

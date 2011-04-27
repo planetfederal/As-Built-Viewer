@@ -125,12 +125,6 @@ AsBuilt.plugins.GCP = Ext.extend(gxp.plugins.Tool, {
             this.layer,    
             OpenLayers.Handler.Point, {
                 eventListeners: {
-                    "activate": function(evt) {
-                        this.fireEvent(evt.type, this, evt.object);
-                    },
-                    "deactivate": function(evt) {
-                        this.fireEvent(evt.type, this, evt.object);
-                    },
                     "featureadded": function(evt) {
                         if (!this.layer.map) {
                             this.target.mapPanel.map.addLayer(this.layer);
