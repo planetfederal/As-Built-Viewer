@@ -4,8 +4,8 @@ AsBuilt.plugins.GeoRowEditor = Ext.extend(Ext.ux.grid.RowEditor, {
 
     addGeometryText: 'Add geometry',
     modifyGeometryText: 'Modify geometry',
-
-    minButtonWidth: 100,
+    addGeometryTooltip: 'Add a new geometry by clicking in the map',
+    modifyGeometryTooltip: 'Modify an existing geometry',
 
     beforedestroy: function() {
         this.drawControl = null;
@@ -109,9 +109,11 @@ AsBuilt.plugins.GeoRowEditor = Ext.extend(Ext.ux.grid.RowEditor, {
         this.on('canceledit', function() {
                 this.grid.store.commitChanges();
                 // restore the original geometry
-                this.feature.layer.eraseFeatures([this.feature]);
-                this.feature.geometry = this.geometry;
-                this.feature.layer.drawFeature(this.feature);
+                if (this.feature) {
+                    this.feature.layer.eraseFeatures([this.feature]);
+                    this.feature.geometry = this.geometry;
+                    this.feature.layer.drawFeature(this.feature);
+                }
                 this.modifyControl && this.modifyControl.deactivate();
                 this.drawControl && this.drawControl.deactivate();
             }, this);
@@ -145,7 +147,7 @@ AsBuilt.plugins.GeoRowEditor = Ext.extend(Ext.ux.grid.RowEditor, {
             cls: 'x-btns',
             elements:'body',
             layout: 'table',
-            width: (this.minButtonWidth * numButtons) + (this.frameWidth * numButtons) + (this.buttonPad * numButtons*2), // width must be specified for IE
+            width: (this.minButtonWidth * (numButtons+1)) + (this.frameWidth * numButtons) + (this.buttonPad * numButtons*2), // width must be specified for IE
             items: [{
                 ref: 'saveBtn',
                 itemId: 'saveBtn',
@@ -161,17 +163,21 @@ AsBuilt.plugins.GeoRowEditor = Ext.extend(Ext.ux.grid.RowEditor, {
             }, {
                 xtype: 'button',
                 text: this.addGeometryText,
+                iconCls: "gxp-icon-addfeature",
+                tooltip: this.addGeometryTooltip,
                 handler: this.handleAddGeometry,
                 scope: this,
                 hidden: (this.record.get("feature").geometry !== null),
-                width: this.minButtonWidth
+                width: this.minButtonWidth*2
             }, {
                 xtype: 'button',
                 text: this.modifyGeometryText,
+                iconCls: "gxp-icon-modifyfeature",
+                tooltip: this.modifyGeometryTooltip,
                 handler: this.handleModifyGeometry,
                 scope: this,
                 hidden: (this.record.get("feature").geometry === null),
-                width: this.minButtonWidth
+                width: this.minButtonWidth*2
             }]
         });
         this.btns.render(this.bwrap);
