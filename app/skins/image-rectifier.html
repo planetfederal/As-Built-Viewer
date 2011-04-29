@@ -34,21 +34,27 @@
         OpenLayers.Layer.WMS.prototype.DEFAULT_PARAMS.transparent = true;
         OpenLayers.DOTS_PER_INCH = 25.4 / 0.28;
 
-        new Ext.Viewport({
-            layout:'hbox',
-            layoutConfig: {
-                align : 'stretch',
-                pack  : 'start'
-             },
-             items: [
-                 {id: 'map2', flex: 1, title: "Georeference: " + OpenLayers.Util.getParameters()["imagepath"]},
-                 {id: 'map1', flex: 1, title: "Base map"}
-            ]
-        });
+        var portalsReady = 0;
+        var createViewport = function() {
+            portalsReady++;
+            if (portalsReady == 2) {
+                new Ext.Viewport({
+                    layout:'hbox',
+                    layoutConfig: {
+                        align : 'stretch',
+                        pack  : 'start'
+                     },
+                     items: ["viewer2", "viewer1"]
+                });
+            }
+        };
 
-        var app = new gxp.Viewer({
-            portalConfig: {renderTo: Ext.getCmp('map1').body, height: Ext.getCmp('map1').body.getHeight()},
+        var app1 = new gxp.Viewer({
+            portalConfig: {id: "viewer1", xtype: "panel", flex: 1, title: "Base map"},
             portalItems: ["map"],
+            listeners: {
+                portalReady: createViewport
+            },
             mapItems: [
                 {
                     xtype: "gxp_scaleoverlay"
@@ -118,7 +124,7 @@
         });
 
         var app2 = new gxp.Viewer({
-            portalConfig: {renderTo: Ext.getCmp('map2').body, height: Ext.getCmp('map2').body.getHeight()},
+            portalConfig: {id: "viewer2", xtype: "panel", flex: 1, title: "Georeference: " + OpenLayers.Util.getParameters()["imagepath"]},
             portalItems: ["imagemap", {xtype: "grid", id: "gcpgrid", bbar: ["->"], region: "south", height: 150, title: "Control points", store: AsBuilt.GCPManager.getStore(),
                 columns: [
                     {
@@ -139,6 +145,9 @@
                     }
                 ]
             }],
+            listeners: {
+                 portalReady: createViewport
+            },
             mapItems: [{
                 xtype: "gx_zoomslider",
                 vertical: true,
