@@ -72,7 +72,7 @@ AsBuilt.form.AutoCompleteComboBox = Ext.extend(Ext.form.ComboBox, {
                 featurePrefix: this.featurePrefix,
                 srsName: this.srsName,
                 propertyNames: propertyNames,
-                maxFeatures: this.maxFeatures,
+                maxFeatures: this.maxFeatures
             }), setParamsAsOptions: true})
         });
         return AsBuilt.form.AutoCompleteComboBox.superclass.initComponent.apply(this, arguments);
