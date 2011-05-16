@@ -48,7 +48,34 @@ AsBuilt.ImagePopup = Ext.extend(GeoExt.Popup, {
             border: false,
             activeTab: 0,
             items: [{
-                xtype: 'panel', 
+                xtype: 'gx_mappanel',
+                items: [
+                    {
+                        xtype: "gx_zoomslider",
+                        vertical: true,
+                        height: 100
+                    }
+                ],
+                map: {
+                    controls: [
+                        new OpenLayers.Control.Navigation({zoomWheelOptions: {interval: 250}}),
+                        new OpenLayers.Control.PanPanel(),
+                        new OpenLayers.Control.ZoomPanel(),
+                        new OpenLayers.Control.Attribution()
+                    ],
+                    maxExtent:  new OpenLayers.Bounds(
+                        0, -4097,
+                        6696, 0
+                    ),
+                    maxResolution: 26.15625,
+                    units: 'm',
+                    projection: "EPSG:404000"
+                },
+                layers: [new OpenLayers.Layer.WMS(
+                    "Image preview",
+                    "/geoserver/wms",
+                    {layers: "asbuilt:images", CQL_FILTER: 'PATH=\'MR894_MUNI-METRO_MARKET_ST_TRACK_REPLACE-PHASE_3/CL-7449.TIF\''}
+                )],
                 title: this.previewTitle
             }, {
                 xtype: "panel",
