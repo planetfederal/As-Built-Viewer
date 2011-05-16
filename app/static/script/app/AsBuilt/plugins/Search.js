@@ -170,7 +170,7 @@ AsBuilt.plugins.Search = Ext.extend(gxp.plugins.Tool, {
      *  Get the filter for a certain form field.
      */
     getFilter: function(name) {
-        var value = Ext.getCmp(name).getValue();
+        var value = Ext.getCmp('searchform').getForm().findField(name).getValue();
         if (value !== "") {
             return new OpenLayers.Filter.Comparison({
                 type: OpenLayers.Filter.Comparison.LIKE,
@@ -263,7 +263,8 @@ AsBuilt.plugins.Search = Ext.extend(gxp.plugins.Tool, {
         this.container = new Ext.Container(Ext.apply({
             layout: "fit",
             items: [{
-                layout: "form",
+                xtype: "form",
+                id: "searchform",
                 autoScroll: true,
                 bbar: [{
                     text: this.queryActionText, 
@@ -292,7 +293,6 @@ AsBuilt.plugins.Search = Ext.extend(gxp.plugins.Tool, {
                             {
                                 xtype: "combo",
                                 name: this.typeDescriptionSearchField,
-                                id: this.typeDescriptionSearchField,
                                 mode: 'local',
                                 emptyText: this.documentTypeEmpty,
                                 triggerAction: 'all',
@@ -302,14 +302,14 @@ AsBuilt.plugins.Search = Ext.extend(gxp.plugins.Tool, {
                                 fieldLabel: this.documentTypeLabel
                             }, {
                                 xtype: "gxp_autocompletecombo",
-                                id: this.documentSubjectSearchField,
+                                fieldName: this.documentSubjectSearchField,
                                 url: url,
                                 featureType: featureInfo[1],
                                 featurePrefix: featureInfo[0],
                                 fieldLabel: this.documentSubjectLabel
                             }, {
                                 xtype: "gxp_autocompletecombo",
-                                id: this.fileNumberSearchField,
+                                fieldName: this.fileNumberSearchField,
                                 url: url,
                                 featureType: featureInfo[1],
                                 featurePrefix: featureInfo[0],
@@ -322,7 +322,7 @@ AsBuilt.plugins.Search = Ext.extend(gxp.plugins.Tool, {
                         items: [
                             {
                                 xtype: "gxp_autocompletecombo",
-                                id: this.facilitySearchField,
+                                fieldName: this.facilitySearchField,
                                 url: url,
                                 featureType: featureInfo[1],
                                 featurePrefix: featureInfo[0],
@@ -335,7 +335,7 @@ AsBuilt.plugins.Search = Ext.extend(gxp.plugins.Tool, {
                         items: [
                             {
                                 xtype: "gxp_autocompletecombo",
-                                id: this.contractSearchField,
+                                fieldName: this.contractSearchField,
                                 url: url,
                                 featureType: featureInfo[1],
                                 featurePrefix: featureInfo[0],
