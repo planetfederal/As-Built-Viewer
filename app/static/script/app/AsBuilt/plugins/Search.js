@@ -385,6 +385,7 @@ AsBuilt.plugins.Search = Ext.extend(gxp.plugins.Tool, {
                             }, {
                                 xtype: "combo",
                                 id: 'start_intersection',
+                                editable: false,
                                 store: intersectionsStore,
                                 disabled: true,
                                 lastQuery: '',
@@ -401,6 +402,7 @@ AsBuilt.plugins.Search = Ext.extend(gxp.plugins.Tool, {
                             }, {
                                 xtype: "combo",
                                 id: 'end_intersection',
+                                editable: false,
                                 store: intersectionsStore,
                                 disabled: true,
                                 lastQuery: '',
