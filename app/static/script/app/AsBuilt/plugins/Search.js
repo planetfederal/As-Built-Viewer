@@ -355,10 +355,14 @@ AsBuilt.plugins.Search = Ext.extend(gxp.plugins.Tool, {
                                 triggerAction: 'all',
                                 listeners: {
                                     "select": function(cmb, rec, idx) {
+                                        intersectionsStore.on('load', function() { 
+                                            intersectionsStore.filter('street', cmb.getValue());
+                                        });
                                         if (intersectionsStore.getCount() === 0) {
                                             intersectionsStore.load();
+                                        } else {
+                                            intersectionsStore.filter('street', cmb.getValue());
                                         }
-                                        intersectionsStore.filter('street', cmb.getValue());
                                         var cmps = ['start_intersection', 'end_intersection'];
                                         for (var i=0,ii=cmps.length; i<ii; i++) {
                                             var cmp = Ext.getCmp(cmps[i]);
@@ -383,6 +387,7 @@ AsBuilt.plugins.Search = Ext.extend(gxp.plugins.Tool, {
                                 id: 'start_intersection',
                                 store: intersectionsStore,
                                 disabled: true,
+                                lastQuery: '',
                                 displayField: 'cross_street',
                                 valueField: "intersection_id",
                                 triggerAction: 'all',
@@ -398,6 +403,7 @@ AsBuilt.plugins.Search = Ext.extend(gxp.plugins.Tool, {
                                 id: 'end_intersection',
                                 store: intersectionsStore,
                                 disabled: true,
+                                lastQuery: '',
                                 displayField: 'cross_street',
                                 valueField: "intersection_id",
                                 triggerAction: 'all',
