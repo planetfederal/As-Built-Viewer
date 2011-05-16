@@ -41,8 +41,8 @@ AsBuilt.ImagePopup = Ext.extend(GeoExt.Popup, {
     initComponent: function() {
         var feature = this.feature;
         if (!this.location) {
-            this.location = feature
-        };
+            this.location = feature;
+        }
         this.items = [{
             xtype: "tabpanel",
             border: false,

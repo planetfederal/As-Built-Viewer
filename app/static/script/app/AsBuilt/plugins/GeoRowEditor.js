@@ -2,6 +2,9 @@ Ext.ns('AsBuilt.plugins');
 
 AsBuilt.plugins.GeoRowEditor = Ext.extend(Ext.ux.grid.RowEditor, {
 
+    drawControl: null,
+    modifyControl: null,
+
     addGeometryText: 'Add geometry',
     modifyGeometryText: 'Modify geometry',
     addGeometryTooltip: 'Add a new geometry by clicking in the map',
@@ -21,7 +24,7 @@ AsBuilt.plugins.GeoRowEditor = Ext.extend(Ext.ux.grid.RowEditor, {
     handleAddGeometry: function() {
         var store = this.grid.store;
         this.feature = this.record.get("feature");
-        if (this.drawControl == null) {
+        if (this.drawControl === null) {
             this.drawControl = new OpenLayers.Control.DrawFeature(
                 new OpenLayers.Layer.Vector(),
                 OpenLayers.Handler.Point, {
@@ -46,7 +49,7 @@ AsBuilt.plugins.GeoRowEditor = Ext.extend(Ext.ux.grid.RowEditor, {
     handleModifyGeometry: function() {
         var store = this.grid.store;
         this.feature = this.record.get("feature");
-        if (this.modifyControl == null) {
+        if (this.modifyControl === null) {
             this.modifyControl = new OpenLayers.Control.ModifyFeature(
                 this.feature.layer,
                 {standalone: true}
@@ -104,8 +107,12 @@ AsBuilt.plugins.GeoRowEditor = Ext.extend(Ext.ux.grid.RowEditor, {
         AsBuilt.plugins.GeoRowEditor.superclass.init.apply(this, arguments);
         this.on('afteredit', function() {
                 this.grid.store.save();
-                this.modifyControl && this.modifyControl.deactivate();
-                this.drawControl && this.drawControl.deactivate();
+                if (this.modifyControl !== null) {
+                    this.modifyControl.deactivate();
+                }
+                if (this.drawControl !== null) {
+                    this.drawControl.deactivate();
+                }
             }, this);
         this.on('canceledit', function() {
                 this.grid.store.rejectChanges();
@@ -115,8 +122,12 @@ AsBuilt.plugins.GeoRowEditor = Ext.extend(Ext.ux.grid.RowEditor, {
                     this.feature.geometry = this.geometry;
                     this.feature.layer.drawFeature(this.feature);
                 }
-                this.modifyControl && this.modifyControl.deactivate();
-                this.drawControl && this.drawControl.deactivate();
+                if (this.modifyControl !== null) {
+                    this.modifyControl.deactivate();
+                }
+                if (this.drawControl !== null) {
+                    this.drawControl.deactivate();
+                }
             }, this);
         this.on("beforeedit", function(plugin, rowIndex) { 
                 var g = this.grid, view = g.getView(),

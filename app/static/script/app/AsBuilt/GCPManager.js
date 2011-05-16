@@ -41,7 +41,7 @@ AsBuilt.GCPManager = function(){
         ]
     });
 
-    var me = Ext.apply(new Ext.util.Observable, {
+    var me = Ext.apply(new Ext.util.Observable(), {
         constructor: function() {
             this.addEvents("gcpchanged");
             Ext.util.Observable.prototype.constructor.call(this, arguments);
@@ -113,20 +113,25 @@ AsBuilt.GCPManager = function(){
         },
         handleRemove: function(tool, feature) {
             lastType = null;
+            var layer = null;
             for (var i=0, ii=gcps.length; i<ii; ++i) {
                 if (gcps[i].source === feature) {
                     store.remove(store.getAt(store.find("id", gcps[i].id)));
                     // automatically remove the corresponding target
                     var target = gcps[i].target;
-                    var layer = target.layer;
-                    layer && layer.destroyFeatures([target]);
+                    layer = target.layer;
+                    if (layer !== null) {
+                        layer.destroyFeatures([target]);
+                    }
                 }
                 if (gcps[i].target === feature) {
                     store.remove(store.getAt(store.find("id", gcps[i].id)));
                     // automatically remove the corresponding source
                     var source = gcps[i].source;
-                    var layer = source.layer;
-                    layer && layer.destroyFeatures([source]);
+                    layer = source.layer;
+                    if (layer !== null) {
+                        layer.destroyFeatures([source]);
+                    }
                 }
             }
             me.fireEvent("gcpchanged", me, me.getGCPs().length);

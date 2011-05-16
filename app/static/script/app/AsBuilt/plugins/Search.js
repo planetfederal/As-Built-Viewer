@@ -140,14 +140,14 @@ AsBuilt.plugins.Search = Ext.extend(gxp.plugins.Tool, {
         }
         var start = Ext.getCmp('start_intersection').getValue();
         var end = Ext.getCmp('end_intersection').getValue();
-        if (start != "" && end != "") {
+        if (start !== "" && end !== "") {
             this.cnns = [];
             // take all cnn from minIndex to maxIndex - 1
             var minIndex = Math.min(start, end);
             var maxIndex = Math.max(start, end);
             this.cnnStore.filter({
                 fn: function(record) {
-                    var idx = parseInt(record.get("intersection_id"));
+                    var idx = parseInt(record.get("intersection_id"), 10);
                     return (idx >= minIndex && idx < maxIndex);
                 },
                 scope: this
@@ -175,7 +175,7 @@ AsBuilt.plugins.Search = Ext.extend(gxp.plugins.Tool, {
      */
     getFilter: function(name) {
         var value = Ext.getCmp(name).getValue();
-        if (value != "") {
+        if (value !== "") {
             return new OpenLayers.Filter.Comparison({
                 type: OpenLayers.Filter.Comparison.LIKE,
                 matchCase: false,
@@ -193,6 +193,7 @@ AsBuilt.plugins.Search = Ext.extend(gxp.plugins.Tool, {
     performSearch: function() {
         var featureManager = this.target.tools[this.featureManager];
         var filters = [];
+        var i = null, ii = null;
         var fields = [
             this.typeDescriptionSearchField, 
             this.contractSearchField, 
@@ -200,7 +201,7 @@ AsBuilt.plugins.Search = Ext.extend(gxp.plugins.Tool, {
             this.documentSubjectSearchField, 
             this.fileNumberSearchField
         ];
-        for (var i=0,len=fields.length;i<len;++i) {
+        for (i=0,ii=fields.length;i<ii;++i) {
             var filter = this.getFilter(fields[i]);
             if (filter !== null) {
                 filters.push(filter);
@@ -216,7 +217,7 @@ AsBuilt.plugins.Search = Ext.extend(gxp.plugins.Tool, {
         }
         if (this.cnns) {
             var subFilters = [];
-            for (var i=0,ii=this.cnns.length;i<ii;i++) {
+            for (i=0,ii=this.cnns.length;i<ii;i++) {
                 subFilters.push(new OpenLayers.Filter.Comparison({
                     type: OpenLayers.Filter.Comparison.LIKE,
                     property: this.cnnField,
