@@ -6,10 +6,6 @@
  * of the license.
  */
 
-/**
- * @include AsBuilt/widgets/form/AutoCompleteComboBox.js
- */
-
 Ext.ns("AsBuilt.plugins");
 
 /** api: (define)
@@ -305,14 +301,14 @@ AsBuilt.plugins.Search = Ext.extend(gxp.plugins.Tool, {
                                 valueField: 'type',
                                 fieldLabel: this.documentTypeLabel
                             }, {
-                                xtype: "app_autocompletecombo",
+                                xtype: "gxp_autocompletecombo",
                                 id: this.documentSubjectSearchField,
                                 url: url,
                                 featureType: featureInfo[1],
                                 featurePrefix: featureInfo[0],
                                 fieldLabel: this.documentSubjectLabel
                             }, {
-                                xtype: "app_autocompletecombo",
+                                xtype: "gxp_autocompletecombo",
                                 id: this.fileNumberSearchField,
                                 url: url,
                                 featureType: featureInfo[1],
@@ -325,7 +321,7 @@ AsBuilt.plugins.Search = Ext.extend(gxp.plugins.Tool, {
                         title: "Facilities",
                         items: [
                             {
-                                xtype: "app_autocompletecombo",
+                                xtype: "gxp_autocompletecombo",
                                 id: this.facilitySearchField,
                                 url: url,
                                 featureType: featureInfo[1],
@@ -338,7 +334,7 @@ AsBuilt.plugins.Search = Ext.extend(gxp.plugins.Tool, {
                         title: "Contracts",
                         items: [
                             {
-                                xtype: "app_autocompletecombo",
+                                xtype: "gxp_autocompletecombo",
                                 id: this.contractSearchField,
                                 url: url,
                                 featureType: featureInfo[1],

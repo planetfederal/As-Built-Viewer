@@ -6,10 +6,6 @@
  * of the license.
  */
 
-/**
- * @requires AsBuilt/widgets/form/AutoCompleteComboBox.js
- */
-
 /** api: (define)
  *  module = AsBuilt.plugins
  *  class = Geocoder
@@ -34,7 +30,7 @@ AsBuilt.plugins.Geocoder = Ext.extend(gxp.plugins.Tool, {
 
     init: function(target) {
 
-        var combo = new AsBuilt.form.AutoCompleteComboBox(Ext.apply({
+        var combo = new gxp.form.AutoCompleteComboBox(Ext.apply({
             listeners: {
                 select: this.onComboSelect,
                 scope: this
