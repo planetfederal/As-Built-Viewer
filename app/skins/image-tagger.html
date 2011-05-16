@@ -127,7 +127,14 @@
                         id: "ADDRESS",
                         geometryName: "GEOM",
                         emptyText: "Search for a location ...",
-                        listEmptyText: "- no matches -"
+                        listEmptyText: "- no matches -",
+                        customSortInfo: {
+                            matcher: "^(\\d+)\\s+(.*)$",
+                            parts: [
+                                {order: 1, sortType: "asInt"}, 
+                                {order: 0, sortType: "asUCString"}
+                            ]
+                        }
                     }
                 }, {
                     ptype: "app_search",
