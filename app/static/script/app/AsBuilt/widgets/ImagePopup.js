@@ -43,6 +43,10 @@ AsBuilt.ImagePopup = Ext.extend(GeoExt.Popup, {
         if (!this.location) {
             this.location = feature;
         }
+        var width = parseInt(feature.attributes.WIDTH, 10);
+        var height = parseInt(feature.attributes.HEIGHT, 10);
+        // remove first / and add file extension
+        var path = feature.attributes.PATH.substring(1) + "." + feature.attributes.FILETYPE;
         this.items = [{
             xtype: "tabpanel",
             border: false,
@@ -64,17 +68,17 @@ AsBuilt.ImagePopup = Ext.extend(GeoExt.Popup, {
                         new OpenLayers.Control.Attribution()
                     ],
                     maxExtent:  new OpenLayers.Bounds(
-                        0, -4097,
-                        6696, 0
+                        0, -width,
+                        height, 0
                     ),
-                    maxResolution: 26.15625,
+                    maxResolution: width/256,
                     units: 'm',
                     projection: "EPSG:404000"
                 },
                 layers: [new OpenLayers.Layer.WMS(
                     "Image preview",
                     "/geoserver/wms",
-                    {layers: "asbuilt:images", CQL_FILTER: 'PATH=\'MR894_MUNI-METRO_MARKET_ST_TRACK_REPLACE-PHASE_3/CL-7449.TIF\''}
+                    {layers: "asbuilt:images", CQL_FILTER: "PATH='"+path+"'"}
                 )],
                 title: this.previewTitle
             }, {
