@@ -373,6 +373,9 @@ AsBuilt.plugins.Search = Ext.extend(gxp.plugins.Tool, {
                                 store: new Ext.data.JsonStore({
                                     fields: ['street_name', 'street_id'],
                                     root: 'streets',
+                                    sortInfo: {
+                                        field: 'street_name'
+                                    },
                                     url: this.streetsURL
                                 })
                             }, {
