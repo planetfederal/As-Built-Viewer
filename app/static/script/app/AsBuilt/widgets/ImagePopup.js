@@ -92,12 +92,17 @@ AsBuilt.ImagePopup = Ext.extend(GeoExt.Popup, {
             }, {
                 xtype: "form",
                 id: "memoform",
+                defaults: {
+                    style: {
+                        margin: "7px"
+                    }
+                },
                 border: false,
                 hideLabels: true,
                 items: [
                     {
                         xtype: "textarea",
-                        width: (this.width) ? this.width-20 : null,
+                        width: (this.width) ? this.width-35 : null,
                         grow: true,
                         name: "memo",
                         value: feature.attributes[this.memoField],
