@@ -229,12 +229,16 @@ AsBuilt.plugins.Search = Ext.extend(gxp.plugins.Tool, {
                 filters.push(subFilters[0]);
             }
         }
-        featureManager.loadFeatures(
-            new OpenLayers.Filter.Logical({
-                type: OpenLayers.Filter.Logical.AND,
-                filters: filters
-            })
-        );
+        if (filters.length > 1) {
+            featureManager.loadFeatures(
+                new OpenLayers.Filter.Logical({
+                    type: OpenLayers.Filter.Logical.AND,
+                    filters: filters
+                })
+            );
+        } else {
+            featureManager.loadFeatures(filters[0]);
+        }
     },
 
     /** private: method[initContainer]
