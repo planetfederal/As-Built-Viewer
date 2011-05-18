@@ -45,7 +45,7 @@ AsBuilt.ImagePopup = Ext.extend(GeoExt.Popup, {
     /** private: method[initComponent]
      */
     initComponent: function() {
-        this.addEvents("featuremodified");
+        this.addEvents("featuremodified", "canceledit");
         var feature = this.feature;
         if (!this.location) {
             this.location = feature;
@@ -97,7 +97,7 @@ AsBuilt.ImagePopup = Ext.extend(GeoExt.Popup, {
                 items: [
                     {
                         xtype: "textarea",
-                        width: (this.width) ? this.width-10 : null,
+                        width: (this.width) ? this.width-20 : null,
                         grow: true,
                         name: "memo",
                         value: feature.attributes[this.memoField],
@@ -105,7 +105,21 @@ AsBuilt.ImagePopup = Ext.extend(GeoExt.Popup, {
                     }
                 ],
                 title: this.attributesTitle,
-                bbar: [{hidden: this.readOnly, handler: this.saveMemo, scope: this, text: "Save", iconCls: 'gxp-icon-save'}]
+                bbar: [
+                    {
+                        hidden: this.readOnly,
+                        handler: this.cancelEditing,
+                        scope: this,
+                        text: "Cancel",
+                        iconCls: 'cancel'
+                    }, {
+                        hidden: this.readOnly,
+                        handler: this.saveMemo,
+                        scope: this,
+                        text: "Save",
+                        iconCls: 'save'
+                    }
+                ]
             }]
         }];
         AsBuilt.ImagePopup.superclass.initComponent.call(this);
@@ -121,6 +135,12 @@ AsBuilt.ImagePopup = Ext.extend(GeoExt.Popup, {
         layer && layer.events.triggerEvent("featuremodified", {
             feature: this.feature
         });
+    },
+
+    cancelEditing: function() {
+        this.setFeatureState(null);
+        this.fireEvent("canceledit", this, this.feature);
+        this.close();
     },
 
     saveMemo: function() {
