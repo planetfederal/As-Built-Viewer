@@ -45,6 +45,7 @@ AsBuilt.ImagePopup = Ext.extend(GeoExt.Popup, {
     /** private: method[initComponent]
      */
     initComponent: function() {
+        this.addEvents("featuremodified");
         var feature = this.feature;
         if (!this.location) {
             this.location = feature;
@@ -113,6 +114,7 @@ AsBuilt.ImagePopup = Ext.extend(GeoExt.Popup, {
     saveMemo: function() {
         var value = Ext.getCmp("memoform").getForm().findField('memo').getValue();
         this.feature.attributes[this.memoField] = value;
+        this.fireEvent("featuremodified", this, this.feature);
     }
 
 });
