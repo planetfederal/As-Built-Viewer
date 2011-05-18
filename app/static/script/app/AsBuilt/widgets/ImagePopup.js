@@ -111,9 +111,22 @@ AsBuilt.ImagePopup = Ext.extend(GeoExt.Popup, {
         AsBuilt.ImagePopup.superclass.initComponent.call(this);
     },
 
+    /** private: method[setFeatureState]
+      *  Set the state of this popup's feature and trigger a featuremodified
+      *  event on the feature's layer.   
+      */
+    setFeatureState: function(state) {
+        this.feature.state = state;
+        var layer = this.feature.layer;
+        layer && layer.events.triggerEvent("featuremodified", {
+            feature: this.feature
+        });
+    },
+
     saveMemo: function() {
         var value = Ext.getCmp("memoform").getForm().findField('memo').getValue();
         this.feature.attributes[this.memoField] = value;
+        this.setFeatureState(OpenLayers.State.UPDATE);
         this.fireEvent("featuremodified", this, this.feature);
     }
 
