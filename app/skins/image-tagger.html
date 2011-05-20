@@ -152,7 +152,7 @@
                     outputConfig: {
                         loadMask: true,
                         xtype: "app_geometrygrid",
-                        rectifierUrlTemplate: new Ext.XTemplate('./image-rectifier?imagepath={[values.PATH.substring(1)]}.{FILETYPE}&width={WIDTH}&height={HEIGHT}'),
+                        rectifierBaseUrl: './image-rectifier?',
                         plugins: [{
                             ptype: 'app_georoweditor'
                         }],

@@ -6,6 +6,10 @@
  * of the license.
  */
 
+/*
+ * @requires AsBuilt/widgets/ImageMapPanel.js
+ */
+
 Ext.namespace("AsBuilt");
 
 /** api: (define)
@@ -59,35 +63,11 @@ AsBuilt.ImagePopup = Ext.extend(GeoExt.Popup, {
             border: false,
             activeTab: 0,
             items: [{
-                xtype: 'gx_mappanel',
+                xtype: 'app_imagemappanel',
+                imageWidth: width,
+                imageHeight: height,
+                path: path,
                 border: false,
-                items: [
-                    {
-                        xtype: "gx_zoomslider",
-                        vertical: true,
-                        height: 100
-                    }
-                ],
-                map: {
-                    controls: [
-                        new OpenLayers.Control.Navigation({zoomWheelOptions: {interval: 250}}),
-                        new OpenLayers.Control.PanPanel(),
-                        new OpenLayers.Control.ZoomPanel(),
-                        new OpenLayers.Control.Attribution()
-                    ],
-                    maxExtent:  new OpenLayers.Bounds(
-                        0, -width,
-                        height, 0
-                    ),
-                    maxResolution: width/256,
-                    units: 'm',
-                    projection: "EPSG:404000"
-                },
-                layers: [new OpenLayers.Layer.WMS(
-                    "Image preview",
-                    "/geoserver/wms",
-                    {layers: "asbuilt:images", CQL_FILTER: "PATH='"+path+"'"}
-                )],
                 title: this.previewTitle
             }, {
                 xtype: "form",

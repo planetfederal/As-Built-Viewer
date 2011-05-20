@@ -153,20 +153,10 @@
             map: {
                 id: "imagemap",
                 region: "center",
-                units: "m",
-                maxExtent: [
-                    0, 0,
-                    6696, 4097
-                ],
-                layers: [{
-                    source: "ol",
-                    type: "OpenLayers.Layer.Image",
-                    args: [
-                        "Image", "stub/CL-7449.png", new OpenLayers.Bounds(0,0,6696,4097), new OpenLayers.Size(6696, 4097), {maxResolution: 10, visibility: true}
-                    ]
-                }],
-                zoom: 0,
-                center: [3348, 2048]
+                xtype: "app_imagemappanel",
+                path: OpenLayers.Util.getParameters()["imagepath"],
+                imageWidth: parseInt(OpenLayers.Util.getParameters()["width"], 10),
+                imageHeight: parseInt(OpenLayers.Util.getParameters()["height"], 10)
             }
         });
 

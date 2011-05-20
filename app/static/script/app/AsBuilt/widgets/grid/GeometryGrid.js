@@ -54,10 +54,16 @@ AsBuilt.grid.GeometryGrid = Ext.extend(gxp.grid.FeatureGrid, {
                 return "gxp-icon-rectifier";
             },
             handler: function(grid, rowIndex, colIndex) {
-                if (this.rectifierUrlTemplate !== null) {
+                if (this.rectifierBaseUrl !== null) {
                     var record = store.getAt(rowIndex);
-                    // TODO urlEncode
-                    var url = this.rectifierUrlTemplate.applyTemplate(record.get("feature").attributes);
+                    var feature = record.get("feature");
+                    var params = {
+                        imagepath: feature.attributes.PATH.substring(1)+"."+feature.attributes.FILETYPE,
+                        width: feature.attributes.WIDTH,
+                        height: feature.attributes.HEIGHT
+                    };
+                    var url = this.rectifierBaseUrl + Ext.urlEncode(params);
+                    console.log(url);
                     var wh = window.open(url);
                     if (!wh) {
                         Ext.Msg.alert(this.popupBlockerTitle, this.popupBlockerMsg);
