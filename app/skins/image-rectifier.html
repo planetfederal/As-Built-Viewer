@@ -125,26 +125,7 @@
 
         var app2 = new gxp.Viewer({
             portalConfig: {id: "viewer2", xtype: "panel", flex: 1, title: "Georeference: " + OpenLayers.Util.getParameters()["imagepath"]},
-            portalItems: ["imagemap", {xtype: "grid", id: "gcpgrid", bbar: ["->"], region: "south", height: 150, title: "Control points", store: AsBuilt.GCPManager.getStore(),
-                columns: [
-                    {
-                        header: 'Point',
-                        dataIndex: 'id'
-                    }, {
-                        header: 'Image X',
-                        dataIndex: 'imagex'
-                    }, {
-                        header: 'Image Y',
-                        dataIndex: 'imagey'
-                    }, {
-                        header: 'Latitude',
-                        dataIndex: 'worldx'
-                    }, {
-                        header: 'Longitude',
-                        dataIndex: 'worldy'
-                    }
-                ]
-            }],
+            portalItems: ["imagemap"],
             listeners: {
                  portalReady: createViewport
             },
@@ -166,7 +147,6 @@
                     gcpManager: AsBuilt.GCPManager
                 }, {
                     ptype: "app_preview",
-                    actionTarget: "gcpgrid.bbar",
                     gcpManager: AsBuilt.GCPManager
                 }
             ],
