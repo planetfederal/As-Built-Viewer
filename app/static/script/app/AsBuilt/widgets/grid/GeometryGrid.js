@@ -23,11 +23,10 @@ Ext.ns("AsBuilt.grid");
  */
 AsBuilt.grid.GeometryGrid = Ext.extend(gxp.grid.FeatureGrid, {
 
-    /** api: config[rectifierUrlTemplate]
-     * ``Ext.XTemplate`` The template used to generate the URL of the rectifier 
-     * application.
+    /** api: config[rectifierBaseUrl]
+     * ``String`` Base URL for the rectifier application.
      */
-    rectifierUrlTemplate: null,
+    rectifierBaseUrl: null,
 
     /* start i18n */
     popupBlockerTitle: "Popup blocked",
@@ -63,7 +62,6 @@ AsBuilt.grid.GeometryGrid = Ext.extend(gxp.grid.FeatureGrid, {
                         height: feature.attributes.HEIGHT
                     };
                     var url = this.rectifierBaseUrl + Ext.urlEncode(params);
-                    console.log(url);
                     var wh = window.open(url);
                     if (!wh) {
                         Ext.Msg.alert(this.popupBlockerTitle, this.popupBlockerMsg);
