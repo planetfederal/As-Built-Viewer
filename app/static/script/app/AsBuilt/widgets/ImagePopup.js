@@ -25,7 +25,7 @@ AsBuilt.ImagePopup = Ext.extend(GeoExt.Popup, {
      *  ``String``
      *  Title for attributes tab (i18n).
      */
-    attributesTitle: "Notes,
+    attributesTitle: "Notes",
 
     /** api: config[previewTitle]
      *  ``String``
