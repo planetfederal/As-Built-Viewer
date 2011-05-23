@@ -43,6 +43,17 @@ OpenLayers.Control.DeleteFeature = OpenLayers.Class(OpenLayers.Control, {
     },
 
     /**
+     * Method: destroy
+     * The destroy method is used to perform any clean up before the control
+     * is dereferenced.  Typically this is where event listeners are removed
+     * to prevent memory leaks.
+     */
+    destroy: function() {
+        this.layer = null;
+        OpenLayers.Control.prototype.destroy.apply(this,arguments);
+    },
+
+    /**
      * Method: clickFeature
      * Called on click in a feature
      * Only responds if this.hover is false.
