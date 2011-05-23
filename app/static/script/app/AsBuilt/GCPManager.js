@@ -55,13 +55,36 @@ AsBuilt.GCPManager = function(){
     });
 
     var me = Ext.apply(new Ext.util.Observable(), {
+        /** private: method[constructor]
+         *  Construct this manager.
+         */
         constructor: function() {
+            /** api: event[gcpchanged]
+             *  Fired when the list of GCPs changes.
+             *
+             *  Listeners arguments:
+             *
+             *  * this - ``AsBuilt.GCPManager`` this manager.
+             *  * count - ``Integer`` the number of gcps present.
+             */
             this.addEvents("gcpchanged");
             Ext.util.Observable.prototype.constructor.call(this, arguments);
         },
+        /** api: method[getStore]
+         *  Get the store containing the gcps.
+         *
+         *  Returns:
+         *  ``Ext.data.ArrayStore``
+         */
         getStore: function() {
             return store;
         },
+        /** api: method[registerTool]
+         *  Register a tool with this manager.
+         *
+         *  :arg tool: ``gxp.plugins.Tool``` The tool for which this manager is 
+         *  to be used.
+         */
         registerTool: function(tool) {
             tools.push(tool);
             tool.on({
@@ -72,16 +95,34 @@ AsBuilt.GCPManager = function(){
                 "deactivate": this.handleDeactivate
             });
         },
+        /** private: method[handleActivate]
+         *  Needed to synhronize control activation in both maps.
+         *
+         *  :arg tool: ``gxp.plugins.Tool``
+         *  :arg control: ``OpenLayers.Control``
+         */
         handleActivate: function(tool, control) {
             for (var i=0,ii=tools.length; i<ii; ++i) {
                 me.findControl(tools[i], control.CLASS_NAME).activate();
             }
         },
+        /** private: method[handleDeactivate]
+         *  Needed to synhronize control deactivation in both maps.
+         *
+         *  :arg tool: ``gxp.plugins.Tool``
+         *  :arg control: ``OpenLayers.Control``
+         */
         handleDeactivate: function(tool, control) {
             for (var i=0,ii=tools.length; i<ii; ++i) {
                 me.findControl(tools[i], control.CLASS_NAME).deactivate();
             }
         },
+        /** private: method[handleModified]
+         *  Handle modification of the GCP position in the map
+         *
+         *  :arg tool: ``gxp.plugins.Tool``
+         *  :arg feature: ``OpenLayers.Feature.Vector``
+         */
         handleModified: function(tool, feature) {
             var id = feature.attributes.count;
             var record = store.getAt(store.find("id", id));
@@ -93,6 +134,13 @@ AsBuilt.GCPManager = function(){
                 record.set("worldy", feature.geometry.y);
             }
         },
+        /** private: method[getTool]
+         *  Find a tool by its type.
+         *
+         *  :arg type: ``Integer``
+         *
+         *  :returns: ``gxp.plugins.Tool`` The tool that matches the type.
+         */
         getTool: function(type) {
             for (var i=0, ii=tools.length; i<ii; ++i) {
                 if (tools[i].type === type) {
@@ -100,6 +148,14 @@ AsBuilt.GCPManager = function(){
                 }
             }
         },
+        /** private: method[findControl]
+         *  Find a control on a certain tool by its control type.
+         *
+         *  :arg tool: ``gxp.plugins.Tool``
+         *  :arg type: ``String`` The class name of the control to be found.
+         *
+         *  :returns: ``OpenLayers.Control`` 
+         */
         findControl: function(tool, type) {
             for (var i=0, ii=tool.controls.length; i<ii; ++i) {
                 if (tool.controls[i].CLASS_NAME === type) {
@@ -107,6 +163,12 @@ AsBuilt.GCPManager = function(){
                 }
             }
         },
+        /** private: method[handleAdd]
+         *  Handle addition of part of a GCP.
+         *
+         *  :arg tool: ``gxp.plugins.Tool``
+         *  :arg feature: ``OpenLayers.Feature.Vector``
+         */
         handleAdd: function(tool, feature) {
             if (tool.type === AsBuilt.plugins.GCP.IMAGE_COORDS) {
                 gcp = {source: feature};
@@ -123,6 +185,12 @@ AsBuilt.GCPManager = function(){
                 me.fireEvent("gcpchanged", me, me.getGCPs().length);
             }
         },
+        /** private: method[handleRemove]
+         *  Handle removing of part of a GCP.
+         *  
+         *  :arg tool: ``gxp.plugins.Tool``
+         *  :arg feature: ``OpenLayers.Feature.Vector``
+         */
         handleRemove: function(tool, feature) {
             var layer = null;
             for (var i=0, ii=gcps.length; i<ii; ++i) {
@@ -147,9 +215,19 @@ AsBuilt.GCPManager = function(){
             }
             me.fireEvent("gcpchanged", me, me.getGCPs().length);
         },
+        /** api: method[getCounter]
+         *  Get the current counter.
+         *
+         *  :returns: ``Integer`` The current counter.
+         */ 
         getCounter: function() {
             return counter;
         },
+        /** api: method[getGCPs]
+         *  Get the list of Ground Control Points as an Array
+         *
+         *  :returns: ``Array``
+         */
         getGCPs: function() {
             var result = [];
             for (var i=0, ii=gcps.length; i<ii; ++i) {
