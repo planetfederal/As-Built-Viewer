@@ -17,20 +17,33 @@ Ext.ns("AsBuilt");
 /** api: constructor
  *  .. class:: GCPManager()
  *
- *    A singelton class to manage several GCP plugins.
+ *    A singleton class to manage several GCP plugins.
  */
 AsBuilt.GCPManager = function(){
 
+    /** private: gcp
+     * ``Object`` The current Ground Control Point being processed.
+     */
     var gcp = null;
 
+    /** private: gcps
+     *  ``Array`` The list of Ground Control Points which have been added.
+     */
     var gcps = [];
 
-    var lastType = null;
-
+    /** private: counter
+     *  ``Integer`` A counter used to give ids to the Ground Control Points.
+     */
     var counter = 1;
 
+    /** private: tools
+     *  ``Array`` The list of the tools that are managed by this manager.
+     */
     var tools = [];
 
+    /** private: store
+     *  ``Ext.data.ArrayStore`` The store that keeps the list of GCPs.
+     */
     var store = new Ext.data.ArrayStore({
         fields: [
            {name: 'id', type: 'int'},
@@ -109,10 +122,8 @@ AsBuilt.GCPManager = function(){
                 counter += 1;
                 me.fireEvent("gcpchanged", me, me.getGCPs().length);
             }
-            lastType = tool.type;
         },
         handleRemove: function(tool, feature) {
-            lastType = null;
             var layer = null;
             for (var i=0, ii=gcps.length; i<ii; ++i) {
                 if (gcps[i].source === feature) {
