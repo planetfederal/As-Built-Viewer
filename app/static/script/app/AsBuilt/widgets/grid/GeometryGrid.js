@@ -57,6 +57,7 @@ AsBuilt.grid.GeometryGrid = Ext.extend(gxp.grid.FeatureGrid, {
                     var record = store.getAt(rowIndex);
                     var feature = record.get("feature");
                     var params = {
+                        fid: feature.fid,
                         imagepath: feature.attributes.PATH.substring(1)+"."+feature.attributes.FILETYPE,
                         width: feature.attributes.WIDTH,
                         height: feature.attributes.HEIGHT
