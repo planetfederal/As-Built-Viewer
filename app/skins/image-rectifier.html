@@ -49,6 +49,9 @@
             }
         };
 
+        var localGeoserver = "/geoserver/ows";
+        var layerName = "asbuilt:images";
+
         var app1 = new gxp.Viewer({
             portalConfig: {id: "viewer1", xtype: "panel", flex: 1, title: "Base map"},
             portalItems: ["map"],
@@ -68,7 +71,7 @@
             defaultSourceType: "gxp_wmssource",
             sources: {
                 local: {    
-                    url: "/geoserver/ows",
+                    url: localGeoserver,
                     title: "Local GeoServer",
                     version: "1.1.1"
                 },
@@ -123,9 +126,21 @@
             }
         });
 
+        var params = OpenLayers.Util.getParameters();
+        var path = params["imagepath"];
+        var width = parseInt(params["width"], 10);
+        var height = parseInt(params["height"], 10);
+        var fid = params["fid"];
+
         var app2 = new gxp.Viewer({
-            portalConfig: {id: "viewer2", xtype: "panel", flex: 1, title: "Georeference: " + OpenLayers.Util.getParameters()["imagepath"]},
+            portalConfig: {id: "viewer2", xtype: "panel", flex: 1, title: "Georeference: " + path},
             portalItems: ["imagemap"],
+            imageInfo: {
+                path: path,
+                width: width,
+                height: height,
+                fid: fid
+            },
             listeners: {
                  portalReady: createViewport
             },
@@ -147,6 +162,10 @@
                     gcpManager: AsBuilt.GCPManager
                 }, {
                     ptype: "app_preview",
+                    url: localGeoserver,
+                    layerName: layerName,
+                    styleName: "gcpTransform",
+                    baseMap: app1.mapPanel.map,
                     gcpManager: AsBuilt.GCPManager
                 }
             ],
@@ -154,9 +173,11 @@
                 id: "imagemap",
                 region: "center",
                 xtype: "app_imagemappanel",
-                path: OpenLayers.Util.getParameters()["imagepath"],
-                imageWidth: parseInt(OpenLayers.Util.getParameters()["width"], 10),
-                imageHeight: parseInt(OpenLayers.Util.getParameters()["height"], 10)
+                url: localGeoserver,
+                layerName: layerName,
+                path: path,
+                imageWidth: width,
+                imageHeight: height
             }
         });
 

@@ -64,6 +64,8 @@ AsBuilt.ImagePopup = Ext.extend(GeoExt.Popup, {
             activeTab: 0,
             items: [{
                 xtype: 'app_imagemappanel',
+                layerName: this.layerName,
+                url: this.url,
                 imageWidth: width,
                 imageHeight: height,
                 path: path,

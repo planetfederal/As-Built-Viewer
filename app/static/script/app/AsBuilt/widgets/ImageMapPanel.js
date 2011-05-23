@@ -21,6 +21,10 @@ Ext.namespace("AsBuilt");
  */
 AsBuilt.ImageMapPanel = Ext.extend(GeoExt.MapPanel, {
 
+    layerName: null,
+
+    url: null,
+
     /** private: method[initComponent]
      *  Initializes the map panel. Creates an OpenLayers map if
      *  none was provided in the config options passed to the
@@ -48,9 +52,9 @@ AsBuilt.ImageMapPanel = Ext.extend(GeoExt.MapPanel, {
             projection: "EPSG:404000"
         };
         this.layers = [new OpenLayers.Layer.WMS(
-            "Image preview",
-            "/geoserver/wms",
-            {layers: "asbuilt:images", CQL_FILTER: "PATH='"+this.path+"'"}
+            null,
+            this.url,
+            {layers: this.layerName, CQL_FILTER: "PATH='"+this.path+"'"}
         )];
 
         AsBuilt.ImageMapPanel.superclass.initComponent.call(this);
