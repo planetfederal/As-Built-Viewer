@@ -83,7 +83,10 @@ AsBuilt.plugins.Search = Ext.extend(gxp.plugins.Tool, {
     mapExtentLabel: "Map extent",
     mapExtentCheckbox: "Use map extent",
     queryActionText: "Query",
+    queryActionTooltip: "Query the dataset taking into account the filters above",
     documentTypeEmpty: "Select a type",
+    clearActionText: "Clear",
+    clearActionTooltip: "Clear all the values in the form",
     documentTypeLabel: "Document type",
     documentSubjectLabel: "General Subject",
     fileNumberLabel: "File Number",
@@ -225,7 +228,7 @@ AsBuilt.plugins.Search = Ext.extend(gxp.plugins.Tool, {
                     type: OpenLayers.Filter.Logical.OR,
                     filters: subFilters
                 }));
-            } else {
+            } else if (subFilters[0] !== undefined) {
                 filters.push(subFilters[0]);
             }
         }
@@ -236,8 +239,10 @@ AsBuilt.plugins.Search = Ext.extend(gxp.plugins.Tool, {
                     filters: filters
                 })
             );
-        } else {
+        } else if (filters[0] !== undefined) {
             featureManager.loadFeatures(filters[0]);
+        } else {
+            featureManager.loadFeatures();
         }
     },
 
@@ -271,7 +276,16 @@ AsBuilt.plugins.Search = Ext.extend(gxp.plugins.Tool, {
                 id: "searchform",
                 autoScroll: true,
                 bbar: [{
-                    text: this.queryActionText, 
+                    text: this.clearActionText,
+                    tooltip: {title: this.clearActionText, text: this.clearActionTooltip},
+                    handler: function() {
+                        this.cnns = [];
+                        Ext.getCmp('searchform').getForm().reset();
+                    },
+                    scope: this
+                }, {
+                    text: this.queryActionText,
+                    tooltip: {title: this.queryActionText, text: this.queryActionTooltip},
                     iconCls: "gxp-icon-find", 
                     handler: this.performSearch, 
                     scope: this
