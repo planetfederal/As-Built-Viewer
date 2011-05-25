@@ -220,7 +220,7 @@ AsBuilt.plugins.Search = Ext.extend(gxp.plugins.Tool, {
                 subFilters.push(new OpenLayers.Filter.Comparison({
                     type: OpenLayers.Filter.Comparison.LIKE,
                     property: this.cnnField,
-                    value: '*' + this.cnns[i] + "," + '*'
+                    value: '*' + " " + this.cnns[i] + "," + '*'
                 }));
             }
             if (subFilters.length > 1) {
