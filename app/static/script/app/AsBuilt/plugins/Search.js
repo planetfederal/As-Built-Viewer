@@ -359,6 +359,8 @@ AsBuilt.plugins.Search = Ext.extend(gxp.plugins.Tool, {
                                 triggerAction: 'all',
                                 listeners: {
                                     "select": function(cmb, rec, idx) {
+                                        // clear cnn list
+                                        this.cnns = [];
                                         intersectionsStore.on('load', function() { 
                                             intersectionsStore.filter('street', cmb.getValue());
                                         });
