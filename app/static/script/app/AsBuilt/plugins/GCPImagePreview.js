@@ -76,22 +76,30 @@ AsBuilt.plugins.GCPImagePreview = Ext.extend(gxp.plugins.Tool, {
 
     getEnv: function() {
         var gcps = this.gcpManager.getGCPs();
-        var env = "GCP:[";
+        var env = "gcp:[";
 
-        var encodeGeometry = function(geom) {
+        var encodeGeometry = function(geom, roundAndFlipY) {
             var result = "[";
-            result += geom.x;
-            result += ",";
-            result += geom.y;
+            if (roundAndFlipY === true) {
+                result += Math.round(geom.x);
+            } else {
+                result += geom.x;
+            }
+            result += ", ";
+            if (roundAndFlipY === true) {
+                result += -Math.round(geom.y);
+            } else {
+                result += geom.y;
+            }
             result += "]";
             return result;
         };
 
         var encodeGCP = function(gcp) {
             var result = "[";
-            result += encodeGeometry(gcp.source.geometry);
-            result += ",";
-            result += encodeGeometry(gcp.target.geometry);
+            result += encodeGeometry(gcp.source.geometry, true);
+            result += ", ";
+            result += encodeGeometry(gcp.target.geometry, false);
             result += "]";
             return result;
         };
@@ -103,20 +111,25 @@ AsBuilt.plugins.GCPImagePreview = Ext.extend(gxp.plugins.Tool, {
             }
         }
 
-        env += "];WARP_ORDER:2";
+        // leave out warp order for now
+        env += "]";
+        // env += "];WARP_ORDER:2";
         return env;
     },
 
     previewImage: function() {
         var map = this.baseMap;
-        if (!this.previewLayer) {
-            this.previewLayer = new OpenLayers.Layer.WMS(null, this.url, {layers: this.layerName, styles: this.styleName});
-            map.addLayer(this.previewLayer);
-        }
-        this.previewLayer.mergeNewParams({
+        var params = {
             CQL_FILTER: "PATH='"+this.target.imageInfo.path+"'",
             ENV: this.getEnv()
-        });
+        };
+        if (!this.previewLayer) {
+            OpenLayers.Util.extend(params, {layers: this.layerName, styles: this.styleName});
+            this.previewLayer = new OpenLayers.Layer.WMS(null, this.url, params, {singleTile: true, ratio: 1});
+            map.addLayer(this.previewLayer);
+        } else {
+            this.previewLayer.mergeNewParams(params);
+        }
     },
 
     /** api: method[addActions]
