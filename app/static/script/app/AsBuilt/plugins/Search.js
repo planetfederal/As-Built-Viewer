@@ -426,7 +426,8 @@ AsBuilt.plugins.Search = Ext.extend(gxp.plugins.Tool, {
                                 xtype: "gxp_autocompletecombo",
                                 fieldName: this.facilitySearchField,
                                 url: url,
-                                featureType: featureInfo[1],
+                                minChars: 1,
+                                featureType: "VW_SFACILITYNAME", /* TODO make configurable */
                                 featurePrefix: featureInfo[0],
                                 fieldLabel: this.facilityNameLabel
                             }
@@ -439,7 +440,8 @@ AsBuilt.plugins.Search = Ext.extend(gxp.plugins.Tool, {
                                 xtype: "gxp_autocompletecombo",
                                 fieldName: this.contractSearchField,
                                 url: url,
-                                featureType: featureInfo[1],
+                                minChars: 1,
+                                featureType: "VW_SCONTRACTTITLE", /* TODO make configurable */
                                 featurePrefix: featureInfo[0],
                                 fieldLabel: this.contractTitleLabel
                             }
