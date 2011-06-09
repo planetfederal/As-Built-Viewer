@@ -248,14 +248,12 @@ AsBuilt.plugins.Search = Ext.extend(gxp.plugins.Tool, {
 
     getButtonConfig: function() {
         return [{
-            width: 75,
             text: this.queryActionText,
             tooltip: {title: this.queryActionText, text: this.queryActionTooltip},
             iconCls: "gxp-icon-find",
             handler: this.performSearch,
             scope: this
         }, {
-            width: 75,
             text: this.clearActionText,
             tooltip: {title: this.clearActionText, text: this.clearActionTooltip},
             handler: function() {
@@ -295,11 +293,91 @@ AsBuilt.plugins.Search = Ext.extend(gxp.plugins.Tool, {
                 xtype: "form",
                 id: "searchform",
                 autoScroll: true,
-                tbar: this.getButtonConfig(),
                 border: false,
                 bodyStyle: "padding: 5px",
                 items: [
-                    {
+				{
+                    xtype: "fieldset",
+                    title: this.streetLabel,
+                    items: [
+                        {
+                            xtype: "combo",
+                            name: "streetname",
+                            id: "streetname",
+                            fieldLabel: this.streetNameLabel,
+                            emptyText: this.streetNameEmpty,
+                            triggerAction: 'all',
+                            listeners: {
+                                "select": function(cmb, rec, idx) {
+                                    // clear cnn list
+                                    this.cnns = [];
+                                    intersectionsStore.on('load', function() { 
+                                        intersectionsStore.filter('street', cmb.getValue());
+                                    });
+                                    if (intersectionsStore.getCount() === 0) {
+                                        intersectionsStore.load();
+                                    } else {
+                                        intersectionsStore.filter('street', cmb.getValue());
+                                    }
+                                    var cmps = ['start_intersection', 'end_intersection'];
+                                    for (var i=0,ii=cmps.length; i<ii; i++) {
+                                        var cmp = Ext.getCmp(cmps[i]);
+                                        cmp.clearValue();
+                                        cmp.enable();
+                                    }
+                                },
+                                scope: this
+                            },
+                            displayField: 'street_name',
+                            valueField: 'street_name',
+                            mode: "local",
+                            forceSelection: true,
+                            typeAhead: true,
+                            store: new Ext.data.JsonStore({
+                                fields: ['street_name', 'street_id'],
+                                root: 'streets',
+                                autoLoad: true,
+                                sortInfo: {
+                                    field: 'street_name'
+                                },
+                                url: this.streetsURL
+                            })
+                        }, {
+                            xtype: "combo",
+                            id: 'start_intersection',
+                            editable: false,
+                            store: intersectionsStore,
+                            disabled: true,
+                            lastQuery: '',
+                            displayField: 'cross_street',
+                            valueField: "intersection_id",
+                            triggerAction: 'all',
+                            listeners: {
+                                "select": this.getCnnList,
+                                scope: this
+                            },
+                            mode: 'local',
+                            name: "start_intersection",
+                            fieldLabel: this.startIntersectionLabel
+                        }, {
+                            xtype: "combo",
+                            id: 'end_intersection',
+                            editable: false,
+                            store: intersectionsStore,
+                            disabled: true,
+                            lastQuery: '',
+                            displayField: 'cross_street',
+                            valueField: "intersection_id",
+                            triggerAction: 'all',
+                            listeners: {
+                                "select": this.getCnnList,
+                                scope: this
+                            },
+                            mode: 'local',
+                            name: "end_intersection",
+                            fieldLabel: this.endIntersectionLabel
+                        }]
+                    }, {
                         xtype: "fieldset",
                         title: this.mapExtentLabel,
                         items: [
@@ -366,90 +444,8 @@ AsBuilt.plugins.Search = Ext.extend(gxp.plugins.Tool, {
                                 fieldLabel: this.contractTitleLabel
                             }
                         ]
-                    }, {
-                        xtype: "fieldset",
-                        title: this.streetLabel,
-                        items: [
-                            {
-                                xtype: "combo",
-                                name: "streetname",
-                                id: "streetname",
-                                fieldLabel: this.streetNameLabel,
-                                emptyText: this.streetNameEmpty,
-                                triggerAction: 'all',
-                                listeners: {
-                                    "select": function(cmb, rec, idx) {
-                                        // clear cnn list
-                                        this.cnns = [];
-                                        intersectionsStore.on('load', function() { 
-                                            intersectionsStore.filter('street', cmb.getValue());
-                                        });
-                                        if (intersectionsStore.getCount() === 0) {
-                                            intersectionsStore.load();
-                                        } else {
-                                            intersectionsStore.filter('street', cmb.getValue());
-                                        }
-                                        var cmps = ['start_intersection', 'end_intersection'];
-                                        for (var i=0,ii=cmps.length; i<ii; i++) {
-                                            var cmp = Ext.getCmp(cmps[i]);
-                                            cmp.clearValue();
-                                            cmp.enable();
-                                        }
-                                    },
-                                    scope: this
-                                },
-                                displayField: 'street_name',
-                                valueField: 'street_name',
-                                mode: "local",
-                                forceSelection: true,
-                                typeAhead: true,
-                                store: new Ext.data.JsonStore({
-                                    fields: ['street_name', 'street_id'],
-                                    root: 'streets',
-                                    autoLoad: true,
-                                    sortInfo: {
-                                        field: 'street_name'
-                                    },
-                                    url: this.streetsURL
-                                })
-                            }, {
-                                xtype: "combo",
-                                id: 'start_intersection',
-                                editable: false,
-                                store: intersectionsStore,
-                                disabled: true,
-                                lastQuery: '',
-                                displayField: 'cross_street',
-                                valueField: "intersection_id",
-                                triggerAction: 'all',
-                                listeners: {
-                                    "select": this.getCnnList,
-                                    scope: this
-                                },
-                                mode: 'local',
-                                name: "start_intersection",
-                                fieldLabel: this.startIntersectionLabel
-                            }, {
-                                xtype: "combo",
-                                id: 'end_intersection',
-                                editable: false,
-                                store: intersectionsStore,
-                                disabled: true,
-                                lastQuery: '',
-                                displayField: 'cross_street',
-                                valueField: "intersection_id",
-                                triggerAction: 'all',
-                                listeners: {
-                                    "select": this.getCnnList,
-                                    scope: this
-                                },
-                                mode: 'local',
-                                name: "end_intersection",
-                                fieldLabel: this.endIntersectionLabel
-                            }
-                        ], buttons: this.getButtonConfig()
                     }
-                ]
+                ], buttons: this.getButtonConfig()
             }]
         }, this.outputConfig));
         delete this.outputConfig;
