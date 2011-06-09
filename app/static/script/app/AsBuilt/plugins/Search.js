@@ -246,6 +246,26 @@ AsBuilt.plugins.Search = Ext.extend(gxp.plugins.Tool, {
         }
     },
 
+    getButtonConfig: function() {
+        return [{
+            width: 75,
+            text: this.queryActionText,
+            tooltip: {title: this.queryActionText, text: this.queryActionTooltip},
+            iconCls: "gxp-icon-find",
+            handler: this.performSearch,
+            scope: this
+        }, {
+            width: 75,
+            text: this.clearActionText,
+            tooltip: {title: this.clearActionText, text: this.clearActionTooltip},
+            handler: function() {
+                this.cnns = [];
+                Ext.getCmp('searchform').getForm().reset();
+            },
+            scope: this
+        }];
+    },
+
     /** private: method[initContainer]
      *  Create the primary output container.
      */
@@ -275,21 +295,7 @@ AsBuilt.plugins.Search = Ext.extend(gxp.plugins.Tool, {
                 xtype: "form",
                 id: "searchform",
                 autoScroll: true,
-                bbar: [{
-                    text: this.clearActionText,
-                    tooltip: {title: this.clearActionText, text: this.clearActionTooltip},
-                    handler: function() {
-                        this.cnns = [];
-                        Ext.getCmp('searchform').getForm().reset();
-                    },
-                    scope: this
-                }, {
-                    text: this.queryActionText,
-                    tooltip: {title: this.queryActionText, text: this.queryActionTooltip},
-                    iconCls: "gxp-icon-find", 
-                    handler: this.performSearch, 
-                    scope: this
-                }],
+                tbar: this.getButtonConfig(),
                 border: false,
                 bodyStyle: "padding: 5px",
                 items: [
@@ -441,7 +447,7 @@ AsBuilt.plugins.Search = Ext.extend(gxp.plugins.Tool, {
                                 name: "end_intersection",
                                 fieldLabel: this.endIntersectionLabel
                             }
-                        ]
+                        ], buttons: this.getButtonConfig()
                     }
                 ]
             }]
