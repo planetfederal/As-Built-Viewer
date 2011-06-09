@@ -103,7 +103,7 @@ AsBuilt.plugins.GCPImagePreview = Ext.extend(gxp.plugins.Tool, {
             }
         }
 
-        env += "],WARP_ORDER:2";
+        env += "];WARP_ORDER:2";
         return env;
     },
 
