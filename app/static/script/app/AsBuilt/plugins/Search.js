@@ -8,6 +8,35 @@
 
 Ext.ns("AsBuilt.plugins");
 
+// better sorting for streets store so that 2nd street comes before 10th street
+Ext.override(Ext.data.Store, {
+
+    createSortFunction: function(field, direction) {
+        direction = direction || "ASC";
+        var directionModifier = direction.toUpperCase() == "DESC" ? -1 : 1;
+
+        var sortType = this.fields.get(field).sortType;
+
+        //create a comparison function. Takes 2 records, returns 1 if record 1 is greater,
+        //-1 if record 2 is greater or 0 if they are equal
+        return function(r1, r2) {
+            var v1 = sortType(r1.data[field]),
+                v2 = sortType(r2.data[field]);
+
+            var i1 = parseInt(v1, 10);
+            if (isNaN(i1) === false) {
+                var i2 = parseInt(v2, 10);
+                var result = (i1 > i2) ? 1 : (i1 < i2) ? -1 : 0;
+                if (result !== 0) {
+                   return directionModifier * result;
+                }
+            }
+            return directionModifier * (v1 > v2 ? 1 : (v1 < v2 ? -1 : 0));
+        };
+    }
+
+});
+
 /** api: (define)
  *  module = AsBuilt.plugins
  *  class = Search
