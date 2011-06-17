@@ -50,7 +50,11 @@ AsBuilt.grid.GeometryGrid = Ext.extend(gxp.grid.FeatureGrid, {
         columns.unshift({xtype: 'actioncolumn', width: 30, items: [{
             tooltip: "Open up the image in the rectifier application",
             getClass: function(v, meta, rec) {
-                return "gxp-icon-rectifier";
+                // only show if width and height are known
+                var feature = rec.get("feature");
+                if (feature.attributes.WIDTH !== undefined && feature.attributes.HEIGHT !== undefined) {
+                    return "gxp-icon-rectifier";
+                }
             },
             handler: function(grid, rowIndex, colIndex) {
                 if (this.rectifierBaseUrl !== null) {
