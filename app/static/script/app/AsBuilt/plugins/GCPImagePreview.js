@@ -124,7 +124,7 @@ AsBuilt.plugins.GCPImagePreview = Ext.extend(gxp.plugins.Tool, {
             ENV: this.getEnv()
         };
         if (!this.previewLayer) {
-            OpenLayers.Util.extend(params, {layers: this.layerName, styles: this.styleName});
+            OpenLayers.Util.extend(params, {layers: this.layerName, styles: this.styleName, format: 'image/png'});
             this.previewLayer = new OpenLayers.Layer.WMS(null, this.url, params, {projection: new OpenLayers.Projection("EPSG:3857"), singleTile: true, ratio: 1});
             map.addLayer(this.previewLayer);
         } else {
