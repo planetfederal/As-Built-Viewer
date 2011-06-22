@@ -94,6 +94,7 @@
             ],
             map: {
                 id: "map",
+                tbar: [{xtype: 'label', text: 'Opacity: '}, {xtype: 'tbspacer', width: 10}, {xtype: "gx_opacityslider", aggressive: true, id: 'opacity_slider', width: 100}],
                 plugins: [
                     {ptype: "gxp_loadingindicator"}
                 ],
@@ -167,6 +168,7 @@
                     gcpManager: AsBuilt.GCPManager
                 }, {
                     ptype: "app_preview",
+                    opacitySlider: "opacity_slider",
                     url: localGeoserver,
                     layerName: layerName,
                     styleName: "warp",

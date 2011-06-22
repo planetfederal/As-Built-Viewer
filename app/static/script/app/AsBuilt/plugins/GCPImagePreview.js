@@ -24,6 +24,12 @@ AsBuilt.plugins.GCPImagePreview = Ext.extend(gxp.plugins.Tool, {
     /** api: ptype = app_preview */
     ptype: "app_preview",
 
+    /**
+     * api: config[opacitySlider]
+     * ``String`` The id of the opacity slider.
+     */
+    opacitySlider: null,
+
     /** api: config[baseMap]
      *  ``OpenLayers.Map`` The base map to which the preview layer should be
      *  added.
@@ -127,6 +133,11 @@ AsBuilt.plugins.GCPImagePreview = Ext.extend(gxp.plugins.Tool, {
             OpenLayers.Util.extend(params, {layers: this.layerName, styles: this.styleName, format: 'image/png'});
             this.previewLayer = new OpenLayers.Layer.WMS(null, this.url, params, {projection: new OpenLayers.Projection("EPSG:3857"), singleTile: true, ratio: 1});
             map.addLayer(this.previewLayer);
+            // attach the preview layer to the opacity slider
+            if (this.opacitySlider !== null) {
+                var slider = Ext.getCmp(this.opacitySlider);
+                slider && slider.setLayer(this.previewLayer);
+            }
         } else {
             this.previewLayer.mergeNewParams(params);
         }
