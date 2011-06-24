@@ -67,6 +67,8 @@ AsBuilt.plugins.GCPImagePreview = Ext.extend(gxp.plugins.Tool, {
      */
     gcpManager: null,
 
+    targetCRS: new OpenLayers.Projection("EPSG:3857"),
+
     /* start i18n */
     previewTooltip: "Preview warped image",
     previewText: "Preview",
@@ -82,7 +84,7 @@ AsBuilt.plugins.GCPImagePreview = Ext.extend(gxp.plugins.Tool, {
 
     getEnv: function() {
         var gcps = this.gcpManager.getGCPs();
-        var env = "gcp:[";
+        var env = "[";
 
         var encodeGeometry = function(geom, roundAndFlipY) {
             var result = "[";
@@ -117,9 +119,7 @@ AsBuilt.plugins.GCPImagePreview = Ext.extend(gxp.plugins.Tool, {
             }
         }
 
-        // leave out warp order for now
         env += "]";
-        // env += "];WARP_ORDER:2";
         return env;
     },
 
@@ -127,11 +127,15 @@ AsBuilt.plugins.GCPImagePreview = Ext.extend(gxp.plugins.Tool, {
         var map = this.baseMap;
         var params = {
             CQL_FILTER: "PATH='"+this.target.imageInfo.path+"'",
-            ENV: this.getEnv()
+            ENV: 'gcp:' + this.getEnv()
         };
         if (!this.previewLayer) {
             OpenLayers.Util.extend(params, {layers: this.layerName, styles: this.styleName, format: 'image/png'});
-            this.previewLayer = new OpenLayers.Layer.WMS(null, this.url, params, {projection: new OpenLayers.Projection("EPSG:3857"), singleTile: true, ratio: 1});
+            this.previewLayer = new OpenLayers.Layer.WMS(null, this.url, params, {
+                projection: this.targetCRS, 
+                singleTile: true, 
+                ratio: 1
+            });
             map.addLayer(this.previewLayer);
             // attach the preview layer to the opacity slider
             if (this.opacitySlider !== null) {
@@ -141,6 +145,79 @@ AsBuilt.plugins.GCPImagePreview = Ext.extend(gxp.plugins.Tool, {
         } else {
             this.previewLayer.mergeNewParams(params);
         }
+    },
+
+    saveImage: function() {
+        // build up the WPS Execute request
+        var format = new OpenLayers.Format.WPSExecute();
+        var request = format.write({
+            identifier: "gs:GeorectifyCoverage", 
+            dataInputs: [{
+                identifier: 'data',
+                reference: {
+                    mimeType: "image/tiff",
+                    /* TODO, make configurable, but we need absolute url here */
+                    href: "http://sfmta.demo.opengeo.org/geoserver/ows?", 
+                    method: "POST",
+                    body: {
+                        wcs: {
+                            identifier: this.layerName,
+                            version: '1.1.2',
+                            domainSubset: {
+                                boundingBox: {
+                                    projection: 'http://www.opengis.net/gml/srs/epsg.xml#404000',
+                                    bounds: new OpenLayers.Bounds(0.0, -this.height, this.width, 1.0)
+                                },
+                            },
+                            output: {format: 'image/tiff'}
+                        }
+                    }
+                }
+            }, {
+                identifier: 'gcp',
+                data: {
+                    literalData: {
+                        value: this.getEnv()
+                    }
+                }
+            }, {
+                identifier: 'targetCRS',
+                data: {
+                    literalData: {
+                        value: this.targetCRS.getCode()
+                    }
+                }
+            }, {
+                identifier: 'transparent',
+                data: {
+                    literalData: {
+                        value: 'true'
+                    }
+                }
+            }, {
+                identifier: 'store',
+                data: {
+                    literalData: {
+                        value: 'true'
+                    }
+                }
+            }],
+            responseForm: {
+                rawDataOutput: {
+                    mimeType: "image/tiff",
+                    identifier: "result"
+                }
+            }
+        });
+
+        OpenLayers.Request.POST({
+            url: this.url,
+            data: request,
+            success: function(req) {
+                // TODO
+            }
+        });
+
     },
 
     /** api: method[addActions]
@@ -160,6 +237,8 @@ AsBuilt.plugins.GCPImagePreview = Ext.extend(gxp.plugins.Tool, {
             }, {
                 tooltip: this.saveTooltip,
                 iconCls: "gxp-icon-save",
+                handler: this.saveImage,
+                scope: this,
                 disabled: true,
                 text: this.saveText
             }
