@@ -160,16 +160,28 @@ AsBuilt.plugins.GCPImagePreview = Ext.extend(gxp.plugins.Tool, {
                     href: "http://sfmta.demo.opengeo.org/geoserver/ows?", 
                     method: "POST",
                     body: {
-                        wcs: {
-                            identifier: this.layerName,
-                            version: '1.1.2',
-                            domainSubset: {
-                                boundingBox: {
-                                    projection: 'http://www.opengis.net/gml/srs/epsg.xml#404000',
-                                    bounds: new OpenLayers.Bounds(0.0, -this.height, this.width, 1.0)
-                                },
-                            },
-                            output: {format: 'image/tiff'}
+                        identifier: 'gs:GetFullCoverage',
+                        dataInputs: [{
+                            identifier: 'name',
+                            data: {
+                                literalData: {
+                                    value: this.layerName
+                                }
+                            }
+                        }, {
+                            identifier: 'filter',
+                            data: {
+                                complexData: {
+                                    mimeType: 'text/plain; subtype=cql',
+                                    value: "path = '" + this.target.imageInfo.path + "'"
+                                }
+                            }
+                        }],
+                        responseForm: {
+                            rawDataOutput: {
+                                mimeType: "image/tiff",
+                                identifier: "result"
+                            }
                         }
                     }
                 }
@@ -204,8 +216,8 @@ AsBuilt.plugins.GCPImagePreview = Ext.extend(gxp.plugins.Tool, {
             }],
             responseForm: {
                 rawDataOutput: {
-                    mimeType: "image/tiff",
-                    identifier: "result"
+                    mimeType: "text/plain",
+                    identifier: "path"
                 }
             }
         });
