@@ -32,3 +32,7 @@
 .x-btn .gxp-icon-save, .x-menu-item .gxp-icon-save {
     background-image: url(img/silk/disk.png);
 }
+
+.x-btn .gxp-icon-preview, .x-menu-item .gxp-icon-preview {
+    background-image: url(img/silk/magnifier.png);
+}
