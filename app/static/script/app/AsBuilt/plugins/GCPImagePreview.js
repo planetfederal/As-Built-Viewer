@@ -74,6 +74,7 @@ AsBuilt.plugins.GCPImagePreview = Ext.extend(gxp.plugins.Tool, {
     previewText: "Preview",
     saveTooltip: "Save the warped image",
     saveText: "Save",
+    saveWaitMsg: "Please wait while saving image, this can take around 1 minute to complete",
     /* end i18n */
 
     enableButton: function(mgr, count) {
@@ -148,6 +149,11 @@ AsBuilt.plugins.GCPImagePreview = Ext.extend(gxp.plugins.Tool, {
     },
 
     saveImage: function() {
+        if (!this.loadMask) {
+            this.loadMask = new Ext.LoadMask(Ext.getBody(), 
+                {msg: this.saveWaitMsg});
+        }
+        this.loadMask.show();
         // build up the WPS Execute request
         var format = new OpenLayers.Format.WPSExecute();
         var request = format.write({
@@ -156,8 +162,8 @@ AsBuilt.plugins.GCPImagePreview = Ext.extend(gxp.plugins.Tool, {
                 identifier: 'data',
                 reference: {
                     mimeType: "image/tiff",
-                    /* TODO, make configurable, but we need absolute url here */
-                    href: "http://sfmta.demo.opengeo.org/geoserver/ows?", 
+                    /* This special syntax references the local GeoServer */
+                    href: "http://geoserver/wps?", 
                     method: "POST",
                     body: {
                         identifier: 'gs:GetFullCoverage',
@@ -225,11 +231,36 @@ AsBuilt.plugins.GCPImagePreview = Ext.extend(gxp.plugins.Tool, {
         OpenLayers.Request.POST({
             url: this.url,
             data: request,
-            success: function(req) {
-                // TODO
-            }
+            success: function(response) {
+                var path = response.responseText;
+                this.updateRecord(path);
+            },
+            scope: this
         });
 
+    },
+
+    updateRecord: function(path) {
+        // TODO decide whether or not we still want to keep using the name layer
+        var feature = new OpenLayers.Feature.Vector(null, {LAYER: path});
+        feature.fid = this.target.imageInfo.fid;
+        feature.state = OpenLayers.State.UPDATE;
+        var options = {
+            callback: function(response) {
+                this.loadMask.hide();
+            },
+            scope: this
+        };
+        if (!this.featureStore) {
+            this.featureStore = new gxp.data.WFSFeatureStore({
+                fields: [{name: 'LAYER'}],
+                url: this.url,
+                geometryName: null,
+                featureType: this.featureType,
+                featureNS: this.featureNS
+            });
+        }
+        this.featureStore.proxy.protocol.commit([feature], options);
     },
 
     /** api: method[addActions]
