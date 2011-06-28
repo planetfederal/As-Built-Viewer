@@ -17,7 +17,8 @@ Ext.ns("AsBuilt.plugins");
 /** api: constructor
  *  .. class:: GCPImagePreview(config)
  *
- *    Show preview of image warping.
+ *    Show preview of image warping and have an option to save 
+ *    the rectified image.
  */
 AsBuilt.plugins.GCPImagePreview = Ext.extend(gxp.plugins.Tool, {
 
@@ -67,6 +68,14 @@ AsBuilt.plugins.GCPImagePreview = Ext.extend(gxp.plugins.Tool, {
      */
     gcpManager: null,
 
+    /**
+     * api: config[targetCRS]
+     * ``OpenLayers.Projection`` The projection in which the warped image is to
+     * be saved. Since the ImageCollection store currently does not support
+     * reprojection, this needs to be the projection of the base map, and
+     * apparently GDAL has issues with EPSG:900913 so use the more official
+     * EPSG code (EPSG:3857).
+     */
     targetCRS: new OpenLayers.Projection("EPSG:3857"),
 
     /* start i18n */
@@ -77,12 +86,25 @@ AsBuilt.plugins.GCPImagePreview = Ext.extend(gxp.plugins.Tool, {
     saveWaitMsg: "Please wait while saving image, this can take around 1 minute to complete",
     /* end i18n */
 
+    /**
+     * private: method[enableButton]
+     *
+     * :param mgr: ``AsBuilt.GCPManager``
+     * :param count: ``Integer`` Number of Ground Control Points
+     */
     enableButton: function(mgr, count) {
         Ext.each(this.actions, function(action) {
             action.setDisabled(count < 3);
         });
     },
 
+    /**
+     * private: method[getEnv]
+     * Gets the array/list of GCPs to use in the WMS GetMap and the WPS
+     * Execute request.
+     * 
+     * :return: ``String`` The encoded list of GCPs
+     */
     getEnv: function() {
         var gcps = this.gcpManager.getGCPs();
         var env = "[";
@@ -124,6 +146,11 @@ AsBuilt.plugins.GCPImagePreview = Ext.extend(gxp.plugins.Tool, {
         return env;
     },
 
+    /**
+     * private: method[previewImage]
+     *
+     * Show a preview of the warped image on top of the base map.
+     */
     previewImage: function() {
         var map = this.baseMap;
         var params = {
@@ -131,23 +158,36 @@ AsBuilt.plugins.GCPImagePreview = Ext.extend(gxp.plugins.Tool, {
             ENV: 'gcp:' + this.getEnv()
         };
         if (!this.previewLayer) {
-            OpenLayers.Util.extend(params, {layers: this.layerName, styles: this.styleName, format: 'image/png'});
-            this.previewLayer = new OpenLayers.Layer.WMS(null, this.url, params, {
-                projection: this.targetCRS, 
-                singleTile: true, 
-                ratio: 1
+            OpenLayers.Util.extend(params, {
+                layers: this.layerName, 
+                styles: this.styleName, 
+                format: 'image/png'
             });
+            this.previewLayer = new OpenLayers.Layer.WMS(null, this.url, 
+                params, {
+                    projection: this.targetCRS, 
+                    singleTile: true, 
+                    ratio: 1
+                }
+            );
             map.addLayer(this.previewLayer);
             // attach the preview layer to the opacity slider
             if (this.opacitySlider !== null) {
                 var slider = Ext.getCmp(this.opacitySlider);
-                slider && slider.setLayer(this.previewLayer);
+                if (slider) {
+                    slider.setLayer(this.previewLayer);
+                }
             }
         } else {
             this.previewLayer.mergeNewParams(params);
         }
     },
 
+    /**
+     * private: method[saveImage]
+     * Save the rectified image on the server. The WPS process will return the
+     * file path in which the image was saved.
+     */
     saveImage: function() {
         if (!this.loadMask) {
             this.loadMask = new Ext.LoadMask(Ext.getBody(), 
@@ -240,6 +280,13 @@ AsBuilt.plugins.GCPImagePreview = Ext.extend(gxp.plugins.Tool, {
 
     },
 
+    /**
+     * private: method[updateRecord]
+     *
+     * :param path: ``String`` The file path on which the image was saved.
+     *
+     * Update the record in the DOCS table with the file path.
+     */
     updateRecord: function(path) {
         // TODO decide whether or not we still want to keep using the name layer
         var feature = new OpenLayers.Feature.Vector(null, {LAYER: path});
@@ -263,7 +310,7 @@ AsBuilt.plugins.GCPImagePreview = Ext.extend(gxp.plugins.Tool, {
         this.featureStore.proxy.protocol.commit([feature], options);
     },
 
-    /** api: method[addActions]
+    /**: api: method[addActions]
      */
     addActions: function() {
         this.gcpManager.on({
