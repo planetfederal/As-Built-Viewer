@@ -310,7 +310,7 @@ AsBuilt.plugins.GCPImagePreview = Ext.extend(gxp.plugins.Tool, {
         this.featureStore.proxy.protocol.commit([feature], options);
     },
 
-    /**: api: method[addActions]
+    /** api: method[addActions]
      */
     addActions: function() {
         this.gcpManager.on({
