@@ -46,6 +46,12 @@ AsBuilt.ImagePopup = Ext.extend(GeoExt.Popup, {
 
     border: false,
 
+    getPath: function() {
+        // remove first / and add file extension
+        return this.feature.attributes.PATH.substring(1) + "." + 
+            this.feature.attributes.FILETYPE;
+    },
+
     /** private: method[initComponent]
      */
     initComponent: function() {
@@ -56,8 +62,7 @@ AsBuilt.ImagePopup = Ext.extend(GeoExt.Popup, {
         }
         var width = parseInt(feature.attributes.WIDTH, 10);
         var height = parseInt(feature.attributes.HEIGHT, 10);
-        // remove first / and add file extension
-        var path = feature.attributes.PATH.substring(1) + "." + feature.attributes.FILETYPE;
+        var path = this.getPath();
         this.items = [{
             xtype: "tabpanel",
             border: false,
@@ -70,7 +75,16 @@ AsBuilt.ImagePopup = Ext.extend(GeoExt.Popup, {
                 imageHeight: height,
                 path: path,
                 border: false,
-                title: this.previewTitle
+                title: this.previewTitle,
+                bbar: [
+                    {
+                        hidden: this.readOnly,
+                        handler: this.downloadImage,
+                        scope: this,
+                        text: "Download",
+                        iconCls: "download"
+                    }
+                ]
             }, {
                 xtype: "form",
                 id: "memoform",
@@ -111,6 +125,46 @@ AsBuilt.ImagePopup = Ext.extend(GeoExt.Popup, {
         }];
         AsBuilt.ImagePopup.superclass.initComponent.call(this);
     },
+
+    downloadImage: function() {
+        // issue a WPS Execute request to get the image
+        // build up the WPS Execute request
+        var format = new OpenLayers.Format.WPSExecute();
+        var request = format.write({
+            identifier: 'gs:GetFullCoverage',
+            dataInputs: [{
+                identifier: 'name',
+                data: {
+                    literalData: {
+                        value: this.layerName
+                    }
+                }
+            }, {
+                identifier: 'filter',
+                data: {
+                    complexData: {
+                        mimeType: 'text/plain; subtype=cql',
+                        value: "path = '" + this.getPath() + "'"
+                    }
+                }
+            }],
+            responseForm: {
+                rawDataOutput: {
+                    mimeType: "image/tiff",
+                    identifier: "result"
+                }
+            }
+        });
+
+        OpenLayers.Request.POST({
+            url: this.url,
+            data: request,
+            success: function(response) {
+                console.log('success handler');
+            },
+            scope: this
+        });
+    }, 
 
     /** private: method[setFeatureState]
       *  Set the state of this popup's feature and trigger a featuremodified

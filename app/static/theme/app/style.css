@@ -36,3 +36,7 @@
 .x-btn .gxp-icon-preview, .x-menu-item .gxp-icon-preview {
     background-image: url(img/silk/magnifier.png);
 }
+
+.x-btn .download, .x-menu-item .download {
+    background-image: url(img/silk/picture_save.png);
+}
