@@ -26,6 +26,13 @@ AsBuilt.plugins.GCPImagePreview = Ext.extend(gxp.plugins.Tool, {
     ptype: "app_preview",
 
     /**
+     * api: config[basePath]
+     * ``String`` The base path on the server at which rectified images will 
+     * be saved.
+     */
+    basePath: null,
+
+    /**
      * api: config[opacitySlider]
      * ``String`` The id of the opacity slider.
      */
@@ -257,6 +264,13 @@ AsBuilt.plugins.GCPImagePreview = Ext.extend(gxp.plugins.Tool, {
                 data: {
                     literalData: {
                         value: 'true'
+                    }
+                }
+            }, {
+                identifier: 'outputPath',
+                data: {
+                    literalData: {
+                        value: this.basePath + this.target.imageInfo.path
                     }
                 }
             }],

@@ -53,7 +53,8 @@
 
         var localGeoserver = "/geoserver/ows";
         var layerName = "asbuilt:images";
-
+        // this is the base path on the server where rectified images will be saved
+        var saveBasePath = "/usr/share/opengeo-suite-data/geoserver_data/sfmta_rectified_images/"
         var app1 = new gxp.Viewer({
             portalConfig: {id: "viewer1", xtype: "panel", flex: 1, title: "Base map"},
             portalItems: ["map"],
@@ -168,6 +169,7 @@
                     gcpManager: AsBuilt.GCPManager
                 }, {
                     ptype: "app_preview",
+                    basePath: saveBasePath,
                     opacitySlider: "opacity_slider",
                     url: localGeoserver,
                     featureType: "DOCS",
