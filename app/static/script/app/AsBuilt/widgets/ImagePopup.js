@@ -159,9 +159,6 @@ AsBuilt.ImagePopup = Ext.extend(GeoExt.Popup, {
         OpenLayers.Request.POST({
             url: this.url,
             data: request,
-            success: function(response) {
-                console.log('success handler');
-            },
             scope: this
         });
     }, 

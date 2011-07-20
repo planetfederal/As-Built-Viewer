@@ -302,8 +302,8 @@ AsBuilt.plugins.GCPImagePreview = Ext.extend(gxp.plugins.Tool, {
      * Update the record in the DOCS table with the file path.
      */
     updateRecord: function(path) {
-        // TODO decide whether or not we still want to keep using the name layer
-        var feature = new OpenLayers.Feature.Vector(null, {LAYER: path});
+        // TODO decide whether or not we still want to keep using the name LAYER as the attribute
+        var feature = new OpenLayers.Feature.Vector(null, {LAYER: this.target.imageInfo.path});
         feature.fid = this.target.imageInfo.fid;
         feature.state = OpenLayers.State.UPDATE;
         var options = {
