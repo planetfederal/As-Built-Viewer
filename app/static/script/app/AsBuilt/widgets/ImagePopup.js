@@ -63,13 +63,22 @@ AsBuilt.ImagePopup = Ext.extend(GeoExt.Popup, {
         var width = parseInt(feature.attributes.WIDTH, 10);
         var height = parseInt(feature.attributes.HEIGHT, 10);
         var path = this.getPath();
+        var layerName;
+        var projection = null;
+        if (feature.attributes.LAYER !== null) {
+            layerName = this.rectifiedLayerName;
+            projection = "EPSG:3857";
+        } else {
+            layerName = this.layerName;
+        }
         this.items = [{
             xtype: "tabpanel",
             border: false,
             activeTab: 0,
             items: [{
                 xtype: 'app_imagemappanel',
-                layerName: this.layerName,
+                layerName: layerName,
+                projection: projection,
                 url: this.url,
                 imageWidth: width,
                 imageHeight: height,

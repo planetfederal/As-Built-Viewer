@@ -21,6 +21,8 @@ Ext.namespace("AsBuilt");
  */
 AsBuilt.ImageMapPanel = Ext.extend(GeoExt.MapPanel, {
 
+    projection: null,
+
     layerName: null,
 
     url: null,
@@ -36,6 +38,22 @@ AsBuilt.ImageMapPanel = Ext.extend(GeoExt.MapPanel, {
             vertical: true,
             height: 100
         }];
+        var maxExtent, maxResolution, projection, extent, numZoomLevels;
+        this.layers = [];
+        if (this.projection === "EPSG:3857") {
+            maxExtent = new OpenLayers.Bounds(-20037508.34, -20037508.34, 20037508.34, 20037508.34);
+            numZoomLevels = 21;
+            extent = new OpenLayers.Bounds(-13650159, 4534735, -13609227, 4554724);
+            maxResolution = 156543.03390625;
+            projection = this.projection;
+            this.layers.push(new OpenLayers.Layer.OSM());
+        } else {
+            maxExtent = new OpenLayers.Bounds(
+                0, -this.imageWidth,
+                this.imageHeight, 0); 
+            maxResolution = this.imageWidth/256;
+            projection = "EPSG:404000";
+        }
         this.map = {
             controls: [
                 new OpenLayers.Control.Navigation({zoomWheelOptions: {interval: 250}}),
@@ -43,19 +61,18 @@ AsBuilt.ImageMapPanel = Ext.extend(GeoExt.MapPanel, {
                 new OpenLayers.Control.ZoomPanel(),
                 new OpenLayers.Control.Attribution()
             ],
-            maxExtent: new OpenLayers.Bounds(
-                0, -this.imageWidth,
-                this.imageHeight, 0
-            ),
-            maxResolution: this.imageWidth/256,
-            units: 'm',
-            projection: "EPSG:404000"
+            maxExtent: maxExtent,
+            numZoomLevels: numZoomLevels,
+            maxResolution: maxResolution,
+            projection: projection,
+            units: 'm'
         };
-        this.layers = [new OpenLayers.Layer.WMS(
+        this.extent = extent;
+        this.layers.push(new OpenLayers.Layer.WMS(
             null,
             this.url,
             {layers: this.layerName, CQL_FILTER: "PATH='"+this.path+"'"}
-        )];
+        ));
 
         AsBuilt.ImageMapPanel.superclass.initComponent.call(this);
     }
