@@ -37,6 +37,12 @@ AsBuilt.ImagePopup = Ext.extend(GeoExt.Popup, {
      */
     previewTitle: "Image preview",
 
+    /**
+     * api: config[zoomLevel]
+     * ``Integer`` The zoom level to use when displaying a rectified image.
+     */
+    zoomLevel: 14,
+
     readOnly: true,
 
     memoField: "MEMO",
@@ -63,11 +69,13 @@ AsBuilt.ImagePopup = Ext.extend(GeoExt.Popup, {
         var width = parseInt(feature.attributes.WIDTH, 10);
         var height = parseInt(feature.attributes.HEIGHT, 10);
         var path = this.getPath();
-        var layerName;
+        var layerName, center, zoom;
         var projection = null;
         if (feature.attributes.LAYER !== null) {
             layerName = this.rectifiedLayerName;
             projection = "EPSG:3857";
+            center = new OpenLayers.LonLat(this.location.geometry.x, this.location.geometry.y);
+            zoom = this.zoomLevel;
         } else {
             layerName = this.layerName;
         }
@@ -78,6 +86,8 @@ AsBuilt.ImagePopup = Ext.extend(GeoExt.Popup, {
             items: [{
                 xtype: 'app_imagemappanel',
                 layerName: layerName,
+                center: center,
+                zoom: zoom,
                 projection: projection,
                 url: this.url,
                 imageWidth: width,

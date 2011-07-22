@@ -21,6 +21,10 @@ Ext.namespace("AsBuilt");
  */
 AsBuilt.ImageMapPanel = Ext.extend(GeoExt.MapPanel, {
 
+    zoom: null,
+
+    center: null,
+
     projection: null,
 
     layerName: null,
@@ -38,12 +42,11 @@ AsBuilt.ImageMapPanel = Ext.extend(GeoExt.MapPanel, {
             vertical: true,
             height: 100
         }];
-        var maxExtent, maxResolution, projection, extent, numZoomLevels;
+        var maxExtent, maxResolution, projection, numZoomLevels;
         this.layers = [];
         if (this.projection === "EPSG:3857") {
             maxExtent = new OpenLayers.Bounds(-20037508.34, -20037508.34, 20037508.34, 20037508.34);
             numZoomLevels = 21;
-            extent = new OpenLayers.Bounds(-13650159, 4534735, -13609227, 4554724);
             maxResolution = 156543.03390625;
             projection = this.projection;
             this.layers.push(new OpenLayers.Layer.OSM());
@@ -67,7 +70,6 @@ AsBuilt.ImageMapPanel = Ext.extend(GeoExt.MapPanel, {
             projection: projection,
             units: 'm'
         };
-        this.extent = extent;
         this.layers.push(new OpenLayers.Layer.WMS(
             null,
             this.url,
