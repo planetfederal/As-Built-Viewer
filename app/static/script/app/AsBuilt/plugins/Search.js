@@ -115,7 +115,7 @@ AsBuilt.plugins.Search = Ext.extend(gxp.plugins.Tool, {
     queryActionTooltip: "Query the dataset taking into account the filters above",
     documentTypeEmpty: "Select a type",
     clearActionText: "Clear",
-    clearActionTooltip: "Clear all the values in the form",
+    clearActionTooltip: "Clear the previous selection",
     documentTypeLabel: "Document type",
     documentSubjectLabel: "General Subject",
     fileNumberLabel: "File Number",
@@ -266,8 +266,7 @@ AsBuilt.plugins.Search = Ext.extend(gxp.plugins.Tool, {
                 new OpenLayers.Filter.Logical({
                     type: OpenLayers.Filter.Logical.AND,
                     filters: filters
-                })
-            );
+                }));
         } else if (filters[0] !== undefined) {
             featureManager.loadFeatures(filters[0]);
         } else {
@@ -286,6 +285,8 @@ AsBuilt.plugins.Search = Ext.extend(gxp.plugins.Tool, {
             text: this.clearActionText,
             tooltip: {title: this.clearActionText, text: this.clearActionTooltip},
             handler: function() {
+                var featureManager = this.target.tools[this.featureManager];
+                featureManager.clearFeatures();
                 this.cnns = [];
                 Ext.getCmp('searchform').getForm().reset();
             },
