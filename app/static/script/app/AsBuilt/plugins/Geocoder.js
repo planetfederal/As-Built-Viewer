@@ -28,6 +28,12 @@ AsBuilt.plugins.Geocoder = Ext.extend(gxp.plugins.Tool, {
     /** api: ptype = app_geocoder */
     ptype: "app_geocoder",
 
+    /** api:config[zoom]
+     * ``Integer`` Zoom level to zoom to when an address is selected.
+     * Defaults to 16.
+     */
+    zoom: 16,
+
     init: function(target) {
 
         var combo = new gxp.form.AutoCompleteComboBox(Ext.apply({
@@ -43,8 +49,7 @@ AsBuilt.plugins.Geocoder = Ext.extend(gxp.plugins.Tool, {
                 ready: function() {
                     combo.bounds = bounds.clone().transform(
                         target.mapPanel.map.getProjectionObject(),
-                        new OpenLayers.Projection("EPSG:4326")
-                    );
+                        new OpenLayers.Projection("EPSG:4326"));
                 }
             });
         }
@@ -67,7 +72,7 @@ AsBuilt.plugins.Geocoder = Ext.extend(gxp.plugins.Tool, {
         var map = this.target.mapPanel.map;
         var location = record.get("feature").geometry;
         if (location instanceof OpenLayers.Geometry.Point) {
-            map.setCenter(new OpenLayers.LonLat(location.x, location.y));
+            map.setCenter(new OpenLayers.LonLat(location.x, location.y), this.zoom);
         }
     }
 
