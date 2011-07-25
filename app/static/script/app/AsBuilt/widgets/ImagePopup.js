@@ -177,7 +177,7 @@ AsBuilt.ImagePopup = Ext.extend(GeoExt.Popup, {
         });
 
         OpenLayers.Request.POST({
-            url: this.url,
+            url: OpenLayers.Util.urlAppend(this.url, "content-disposition=attachment"),
             data: request,
             scope: this
         });
