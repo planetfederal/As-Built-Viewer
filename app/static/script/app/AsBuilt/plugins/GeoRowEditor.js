@@ -31,9 +31,12 @@ AsBuilt.plugins.GeoRowEditor = Ext.extend(Ext.ux.grid.RowEditor, {
                 eventListeners: {
                     "featureadded": function(evt) {
                         this.drawControl.deactivate();
-                        this.feature.geometry = evt.feature.geometry.clone();
-                        this.feature.state =  OpenLayers.State.UPDATE;
-                        this.record.set("state", this.feature.state);
+                        var feature = this.feature;
+                        feature.modified = Ext.apply(feature.modified || {}, {
+                            geometry: null});
+                        feature.geometry = evt.feature.geometry.clone();
+                        feature.state =  OpenLayers.State.UPDATE;
+                        this.record.set("state", feature.state);
                     },
                     scope: this
                 }
