@@ -54,15 +54,16 @@ AsBuilt.ImagePopup = Ext.extend(GeoExt.Popup, {
 
     getPath: function() {
         // remove first / and add file extension
-        return this.feature.attributes.PATH.substring(1) + "." + 
-            this.feature.attributes.FILETYPE;
+        var feature = this.feature.get("feature");
+        return feature.attributes.PATH.substring(1) + "." + 
+            feature.attributes.FILETYPE;
     },
 
     /** private: method[initComponent]
      */
     initComponent: function() {
         this.addEvents("featuremodified", "canceledit");
-        var feature = this.feature;
+        var feature = this.feature.get("feature");
         if (!this.location) {
             this.location = feature;
         }
@@ -187,24 +188,27 @@ AsBuilt.ImagePopup = Ext.extend(GeoExt.Popup, {
       *  event on the feature's layer.   
       */
     setFeatureState: function(state) {
-        this.feature.state = state;
-        var layer = this.feature.layer;
+        var feature = this.feature.getFeature();
+        feature.state = state;
+        var layer = feature.layer;
         layer && layer.events.triggerEvent("featuremodified", {
-            feature: this.feature
+            feature: feature
         });
     },
 
     cancelEditing: function() {
         this.setFeatureState(null);
-        this.fireEvent("canceledit", this, this.feature);
+        var feature = this.feature.getFeature();
+        this.fireEvent("canceledit", this, feature);
         this.close();
     },
 
     saveMemo: function() {
         var value = Ext.getCmp("memoform").getForm().findField('memo').getValue();
-        this.feature.attributes[this.memoField] = value;
+        var feature = this.feature.getFeature();
+        feature.attributes[this.memoField] = value;
         this.setFeatureState(OpenLayers.State.UPDATE);
-        this.fireEvent("featuremodified", this, this.feature);
+        this.fireEvent("featuremodified", this, feature);
     }
 
 });
