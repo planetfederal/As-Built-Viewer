@@ -157,6 +157,12 @@
                     featureManager: "image-manager",
                     outputConfig: {
                         loadMask: true,
+                        fieldVisibility: {
+                            IDN: true,
+                            IDRAWNUM: true,
+                            SDRAWTITLE: true,
+                            DDRAWDATE: true
+                        },
                         xtype: "app_geometrygrid",
                         rectifierBaseUrl: './image-rectifier?',
                         plugins: [{
