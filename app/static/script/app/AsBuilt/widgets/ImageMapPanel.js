@@ -68,7 +68,8 @@ AsBuilt.ImageMapPanel = Ext.extend(GeoExt.MapPanel, {
             numZoomLevels: numZoomLevels,
             maxResolution: maxResolution,
             projection: projection,
-            units: 'm'
+            units: 'm',
+            theme: null
         };
         this.layers.push(new OpenLayers.Layer.WMS(
             null,
