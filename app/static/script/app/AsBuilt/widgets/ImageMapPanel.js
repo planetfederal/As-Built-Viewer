@@ -31,12 +31,30 @@ AsBuilt.ImageMapPanel = Ext.extend(GeoExt.MapPanel, {
 
     url: null,
 
+    /* i18n */
+    zoomToTitleText: "Zoom to image title",
+    /* end i18n */
+
     /** private: method[initComponent]
      *  Initializes the map panel. Creates an OpenLayers map if
      *  none was provided in the config options passed to the
      *  constructor.
      */
     initComponent: function(){
+        if (this.projection !== "EPSG:3857") {
+            this.tbar = [{
+                text: this.zoomToTitleText, 
+                iconCls: "gxp-icon-zoom-to",
+                handler: function() {
+                    var extent = this.map.getMaxExtent();
+                    var w = this.imageWidth;
+                    var h = this.imageHeight;
+                    var center = new OpenLayers.LonLat(extent.right-w*0.17, extent.bottom+h*0.16);
+                    this.map.setCenter(center, 3);
+                }, 
+                scope: this
+            }];
+        }
         this.items = [{
             xtype: "gx_zoomslider",
             vertical: true,
