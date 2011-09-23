@@ -91,6 +91,8 @@ AsBuilt.plugins.GCPImagePreview = Ext.extend(gxp.plugins.Tool, {
     saveTooltip: "Save the warped image",
     saveText: "Save",
     saveWaitMsg: "Please wait while saving image, this can take around 1 minute to complete",
+    saveTitle: "Save",
+    saveMsg: "Image was saved successfully",
     /* end i18n */
 
     /**
@@ -309,6 +311,12 @@ AsBuilt.plugins.GCPImagePreview = Ext.extend(gxp.plugins.Tool, {
         var options = {
             callback: function(response) {
                 this.loadMask.hide();
+                Ext.Msg.show({
+                    title: this.saveTitle,
+                    msg: this.saveMsg,
+                    icon: Ext.MessageBox.INFO,
+                    buttons: {ok: true}
+                });
             },
             scope: this
         };
