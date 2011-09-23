@@ -52,8 +52,8 @@ AsBuilt.ImageMapPanel = Ext.extend(GeoExt.MapPanel, {
             this.layers.push(new OpenLayers.Layer.OSM());
         } else {
             maxExtent = new OpenLayers.Bounds(
-                0, -this.imageWidth,
-                this.imageHeight, 0); 
+                0, -this.imageHeight,
+                this.imageWidth, 0); 
             maxResolution = this.imageWidth/256;
             projection = "EPSG:404000";
         }
