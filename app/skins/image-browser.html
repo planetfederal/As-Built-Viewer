@@ -50,11 +50,12 @@
                 },
                 items: [{
                     id: "south",
-                    xtype: "container",
+                    xtype: "panel",
+                    collapsible: true,
                     split: true,
                     layout: "fit",
                     region: "south",
-                    height: 150
+                    height: 200
                 }, {
                     region: "west",
                     border: false,
@@ -62,8 +63,6 @@
                     activeItem: 1,
                     split: true,
                     collapsible: true,
-                    collapseMode: "mini",
-                    header: false,
                     defaults: {
                         border: false
                     },
