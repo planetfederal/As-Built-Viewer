@@ -55,7 +55,11 @@ AsBuilt.ImagePopup = Ext.extend(GeoExt.Popup, {
     getPath: function() {
         // remove first / and add file extension
         var feature = this.feature.getFeature();
-        return feature.attributes.PATH.substring(1) + "." + 
+        var path = feature.attributes.PATH;
+        if (path.charAt(0) === "/") {
+            path = path.substring(1);
+        }
+        return path + "." + 
             feature.attributes.FILETYPE;
     },
 
