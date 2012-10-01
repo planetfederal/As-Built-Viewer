@@ -1,5 +1,10 @@
-var Response = require("ringo/webapp/response").Response;
+var {Application} = require("stick");
 
-exports.app = function(app) {
-    return Response.skin(module.resolve("../skins/image-rectifier.html"));
-};
+var app = exports.app = Application();
+app.configure("render", "route");
+app.render.base = module.resolve("../templates");
+app.render.master = "base.html";
+
+app.get("/", function(request) {
+    return app.render("image-rectifier.html", {status: 200});
+});

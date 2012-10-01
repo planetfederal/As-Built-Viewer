@@ -2,68 +2,44 @@
 <project name="As-Built-Viewer" default="dist" basedir=".">
 
     <description>
-        Ready GXP Build File
+        As-Built-Viewer Build File
     </description>
 
     <property name="build" location="build"/>
+    <property name="ringo" location="externals/ringojs-fork"/>
     <property name="app.proxy.geoserver" value=""/>
+    <property name="app.proxy.tsudat" value=""/>
+    <property name="app.proxy.geonode" value=""/>
     <property name="app.port" value="8080"/>
+    <property name="app.deploy.geoserver" value="/geoserver/"/>
+    <condition property="git" value="git.cmd" else="git">
+        <os family="windows"/>
+    </condition>
 
     <target name="init">
 
-        <mkdir dir="${build}"/>
-
-        <echo message="pulling in ringo (ignore fatal warning)"/>
-        <mkdir dir="${build}/ringo"/>
-        <exec executable="git" dir="${build}/ringo" failonerror="false">
-            <arg line="clone -nq git://github.com/ringo/ringojs.git ."/>
-        </exec>
-        <exec executable="git" dir="${build}/ringo" failonerror="true">
-            <arg line="pull origin master"/>
-        </exec>
-        <exec executable="git" dir="${build}/ringo" failonerror="true">
-            <arg line="checkout 7af8f2bba20890e4860973fea5254b55bd00c7d7"/>
-        </exec>
-
-        <echo message="building ringo jars"/>
-        <ant dir="${build}/ringo" target="jar"/>
-        <!-- uncomment this if you have additional jars in a lib dir
-        <copy todir="${build}/ringo/lib" flatten="true" includeEmptyDirs="false">
-            <fileset dir="lib"/>
-        </copy>
-        -->
-
-        <echo message="pulling in buildkit (ignore fatal warning)"/>
-        <mkdir dir="${build}/buildkit"/>
-        <exec executable="git" dir="${build}/buildkit" failonerror="false">
-            <arg line="clone -nq git://github.com/tschaub/buildkit.git ."/>
-        </exec>
-        <exec executable="git" dir="${build}/buildkit" failonerror="true">
-            <arg line="pull origin master"/>
-        </exec>
-        <exec executable="git" dir="${build}/buildkit" failonerror="true">
-            <arg line="checkout 86eacbd7b3bf62b8e99f46911dd5a633464b8570"/>
-        </exec>
-
         <echo message="pulling in submodules"/>
-        <exec executable="git" failonerror="true">
+        <exec executable="${git}" failonerror="true">
             <arg line="submodule init"/>
         </exec>
-        <exec executable="git" failonerror="true">
+        <exec executable="${git}" failonerror="true">
             <arg line="submodule sync"/>
         </exec>
-        <exec executable="git" failonerror="true">
+        <exec executable="${git}" failonerror="true">
             <arg line="submodule update"/>
         </exec>
 
+        <echo message="building ringo jars"/>
+        <ant dir="${ringo}" target="jar"/>
+
     </target>
-    
+
     <target name="buildjs">
 
         <mkdir dir="${build}/${ant.project.name}/WEB-INF/app/static/script"/>
-        <java jar="${build}/ringo/run.jar" fork="true" failonerror="true">
-            <sysproperty key="ringo.home" path="${build}/ringo"/>
-            <arg path="${build}/buildkit/lib/buildkit/build.js"/>
+        <java jar="${ringo}/run.jar" fork="true" failonerror="true">
+            <sysproperty key="ringo.home" path="${ringo}"/>
+            <arg path="externals/buildkit/lib/buildkit/build.js"/>
             <arg line="-o ${build}/${ant.project.name}/WEB-INF/app/static/script buildjs.cfg"/>
         </java>
 
@@ -80,12 +56,19 @@
             </fileset>
         </copy>
         <copy todir="${build}/${ant.project.name}/WEB-INF/lib" flatten="true" includeEmptyDirs="false">
-            <fileset dir="${build}/ringo/lib"/>
+            <fileset dir="${ringo}/lib"/>
         </copy>
         <copy todir="${build}/${ant.project.name}/WEB-INF/app">
             <fileset dir="app">
                 <exclude name="**/externals/**"/>
                 <exclude name="**/script/**"/>
+            </fileset>
+        </copy>
+        <!-- copy stick -->
+        <copy todir="${build}/${ant.project.name}/WEB-INF/app/stick">
+            <fileset dir="externals/stick">
+                <include name="**/lib/**"/>
+                <include name="package.json"/>
             </fileset>
         </copy>
         <!-- copy Ext resources -->
@@ -98,7 +81,7 @@
         </copy>
         <!-- copy GeoExt resources -->
         <copy todir="${build}/${ant.project.name}/WEB-INF/app/static/externals/geoext/resources">
-            <fileset dir="app/static/externals/GeoExt/resources"/>
+            <fileset dir="app/static/externals/geoext/resources"/>
         </copy>
         <!-- copy gxp resources -->
         <copy todir="${build}/${ant.project.name}/WEB-INF/app/static/externals/gxp/src/theme">
@@ -107,15 +90,28 @@
     </target>
 
     <target name="debug">
-        <java jar="${build}/ringo/run.jar" fork="true">
+        <java jar="${ringo}/run.jar" fork="true">
+            <sysproperty key="app.debug" value="1"/>
             <sysproperty key="app.proxy.geoserver" value="${app.proxy.geoserver}"/>
-            <sysproperty key="ringo.home" path="${build}/ringo"/>
+            <sysproperty key="app.proxy.tsudat" value="${app.proxy.tsudat}"/>
+            <sysproperty key="app.proxy.geonode" value="${app.proxy.geonode}"/>
+            <sysproperty key="ringo.home" path="${ringo}"/>
+            <sysproperty key="ringo.modulepath" path="externals"/>
             <arg path="app/main.js"/>
             <arg line="-p ${app.port}"/>
         </java>
     </target>
 
-    <target name="static-war" depends="dist">
+    <target name="cleanstatic">
+        <delete dir="${build}/${ant.project.name}/WEB-INF/app/static"/>
+    </target>
+    
+    <target name="replace">
+        <replace file="${build}/${ant.project.name}/WEB-INF/app/static/index.html" token='"/geoserver/' value='"${app.deploy.geoserver}'/>
+        <replace file="${build}/${ant.project.name}/WEB-INF/app/static/theme/app/style.css" token='(/geoserver/' value='(${app.deploy.geoserver}'/>
+    </target>
+    
+    <target name="static-war" depends="cleanstatic, dist, replace">
         <war destfile="${build}/${ant.project.name}.war" needxmlfile="false">
             <fileset dir="${build}/${ant.project.name}/WEB-INF/app/static"/>
         </war>
