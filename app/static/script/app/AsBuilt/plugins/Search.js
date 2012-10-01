@@ -62,19 +62,19 @@ AsBuilt.plugins.Search = Ext.extend(gxp.plugins.Tool, {
     /** api: config[streetsURL]
      *  ``String`` URL where the JSON with the list of streets can be found.
      */
-    streetsURL: "json/streets.json",
+    streetsURL: "../json/streets.json",
 
     /** api: config[intersectionsURL]
      *  ``String`` URL where the JSON with the list of intersections can be 
      *      found.
      */
-    intersectionsURL: "json/intersections.json",
+    intersectionsURL: "../json/intersections.json",
 
     /** api: config[cnnURL]
      *  ``String`` URL where the JSON with the list of CNNs
      *      can be found.
      */
-    cnnURL: "json/cnn.json",
+    cnnURL: "../json/cnn.json",
 
     /** api: config [typeDescriptionSearchField]
      *  ``String`` The search field to use for drawing type description.

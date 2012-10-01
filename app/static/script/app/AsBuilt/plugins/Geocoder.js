@@ -6,6 +6,10 @@
  * of the license.
  */
 
+/**
+ * @requires widgets/form/AutoCompleteComboBox.js
+ */
+
 /** api: (define)
  *  module = AsBuilt.plugins
  *  class = Geocoder

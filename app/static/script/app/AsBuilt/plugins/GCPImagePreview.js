@@ -6,6 +6,10 @@
  * of the license.
  */
 
+/**
+ * @requires OpenLayers/Format/WPSExecute.js
+ */
+
 Ext.ns("AsBuilt.plugins");
 
 /** api: (define)

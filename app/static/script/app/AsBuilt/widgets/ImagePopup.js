@@ -8,6 +8,7 @@
 
 /*
  * @requires AsBuilt/widgets/ImageMapPanel.js
+ * @requires OpenLayers/Format/WPSExecute.js
  */
 
 Ext.namespace("AsBuilt");

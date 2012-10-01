@@ -1,3 +1,7 @@
+/**
+ * @requires RowEditor.js
+ */
+
 Ext.ns('AsBuilt.plugins');
 
 AsBuilt.plugins.GeoRowEditor = Ext.extend(Ext.ux.grid.RowEditor, {
