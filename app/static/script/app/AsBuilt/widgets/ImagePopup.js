@@ -71,8 +71,7 @@ AsBuilt.ImagePopup = Ext.extend(GeoExt.Popup, {
         if (!this.location) {
             this.location = feature;
         }
-        // TODO do not use global app
-        var mgr = app.tools["notes-manager"];
+        var mgr = this.notesManager;
         var docID = feature.fid.split(".").pop();
         mgr.loadFeatures(new OpenLayers.Filter.Comparison({
             type: '==',
@@ -92,7 +91,7 @@ AsBuilt.ImagePopup = Ext.extend(GeoExt.Popup, {
         } else {
             layerName = this.layerName;
         }
-        var editor = new Ext.ux.grid.RowEditor();
+        var editor = new Ext.ux.grid.RowEditor({saveText: 'Update'});
         this.items = [{
             xtype: "tabpanel",
             border: false,
@@ -162,6 +161,7 @@ AsBuilt.ImagePopup = Ext.extend(GeoExt.Popup, {
                         editor.stopEditing();
                         var s = this.grid.getSelectionModel().getSelections();
                         for(var i = 0, r; r = s[i]; i++){
+                            r.getFeature().state = OpenLayers.State.DELETE;
                             this.grid.store.remove(r);
                         }
                     },
