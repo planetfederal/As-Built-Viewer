@@ -9,6 +9,7 @@
 /*
  * @requires AsBuilt/widgets/ImageMapPanel.js
  * @requires OpenLayers/Format/WPSExecute.js
+ * @requires widgets/grid/FeatureGrid.js
  */
 
 Ext.namespace("AsBuilt");
@@ -72,6 +73,14 @@ AsBuilt.ImagePopup = Ext.extend(GeoExt.Popup, {
         if (!this.location) {
             this.location = feature;
         }
+        // TODO do not use global app
+        var mgr = app.tools["notes-manager"];
+        var docID = feature.fid.split(".").pop();
+        mgr.loadFeatures(new OpenLayers.Filter.Comparison({
+            type: '==',
+            property: 'DOC_ID',
+            value: docID
+        }));
         var width = parseInt(feature.attributes.WIDTH, 10);
         var height = parseInt(feature.attributes.HEIGHT, 10);
         var path = this.getPath();
@@ -85,6 +94,7 @@ AsBuilt.ImagePopup = Ext.extend(GeoExt.Popup, {
         } else {
             layerName = this.layerName;
         }
+        var editor = new Ext.ux.grid.RowEditor();
         this.items = [{
             xtype: "tabpanel",
             border: false,
@@ -111,41 +121,65 @@ AsBuilt.ImagePopup = Ext.extend(GeoExt.Popup, {
                     }
                 ]
             }, {
-                xtype: "form",
-                id: "memoform",
-                defaults: {
-                    style: {
-                        margin: "7px"
+                xtype: "gxp_featuregrid",
+                ref: "../grid",
+                autoExpandColumn: 2,
+                ignoreFields: ['TIMESTAMP'],
+                sm: this.readOnly ? undefined : new Ext.grid.RowSelectionModel({
+                    listeners: {
+                        selectionchange: function(sm) {
+                            this.grid.removeBtn.setDisabled(sm.getCount() < 1);
+                        },
+                        scope: this
                     }
-                },
-                border: false,
-                hideLabels: true,
-                items: [
-                    {
-                        xtype: "textarea",
-                        width: (this.width) ? this.width-35 : null,
-                        grow: true,
-                        name: "memo",
-                        value: feature.attributes[this.memoField],
-                        readOnly: this.readOnly
-                    }
-                ],
-                title: this.attributesTitle,
-                bbar: [
-                    {
-                        hidden: this.readOnly,
-                        handler: this.cancelEditing,
-                        scope: this,
-                        text: "Cancel",
-                        iconCls: 'cancel'
-                    }, {
-                        hidden: this.readOnly,
-                        handler: this.saveMemo,
-                        scope: this,
-                        text: "Save",
-                        iconCls: 'save'
-                    }
-                ]
+                }),
+                plugins: this.readOnly ? undefined : [editor],
+                bbar: this.readOnly ? undefined : [{
+                    text: "Save",
+                    handler: function() {
+                        this.grid.store.each(function(record) {
+                            // TODO: why is this not done automatically?
+                            var attributes = record.getFeature().attributes;
+                            attributes['DOC_ID'] = record.get('DOC_ID');
+                            attributes['AUTHOR'] = record.get("AUTHOR");
+                            attributes['NOTE'] = record.get('NOTE');
+                        });
+                        this.grid.store.save();
+                    },
+                    scope: this
+                }],
+                tbar: this.readOnly ? undefined : [{
+                    iconCls: 'add',
+                    text: 'Add Note',
+                    handler: function() { 
+                        editor.stopEditing();
+                        var recordType = GeoExt.data.FeatureRecord.create();
+                        var feature = new OpenLayers.Feature.Vector();
+                        feature.state = OpenLayers.State.INSERT;
+                        this.grid.store.insert(0, new recordType({feature: feature, DOC_ID: docID}));
+                        this.grid.getView().refresh();
+                        this.grid.getSelectionModel().selectRow(0);
+                        editor.startEditing(0);
+                    },
+                    scope: this
+                },{
+                    iconCls: 'delete',
+                    ref: '../removeBtn',
+                    text: 'Remove Note',
+                    disabled: true,
+                    handler: function(){
+                        editor.stopEditing();
+                        var s = this.grid.getSelectionModel().getSelections();
+                        for(var i = 0, r; r = s[i]; i++){
+                            this.grid.store.remove(r);
+                        }
+                    },
+                    scope: this
+                }],
+                store: mgr.featureStore,
+                width: this.width,
+                height: this.height,
+                title: this.attributesTitle
             }]
         }];
         AsBuilt.ImagePopup.superclass.initComponent.call(this);
@@ -186,34 +220,6 @@ AsBuilt.ImagePopup = Ext.extend(GeoExt.Popup, {
             data: request,
             scope: this
         });
-    }, 
-
-    /** private: method[setFeatureState]
-      *  Set the state of this popup's feature and trigger a featuremodified
-      *  event on the feature's layer.   
-      */
-    setFeatureState: function(state) {
-        var feature = this.feature.getFeature();
-        feature.state = state;
-        var layer = feature.layer;
-        layer && layer.events.triggerEvent("featuremodified", {
-            feature: feature
-        });
-    },
-
-    cancelEditing: function() {
-        this.setFeatureState(null);
-        var feature = this.feature.getFeature();
-        this.fireEvent("canceledit", this, feature);
-        this.close();
-    },
-
-    saveMemo: function() {
-        var value = Ext.getCmp("memoform").getForm().findField('memo').getValue();
-        var feature = this.feature.getFeature();
-        feature.attributes[this.memoField] = value;
-        this.setFeatureState(OpenLayers.State.UPDATE);
-        this.fireEvent("featuremodified", this, feature);
     }
 
 });
