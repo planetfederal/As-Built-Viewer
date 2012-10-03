@@ -47,8 +47,6 @@ AsBuilt.ImagePopup = Ext.extend(GeoExt.Popup, {
 
     readOnly: true,
 
-    memoField: "MEMO",
-
     /** private config overrides **/
     layout: "fit",
 
@@ -137,13 +135,6 @@ AsBuilt.ImagePopup = Ext.extend(GeoExt.Popup, {
                 bbar: this.readOnly ? undefined : [{
                     text: "Save",
                     handler: function() {
-                        this.grid.store.each(function(record) {
-                            // TODO: why is this not done automatically?
-                            var attributes = record.getFeature().attributes;
-                            attributes['DOC_ID'] = record.get('DOC_ID');
-                            attributes['AUTHOR'] = record.get("AUTHOR");
-                            attributes['NOTE'] = record.get('NOTE');
-                        });
                         this.grid.store.save();
                     },
                     scope: this
@@ -153,7 +144,7 @@ AsBuilt.ImagePopup = Ext.extend(GeoExt.Popup, {
                     text: 'Add Note',
                     handler: function() { 
                         editor.stopEditing();
-                        var recordType = GeoExt.data.FeatureRecord.create();
+                        var recordType = GeoExt.data.FeatureRecord.create([{name: "DOC_ID"}, {name: "AUTHOR"}, {name: "NOTE"}]);
                         var feature = new OpenLayers.Feature.Vector();
                         feature.state = OpenLayers.State.INSERT;
                         this.grid.store.insert(0, new recordType({feature: feature, DOC_ID: docID}));
