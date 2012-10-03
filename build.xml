@@ -98,24 +98,9 @@
         </java>
     </target>
 
-    <target name="cleanstatic">
-        <delete dir="${build}/${ant.project.name}/WEB-INF/app/static"/>
-    </target>
-    
-    <target name="replace">
-        <replace file="${build}/${ant.project.name}/WEB-INF/app/static/index.html" token='"/geoserver/' value='"${app.deploy.geoserver}'/>
-        <replace file="${build}/${ant.project.name}/WEB-INF/app/static/theme/app/style.css" token='(/geoserver/' value='(${app.deploy.geoserver}'/>
-    </target>
-    
-    <target name="static-war" depends="cleanstatic, dist, replace">
+    <target name="war" depends="clean, dist">
         <war destfile="${build}/${ant.project.name}.war" needxmlfile="false">
             <fileset dir="${build}/${ant.project.name}/WEB-INF/app/static"/>
-        </war>
-    </target>
-
-    <target name="war" depends="dist">
-        <war destfile="${build}/${ant.project.name}.war">
-            <fileset dir="${build}/${ant.project.name}"/>
         </war>
     </target>
 

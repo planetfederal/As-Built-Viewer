@@ -2,7 +2,7 @@ var {Application} = require("stick");
 
 var app = Application();
 app.configure("notfound", "error", "static", "params", "mount");
-app.static(module.resolve("static"));
+app.static(module.resolve("static"), "index.html");
 
 app.mount("/", function(request) {
     if (request.pathInfo.length > 1) {
@@ -15,9 +15,6 @@ app.mount("/", function(request) {
         body: []
     };
 });
-app.mount("/image-browser", require("./root/image-browser").app);
-app.mount("/image-tagger", require("./root/image-tagger").app);
-app.mount("/image-rectifier", require("./root/image-rectifier").app);
 app.mount("/proxy", require("./root/proxy").app);
 
 // debug mode loads unminified scripts
