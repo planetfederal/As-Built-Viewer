@@ -17,3 +17,57 @@
 @include sencha-msgbox;
 
 // Your custom code goes here...
+div.olMapViewport {
+    background-color: #BBBBBB
+}
+div.olControlZoom {
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    background: rgba(255,255,255,0.4);
+    border-radius: 4px;
+    padding: 2px;
+}
+div.olControlZoom a {
+    display: block;
+    margin: 1px;
+    padding: 0;
+    color: white;
+    font-size: 48px;
+    font-family: sans-serif;
+    font-weight: bold;
+    text-decoration: none;
+    text-align: center;
+    height: 52px;
+    width: 52px;
+    line-height: 48px;
+    text-shadow: 0 0 3px rgba($base-color,0.8);
+    background: rgba($base-color, 0.5);
+    filter: alpha(opacity=80);
+}
+a.olControlZoomIn {
+    border-radius: 4px 4px 0 0;
+}
+a.olControlZoomOut {
+    border-radius: 0 0 4px 4px;
+}
+div.olControlZoom a:hover {
+    background: rgba($base-color, 0.7);
+    filter: alpha(opacity=100);
+}
+div.olControlAttribution {
+    border-top: 2px solid rgba($base-color,0.65);
+    border-left: 2px solid rgba($base-color,0.65);
+    border-top-left-radius: 10px;
+    position: relative;
+    bottom: 0;
+    right: 0;
+    font-size: 10px;
+    padding: 3px 5px;
+    background-color: rgba($base-color,0.35);
+    color: black;
+    text-shadow: 0 0 2px #fff;
+}
+div.olControlAttribution a {
+    color: navy
+}

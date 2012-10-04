@@ -36,9 +36,7 @@
             "path": "sdk/sencha-touch.js"
         },
         {
-            "path": "app.js",
-            "bundle": true,  /* Indicates that all class dependencies are concatenated into this file when build */
-            "update": "delta"
+            "path": "app.js"
         }
     ],
 
@@ -88,7 +86,7 @@
      * Extra resources to be copied along when build
      */
     "resources": [
-        "resources/images",
+        "externals/openlayers/build/OpenLayers.js",
         "resources/icons",
         "resources/startup"
     ],
@@ -97,7 +95,8 @@
      * File / directory name matchers to ignore when copying to the builds, must be valid regular expressions
      */
     "ignore": [
-        "\.svn$"
+        "\.svn$",
+        "\.git$"
     ],
 
     /**

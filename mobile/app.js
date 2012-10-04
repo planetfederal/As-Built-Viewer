@@ -7,12 +7,18 @@ Ext.Loader.setConfig({
     }
 });
 
+Ext.require('AsBuilt.util.Config');
+
 Ext.application({
     name: 'AsBuilt',
 
     requires: [
         'Ext.MessageBox'
     ],
+
+    viewport: {
+        autoMaximize: true
+    },
 
     views: ['Main'],
 
