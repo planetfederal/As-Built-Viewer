@@ -63,9 +63,23 @@ AsBuilt.ImagePopup = Ext.extend(GeoExt.Popup, {
             feature.attributes.FILETYPE;
     },
 
+    onBeforeClose: function() {
+        var store = this.grid.store;
+        if (store.getModifiedRecords().length > 0 || store.removed.length > 0) {
+            Ext.Msg.confirm("Unsaved changes", "There are unsaved changes, are you sure you want to exit?", function(btn) {
+                if (btn === "yes") {
+                    this.un("beforeclose", this.onBeforeClose, this);
+                    this.close();
+                }
+            }, this);
+            return false;
+        }
+    },
+
     /** private: method[initComponent]
      */
     initComponent: function() {
+        this.on('beforeclose', this.onBeforeClose, this);
         this.addEvents("featuremodified", "canceledit");
         var feature = this.feature.getFeature();
         if (!this.location) {
@@ -121,7 +135,24 @@ AsBuilt.ImagePopup = Ext.extend(GeoExt.Popup, {
                 xtype: "gxp_featuregrid",
                 ref: "../grid",
                 autoExpandColumn: 2,
-                ignoreFields: ['TIMESTAMP'],
+                customRenderers: {
+                    'NOTE': function(value, meta) { 
+                        meta.attr = 'style="white-space:normal"'; 
+                        return value;
+                    }
+                },
+                customEditors: {
+                    'NOTE': {
+                        xtype: 'textarea'
+                    },
+                    'TIMESTAMP': null
+                },
+                columnConfig: {
+                    'TIMESTAMP': {
+                        editable: false
+                    }
+                },
+                ignoreFields: ['DOC_ID'],
                 sm: this.readOnly ? undefined : new Ext.grid.RowSelectionModel({
                     listeners: {
                         selectionchange: function(sm) {
@@ -133,6 +164,7 @@ AsBuilt.ImagePopup = Ext.extend(GeoExt.Popup, {
                 plugins: this.readOnly ? undefined : [editor],
                 bbar: this.readOnly ? undefined : [{
                     text: "Save",
+                    iconCls: 'save',
                     handler: function() {
                         this.grid.store.save();
                     },
