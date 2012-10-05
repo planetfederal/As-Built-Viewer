@@ -21,7 +21,9 @@ Ext.define('AsBuilt.util.Config', {
          */
         prefix: "asbuilt",
 
-        drawingsTable: "DOCS"
+        drawingsTable: "DOCS",
+
+        geomField: "GEOM"
     },
     constructor: function(config) {
         this.initConfig(config);
