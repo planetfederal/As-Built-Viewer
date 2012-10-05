@@ -62,7 +62,19 @@ Ext.define("AsBuilt.view.Map",{
             }, options)
         );
 
-        map.addLayers([streets]);
+        var drawings = new OpenLayers.Layer.WMS(null,
+            AsBuilt.util.Config.getGeoserverUrl(), {
+                layers: AsBuilt.util.Config.getPrefix() + ":" + AsBuilt.util.Config.getDrawingsTable(),
+                version: '1.1.1',
+                transparent: true
+            },{
+                buffer: 0,
+                isBaseLayer: false,
+                singleTile: true
+            }
+        );
+
+        map.addLayers([streets, drawings]);
         this.setMap(map);
         this.setMapExtent(OpenLayers.Bounds.fromArray(AsBuilt.util.Config.getBounds()));
         this.callParent(arguments);
