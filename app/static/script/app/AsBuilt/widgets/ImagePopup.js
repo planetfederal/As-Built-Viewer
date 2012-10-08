@@ -39,6 +39,9 @@ AsBuilt.ImagePopup = Ext.extend(GeoExt.Popup, {
      */
     previewTitle: "Image preview",
 
+    unsavedTitle: "Unsaved changes",
+    unsavedMsg: "You have unsaved changes to the notes on this image.  Are you sure you want to continue?",
+
     /**
      * api: config[zoomLevel]
      * ``Integer`` The zoom level to use when displaying a rectified image.
@@ -66,7 +69,7 @@ AsBuilt.ImagePopup = Ext.extend(GeoExt.Popup, {
     onBeforeClose: function() {
         var store = this.grid.store;
         if (store.getModifiedRecords().length > 0 || store.removed.length > 0) {
-            Ext.Msg.confirm("Unsaved changes", "There are unsaved changes, are you sure you want to exit?", function(btn) {
+            Ext.Msg.confirm(this.unsavedTitle, this.unsavedMsg, function(btn) {
                 if (btn === "yes") {
                     this.un("beforeclose", this.onBeforeClose, this);
                     this.close();
@@ -141,6 +144,13 @@ AsBuilt.ImagePopup = Ext.extend(GeoExt.Popup, {
                     'NOTE': function(value, meta) { 
                         meta.attr = 'style="white-space:normal"'; 
                         return value;
+                    },
+                    'TIMESTAMP': function(value) {
+                        if (value !== "") {
+                            return Date.parseDate(value, 'c').format('F j, Y, g:i a');
+                        } else {
+                            return value;
+                        }
                     }
                 },
                 customEditors: {

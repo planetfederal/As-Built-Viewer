@@ -1,3 +1,6 @@
+.x-btn .save {
+    font-weight: bold;
+}
 .x-btn .icon-geoexplorer {
     background-image: url(img/geoexplorer.png);
 }
