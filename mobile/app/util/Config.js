@@ -23,6 +23,8 @@ Ext.define('AsBuilt.util.Config', {
 
         drawingsTable: "DOCS",
 
+        notesTable: "NOTES",
+
         geomField: "GEOM",
 
         imagesLayer: 'images'

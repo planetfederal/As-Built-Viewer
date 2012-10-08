@@ -87,6 +87,7 @@ Ext.define("AsBuilt.view.Map",{
             eventListeners: {
                 "featureselected": function(evt) {
                     var drawing = Ext.create('AsBuilt.view.Drawing', {
+                        fid: evt.feature.fid,
                         attributes: evt.feature.attributes
                     });
                     Ext.Viewport.add(drawing);
