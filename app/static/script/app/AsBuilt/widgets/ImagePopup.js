@@ -134,7 +134,9 @@ AsBuilt.ImagePopup = Ext.extend(GeoExt.Popup, {
             }, {
                 xtype: "gxp_featuregrid",
                 ref: "../grid",
-                autoExpandColumn: 2,
+                viewConfig: {
+                    forceFit: true
+                },
                 customRenderers: {
                     'NOTE': function(value, meta) { 
                         meta.attr = 'style="white-space:normal"'; 
@@ -151,6 +153,14 @@ AsBuilt.ImagePopup = Ext.extend(GeoExt.Popup, {
                     'TIMESTAMP': {
                         editable: false
                     }
+                },
+                createColumnModel: function(store) {
+                    var columns = this.getColumns(store);
+                    var order = {'NOTE' :0, 'AUTHOR': 1, 'TIMESTAMP': 2};
+                    columns.sort(function(a, b) {
+                        return order[a.dataIndex] > order[b.dataIndex];
+                    });
+                    return new Ext.grid.ColumnModel(columns);
                 },
                 ignoreFields: ['DOC_ID'],
                 sm: this.readOnly ? undefined : new Ext.grid.RowSelectionModel({
