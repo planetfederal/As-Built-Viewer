@@ -1,6 +1,9 @@
 Ext.define("AsBuilt.view.Map",{
     extend: 'GXM.Map',
     alias: 'widget.app_map',
+    requires: [
+        'AsBuilt.view.Drawing'
+    ],
     initialize:function(){
         var options = {
             projection: "EPSG:900913",
@@ -83,6 +86,11 @@ Ext.define("AsBuilt.view.Map",{
             }),
             eventListeners: {
                 "featureselected": function(evt) {
+                    var drawing = Ext.create('AsBuilt.view.Drawing', {
+                        attributes: evt.feature.attributes
+                    });
+                    Ext.Viewport.add(drawing);
+                    Ext.Viewport.setActiveItem(drawing);
                 },
                 "featureunselected": function(evt) {
                 }

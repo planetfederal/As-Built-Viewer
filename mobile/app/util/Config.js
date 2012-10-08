@@ -23,7 +23,9 @@ Ext.define('AsBuilt.util.Config', {
 
         drawingsTable: "DOCS",
 
-        geomField: "GEOM"
+        geomField: "GEOM",
+
+        imagesLayer: 'images'
     },
     constructor: function(config) {
         this.initConfig(config);
