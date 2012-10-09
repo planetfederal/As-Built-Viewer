@@ -23,9 +23,7 @@ Ext.define('AsBuilt.view.Drawing', {
                         bottom: 10,
                         zIndex: 1000,
                         text: records.length + " Notes",
-                        handler: function() {
-                        },
-                        scope: this
+                        title: 'Notes'
                     }); 
                     Ext.Viewport.add(this.notesBtn); 
                 }

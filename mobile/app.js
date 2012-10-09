@@ -22,6 +22,7 @@ Ext.application({
 
     views: ['Main'],
     stores: ['Notes'],
+    controllers: ['Notes'],
 
     icon: {
         '57': 'resources/icons/Icon.png',
