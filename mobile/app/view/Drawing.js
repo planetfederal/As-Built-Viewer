@@ -18,14 +18,13 @@ Ext.define('AsBuilt.view.Drawing', {
             }), 
             callback: function(records) {
                 if (records.length > 0) {
-                    this.notesBtn = new Ext.Button({
+                    Ext.Viewport.add(new Ext.Button({
                         right: 10,
                         bottom: 10,
                         zIndex: 1000,
                         text: records.length + " Notes",
                         title: 'Notes'
-                    }); 
-                    Ext.Viewport.add(this.notesBtn); 
+                    })); 
                 }
             },
             scope: this
@@ -71,21 +70,12 @@ Ext.define('AsBuilt.view.Drawing', {
         )]);
         this.setMap(map);
         this.setMapExtent(map.maxExtent);
-        var btn = new Ext.Button({
+        Ext.Viewport.add(new Ext.Button({
             right: 10,
             top: 10,
             zIndex: 1000,
-            text: "Done",
-            handler: function() {
-                Ext.Viewport.remove(btn);
-                if (this.notesBtn) {
-                    Ext.Viewport.remove(this.notesBtn);
-                }
-                Ext.Viewport.remove(this);
-            },
-            scope: this
-        });
-        Ext.Viewport.add(btn);
+            text: "Done"
+        }));
         this.callParent(arguments);
     }
 });

@@ -3,6 +3,7 @@ Ext.define('AsBuilt.controller.Notes', {
     extend: 'Ext.app.Controller',
     config: {
         refs: {
+            list: 'list',
             notesButton: 'button[title="Notes"]'
         },
 
@@ -15,8 +16,9 @@ Ext.define('AsBuilt.controller.Notes', {
     },
 
     showNotes: function() {
-        if (!this.list) {
-            this.list = Ext.create('Ext.dataview.List', {
+        if (!this.getList()) {
+            Ext.Viewport.add({
+                xtype: 'list',
                 width: 200,
                 height: 200,
                 right: 10,
@@ -24,7 +26,6 @@ Ext.define('AsBuilt.controller.Notes', {
                 itemTpl: '<div>{NOTE}</div>',
                 store: Ext.getStore('Notes')
             });
-            Ext.Viewport.add(this.list);
         }
     }
 

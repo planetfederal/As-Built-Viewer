@@ -22,7 +22,7 @@ Ext.application({
 
     views: ['Main'],
     stores: ['Notes'],
-    controllers: ['Notes'],
+    controllers: ['Notes', 'HideDrawing'],
 
     icon: {
         '57': 'resources/icons/Icon.png',
