@@ -1,10 +1,23 @@
 Ext.define('AsBuilt.view.Drawing', {
-    extend: 'GXM.Map',
+    extend: 'Ext.Container',
+    requires: ['GXM.Map'],
     xtype: 'app_drawing',
 
     config: {
         attributes: null,
-        fid: null
+        fid: null,
+        layout: 'fit',
+        items: [{
+            xtype: 'gxm_map'
+        }, {
+            xtype: 'toolbar',
+            docked: 'bottom',
+            height: 50,
+            items: [{
+                xtype: 'spacer',
+                flex: 1
+            }]
+        }]
     },
 
     initialize: function() {
@@ -18,13 +31,10 @@ Ext.define('AsBuilt.view.Drawing', {
             }), 
             callback: function(records) {
                 if (records.length > 0) {
-                    Ext.Viewport.add(new Ext.Button({
-                        right: 10,
-                        bottom: 10,
-                        zIndex: 1000,
+                    this.getItems().items[1].add(new Ext.Button({
                         text: records.length + " Notes",
                         title: 'Notes'
-                    })); 
+                    }));
                 }
             },
             scope: this
@@ -68,8 +78,8 @@ Ext.define('AsBuilt.view.Drawing', {
                tileLoadingDelay: 300
             }
         )]);
-        this.setMap(map);
-        this.setMapExtent(map.maxExtent);
+        this.getItems().items[0].setMap(map);
+        this.getItems().items[0].setMapExtent(map.maxExtent);
         Ext.Viewport.add(new Ext.Button({
             right: 10,
             top: 10,
