@@ -9,34 +9,29 @@ Ext.define('AsBuilt.view.Drawing', {
 
     initialize: function() {
         var attributes = this.getAttributes();
-
-        // get the number of notes
-        new OpenLayers.Protocol.WFS({
-            version: "1.1.0",
-            url: AsBuilt.util.Config.getGeoserverUrl(),
-            readOptions: {output: "object"},
-            resultType: "hits",
-            featureType: AsBuilt.util.Config.getNotesTable(),
-            featureNS: AsBuilt.util.Config.getFeatureNS()
-        }).read({filter: new OpenLayers.Filter.Comparison({
-            type: '==',
-            property: 'DOC_ID',
-            value: this.getFid().split(".").pop()
-        }), scope: this, callback: function(resp) {
-            if (resp.numberOfFeatures > 0) {
-                this.notesBtn = new Ext.Button({
-                    right: 10,
-                    bottom: 10,
-                    zIndex: 1000,
-                    text: resp.numberOfFeatures + " Notes",
-                    handler: function() {
-                    },
-                    scope: this
-                });
-                Ext.Viewport.add(this.notesBtn);
-            }
-        }});
-
+        // get the notes
+        Ext.getStore('Notes').load({
+            filter: new OpenLayers.Filter.Comparison({
+                type: '==',
+                property: 'DOC_ID',
+                value: this.getFid().split(".").pop()
+            }), 
+            callback: function(records) {
+                if (records.length > 0) {
+                    this.notesBtn = new Ext.Button({
+                        right: 10,
+                        bottom: 10,
+                        zIndex: 1000,
+                        text: records.length + " Notes",
+                        handler: function() {
+                        },
+                        scope: this
+                    }); 
+                    Ext.Viewport.add(this.notesBtn); 
+                }
+            },
+            scope: this
+        });
         // remove first / and add file extension
         var path = attributes.PATH;
         if (path.charAt(0) === "/") {
