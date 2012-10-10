@@ -17,6 +17,15 @@
 @include sencha-msgbox;
 
 // Your custom code goes here...
+div.notesNote {
+    font-size: 1em;
+    padding: 0.1em;
+}
+div.notesAuthor {
+    font-size: 0.7em;
+    color: #BBB;
+    text-align: right;
+}
 div.olMapViewport {
     background-color: #BBBBBB
 }
