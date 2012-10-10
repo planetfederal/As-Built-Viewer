@@ -8,6 +8,17 @@ Ext.define("AsBuilt.view.Main", {
         items: [
             {
                 xtype: 'app_map'
+            }, {
+                xtype: 'toolbar',
+                height: 50,
+                docked: 'bottom',
+                items: [{
+                    xtype: 'spacer',
+                    flex: 1
+                }, {
+                    xtype: 'button',
+                    text: 'Search'
+                }]
             }
         ]
     }

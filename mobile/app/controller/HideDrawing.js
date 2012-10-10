@@ -24,4 +24,3 @@ Ext.define('AsBuilt.controller.HideDrawing', {
     }
 
 });
-
