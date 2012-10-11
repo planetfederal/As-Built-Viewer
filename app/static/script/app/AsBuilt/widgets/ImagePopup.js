@@ -161,7 +161,14 @@ AsBuilt.ImagePopup = Ext.extend(GeoExt.Popup, {
                 },
                 columnConfig: {
                     'TIMESTAMP': {
-                        editable: false
+                        editable: false,
+                        width: 0.3*this.width
+                    },
+                    'NOTE': {
+                        width: 0.5*this.width
+                    },
+                    'AUTHOR': {
+                        width: 0.2*this.width
                     }
                 },
                 createColumnModel: function(store) {
