@@ -56,6 +56,9 @@ Ext.define('AsBuilt.controller.Search', {
                 lyr.mergeNewParams({
                     CQL_FILTER: new OpenLayers.Format.CQL().write(filter)
                 });
+            } else if (lyr instanceof OpenLayers.Layer.Vector && lyr.protocol) {
+                lyr.filter = filter;
+                lyr.refresh({force: true});
             }
         }
     }
