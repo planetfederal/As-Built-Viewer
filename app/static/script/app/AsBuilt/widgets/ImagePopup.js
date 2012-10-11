@@ -174,7 +174,7 @@ AsBuilt.ImagePopup = Ext.extend(GeoExt.Popup, {
                     var columns = this.getColumns(store);
                     var order = {'NOTE' :0, 'AUTHOR': 1, 'TIMESTAMP': 2};
                     columns.sort(function(a, b) {
-                        return order[a.dataIndex] > order[b.dataIndex];
+                        return order[a.dataIndex] - order[b.dataIndex];
                     });
                     return new Ext.grid.ColumnModel(columns);
                 },
