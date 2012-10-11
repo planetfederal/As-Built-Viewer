@@ -1,6 +1,6 @@
 Ext.define('AsBuilt.view.Search', {
     extend: 'Ext.form.Panel',
-    requires: ['Ext.form.FieldSet', 'Ext.field.Select'],
+    requires: ['Ext.form.FieldSet', 'Ext.field.Select', 'Ext.field.Text'],
     xtype: 'app_search',
 
     config: {
@@ -14,6 +14,7 @@ Ext.define('AsBuilt.view.Search', {
                     updateZIndex: Ext.emptyFn
                 },
                 label: 'Type',
+                value: "",
                 options: [{
                     text: 'MUNI Drawings Numbered Plans (MDNP)', 
                     value: 'MUNI Drawings Numbered Plans (MDNP)'
@@ -30,6 +31,10 @@ Ext.define('AsBuilt.view.Search', {
                     text: 'BOE Numbered Plans',
                     value: 'BOE Numbered Plans'
                 }]
+            }, {
+                xtype: 'textfield',
+                label: 'Subject',
+                name: 'DOCSUBJECT'
             }]
         }, {
             xtype: 'toolbar',
