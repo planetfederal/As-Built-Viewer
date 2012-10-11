@@ -1,31 +1,47 @@
 Ext.define('AsBuilt.view.Search', {
     extend: 'Ext.form.Panel',
-    requires: ['Ext.field.Select'],
+    requires: ['Ext.form.FieldSet', 'Ext.field.Select'],
     xtype: 'app_search',
 
     config: {
         items: [{
-            xtype: 'selectfield',
-            label: 'Type',
-            defaultTabletPickerConfig: {
-                zIndex: 1000,
-                updateZIndex: Ext.emptyFn
-            },
-            options: [{
-                text: 'MUNI Drawings Numbered Plans (MDNP)', 
-                value: 'MUNI Drawings Numbered Plans (MDNP)'
+            xtype: 'fieldset',
+            title: 'Drawing',
+            items: [{
+                xtype: 'selectfield',
+                defaultTabletPickerConfig: {
+                    updateZIndex: Ext.emptyFn
+                },
+                label: 'Type',
+                options: [{
+                    text: 'MUNI Drawings Numbered Plans (MDNP)', 
+                    value: 'MUNI Drawings Numbered Plans (MDNP)'
+                }, {
+                    text: 'UnClassified Scans',
+                    value: 'UnClassified Scans'
+                }, {
+                    text: 'MUNI SHOP Drawings (MUSH)',
+                    value: 'MUNI SHOP Drawings (MUSH)'
+                }, {
+                    text: 'MUNI BART Drawings (MUBA)',
+                    value: 'MUNI BART Drawings (MUBA)'
+                }, {
+                    text: 'BOE Numbered Plans',
+                    value: 'BOE Numbered Plans'
+                }]
+            }]
+        }, {
+            xtype: 'toolbar',
+            height: 50,
+            items: [{
+                xtype: 'spacer',
+                flex: 1
             }, {
-                text: 'UnClassified Scans',
-                value: 'UnClassified Scans'
+                xtype: 'button',
+                text: "Search"
             }, {
-                text: 'MUNI SHOP Drawings (MUSH)',
-                value: 'MUNI SHOP Drawings (MUSH)'
-            }, {
-                text: 'MUNI BART Drawings (MUBA)',
-                value: 'MUNI BART Drawings (MUBA)'
-            }, {
-                text: 'BOE Numbered Plans',
-                value: 'BOE Numbered Plans'
+                xtype: 'spacer',
+                flex: 1
             }]
         }]
     }

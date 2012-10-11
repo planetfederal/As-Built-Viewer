@@ -16,8 +16,8 @@ Ext.define("AsBuilt.view.Main", {
                     xtype: 'spacer',
                     flex: 1
                 }, {
-                    xtype: 'button',
-                    text: 'Search'
+                    iconMask: 'true',
+                    iconCls: 'search'
                 }]
             }
         ]

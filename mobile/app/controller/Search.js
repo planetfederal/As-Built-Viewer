@@ -3,7 +3,7 @@ Ext.define('AsBuilt.controller.Search', {
     requires: ['AsBuilt.view.Search'],
     config: {
         refs: {
-            searchButton: 'button[text="Search"]'
+            searchButton: 'button[iconCls="search"]'
         },
 
         control: {
