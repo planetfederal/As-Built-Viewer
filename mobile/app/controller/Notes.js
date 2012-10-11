@@ -16,7 +16,8 @@ Ext.define('AsBuilt.controller.Notes', {
     },
 
     showNotes: function() {
-        if (!this.getList()) {
+        var lst = this.getList();
+        if (!lst) {
             var list = Ext.create("Ext.dataview.List", {
                 xtype: 'list',
                 width: 400,
@@ -34,10 +35,10 @@ Ext.define('AsBuilt.controller.Notes', {
             });
             list.showBy(this.getNotesButton());
         } else {
-            if (this.getList().getHidden()) {
-                this.getList().show();
+            if (lst.getHidden()) {
+                lst.show();
             } else {
-                this.getList().hide();
+                lst.hide();
             }
         }
     }

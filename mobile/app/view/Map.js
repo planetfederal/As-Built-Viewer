@@ -90,6 +90,10 @@ Ext.define("AsBuilt.view.Map",{
                         fid: evt.feature.fid,
                         attributes: evt.feature.attributes
                     });
+                    var search = Ext.Viewport.down('app_search');
+                    if (search) {
+                        search.hide();
+                    }
                     Ext.Viewport.add(drawing);
                     Ext.Viewport.setActiveItem(drawing);
                 },

@@ -21,12 +21,21 @@ Ext.define('AsBuilt.controller.Search', {
     },
 
     search: function() {
-        var search = Ext.create("AsBuilt.view.Search", {
-            width: 400,
-            height: 400,
-            zIndex: 1000
-        });
-        search.showBy(this.getSearchButton());
+        var sf = this.getSearchForm();
+        if (!sf) {
+            var search = Ext.create("AsBuilt.view.Search", {
+                width: 400,
+                height: 400,
+                zIndex: 1000
+            });
+            search.showBy(this.getSearchButton());
+        } else {
+            if (sf.getHidden()) {
+                sf.show();
+            } else {
+                sf.hide();
+            }
+        }
     },
 
     filter: function() {
