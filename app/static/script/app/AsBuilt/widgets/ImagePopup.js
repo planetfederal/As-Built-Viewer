@@ -156,8 +156,7 @@ AsBuilt.ImagePopup = Ext.extend(GeoExt.Popup, {
                 customEditors: {
                     'NOTE': {
                         xtype: 'textarea'
-                    },
-                    'TIMESTAMP': null
+                    }
                 },
                 columnConfig: {
                     'TIMESTAMP': {
