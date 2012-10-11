@@ -9,6 +9,7 @@ Ext.define('AsBuilt.view.Search', {
             title: 'Drawing',
             items: [{
                 xtype: 'selectfield',
+                name: 'TYPEDESC',
                 defaultTabletPickerConfig: {
                     updateZIndex: Ext.emptyFn
                 },
