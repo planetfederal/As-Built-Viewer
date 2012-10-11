@@ -7,6 +7,10 @@ Ext.define('AsBuilt.view.Search', {
         items: [{
             xtype: 'selectfield',
             label: 'Type',
+            defaultTabletPickerConfig: {
+                zIndex: 1000,
+                updateZIndex: Ext.emptyFn
+            },
             options: [{
                 text: 'MUNI Drawings Numbered Plans (MDNP)', 
                 value: 'MUNI Drawings Numbered Plans (MDNP)'
