@@ -146,7 +146,7 @@ AsBuilt.ImagePopup = Ext.extend(GeoExt.Popup, {
                         return value;
                     },
                     'TIMESTAMP': function(value) {
-                        if (value !== "") {
+                        if (value !== "" && value !== undefined) {
                             return Date.parseDate(value, 'c').format('F j, Y, g:i a');
                         } else {
                             return value;
