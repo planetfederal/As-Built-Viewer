@@ -52,7 +52,8 @@ Ext.define("AsBuilt.view.Map",{
             AsBuilt.util.Config.getGeoserverUrl(), {
                 layers: AsBuilt.util.Config.getPrefix() + ":" + AsBuilt.util.Config.getDrawingsTable(),
                 version: '1.1.1',
-                transparent: true
+                transparent: true,
+                styles: 'docs'
             },{
                 buffer: 0,
                 isBaseLayer: false,
@@ -61,10 +62,10 @@ Ext.define("AsBuilt.view.Map",{
         );
 
         var style = new OpenLayers.Style({
-            pointRadius: 10
+            pointRadius: 7.5
         });
         var selectStyle = new OpenLayers.Style({
-            pointRadius: 10,
+            pointRadius: 7.5,
             fillColor: '#00FF00'
         });
         var styleMap = new OpenLayers.StyleMap({
