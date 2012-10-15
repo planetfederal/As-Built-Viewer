@@ -6,7 +6,6 @@ Ext.define('AsBuilt.controller.Drawing', {
             drawing: 'app_drawing',
             doneButton: 'button[text="Done"]',
             detailsButton: 'button[text="Details"]',
-            notesButton: 'button[title="Notes"]',
             mapPanel: 'app_map',
             notesList: 'list',
             details: 'app_drawingdetails'
@@ -24,13 +23,17 @@ Ext.define('AsBuilt.controller.Drawing', {
     },
 
     hideDrawing: function() {
-        Ext.Viewport.remove(this.getDoneButton());
-        Ext.Viewport.remove(this.getNotesButton());
-        Ext.Viewport.remove(this.getNotesList());
+        if (this.getNotesList()) {
+            Ext.Viewport.remove(this.getNotesList().getParent());
+        }
         Ext.Viewport.remove(this.getDrawing());
+        Ext.Viewport.remove(this.getDetails());
     },
 
     showDetails: function() {
+        if (this.getNotesList()) {
+            this.getNotesList().getParent().hide();
+        }
         var feature;
         var layers = this.getMapPanel().getMap().layers;
         for (var i=0, ii=layers.length; i<ii; ++i) {

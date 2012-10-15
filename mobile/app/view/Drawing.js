@@ -71,7 +71,6 @@ Ext.define('AsBuilt.view.Drawing', {
             maxResolution: width/256,
             units: "m",
             controls : [
-                new OpenLayers.Control.Zoom(),
                 new OpenLayers.Control.TouchNavigation({
                     dragPanOptions : {
                         interval : 100,

@@ -18,11 +18,18 @@
 
 // Your custom code goes here...
 @include pictos-iconmask('search');
+div.drawingDetails {
+    display: table;
+}
+div.detailRow {
+    display: table-row;
+}
 div.detailHeader {
     color: #BBB;
-    text-align: left;
+    display: table-cell;
 }
 div.detailContent {
+    display: table-cell;
     text-align: right;
 }
 div.notesNote {

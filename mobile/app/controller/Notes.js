@@ -4,6 +4,7 @@ Ext.define('AsBuilt.controller.Notes', {
     config: {
         refs: {
             list: 'list',
+            details: 'app_drawingdetails',
             notesButton: 'button[title="Notes"]'
         },
 
@@ -16,29 +17,35 @@ Ext.define('AsBuilt.controller.Notes', {
     },
 
     showNotes: function() {
+        if (this.getDetails()) {
+            this.getDetails().hide();
+        }
         var lst = this.getList();
         if (!lst) {
-            var list = Ext.create("Ext.dataview.List", {
-                xtype: 'list',
+            var list = Ext.create("Ext.Panel", {
                 width: 400,
                 height: 200,
-                itemTpl: new Ext.XTemplate('<div class="notesNote">{NOTE}</div><div class="notesAuthor">Added {TIMESTAMP:this.formatTS} by {AUTHOR}</div>', {
-                    formatTS: function(value) {
-                        if (value !== null) {
-                            return Ext.Date.format(Ext.Date.parse(value, 'c'), 'F j, Y, g:i a');                           
-                        } else {
-                            return "";
+                layout: 'fit',
+                items: [{
+                    xtype: 'list',
+                    itemTpl: new Ext.XTemplate('<div class="notesNote">{NOTE}</div><div class="notesAuthor">Added {TIMESTAMP:this.formatTS} by {AUTHOR}</div>', {
+                        formatTS: function(value) {
+                            if (value !== null) {
+                                return Ext.Date.format(Ext.Date.parse(value, 'c'), 'F j, Y, g:i a');                           
+                            } else {
+                                return "";
+                            }
                         }
-                    }
-                }),
-                store: Ext.getStore('Notes')
+                    }),
+                    store: Ext.getStore('Notes')
+                }]
             });
             list.showBy(this.getNotesButton());
         } else {
-            if (lst.getHidden()) {
-                lst.show();
+            if (lst.getParent().getHidden()) {
+                lst.getParent().show();
             } else {
-                lst.hide();
+                lst.getParent().hide();
             }
         }
     }
