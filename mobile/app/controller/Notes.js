@@ -25,6 +25,7 @@ Ext.define('AsBuilt.controller.Notes', {
             var list = Ext.create("Ext.Panel", {
                 width: 400,
                 height: 200,
+                zIndex: 1000,
                 layout: 'fit',
                 items: [{
                     xtype: 'list',
