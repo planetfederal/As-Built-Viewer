@@ -1,6 +1,6 @@
 Ext.define('AsBuilt.view.Drawing', {
     extend: 'Ext.Container',
-    requires: ['GXM.Map'],
+    requires: ['GXM.Map', 'Ext.SegmentedButton'],
     xtype: 'app_drawing',
 
     config: {
@@ -9,11 +9,20 @@ Ext.define('AsBuilt.view.Drawing', {
         layout: 'fit',
         items: [{
             xtype: 'toolbar',
-            docked: 'bottom',
+            docked: 'top',
             height: 50,
             items: [{
+                xtype: 'segmentedbutton',
+                items: [{
+                    text: "Details"
+                }, {
+                    text: "Notes"
+                }]
+            }, {
                 xtype: 'spacer',
                 flex: 1
+            }, {
+                text: "Done"
             }]
         }]
     },
@@ -28,11 +37,16 @@ Ext.define('AsBuilt.view.Drawing', {
                 value: this.getFid().split(".").pop()
             }), 
             callback: function(records) {
+                var item = this.down('segmentedbutton').getItems().items[1];
                 if (records.length > 0) {
-                    this.down('toolbar').add(new Ext.Button({
-                        text: records.length + " Notes",
-                        title: 'Notes'
-                    }));
+                    item.setText(
+                        records.length + " Notes"
+                    );
+                    item.title = "Notes";
+                } else {
+                    item.setText(
+                        'Add Note'
+                    );
                 }
             },
             scope: this
@@ -77,12 +91,6 @@ Ext.define('AsBuilt.view.Drawing', {
             }
         )]);
         this.add(Ext.create('GXM.Map', {map: map, mapExtent: map.maxExtent}));
-        Ext.Viewport.add(new Ext.Button({
-            right: 10,
-            top: 10,
-            zIndex: 1000,
-            text: "Done"
-        }));
         this.callParent(arguments);
     }
 });
