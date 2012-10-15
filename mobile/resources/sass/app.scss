@@ -18,8 +18,12 @@
 
 // Your custom code goes here...
 @include pictos-iconmask('search');
-div.x-select-overlay {
-    z-index: 1000;
+div.detailHeader {
+    color: #BBB;
+    text-align: left;
+}
+div.detailContent {
+    text-align: right;
 }
 div.notesNote {
     font-size: 1em;
