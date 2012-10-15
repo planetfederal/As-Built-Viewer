@@ -1,3 +1,4 @@
+$base-color: #555;
 @import 'sencha-touch/default/all';
 
 // You may remove any of the following modules that you
@@ -17,6 +18,42 @@
 @include sencha-msgbox;
 
 // Your custom code goes here...
+html, body {
+    height: 100%;
+    background-color: $base-color;
+}
+#appLoadingIndicator {
+    position: absolute;
+    top: 50%;
+    margin-top: -15px;
+    text-align: center;
+    width: 100%;
+    height: 30px;
+    -webkit-animation-name: appLoadingIndicator;
+    -webkit-animation-duration: 0.5s;
+    -webkit-animation-iteration-count: infinite;
+    -webkit-animation-direction: linear;
+}
+#appLoadingIndicator > * {
+    background-color: #FFFFFF;
+    display: inline-block;
+    height: 30px;
+    -webkit-border-radius: 15px;
+    margin: 0 5px;
+    width: 30px;
+    opacity: 0.8;
+}
+@-webkit-keyframes appLoadingIndicator{
+    0% {
+        opacity: 0.8
+    }
+    50% {
+        opacity: 0
+    }
+    100% {
+        opacity: 0.8
+    }
+}
 @include pictos-iconmask('search');
 div.drawingDetails {
     display: table;
