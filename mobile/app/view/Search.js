@@ -11,7 +11,7 @@ Ext.define('AsBuilt.view.Search', {
                 xtype: 'selectfield',
                 name: 'TYPEDESC',
                 defaultTabletPickerConfig: {
-                    updateZIndex: Ext.emptyFn
+                    zIndex: 1000
                 },
                 label: 'Type',
                 value: "",
