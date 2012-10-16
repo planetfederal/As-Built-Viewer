@@ -40,7 +40,15 @@ Ext.define('AsBuilt.controller.Search', {
     },
 
     resetSearch: function() {
-        this.getSearchForm().reset();
+        var search = Ext.getStore('Search').getAt(0);
+        if (search) {
+            Ext.getStore('Search').remove(search);
+            Ext.getStore('Search').sync();
+        }
+        this.filterMap();
+        this.getSearchForm().getFieldsAsArray().forEach(function(field) {
+            field.setValue('');
+        });
         this.getModifyButton().hide();
         this.getResetButton().hide();
         this.getSearchButton().show();
@@ -75,7 +83,7 @@ Ext.define('AsBuilt.controller.Search', {
             var search = Ext.create("AsBuilt.view.Search", {
                 width: 400,
                 height: 400,
-                zIndex: 1000
+                zIndex: 1050
             });
             search.showBy(showBy);
         } else {
@@ -93,19 +101,21 @@ Ext.define('AsBuilt.controller.Search', {
 
     filterMap: function(values, loadend) {
         var filters = [];
-        for (key in values) {
-            if (values[key] !== "") {
-                filters.push(new OpenLayers.Filter.Comparison({
-                    type: '==',
-                    property: key,
-                    value: values[key]
-                }));
+        if (values) {
+            for (key in values) {
+                if (values[key] !== "") {
+                    filters.push(new OpenLayers.Filter.Comparison({
+                        type: '==',
+                        property: key,
+                        value: values[key]
+                    }));
+                }
             }
         }
-        var filter;
+        var filter = null;
         if (filters.length === 1) {
             filter = filters[0];
-        } else {
+        } else if (filters.length > 1) {
             filter = new OpenLayers.Filter.Logical({
                 type: OpenLayers.Filter.Logical.AND,
                 filters: filters
@@ -115,7 +125,7 @@ Ext.define('AsBuilt.controller.Search', {
             var lyr = this.getMapPanel().getMap().layers[i];
             if (lyr instanceof OpenLayers.Layer.WMS) {
                 lyr.mergeNewParams({
-                    CQL_FILTER: new OpenLayers.Format.CQL().write(filter)
+                    CQL_FILTER: filter !== null ? new OpenLayers.Format.CQL().write(filter): null
                 });
             } else if (lyr instanceof OpenLayers.Layer.Vector && lyr.protocol) {
                 if (loadend) {
