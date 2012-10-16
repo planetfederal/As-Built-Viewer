@@ -46,9 +46,11 @@ Ext.define('AsBuilt.controller.Search', {
             Ext.getStore('Search').sync();
         }
         this.filterMap();
-        this.getSearchForm().getFieldsAsArray().forEach(function(field) {
-            field.setValue('');
-        });
+        if (this.getSearchForm()) {
+            this.getSearchForm().getFieldsAsArray().forEach(function(field) {
+                field.setValue('');
+            });
+        }
         this.getModifyButton().hide();
         this.getResetButton().hide();
         this.getSearchButton().show();

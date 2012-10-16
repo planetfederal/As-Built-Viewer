@@ -3,7 +3,7 @@ Ext.define('AsBuilt.controller.Notes', {
     extend: 'Ext.app.Controller',
     config: {
         refs: {
-            list: 'list',
+            list: 'panel[type="notes"]',
             details: 'app_drawingdetails',
             notesButton: 'button[title="Notes"]'
         },
@@ -27,6 +27,7 @@ Ext.define('AsBuilt.controller.Notes', {
                 height: 200,
                 zIndex: 1000,
                 layout: 'fit',
+                type: 'notes',
                 items: [{
                     xtype: 'list',
                     itemTpl: new Ext.XTemplate('<div class="notesNote">{NOTE}</div><div class="notesAuthor">Added {TIMESTAMP:this.formatTS} by {AUTHOR}</div>', {
@@ -43,10 +44,10 @@ Ext.define('AsBuilt.controller.Notes', {
             });
             list.showBy(this.getNotesButton());
         } else {
-            if (lst.getParent().getHidden()) {
-                lst.getParent().show();
+            if (lst.getHidden()) {
+                lst.show();
             } else {
-                lst.getParent().hide();
+                lst.hide();
             }
         }
     }
