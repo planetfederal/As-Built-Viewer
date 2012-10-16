@@ -14,13 +14,19 @@ Ext.define('AsBuilt.controller.Search', {
 
         control: {
             searchButton: {
-                tap: 'search'
+                tap: 'showSearch'
             },
             filterButton: {
                 tap: 'filter'
             },
             cancelButton: {
                 tap: 'cancelSearch'
+            },
+            modifyButton: {
+                tap: 'showModifySearch'
+            },
+            resetButton: {
+                tap: 'resetSearch'
             }
         }
 
@@ -33,14 +39,37 @@ Ext.define('AsBuilt.controller.Search', {
         });
     },
 
+    resetSearch: function() {
+        this.getSearchForm().reset();
+        this.getModifyButton().hide();
+        this.getResetButton().hide();
+        this.getSearchButton().show();
+    },
+
     onSearchStoreLoad: function() {
         var search = Ext.getStore('Search').getAt(0);
-        if (search && this.getSearchForm()) {
-            this.getSearchForm().setValues(search.data);
+        if (search) {
+            this.getSearchButton().hide();
+            this.getModifyButton().show();
+            this.getResetButton().show();
+            if (this.getSearchForm()) {
+                this.getSearchForm().setValues(search.data);
+            }
+            var values = Ext.apply({}, search.data);
+            delete values.id;
+            this.filterMap(values);
         }
     },
 
-    search: function() {
+    showSearch: function() {
+        this.search(this.getSearchButton());
+    },
+
+    showModifySearch: function() {
+        this.search(this.getModifyButton());
+    },
+
+    search: function(showBy) {
         var sf = this.getSearchForm();
         if (!sf) {
             var search = Ext.create("AsBuilt.view.Search", {
@@ -48,7 +77,7 @@ Ext.define('AsBuilt.controller.Search', {
                 height: 400,
                 zIndex: 1000
             });
-            search.showBy(this.getSearchButton());
+            search.showBy(showBy);
         } else {
             if (sf.getHidden()) {
                 sf.show();
@@ -62,24 +91,7 @@ Ext.define('AsBuilt.controller.Search', {
         }
     },
 
-    filter: function() {
-        var values = this.getSearchForm().getValues();
-        var rec = Ext.getStore('Search').getAt(0);
-        var key;
-        if (rec) {
-            for (key in values) {
-                rec.set(key, values[key]);
-            }
-        } else {
-            Ext.getStore('Search').add(new AsBuilt.model.Search(values));
-        }
-        Ext.getStore('Search').sync();
-        this.getSearchButton().hide();
-        this.getCancelButton().show();
-        this.getSearchForm().mask({
-            xtype: 'loadmask',
-            message: 'Searching'
-        });
+    filterMap: function(values, loadend) {
         var filters = [];
         for (key in values) {
             if (values[key] !== "") {
@@ -106,18 +118,53 @@ Ext.define('AsBuilt.controller.Search', {
                     CQL_FILTER: new OpenLayers.Format.CQL().write(filter)
                 });
             } else if (lyr instanceof OpenLayers.Layer.Vector && lyr.protocol) {
-                lyr.events.on({'loadend': function() {
-                    lyr.events.un({'loadend': arguments.callee, scope: this});
-                    this.getSearchForm().unmask();
-                    this.getSearchForm().hide();
-                    this.getCancelButton().hide();
-                    this.getResetButton().show();
-                    this.getModifyButton().show();
-                }, scope: this});
+                if (loadend) {
+                    lyr.events.on({'loadend': loadend, scope: this});
+                }
                 lyr.filter = filter;
                 lyr.refresh({force: true});
             }
         }
+    },
+
+    filter: function() {
+        var values = this.getSearchForm().getValues();
+        var rec = Ext.getStore('Search').getAt(0);
+        var key;
+        if (rec) {
+            for (key in values) {
+                rec.set(key, values[key]);
+            }
+        } else {
+            Ext.getStore('Search').add(new AsBuilt.model.Search(values));
+        }
+        Ext.getStore('Search').sync();
+        this.getSearchButton().hide();
+        this.getCancelButton().show();
+        this.getSearchForm().mask({
+            xtype: 'loadmask',
+            message: 'Searching'
+        });
+        var loadend = function() {
+            this.findVectorLayer().events.un({'loadend': arguments.callee, scope: this});
+            this.getSearchForm().unmask();
+            this.getSearchForm().hide();
+            this.getCancelButton().hide();
+            this.getResetButton().show();
+            this.getModifyButton().show();
+        };
+        this.filterMap(values, loadend);
+    },
+
+    findVectorLayer: function() {
+        var lyr = null;
+        for (var i=0, ii=this.getMapPanel().getMap().layers.length; i<ii; ++i) {
+            lyr = this.getMapPanel().getMap().layers[i];
+            if (lyr instanceof OpenLayers.Layer.Vector && lyr.protocol) {
+                break;
+            }
+        }
+        return lyr;
     },
 
     cancelSearch: function() {
