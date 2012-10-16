@@ -18,6 +18,15 @@ Ext.define("AsBuilt.view.Main", {
                 }, {
                     iconMask: 'true',
                     iconCls: 'search'
+                }, {
+                    text: 'Cancel',
+                    hidden: true
+                }, {
+                    text: 'Reset',
+                    hidden: true
+                }, {
+                    text: 'Modify Search',
+                    hidden: true
                 }]
             }
         ]

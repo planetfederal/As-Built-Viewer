@@ -4,6 +4,9 @@ Ext.define('AsBuilt.controller.Search', {
     config: {
         refs: {
             searchButton: 'button[iconCls="search"]',
+            cancelButton: 'button[text="Cancel"]',
+            modifyButton: 'button[text="Modify Search"]',
+            resetButton: 'button[text="Reset"]',
             filterButton: 'button[text="Search"]',
             searchForm: 'app_search',
             mapPanel: 'app_map'
@@ -15,6 +18,9 @@ Ext.define('AsBuilt.controller.Search', {
             },
             filterButton: {
                 tap: 'filter'
+            },
+            cancelButton: {
+                tap: 'cancelSearch'
             }
         }
 
@@ -40,6 +46,12 @@ Ext.define('AsBuilt.controller.Search', {
 
     filter: function() {
         var values = this.getSearchForm().getValues();
+        this.getSearchButton().hide();
+        this.getCancelButton().show();
+        this.getSearchForm().mask({
+            xtype: 'loadmask',
+            message: 'Searching'
+        });
         var filters = [];
         for (var key in values) {
             if (values[key] !== "") {
@@ -66,8 +78,25 @@ Ext.define('AsBuilt.controller.Search', {
                     CQL_FILTER: new OpenLayers.Format.CQL().write(filter)
                 });
             } else if (lyr instanceof OpenLayers.Layer.Vector && lyr.protocol) {
+                lyr.events.on({'loadend': function() {
+                    lyr.events.un({'loadend': arguments.callee, scope: this});
+                    this.getSearchForm().unmask();
+                    this.getSearchForm().hide();
+                    this.getCancelButton().hide();
+                    this.getResetButton().show();
+                    this.getModifyButton().show();
+                }, scope: this});
                 lyr.filter = filter;
                 lyr.refresh({force: true});
+            }
+        }
+    },
+
+    cancelSearch: function() {
+        for (var i=0, ii=this.getMapPanel().getMap().layers.length; i<ii; ++i) {
+            var lyr = this.getMapPanel().getMap().layers[i];
+            if (lyr instanceof OpenLayers.Layer.Vector && lyr.protocol) {
+                lyr.protocol.abort();
             }
         }
     }
