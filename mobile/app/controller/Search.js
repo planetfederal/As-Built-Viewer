@@ -26,6 +26,20 @@ Ext.define('AsBuilt.controller.Search', {
 
     },
 
+    launch: function() {
+        Ext.getStore('Search').load({
+            callback: this.onSearchStoreLoad,
+            scope: this
+        });
+    },
+
+    onSearchStoreLoad: function() {
+        var search = Ext.getStore('Search').getAt(0);
+        if (search && this.getSearchForm()) {
+            this.getSearchForm().setValues(search.data);
+        }
+    },
+
     search: function() {
         var sf = this.getSearchForm();
         if (!sf) {
@@ -42,10 +56,24 @@ Ext.define('AsBuilt.controller.Search', {
                 sf.hide();
             }
         }
+        var rec = Ext.getStore('Search').getAt(0);
+        if (rec) {
+            this.getSearchForm().setValues(rec.data);
+        }
     },
 
     filter: function() {
         var values = this.getSearchForm().getValues();
+        var rec = Ext.getStore('Search').getAt(0);
+        var key;
+        if (rec) {
+            for (key in values) {
+                rec.set(key, values[key]);
+            }
+        } else {
+            Ext.getStore('Search').add(new AsBuilt.model.Search(values));
+        }
+        Ext.getStore('Search').sync();
         this.getSearchButton().hide();
         this.getCancelButton().show();
         this.getSearchForm().mask({
@@ -53,7 +81,7 @@ Ext.define('AsBuilt.controller.Search', {
             message: 'Searching'
         });
         var filters = [];
-        for (var key in values) {
+        for (key in values) {
             if (values[key] !== "") {
                 filters.push(new OpenLayers.Filter.Comparison({
                     type: '==',

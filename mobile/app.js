@@ -21,7 +21,7 @@ Ext.application({
     },
 
     views: ['Main'],
-    stores: ['Notes'],
+    stores: ['Notes', 'Search'],
     controllers: ['Notes', 'Drawing', 'Search'],
 
     icon: {
