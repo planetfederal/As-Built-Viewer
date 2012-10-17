@@ -30,26 +30,25 @@ Ext.define('AsBuilt.view.Drawing', {
     initialize: function() {
         var attributes = this.getAttributes();
         // get the notes
+        Ext.getStore('Notes').on({'load': function(store, records) {
+            var item = this.down('segmentedbutton').getItems().items[1];
+            if (records.length > 0) {
+                item.setText(
+                    records.length + " Notes"
+                );
+                item.title = "Notes";
+            } else { 
+                item.setText(
+                    'Add Note'
+                );
+            } 
+        }, scope: this});
         Ext.getStore('Notes').load({
             filter: new OpenLayers.Filter.Comparison({
                 type: '==',
                 property: 'DOC_ID',
                 value: this.getFid().split(".").pop()
-            }), 
-            callback: function(records) {
-                var item = this.down('segmentedbutton').getItems().items[1];
-                if (records.length > 0) {
-                    item.setText(
-                        records.length + " Notes"
-                    );
-                    item.title = "Notes";
-                } else {
-                    item.setText(
-                        'Add Note'
-                    );
-                }
-            },
-            scope: this
+            })
         });
         // remove first / and add file extension
         var path = attributes.PATH;
