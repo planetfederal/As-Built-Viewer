@@ -140,6 +140,11 @@ Ext.define('AsBuilt.controller.Search', {
     },
 
     filter: function() {
+        this.getSearchForm().getFieldsAsArray().forEach(function(field) {
+            if (field.listPanel) {
+                field.listPanel.hide();
+            }
+        });
         var values = this.getSearchForm().getValues();
         var rec = Ext.getStore('Search').getAt(0);
         var key;
