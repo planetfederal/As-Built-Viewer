@@ -40,6 +40,23 @@ Ext.define('AsBuilt.controller.Notes', {
                         }
                     }),
                     store: Ext.getStore('Notes')
+                }, {
+                    xtype: 'container',
+                    cls: 'addnote',
+                    height: 50,
+                    docked: 'bottom',
+                    layout: 'hbox',
+                    items: [{
+                        xtype: 'textfield',
+                        flex: 1,
+                        placeHolder: 'Enter Note'
+                    }, {
+                        xtype: 'button',
+                        cls: 'addnotebutton',
+                        width: 75,
+                        height: 40,
+                        text: "Add"
+                    }]
                 }]
             });
             list.showBy(this.getNotesButton());
