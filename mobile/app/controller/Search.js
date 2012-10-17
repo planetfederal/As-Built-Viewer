@@ -105,7 +105,7 @@ Ext.define('AsBuilt.controller.Search', {
         var filters = [];
         if (values) {
             for (key in values) {
-                if (values[key] !== "") {
+                if (values[key] !== "" && values[key] !== null) {
                     filters.push(new OpenLayers.Filter.Comparison({
                         type: '==',
                         property: key,
