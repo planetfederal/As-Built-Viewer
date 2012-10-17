@@ -41,6 +41,7 @@ Ext.define('AsBuilt.view.Drawing', {
                 item.setText(
                     'Add Note'
                 );
+                item.title = "Notes";
             } 
         }, scope: this});
         Ext.getStore('Notes').load({
