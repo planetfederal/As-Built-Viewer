@@ -3,6 +3,7 @@ Ext.define('AsBuilt.controller.Drawing', {
     requires: ['AsBuilt.view.DrawingDetails'],
     config: {
         refs: {
+            main: 'main',
             drawing: 'app_drawing',
             doneButton: 'button[text="Done"]',
             detailsButton: 'button[text="Details"]',
@@ -26,6 +27,7 @@ Ext.define('AsBuilt.controller.Drawing', {
         Ext.Viewport.remove(this.getNotesList());
         Ext.Viewport.remove(this.getDrawing());
         Ext.Viewport.remove(this.getDetails());
+        Ext.Viewport.setActiveItem(this.getMain());
     },
 
     showDetails: function() {

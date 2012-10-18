@@ -9,7 +9,8 @@ Ext.define('AsBuilt.controller.Search', {
             resetButton: 'button[text="Reset"]',
             filterButton: 'button[text="Search"]',
             searchForm: 'app_search',
-            mapPanel: 'app_map'
+            mapPanel: 'app_map',
+            main: 'main'
         },
 
         control: {
@@ -27,16 +28,12 @@ Ext.define('AsBuilt.controller.Search', {
             },
             resetButton: {
                 tap: 'resetSearch'
+            },
+            main: {
+                initialize: 'onInitialize'
             }
         }
 
-    },
-
-    launch: function() {
-        Ext.getStore('Search').load({
-            callback: this.onSearchStoreLoad,
-            scope: this
-        });
     },
 
     resetSearch: function() {
@@ -56,7 +53,7 @@ Ext.define('AsBuilt.controller.Search', {
         this.getSearchButton().show();
     },
 
-    onSearchStoreLoad: function() {
+    onInitialize: function() {
         var search = Ext.getStore('Search').getAt(0);
         if (search) {
             this.getSearchButton().hide();

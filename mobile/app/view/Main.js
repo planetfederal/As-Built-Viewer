@@ -1,9 +1,11 @@
 Ext.define("AsBuilt.view.Main", {
     extend: 'Ext.Container',
+    xtype: 'main',
     requires: [
         'AsBuilt.view.Map'
     ],
     config: {
+        fullscreen: true,
         layout: 'fit',
         items: [
             {

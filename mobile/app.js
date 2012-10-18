@@ -20,9 +20,9 @@ Ext.application({
         autoMaximize: true
     },
 
-    views: ['Main'],
+    views: ['Login', 'Main'],
     stores: ['Notes', 'Search'],
-    controllers: ['Notes', 'Drawing', 'Search'],
+    controllers: ['Login', 'Notes', 'Drawing', 'Search'],
 
     icon: {
         '57': 'resources/icons/Icon.png',
@@ -67,7 +67,7 @@ Ext.application({
         Ext.fly('appLoadingIndicator').destroy();
 
         // Initialize the main view
-        Ext.Viewport.add(Ext.create('AsBuilt.view.Main'));
+        Ext.Viewport.add(Ext.create('AsBuilt.view.Login'));
     },
 
     onUpdated: function() {

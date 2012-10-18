@@ -18,6 +18,18 @@ $base-color: #555;
 @include sencha-msgbox;
 @include sencha-loading-spinner;
 // Your custom code goes here...
+.x-form-fieldset-title {
+    color: #555;
+    font-size: 1em;
+    font-weight: normal;
+}
+.x-form-fieldset-instructions {
+    margin: 0em 0.5em 0.3em;
+    text-align: left;
+    font-size: 1.5em;
+    color: black;
+    font-weight: bold;
+}
 .addnote {
     background-color: white;
 }
