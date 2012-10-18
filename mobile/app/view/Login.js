@@ -3,7 +3,8 @@ Ext.define('AsBuilt.view.Login', {
     alias: 'widget.login',
     requires: [
         'Ext.field.Text',
-        'Ext.form.FieldSet'
+        'Ext.form.FieldSet',
+        'Ext.field.Password'
     ],
     config: {
         items: [{
@@ -18,7 +19,7 @@ Ext.define('AsBuilt.view.Login', {
                 name: 'username',
                 label: "Username"
             }, {
-                xtype: 'textfield',
+                xtype: 'passwordfield',
                 name: 'password',
                 label: "Password"
             }, {

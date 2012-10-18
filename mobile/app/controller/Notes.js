@@ -7,6 +7,7 @@ Ext.define('AsBuilt.controller.Notes', {
             drawing: 'app_drawing',
             details: 'app_drawingdetails',
             addButton: 'button[text="Add"]',
+            main: 'main',
             notesButton: 'button[title="Notes"]'
         },
 
@@ -22,9 +23,8 @@ Ext.define('AsBuilt.controller.Notes', {
     },
 
     addNote: function() {
-        // TODO get author from login
         var attr = {};
-        attr["AUTHOR"] = "foo";
+        attr["AUTHOR"] = this.getMain().getUser();
         attr["NOTE"] = this.getList().down('textfield').getValue();
         attr["DOC_ID"] = this.getDrawing().getFid().split(".").pop();
         var feature = new OpenLayers.Feature.Vector(null, attr);

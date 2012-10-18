@@ -5,6 +5,7 @@ Ext.define("AsBuilt.view.Main", {
         'AsBuilt.view.Map'
     ],
     config: {
+        user: null,
         fullscreen: true,
         layout: 'fit',
         items: [
