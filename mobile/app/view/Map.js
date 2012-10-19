@@ -62,10 +62,10 @@ Ext.define("AsBuilt.view.Map",{
         );
 
         var style = new OpenLayers.Style({
-            pointRadius: 7.5
+            pointRadius: 15
         });
         var selectStyle = new OpenLayers.Style({
-            pointRadius: 7.5,
+            pointRadius: 15,
             fillColor: '#00FF00'
         });
         var styleMap = new OpenLayers.StyleMap({
