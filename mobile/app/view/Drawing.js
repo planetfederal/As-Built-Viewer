@@ -37,6 +37,7 @@ Ext.define('AsBuilt.view.Drawing', {
                     records.length + " Notes"
                 );
                 item.title = "Notes";
+                AsBuilt.app.getController('Notes').showNotes();
             } else { 
                 item.setText(
                     'Add Note'
@@ -71,7 +72,6 @@ Ext.define('AsBuilt.view.Drawing', {
             maxResolution: width/256,
             units: "m",
             controls : [
-                new OpenLayers.Control.Zoom(),
                 new OpenLayers.Control.TouchNavigation({
                     dragPanOptions : {
                         interval : 100,
