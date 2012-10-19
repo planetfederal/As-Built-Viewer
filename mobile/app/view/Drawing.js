@@ -71,6 +71,7 @@ Ext.define('AsBuilt.view.Drawing', {
             maxResolution: width/256,
             units: "m",
             controls : [
+                new OpenLayers.Control.Zoom(),
                 new OpenLayers.Control.TouchNavigation({
                     dragPanOptions : {
                         interval : 100,
@@ -89,7 +90,13 @@ Ext.define('AsBuilt.view.Drawing', {
                tileLoadingDelay: 300
             }
         )]);
-        this.add(Ext.create('GXM.Map', {map: map, mapExtent: map.maxExtent}));
+        var mapZoom = 3;
+        var res = map.getResolutionForZoom(mapZoom);
+        var size = Ext.Viewport.getSize(), w = size.width, h = size.height;
+        var factorX = (1 - ((res*w)/width/2));
+        var factorY = (1 - ((res*h)/height/2));
+        var center = [factorX*width, -factorY*height];
+        this.add(Ext.create('GXM.Map', {map: map, mapCenter: center, mapZoom: mapZoom}));
         this.callParent(arguments);
     }
 });
