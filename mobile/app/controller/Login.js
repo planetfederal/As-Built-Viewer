@@ -28,6 +28,7 @@ Ext.define('AsBuilt.controller.Login', {
                 });
             }
             Ext.Viewport.setActiveItem(main);
+            Ext.Viewport.maximize();
         } else {
             var message = '';
             Ext.each(errors.items,function(rec,i){
