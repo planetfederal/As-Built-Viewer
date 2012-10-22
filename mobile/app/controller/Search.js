@@ -127,6 +127,10 @@ Ext.define('AsBuilt.controller.Search', {
                     CQL_FILTER: filter !== null ? new OpenLayers.Format.CQL().write(filter): null
                 });
             } else if (lyr instanceof OpenLayers.Layer.Vector && lyr.protocol) {
+                lyr.filter = filter;
+                if (loadend) {
+                    lyr.events.on({'loadend': loadend, scope: this});
+                }
                 for (var j=0, jj=lyr.strategies.length; j<jj; ++j) {
                     var s = lyr.strategies[j];
                     if (s instanceof OpenLayers.Strategy.BBOX) {
@@ -144,11 +148,12 @@ Ext.define('AsBuilt.controller.Search', {
                         }
                     }
                 }
-                if (loadend) {
-                    lyr.events.on({'loadend': loadend, scope: this});
+                // activating a strategy will already fetch data
+                // but we cannot force a reload on the BBOX strategy
+                // other than calling refresh
+                if (values['BBOX'] === true) {
+                    lyr.refresh({force: true});
                 }
-                lyr.filter = filter;
-                lyr.refresh({force: true});
             }
         }
     },

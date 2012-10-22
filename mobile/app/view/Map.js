@@ -73,8 +73,6 @@ Ext.define("AsBuilt.view.Map",{
             "select": selectStyle
         }, {defaultRenderIntent: 'headless'});
 
-        var search = Ext.getStore('Search').getAt(0);
-        var bbox = (search['BBOX'] === true);
         var drawings_vector = new OpenLayers.Layer.Vector(null, {
             styleMap: styleMap,
             protocol: new OpenLayers.Protocol.WFS({
@@ -107,11 +105,11 @@ Ext.define("AsBuilt.view.Map",{
             strategies: [
                 new OpenLayers.Strategy.BBOX({
                     autoActivate: false, 
-                    active: bbox
+                    active: false
                 }), 
                 new OpenLayers.Strategy.Fixed({
                     autoActivate: false, 
-                    active: !bbox
+                    active: false
                 })
             ]
         });
