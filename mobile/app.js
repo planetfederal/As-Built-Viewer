@@ -45,7 +45,7 @@ Ext.application({
     launch: function() {
         // TODO I don't see another way currently to get out of ST2 zIndex mess
         // then to do this override, revisit when upgrading ST
-        Ext.Container.override({
+        Ext.Component.override({
             updateZIndex: function(zIndex) {
                 // added code:
                 if (this.config && this.config.zIndex) {

@@ -18,6 +18,13 @@ $base-color: #555;
 @include sencha-msgbox;
 @include sencha-loading-spinner;
 // Your custom code goes here...
+.x-msgbox.security-popup {
+    min-width: 15em;
+    max-width: 50em;
+}
+.security-popup .x-title {
+    width: 50em;
+}
 .x-form-fieldset-title {
     color: #555;
     font-size: 1em;
