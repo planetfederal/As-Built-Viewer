@@ -21,7 +21,37 @@ Ext.define("AsBuilt.view.Main", {
                     xtype: "spacer",
                     flex: 1
                 }, {
-                    xtype: 'button',
+                    xtype: 'container',
+                    cls: 'user-container',
+                    listeners: {
+                        tap: {
+                            /* TODO could not find a good way to do this in a controller */
+                            fn: function() {
+                                var panel = Ext.ComponentQuery.query('panel[type="logoff"]')[0];
+                                if (!panel) {
+                                    panel = Ext.create('Ext.Panel', {
+                                        width: 150,
+                                        type: 'logoff',
+                                        height: 100,
+                                        zIndex: 1000,
+                                        items: [{
+                                            xtype: 'button',
+                                            type: 'user',
+                                            text: "Log off"
+                                        }]
+                                    });
+                                    panel.showBy(this);
+                                } else {
+                                    if (panel.getHidden()) {
+                                        panel.show();
+                                    } else {
+                                        panel.hide();
+                                    }
+                                }
+                            },
+                            element: 'element'
+                        }
+                    },
                     type: 'user'
                 }]
             }, {

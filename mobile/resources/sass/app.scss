@@ -18,6 +18,9 @@ $base-color: #555;
 @include sencha-msgbox;
 @include sencha-loading-spinner;
 // Your custom code goes here...
+.user-container {
+    color: white;
+}
 .title-container {
     margin-left: 1em;
     color: white;
