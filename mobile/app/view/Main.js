@@ -10,6 +10,21 @@ Ext.define("AsBuilt.view.Main", {
         layout: 'fit',
         items: [
             {
+                xtype: 'toolbar',
+                height: 50,
+                docked: 'top',
+                items: [{
+                    xtype: 'container',
+                    cls: 'title-container',
+                    html: "As-Built Viewer"
+                }, {
+                    xtype: "spacer",
+                    flex: 1
+                }, {
+                    xtype: 'button',
+                    type: 'user'
+                }]
+            }, {
                 xtype: 'app_map'
             }, {
                 xtype: 'toolbar',
