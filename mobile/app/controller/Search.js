@@ -102,7 +102,7 @@ Ext.define('AsBuilt.controller.Search', {
         var filters = [];
         if (values) {
             for (key in values) {
-                if (values[key] !== "" && values[key] !== null) {
+                if (key !== 'BBOX' && values[key] !== "" && values[key] !== null) {
                     filters.push(new OpenLayers.Filter.Comparison({
                         type: '==',
                         property: key,
@@ -127,6 +127,23 @@ Ext.define('AsBuilt.controller.Search', {
                     CQL_FILTER: filter !== null ? new OpenLayers.Format.CQL().write(filter): null
                 });
             } else if (lyr instanceof OpenLayers.Layer.Vector && lyr.protocol) {
+                for (var j=0, jj=lyr.strategies.length; j<jj; ++j) {
+                    var s = lyr.strategies[j];
+                    if (s instanceof OpenLayers.Strategy.BBOX) {
+                        if (values['BBOX'] === true) {
+                            s.activate();
+                        } else {
+                            s.deactivate();
+                        }
+                    }
+                    if (s instanceof OpenLayers.Strategy.Fixed) {
+                        if (values['BBOX'] === true) {
+                            s.deactivate();
+                        } else {
+                            s.activate();
+                        }
+                    }
+                }
                 if (loadend) {
                     lyr.events.on({'loadend': loadend, scope: this});
                 }

@@ -35,7 +35,36 @@ Ext.define('AsBuilt.view.Search', {
                 xtype: 'textfield',
                 label: 'Subject',
                 name: 'DOCSUBJECT'
+            }, {
+                xtype: 'textfield',
+                label: 'Number',
+                name: 'IDRAWNUM'
+            }, {
+                xtype: 'textfield',
+                label: 'Date',
+                name: 'DDRAWDATE'
             }]
+        }, {
+            xtype: 'fieldset',
+            title: 'Facility',
+            items: [{
+                xtype: 'textfield',
+                label: 'Name',
+                name: 'SFACILITYNAME'
+            }]
+        }, {
+            xtype: 'fieldset',
+            title: 'Contract',
+            items: [{
+                xtype: 'textfield',
+                label: 'Number',
+                name: 'SCONTRACTNUM'
+            }]
+        }, {
+            xtype: 'checkboxfield',
+            label: 'Use map extent',
+            labelWidth: '70%',
+            name: "BBOX"
         }, {
             xtype: 'toolbar',
             height: 50,

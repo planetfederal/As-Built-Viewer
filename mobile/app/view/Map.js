@@ -102,7 +102,7 @@ Ext.define("AsBuilt.view.Map",{
                 }
             },
             renderers: ['Canvas'],
-            strategies: [new OpenLayers.Strategy.BBOX()]
+            strategies: [new OpenLayers.Strategy.BBOX(), new OpenLayers.Strategy.Fixed({autoActivate: false})]
         });
 
         var map = new OpenLayers.Map({
