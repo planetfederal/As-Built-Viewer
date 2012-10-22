@@ -92,10 +92,12 @@ div.detailRow {
     display: table-row;
 }
 div.detailHeader {
+    padding: 0.75em;
     color: #BBB;
     display: table-cell;
 }
 div.detailContent {
+    padding: 0.75em;
     display: table-cell;
     text-align: right;
 }
