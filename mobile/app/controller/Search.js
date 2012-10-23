@@ -134,14 +134,17 @@ Ext.define('AsBuilt.controller.Search', {
                 for (var j=0, jj=lyr.strategies.length; j<jj; ++j) {
                     var s = lyr.strategies[j];
                     if (s instanceof OpenLayers.Strategy.BBOX) {
-                        if (values['BBOX'] === true) {
+                        // TODO should we default on BBOX Strategy or not
+                        // when doing reset?
+                        if (values && values['BBOX'] === true) {
                             s.activate();
                         } else {
                             s.deactivate();
                         }
                     }
                     if (s instanceof OpenLayers.Strategy.Fixed) {
-                        if (values['BBOX'] === true) {
+                        // TODO same as above
+                        if (values && values['BBOX'] === true) {
                             s.deactivate();
                         } else {
                             s.activate();
