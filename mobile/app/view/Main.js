@@ -31,12 +31,13 @@ Ext.define("AsBuilt.view.Main", {
                                 if (!panel) {
                                     panel = Ext.create('Ext.Panel', {
                                         width: 150,
+                                        height: 75,
                                         type: 'logoff',
-                                        height: 100,
                                         zIndex: 1000,
                                         items: [{
                                             xtype: 'button',
                                             type: 'user',
+                                            cls: 'userbutton',
                                             text: "Log off"
                                         }]
                                     });

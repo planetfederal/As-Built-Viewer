@@ -18,6 +18,27 @@ $base-color: #555;
 @include sencha-msgbox;
 @include sencha-loading-spinner;
 // Your custom code goes here...
+.userbutton {
+    top: 0.75em;
+    margin-left: 0.25em;
+    margin-right: 0.25em;
+}
+div.arrow {
+    margin-top: -0.2em;
+    margin-left: 0.5em;
+    float: right;
+    width: 26px;
+    height: 26px;
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABoAAAAaCAMAAACelLz8AAAAGXRFWHRT
+b2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2hpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG
+1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlv
+biByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb2
+0veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDowMjgwMTE3NDA3MjA2ODExOEMxNDgzQjJBNDBCQjc2QyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDpGNjQ0NDRGQTE0NzMxMUUyQUE4RkNCN0Q5NjI2N0EzOSIgeG1wTU06SW5zdGFu
+Y2VJRD0ieG1wLmlpZDpGNjQ0NDRGOTE0NzMxMUUyQUE4RkNCN0Q5NjI2N0EzOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M2IChNYWNpbnRvc2gpIj4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6MDI4MDExNz
+QwNzIwNjgxMThDMTQ4M0IyQTQwQkI3NkMiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6MDI4MDExNzQwNzIwNjgxMThDMTQ4M0IyQTQwQkI3NkMiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz55
+EblIAAAAHlBMVEXd3d3v7+/m5ubr6+vk5OT9/f3x8fHo6Oj6+vr///9LjNcRAAAACnRSTlP///////////8AsswszwAAAFJJREFUeNpi4MQJGIatFAcLAxbADtbFikWOGWogphwzwi4mVBlGZGcwYcrAXciEIYNwPBO6DJK/mNBkkL3MjiqDEhrMDAxsuAKKmW1oRSVAgA
+EAaYoTWov0XO8AAAAASUVORK5CYII=');
+}
 .user-container {
     color: white;
 }
