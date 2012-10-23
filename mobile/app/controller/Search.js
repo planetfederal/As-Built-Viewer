@@ -154,7 +154,8 @@ Ext.define('AsBuilt.controller.Search', {
                 // activating a strategy will already fetch data
                 // but we cannot force a reload on the BBOX strategy
                 // other than calling refresh
-                if (values['BBOX'] === true) {
+                // TODO same as above
+                if (values && values['BBOX'] === true) {
                     lyr.refresh({force: true});
                 }
             }
