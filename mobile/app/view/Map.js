@@ -2,6 +2,7 @@ Ext.define("AsBuilt.view.Map",{
     extend: 'GXM.Map',
     alias: 'widget.app_map',
     requires: [
+        'GXM.widgets.FeaturePopup',
         'AsBuilt.view.Drawing'
     ],
     initialize:function(){
@@ -87,19 +88,53 @@ Ext.define("AsBuilt.view.Map",{
             }),
             eventListeners: {
                 "featureselected": function(evt) {
-                    var drawing = Ext.create('AsBuilt.view.Drawing', {
-                        fid: evt.feature.fid,
-                        attributes: evt.feature.attributes
-                    });
-                    var search = Ext.Viewport.down('app_search');
-                    if (search) {
-                        search.hide();
+                    var lonlat = new OpenLayers.LonLat(evt.feature.geometry.x, evt.feature.geometry.y); 
+                    var xy = this.getMap().getViewPortPxFromLonLat(lonlat);
+                    if (!this.popup) {
+                        this.popup = Ext.Viewport.add({
+                            xtype: 'gxm_featurepopup',
+                            listeners: {
+                                'hide': function() {
+                                    var ctrl = this.getMap().getControlsByClass('OpenLayers.Control.SelectFeature')[0];
+                                    ctrl.unselectAll();
+                                }, 
+                                scope: this
+                            },
+                            modal: false,
+                            maxWidth: '20em',
+                            feature: evt.feature,
+                            centered: false,
+                            zIndex: 1000,
+                            tpl: new Ext.XTemplate('<tpl if="feature.attributes.SDRAWTITLE != null">{feature.attributes.SDRAWTITLE}<tpl else>Title unknown</tpl><br/><tpl if="feature.attributes.TYPEDESC != null">{feature.attributes.TYPEDESC}<tpl else>Type unknown</tpl><br/><tpl if="feature.attributes.DDRAWDATE != null">{feature.attributes.DDRAWDATE}<tpl else>Date unknown</tpl>'),
+                            top: xy.y,
+                            left: xy.x
+                        });
+                    } else {
+                        this.popup.setFeature(evt.feature);
+                        this.popup.setTop(xy.y);
+                        this.popup.setLeft(xy.x);
                     }
-                    Ext.Viewport.add(drawing);
-                    Ext.Viewport.setActiveItem(drawing);
+                    this.popup.element.on('tap', function() {
+                        this.popup.hide();
+                        var drawing = Ext.create('AsBuilt.view.Drawing', {
+                            fid: evt.feature.fid,
+                            attributes: evt.feature.attributes
+                        });
+                        var search = Ext.Viewport.down('app_search');
+                        if (search) {
+                            search.hide();
+                        }
+                        Ext.Viewport.add(drawing);
+                        Ext.Viewport.setActiveItem(drawing);
+                    }, this, {single: true});
+                    this.popup.show();
                 },
                 "featureunselected": function(evt) {
-                }
+                    if (this.popup) {
+                        this.popup.hide();
+                    }
+                },
+                scope: this
             },
             renderers: ['Canvas'],
             strategies: [
