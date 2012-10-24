@@ -65,6 +65,8 @@ Ext.define('AsBuilt.controller.Search', {
             var values = Ext.apply({}, search.data);
             delete values.id;
             this.filterMap(values);
+        } else {
+            this.filterMap();
         }
     },
 
