@@ -9,7 +9,8 @@ Ext.define('AsBuilt.controller.Drawing', {
             detailsButton: 'button[text="Details"]',
             mapPanel: 'app_map',
             notesList: 'panel[type="notes"]',
-            details: 'app_drawingdetails'
+            details: 'app_drawingdetails',
+            popup: 'gxm_featurepopup'
         },
 
         control: {
@@ -28,6 +29,7 @@ Ext.define('AsBuilt.controller.Drawing', {
         Ext.Viewport.remove(this.getDrawing());
         Ext.Viewport.remove(this.getDetails());
         Ext.Viewport.setActiveItem(this.getMain());
+        this.getPopup().show();
     },
 
     showDetails: function() {

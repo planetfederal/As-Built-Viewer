@@ -93,13 +93,6 @@ Ext.define("AsBuilt.view.Map",{
                     if (!this.popup) {
                         this.popup = Ext.Viewport.add({
                             xtype: 'gxm_featurepopup',
-                            listeners: {
-                                'hide': function() {
-                                    var ctrl = this.getMap().getControlsByClass('OpenLayers.Control.SelectFeature')[0];
-                                    ctrl.unselectAll();
-                                }, 
-                                scope: this
-                            },
                             modal: false,
                             maxWidth: '20em',
                             feature: evt.feature,
@@ -109,24 +102,12 @@ Ext.define("AsBuilt.view.Map",{
                             top: xy.y,
                             left: xy.x
                         });
+                        this.popup.element.on('tap', this.onTap, this);
                     } else {
                         this.popup.setFeature(evt.feature);
                         this.popup.setTop(xy.y);
                         this.popup.setLeft(xy.x);
                     }
-                    this.popup.element.on('tap', function() {
-                        this.popup.hide();
-                        var drawing = Ext.create('AsBuilt.view.Drawing', {
-                            fid: evt.feature.fid,
-                            attributes: evt.feature.attributes
-                        });
-                        var search = Ext.Viewport.down('app_search');
-                        if (search) {
-                            search.hide();
-                        }
-                        Ext.Viewport.add(drawing);
-                        Ext.Viewport.setActiveItem(drawing);
-                    }, this, {single: true});
                     this.popup.show();
                 },
                 "featureunselected": function(evt) {
@@ -216,6 +197,21 @@ Ext.define("AsBuilt.view.Map",{
         this.setMap(map);
         this.setMapExtent(OpenLayers.Bounds.fromArray(AsBuilt.util.Config.getBounds()));
         this.callParent(arguments);
+    },
+
+    onTap: function() {
+        this.popup.hide();
+        var f = this.popup.getFeature();
+        var drawing = Ext.create('AsBuilt.view.Drawing', {
+            fid: f.fid,
+            attributes: f.attributes
+        });
+        var search = Ext.Viewport.down('app_search');
+        if (search) {
+            search.hide();
+        }
+        Ext.Viewport.add(drawing);
+        Ext.Viewport.setActiveItem(drawing);
     },
 
     onGeoUpdate: Ext.emptyFn
