@@ -31,37 +31,40 @@ Ext.define('AsBuilt.controller.Notes', {
     },
 
     addNote: function() {
-        var attr = {};
-        attr["AUTHOR"] = this.getMain().getUser();
-        attr["NOTE"] = this.getList().down('textfield').getValue();
-        attr["DOC_ID"] = this.getDrawing().getFid().split(".").pop();
-        var feature = new OpenLayers.Feature.Vector(null, attr);
-        feature.state = OpenLayers.State.INSERT;
-        var format = new OpenLayers.Format.WFST({
-            featurePrefix: AsBuilt.util.Config.getPrefix(),
-            featureType: AsBuilt.util.Config.getNotesTable(),
-            geometryName: null,
-            featureNS: AsBuilt.util.Config.getFeatureNS(),
-            version: "1.1.0"
-        });
-        var xml = format.write([feature]);
-        var url = AsBuilt.util.Config.getGeoserverUrl();
-        OpenLayers.Request.POST({
-            url: url,
-            callback: function(response) {
-                // reload store
-                Ext.getStore('Notes').load({
-                    filter: new OpenLayers.Filter.Comparison({
-                        type: '==',
-                        property: 'DOC_ID',
-                        value: attr["DOC_ID"]
-                    })
-                });
-                this.getList().down('textfield').setValue('');
-            },
-            scope: this,
-            data: xml
-        });
+        var note = this.getList().down('textfield').getValue();
+        if (note !== "") {
+            var attr = {};
+            attr["AUTHOR"] = this.getMain().getUser();
+            attr["NOTE"] = note;
+            attr["DOC_ID"] = this.getDrawing().getFid().split(".").pop();
+            var feature = new OpenLayers.Feature.Vector(null, attr);
+            feature.state = OpenLayers.State.INSERT;
+            var format = new OpenLayers.Format.WFST({
+                featurePrefix: AsBuilt.util.Config.getPrefix(),
+                featureType: AsBuilt.util.Config.getNotesTable(),
+                geometryName: null,
+                featureNS: AsBuilt.util.Config.getFeatureNS(),
+                version: "1.1.0"
+            });
+            var xml = format.write([feature]);
+            var url = AsBuilt.util.Config.getGeoserverUrl();
+            OpenLayers.Request.POST({
+                url: url,
+                callback: function(response) {
+                    // reload store
+                    Ext.getStore('Notes').load({
+                        filter: new OpenLayers.Filter.Comparison({
+                            type: '==',
+                            property: 'DOC_ID',
+                            value: attr["DOC_ID"]
+                        })
+                    });
+                    this.getList().down('textfield').setValue('');
+                },
+                scope: this,
+                data: xml
+            });
+        }
     },
 
     showNotes: function() {
