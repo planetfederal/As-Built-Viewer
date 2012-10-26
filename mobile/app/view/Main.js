@@ -2,14 +2,18 @@ Ext.define("AsBuilt.view.Main", {
     extend: 'Ext.Container',
     xtype: 'main',
     requires: [
+        'GXM.FeatureList',
         'AsBuilt.view.Map'
     ],
     config: {
         user: null,
         fullscreen: true,
-        layout: 'fit',
-        items: [
-            {
+        layout: 'vbox',
+        items: [{
+            xtype: 'container',
+            layout: 'fit',
+            flex: 1,
+            items: [{
                 xtype: 'toolbar',
                 height: 50,
                 docked: 'top',
@@ -77,7 +81,27 @@ Ext.define("AsBuilt.view.Main", {
                     text: 'Modify Search',
                     hidden: true
                 }]
-            }
-        ]
+            }]
+        }, {
+            xtype: 'container',
+            id: "listcontainer",
+            listeners: {
+                "painted": function() {
+                    var mapPanel = Ext.ComponentQuery.query('app_map')[0];
+                    var lyr;
+                    for (var i=0, ii=mapPanel.getMap().layers.length; i<ii; ++i) {
+                        lyr = mapPanel.getMap().layers[i];
+                        if (lyr instanceof OpenLayers.Layer.Vector && lyr.protocol) {
+                            break;
+                        }
+                    }
+                    this.add(Ext.create("GXM.FeatureList", {
+                        layer: lyr
+                    }));
+                }
+            },
+            layout: "fit",
+            height: 150
+        }]
     }
 });
