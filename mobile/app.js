@@ -66,6 +66,10 @@ Ext.application({
         // Destroy the #appLoadingIndicator element
         Ext.fly('appLoadingIndicator').destroy();
 
+        Ext.Viewport.on("orientationchange", function(vp) {
+            Ext.Viewport.down('app_map').getMap().updateSize();
+        });
+
         // Initialize the main view
         Ext.Viewport.add(Ext.create('AsBuilt.view.Login'));
     },
