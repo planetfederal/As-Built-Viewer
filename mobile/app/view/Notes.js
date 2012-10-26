@@ -29,6 +29,7 @@ Ext.define('AsBuilt.view.Notes', {
             layout: 'hbox',
             items: [{
                 xtype: 'textfield',
+                type: 'notefield',
                 flex: 1,
                 placeHolder: 'Enter Note'
             }, {
@@ -36,6 +37,7 @@ Ext.define('AsBuilt.view.Notes', {
                 cls: 'addnotebutton',
                 width: 75,
                 height: 40,
+                disabled: true,
                 text: "Add"
             }]
         }]

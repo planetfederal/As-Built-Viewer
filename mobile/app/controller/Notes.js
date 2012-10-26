@@ -8,6 +8,7 @@ Ext.define('AsBuilt.controller.Notes', {
             details: 'app_drawingdetails',
             addButton: 'button[text="Add"]',
             main: 'main',
+            notesField: 'textfield[type="notefield"]',
             notesButton: 'button[title="Notes"]'
         },
 
@@ -17,9 +18,16 @@ Ext.define('AsBuilt.controller.Notes', {
             },
             addButton: {
                 tap: 'addNote'
+            },
+            notesField: {
+                keyup: 'enableAdd'
             }
         }
 
+    },
+
+    enableAdd: function() {
+        this.getAddButton().enable();
     },
 
     addNote: function() {
