@@ -18,6 +18,15 @@ $base-color: #555;
 @include sencha-msgbox;
 @include sencha-loading-spinner;
 // Your custom code goes here...
+.x-form-fieldset-inner {
+    margin-left: 0.3em;
+}
+.x-form-fieldset {
+    margin-bottom: 0.3em;
+}
+.x-form-fieldset-title {
+    margin-top: 0.3em;
+}
 .userbutton {
     top: 0.75em;
     margin-left: 0.25em;

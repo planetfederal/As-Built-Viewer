@@ -11,9 +11,7 @@ Ext.define('AsBuilt.view.Search', {
         },
         defaults: {
             layout: 'vbox',
-            defaults: {
-                flex: 1
-            }
+            margin: '0em 0.3em 0em 0em'
         },
         defaultType: 'container',
         items: [{
@@ -76,14 +74,18 @@ Ext.define('AsBuilt.view.Search', {
                     name: 'SCONTRACTNUM'
                 }]
             }, {
-                xtype: 'checkboxfield',
-                label: 'Use map extent',
-                height: 40,
-                labelWidth: '70%',
-                name: "BBOX"
+                xtype: 'fieldset',
+                items: [{
+                    xtype: 'checkboxfield',
+                    label: 'Use map extent',
+                    height: 40,
+                    labelWidth: '70%',
+                    name: "BBOX"
+                }]
             }]
         }, {
             xtype: 'toolbar',
+            margin: 0,
             height: 50,
             docked: 'bottom',
             items: [{
