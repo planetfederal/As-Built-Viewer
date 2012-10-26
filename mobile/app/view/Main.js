@@ -96,7 +96,8 @@ Ext.define("AsBuilt.view.Main", {
                         }
                     }
                     this.add(Ext.create("GXM.FeatureList", {
-                        layer: lyr
+                        layer: lyr,
+                        itemTpl: new Ext.XTemplate('<tpl if="feature.attributes.SDRAWTITLE != null">{feature.attributes.SDRAWTITLE}<tpl else>Title unknown</tpl> | <tpl if="feature.attributes.TYPEDESC != null">{feature.attributes.TYPEDESC}<tpl else>Type unknown</tpl> | <tpl if="feature.attributes.DDRAWDATE != null">{feature.attributes.DDRAWDATE}<tpl else>Date unknown</tpl>')
                     }));
                 }
             },
