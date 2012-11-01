@@ -29,7 +29,9 @@ Ext.define('AsBuilt.controller.Drawing', {
         Ext.Viewport.remove(this.getDrawing());
         Ext.Viewport.remove(this.getDetails());
         Ext.Viewport.setActiveItem(this.getMain());
-        this.getPopup().show();
+        if (this.getPopup()) {
+            this.getPopup().show();
+        }
     },
 
     showDetails: function() {

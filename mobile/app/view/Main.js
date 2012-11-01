@@ -97,6 +97,22 @@ Ext.define("AsBuilt.view.Main", {
                     }
                     this.add(Ext.create("GXM.FeatureList", {
                         layer: lyr,
+                        listeners: {
+                            'itemtap': function(list, idx, target, record) {
+                                // TODO centralize this code, is also in view/Map.js
+                                var f = record.getFeature();
+                                var drawing = Ext.create('AsBuilt.view.Drawing', {
+                                    fid: f.fid,
+                                    attributes: f.attributes
+                                });
+                                var search = Ext.Viewport.down('app_search');
+                                if (search) {
+                                    search.hide();
+                                }
+                                Ext.Viewport.add(drawing);
+                                Ext.Viewport.setActiveItem(drawing);
+                            }
+                        },
                         itemTpl: new Ext.XTemplate('<tpl if="feature.attributes.SDRAWTITLE != null">{feature.attributes.SDRAWTITLE}<tpl else>Title unknown</tpl> | <tpl if="feature.attributes.TYPEDESC != null">{feature.attributes.TYPEDESC}<tpl else>Type unknown</tpl> | <tpl if="feature.attributes.DDRAWDATE != null">{feature.attributes.DDRAWDATE}<tpl else>Date unknown</tpl>')
                     }));
                 }
