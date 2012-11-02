@@ -66,6 +66,18 @@ Ext.define("AsBuilt.view.Main", {
                 height: 50,
                 docked: 'bottom',
                 items: [{
+                    xtype: 'segmentedbutton',
+                    defaults: {
+                        width: '7em'
+                    },
+                    items: [{
+                        text: 'All'
+                    }, {
+                        text: 'Mapped'
+                    }, {
+                        text: 'Unmapped'
+                    }]
+                }, {
                     xtype: 'spacer',
                     flex: 1
                 }, {
