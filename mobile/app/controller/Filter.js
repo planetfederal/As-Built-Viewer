@@ -49,17 +49,14 @@ Ext.define('AsBuilt.controller.Filter', {
                 
     filterWMS: function(mapped) {
         var layer = this.getWMSLayer();
-        var cql = layer.params.CQL_FILTER;
-        var cqlToAdd;
-        if (mapped) { 
-            cqlToAdd = 'GEOM IS NOT NULL';
-        } else {
+        var filter = this.getVectorLayer().filter;
+        var cqlToAdd = null;
+        if (!mapped) { 
             cqlToAdd = 'GEOM IS NULL';
         }
-        if (cql !== null) {
-            // TODO this does not work, since the other one could have been set
-            // TODO as Filter.IsNull to CQL Format
-            if (cql.indexOf(cqlToAdd) === -1) {
+        if (filter) {
+            cql = new OpenLayers.Format.CQL().write(filter);
+            if (cqlToAdd !== null) {
                 cql = '(' + cql + ') AND (' + cqlToAdd + ')';
             }
         } else {
