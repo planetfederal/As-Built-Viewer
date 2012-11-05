@@ -44,33 +44,60 @@ Ext.define('AsBuilt.controller.Filter', {
     },
 
     filterAll: function() {
-        this.filterWMS(true);
+        this.filter('all');
     },
-                
-    filterWMS: function(mapped) {
-        var layer = this.getWMSLayer();
-        var filter = this.getVectorLayer().filter;
-        var cqlToAdd = null;
-        if (!mapped) { 
-            cqlToAdd = 'GEOM IS NULL';
-        }
-        if (filter) {
-            cql = new OpenLayers.Format.CQL().write(filter);
-            if (cqlToAdd !== null) {
-                cql = '(' + cql + ') AND (' + cqlToAdd + ')';
+
+    filter: function(mode) {
+        var vector = this.getVectorLayer();
+        var activateFixed = function() {
+            for (var i=0, ii=vector.strategies.length; i<ii; ++i) {
+                var s = vector.strategies[i];
+                if (s instanceof OpenLayers.Strategy.BBOX) {
+                    s.deactivate();
+                }
+                if (s instanceof OpenLayers.Strategy.Fixed) {
+                    var activated = s.activate();
+                    if (!activated) {
+                        vector.refresh({force: true});
+                    }
+                }
             }
-        } else {
-            cql = cqlToAdd;
+        };
+        // TODO add check for existing filter
+        var nullGeomFilter = new OpenLayers.Filter.Comparison({
+            property: "GEOM",
+            type: OpenLayers.Filter.Comparison.IS_NULL
+        });
+        if (mode === 'all') {
+            vector.filter = null;
+            activateFixed();
+        } else if (mode === 'unmapped') {
+            vector.filter = nullGeomFilter;
+            activateFixed();
+        } else if (mode === 'mapped') {
+            // we need to add a filter for NOT (GEOM IS NULL)
+            vector.filter = new OpenLayers.Filter.Logical({
+                type: OpenLayers.Filter.Logical.NOT,
+                filters: [nullGeomFilter]
+            });
+            // not sure which strategy we should be using here, BBOX or Fixed
+            vector.refresh({force: true});
         }
-        this.getWMSLayer().mergeNewParams({'CQL_FILTER': cql});
+        var cql = null;
+        if (vector.filter) {
+            cql = new OpenLayers.Format.CQL().write(vector.filter);
+        }
+        this.getWMSLayer().mergeNewParams({
+            'CQL_FILTER': cql
+        });
     },
 
     filterMapped: function() {
-        this.filterWMS(true);
+        this.filter('mapped');
     },
 
     filterUnmapped: function() {
-        this.filterWMS(false);
+        this.filter('unmapped');
     }
 
 });

@@ -82,6 +82,7 @@ Ext.define("AsBuilt.view.Map",{
                 featureNS: AsBuilt.util.Config.getFeatureNS(),
                 geometryName: AsBuilt.util.Config.getGeomField(),
                 version: "1.1.0",
+                maxFeatures: 100,
                 srsName: "EPSG:900913",
                 outputFormat: 'json',
                 readFormat: new OpenLayers.Format.GeoJSON()
