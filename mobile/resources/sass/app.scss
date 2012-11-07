@@ -19,6 +19,12 @@ $base-color: #555;
 @include sencha-loading-spinner;
 // Your custom code goes here...
 @include sencha-button-ui('user', #720000, 'glossy');
+.featurepopup > .x-inner {
+    background-color: #424242 !important;
+}
+.featurepopup > .x-inner > .x-innerhtml {
+    color: white !important;
+}
 .logoff > .x-inner {
     background-color: black !important;
 }
