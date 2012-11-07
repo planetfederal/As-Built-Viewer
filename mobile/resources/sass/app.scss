@@ -19,11 +19,30 @@ $base-color: #555;
 @include sencha-loading-spinner;
 // Your custom code goes here...
 @include sencha-button-ui('user', #720000, 'glossy');
+.featurepopup > .x-inner > .x-html {
+    padding: 0.3em !important;
+}
+div.fp-title {
+    font-weight: bold;
+    color: white;
+    font-size: 1.2em;
+}
+div.fp-container {
+    display: table;
+}
+div.fp-type, div.fp-date {
+    display: table-cell;
+    color: #999;
+    font-size: 1em;
+}
+div.fp-type {
+    width: 20em;
+}
+div.fp-date {
+    padding-left: 1em;
+}
 .featurepopup > .x-inner {
     background-color: #424242 !important;
-}
-.featurepopup > .x-inner > .x-innerhtml {
-    color: white !important;
 }
 .logoff > .x-inner {
     background-color: black !important;
