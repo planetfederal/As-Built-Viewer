@@ -70,6 +70,8 @@ Ext.define('AsBuilt.controller.Filter', {
         if (mode === 'all') {
             if (!vector._filter) {
                 vector.filter = null;
+            } else {
+                vector.filter = vector._filter;
             }
             activateFixed();
         } else if (mode === 'unmapped') {
