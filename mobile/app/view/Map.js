@@ -135,11 +135,11 @@ Ext.define("AsBuilt.view.Map",{
                             xtype: 'gxm_featurepopup',
                             cls: 'featurepopup',
                             modal: false,
-                            maxWidth: '16em',
+                            maxWidth: '17em',
                             feature: evt.feature,
                             centered: false,
                             zIndex: 1000,
-                            tpl: new Ext.XTemplate('<div class="fp-title"><tpl if="feature.attributes.SDRAWTITLE != null">{feature.attributes.SDRAWTITLE}<tpl else>Title unknown</tpl></div><div class="fp-container"><div class="fp-type"><tpl if="feature.attributes.TYPEDESC != null">{feature.attributes.TYPEDESC}<tpl else>Type unknown</tpl></div><div class="fp-date"><tpl if="feature.attributes.DDRAWDATE != null">{feature.attributes.DDRAWDATE}<tpl else>Date unknown</tpl></div></div>'),
+                            tpl: new Ext.XTemplate('<div class="fp-title"><tpl if="feature.attributes.SDRAWTITLE != null">{feature.attributes.SDRAWTITLE}<tpl else>Title unknown</tpl><span class="follow">&gt;</span></div><div class="fp-container"><div class="fp-type"><tpl if="feature.attributes.TYPEDESC != null">{feature.attributes.TYPEDESC}<tpl else>Type unknown</tpl></div><div class="fp-date"><tpl if="feature.attributes.DDRAWDATE != null">{feature.attributes.DDRAWDATE}<tpl else>Date unknown</tpl></div></div>'),
                             top: xy.y,
                             left: xy.x
                         });
