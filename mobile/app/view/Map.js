@@ -106,10 +106,14 @@ Ext.define("AsBuilt.view.Map",{
                         this.hitCount.read({filter: this._filter, callback: function(response) {
                             var list = Ext.Viewport.down('toolbar[type="featurelist"]');
                             var filter = Ext.Viewport.down('segmentedbutton[type="mapped"]');
-                            var text = filter.getPressedButtons()[0].getText().toLowerCase();
+                            var pressed = filter.getPressedButtons();
+                            var text = '';
+                            if (pressed.length === 1) {
+                                text = pressed[0].getText().toLowerCase();
+                            }
                             if (text === 'all') {
                                 text = '';
-                            } else {
+                            } else if (text !== '') {
                                 text = ' ' + text;
                             }
                             list.down('container').setHtml('Your search returned ' + 
