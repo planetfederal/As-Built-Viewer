@@ -18,6 +18,13 @@ $base-color: #555;
 @include sencha-msgbox;
 @include sencha-loading-spinner;
 // Your custom code goes here...
+.x-container .maxfeatures {
+    margin-left: 0.6em;
+}
+.x-toolbar-maxfeatures {
+    background-color: #fff5c3;
+    color: #625414;
+}
 .x-form-fieldset-inner {
     margin-left: 0.3em;
 }

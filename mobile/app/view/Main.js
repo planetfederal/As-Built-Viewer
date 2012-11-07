@@ -135,7 +135,18 @@ Ext.define("AsBuilt.view.Main", {
                 }
             },
             layout: "fit",
-            items: [{xtype: 'toolbar', docked: 'top', type: 'featurelist', hidden: true, items: [{xtype: 'container', width: '100%'}]}],
+            items: [{
+                xtype: 'toolbar', 
+                docked: 'top', 
+                type: 'featurelist', 
+                ui: 'maxfeatures', 
+                hidden: true, 
+                items: [{
+                    xtype: 'container', 
+                    cls: 'maxfeatures', 
+                    width: '100%'
+                }]
+            }],
             height: 150
         }]
     }
