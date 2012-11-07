@@ -67,6 +67,8 @@ Ext.define("AsBuilt.view.Main", {
                 docked: 'bottom',
                 items: [{
                     xtype: 'segmentedbutton',
+                    type: 'mapped',
+                    hidden: true,
                     defaults: {
                         width: '7em'
                     },

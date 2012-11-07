@@ -8,6 +8,7 @@ Ext.define('AsBuilt.controller.Search', {
             modifyButton: 'button[text="Modify Search"]',
             resetButton: 'button[text="Reset"]',
             filterButton: 'button[text="Search"]',
+            mappedButton: 'segmentedbutton[type="mapped"]',
             searchForm: 'app_search',
             mapPanel: 'app_map',
             main: 'main'
@@ -66,6 +67,8 @@ Ext.define('AsBuilt.controller.Search', {
             delete values.id;
             this.filterMap(values);
         } else {
+            // TODO if default strategy is not fixed, change this
+            this.getMappedButton().show();
             this.filterMap();
         }
     },
@@ -101,6 +104,11 @@ Ext.define('AsBuilt.controller.Search', {
     },
 
     filterMap: function(values, loadend) {
+        if (!values || values["BBOX"] !== true) {
+            this.getMappedButton().show();
+        } else {
+            this.getMappedButton().hide();
+        }
         var filters = [];
         if (values) {
             for (key in values) {
