@@ -88,6 +88,26 @@ Ext.define("AsBuilt.view.Map",{
                 readFormat: new OpenLayers.Format.GeoJSON()
             }),
             eventListeners: {
+                "loadstart": function(evt) {
+                    this._filter = evt.filter;
+                },
+                "loadend": function(evt) {
+                    if (evt.response.features.length === evt.object.protocol.maxFeatures) {
+                        if (!this.hitCount) {
+                            this.hitCount = new OpenLayers.Protocol.WFS({
+                                version: "1.1.0",
+                                readOptions: {output: "object"},
+                                resultType: "hits",
+                                url: AsBuilt.util.Config.getGeoserverUrl(),
+                                featureType: AsBuilt.util.Config.getDrawingsTable(),
+                                featureNS: AsBuilt.util.Config.getFeatureNS()
+                            });
+                        }
+                        this.hitCount.read({filter: this._filter, callback: function(response) {
+                            // TODO show a message in the list based on response.numberOfFeatures
+                        }});
+                    }
+                },
                 "featureselected": function(evt) {
                     var lonlat = new OpenLayers.LonLat(evt.feature.geometry.x, evt.feature.geometry.y); 
                     var xy = this.getMap().getViewPortPxFromLonLat(lonlat);
