@@ -104,8 +104,21 @@ Ext.define("AsBuilt.view.Map",{
                             });
                         }
                         this.hitCount.read({filter: this._filter, callback: function(response) {
-                            // TODO show a message in the list based on response.numberOfFeatures
+                            var list = Ext.Viewport.down('toolbar[type="featurelist"]');
+                            var filter = Ext.Viewport.down('segmentedbutton[type="mapped"]');
+                            var text = filter.getPressedButtons()[0].getText().toLowerCase();
+                            if (text === 'all') {
+                                text = '';
+                            } else {
+                                text = ' ' + text;
+                            }
+                            list.down('container').setHtml('Your search returned ' + 
+                                response.numberOfFeatures + text + ' images. Showing the first ' + 
+                                evt.object.protocol.maxFeatures + '.');
+                            list.show();
                         }});
+                    } else {
+                        Ext.Viewport.down('toolbar[type="featurelist"]').hide();
                     }
                 },
                 "featureselected": function(evt) {
