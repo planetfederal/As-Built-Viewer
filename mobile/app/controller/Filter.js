@@ -63,24 +63,46 @@ Ext.define('AsBuilt.controller.Filter', {
                 }
             }
         };
-        // TODO add check for existing filter
         var nullGeomFilter = new OpenLayers.Filter.Comparison({
             property: "GEOM",
             type: OpenLayers.Filter.Comparison.IS_NULL
         });
         if (mode === 'all') {
-            vector.filter = null;
+            if (!vector._filter) {
+                vector.filter = null;
+            }
             activateFixed();
         } else if (mode === 'unmapped') {
-            vector.filter = nullGeomFilter;
+            if (vector._filter) {
+                vector.filter = new OpenLayers.Filter.Logical({
+                    type: OpenLayers.Filter.Logical.AND,
+                    filters: [
+                        nullGeomFilter,
+                        vector._filter
+                    ]
+                });
+            } else {
+                vector.filter = nullGeomFilter;
+            }
             activateFixed();
         } else if (mode === 'mapped') {
             // we need to add a filter for NOT (GEOM IS NULL)
-            vector.filter = new OpenLayers.Filter.Logical({
+            var mappedFilter = new OpenLayers.Filter.Logical({
                 type: OpenLayers.Filter.Logical.NOT,
                 filters: [nullGeomFilter]
             });
-            // not sure which strategy we should be using here, BBOX or Fixed
+            if (vector._filter) {
+                vector.filter = new OpenLayers.Filter.Logical({
+                    type: OpenLayers.Filter.Logical.AND,
+                    filters: [
+                        mappedFilter,
+                        vector._filter
+                    ]
+                });
+            } else {
+                vector.filter = mappedFilter;
+            }
+            // TODO not sure which strategy we should be using here, BBOX or Fixed
             vector.refresh({force: true});
         }
         var cql = null;

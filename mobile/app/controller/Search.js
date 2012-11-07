@@ -129,6 +129,8 @@ Ext.define('AsBuilt.controller.Search', {
                     CQL_FILTER: filter !== null ? new OpenLayers.Format.CQL().write(filter): null
                 });
             } else if (lyr instanceof OpenLayers.Layer.Vector && lyr.protocol) {
+                // store the original filter as well, so it's easier to manipulate in the Filter controller
+                lyr._filter = filter;
                 lyr.filter = filter;
                 if (loadend) {
                     lyr.events.on({'loadend': loadend, scope: this});
