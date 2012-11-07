@@ -19,6 +19,10 @@ Ext.define("AsBuilt.view.Main", {
                 docked: 'top',
                 items: [{
                     xtype: 'container',
+                    cls: 'header-container',
+                    html: "SFMTA"
+                }, {
+                    xtype: 'container',
                     cls: 'title-container',
                     html: "As-Built Viewer"
                 }, {
