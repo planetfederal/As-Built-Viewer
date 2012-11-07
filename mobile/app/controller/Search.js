@@ -135,6 +135,7 @@ Ext.define('AsBuilt.controller.Search', {
                 if (loadend) {
                     lyr.events.on({'loadend': loadend, scope: this});
                 }
+                var activated;
                 for (var j=0, jj=lyr.strategies.length; j<jj; ++j) {
                     var s = lyr.strategies[j];
                     if (s instanceof OpenLayers.Strategy.BBOX) {
@@ -148,14 +149,16 @@ Ext.define('AsBuilt.controller.Search', {
                         if (!values || values['BBOX'] === true) {
                             s.deactivate();
                         } else {
-                            s.activate();
+                            // if we were already active, we will not be
+                            // activated again
+                            activated = s.activate();
                         }
                     }
                 }
                 // activating a strategy will already fetch data
                 // but we cannot force a reload on the BBOX strategy
                 // other than calling refresh
-                if (!values || values['BBOX'] === true) {
+                if (!activated || (!values || values['BBOX'] === true)) {
                     lyr.refresh({force: true});
                 }
             }
