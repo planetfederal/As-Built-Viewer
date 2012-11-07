@@ -18,6 +18,10 @@ $base-color: #555;
 @include sencha-msgbox;
 @include sencha-loading-spinner;
 // Your custom code goes here...
+@include sencha-button-ui('user', #720000, 'glossy');
+.logoff > .x-inner {
+    background-color: black !important;
+}
 .x-container .maxfeatures {
     margin-left: 0.6em;
 }
