@@ -5,6 +5,13 @@
     <target name="-before-build">
         <copy file="externals/openlayers/build/OpenLayers.js" todir="build/AsBuilt/production/externals/openlayers/build"/>
     </target>
+    <target name="-after-build">
+        <property name="build" location="warbuild"/>
+        <property name="warfile" value="As-Built-Mobile"/> 
+        <war needxmlfile="false" destfile="${build}/${warfile}.war">
+            <fileset dir="build/AsBuilt/production"/>
+        </war>
+    </target>
     <!--
     The following targets can be provided to inject logic before and/or after key steps
     of the build process:
