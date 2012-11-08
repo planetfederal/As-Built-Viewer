@@ -1,52 +1,40 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<project name="As-Built-Mobile" default="dist" basedir=".">
+<?xml version="1.0" encoding="utf-8"?>
+<project name="AsBuilt" default=".help">
+    <import file="${basedir}/.sencha/app/build-impl.xml"/>
 
-    <description>
-        As-Built-Mobile Build File
-    </description>
-
-    <property name="senchabuild" location="build"/>
-    <property name="senchaarchive" location="archive"/>
-    <property name="build" location="warbuild"/>
-
-	<condition property="sencha" value="sencha.bat" else="sencha">
-	        <os family="windows"/>
-    </condition>
-
-    <condition property="prodarg" value="-e production" else="production">
-            <os family="windows"/>
-    </condition>
-    
-	<target name="init">
-        <mkdir dir="${build}/${ant.project.name}/WEB-INF"/>
-        <copy todir="${build}/${ant.project.name}/WEB-INF">
-            <fileset dir="build/production"/>
-        </copy>
-
-        
-        <delete dir="${senchabuild}"/>
-        <delete dir="${senchaarchive}"/>
-        
-		
+    <target name="-before-build">
+        <copy file="externals/openlayers/build/OpenLayers.js" todir="build/AsBuilt/production/externals/openlayers/build"/>
     </target>
+    <!--
+    The following targets can be provided to inject logic before and/or after key steps
+    of the build process:
 
-    <target name="clean" description="remove previous build">
-        <delete dir="${build}"/>
-    </target>
+        The "init-local" target is used to initialize properties that may be personalized
+        for the local machine.
 
-    <target name="dist" depends="init"/>
-	
-	<target name="senchabuild">
-		<echo message="doing the application build through the Sencha SDK"/>
-		<exec executable="${sencha}" failonerror="true">
-            <arg line="app build ${prodarg}"/>
-        </exec>
-	</target>
-	
-    <target name="war" depends="dist,senchabuild">
-        <war needxmlfile="false" destfile="${build}/${ant.project.name}.war">
-            <fileset dir="build/production"/>
-        </war>
-    </target>	
-	
+            <target name="-before-init-local"/>
+            <target name="-after-init-local"/>
+
+        The "clean" target is used to clean build output from the build.dir.
+
+            <target name="-before-clean"/>
+            <target name="-after-clean"/>
+
+        The general "init" target is used to initialize all other properties, including
+        those provided by Sencha Cmd.
+
+            <target name="-before-init"/>
+            <target name="-after-init"/>
+            
+        The "page" target performs the call to Sencha Cmd to build the 'all-classes.js' file.
+
+            <target name="-before-page"/>
+            <target name="-after-page"/>
+
+        The "build" target performs the call to Sencha Cmd to build the application.
+
+            <target name="-before-build"/>
+            <target name="-after-build"/>
+    -->
+
 </project>

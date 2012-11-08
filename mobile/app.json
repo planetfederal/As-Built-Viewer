@@ -86,7 +86,6 @@
      * Extra resources to be copied along when build
      */
     "resources": [
-        "externals/openlayers/build/OpenLayers.js",
         "resources/icons",
         "resources/startup"
     ],
