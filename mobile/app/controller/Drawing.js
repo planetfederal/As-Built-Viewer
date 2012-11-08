@@ -26,10 +26,11 @@ Ext.define('AsBuilt.controller.Drawing', {
 
     hideDrawing: function() {
         Ext.Viewport.remove(this.getNotesList());
+        var fid = this.getDrawing().getFid();
         Ext.Viewport.remove(this.getDrawing());
         Ext.Viewport.remove(this.getDetails());
         Ext.Viewport.setActiveItem(this.getMain());
-        if (this.getPopup()) {
+        if (this.getPopup() && this.getPopup().getFeature().fid === fid) {
             this.getPopup().show();
         }
     },

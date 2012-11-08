@@ -167,8 +167,17 @@ Ext.define("AsBuilt.view.Map",{
                     autoActivate: true,
                     eventListeners: {
                         "getfeatureinfo": function(evt) {
+                            var erase = function() {
+                                if (this.feature) {
+                                    drawings_vector.eraseFeatures([this.feature]);
+                                    this.feature.destroy();
+                                    this.feature = null;
+                                }
+                            };
+                            erase.call(this);
                             if (evt.features && evt.features.length === 1) {
                                 var feature = evt.features[0];
+                                Ext.Viewport.down("gxm_featurelist").deselectAll();
                                 feature.geometry = feature.geometry.transform("EPSG:4326", "EPSG:900913");
                                 drawings_vector.drawFeature(feature, "select");
                                 this.feature = feature;
@@ -187,6 +196,7 @@ Ext.define("AsBuilt.view.Map",{
                                         top: xy.y,  
                                         left: xy.x  
                                     });
+                                    this.popup.on('hide', erase, this);
                                     this.popup.element.on('tap', this.onTap, this);
                                 } else {            
                                     this.popup.setFeature(feature);
@@ -195,11 +205,6 @@ Ext.define("AsBuilt.view.Map",{
                                 }
                                 this.popup.show();
                             } else {
-                                if (this.feature) {
-                                    drawings_vector.eraseFeatures([this.feature]);
-                                    this.feature.destroy();
-                                    this.feature = null;
-                                }
                                 if (this.popup) {
                                     this.popup.hide();
                                 }

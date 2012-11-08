@@ -121,6 +121,10 @@ Ext.define("AsBuilt.view.Main", {
                             layer: lyr,
                             listeners: {
                                 'itemtap': function(list, idx, target, record) {
+                                    var popup = Ext.Viewport.down('gxm_featurepopup');
+                                    if (popup) {
+                                        popup.hide();
+                                    }
                                     // TODO centralize this code, is also in view/Map.js
                                     var f = record.getFeature();
                                     var drawing = Ext.create('AsBuilt.view.Drawing', {
