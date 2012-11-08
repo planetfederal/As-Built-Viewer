@@ -159,6 +159,9 @@ Ext.define("AsBuilt.view.Map",{
                 new OpenLayers.Control.Attribution(),
                 new OpenLayers.Control.WMSGetFeatureInfo({
                     infoFormat: "application/vnd.ogc.gml",
+                    vendorParams: {
+                        radius: 10
+                    },
                     maxFeatures: 1,
                     layers: [drawings],
                     autoActivate: true,
