@@ -64,7 +64,7 @@ Ext.define("AsBuilt.view.Map",{
         );
 
         var style = new OpenLayers.Style({
-            pointRadius: 10
+            pointRadius: 0
         });
         var selectStyle = new OpenLayers.Style({
             pointRadius: 12,
@@ -75,7 +75,7 @@ Ext.define("AsBuilt.view.Map",{
         var styleMap = new OpenLayers.StyleMap({
             "default": style,
             "select": selectStyle
-        }, {defaultRenderIntent: 'headless'});
+        });
 
         var drawings_vector = new OpenLayers.Layer.Vector(null, {
             styleMap: styleMap,
@@ -128,35 +128,6 @@ Ext.define("AsBuilt.view.Map",{
                         Ext.Viewport.down('toolbar[type="featurelist"]').hide();
                     }
                 },
-                "featureselected": function(evt) {
-                    var lonlat = new OpenLayers.LonLat(evt.feature.geometry.x, evt.feature.geometry.y); 
-                    var xy = this.getMap().getViewPortPxFromLonLat(lonlat);
-                    if (!this.popup) {
-                        this.popup = Ext.Viewport.add({
-                            xtype: 'gxm_featurepopup',
-                            cls: 'featurepopup',
-                            modal: false,
-                            maxWidth: '17em',
-                            feature: evt.feature,
-                            centered: false,
-                            zIndex: 1000,
-                            tpl: new Ext.XTemplate('<div class="fp-title"><tpl if="feature.attributes.SDRAWTITLE != null">{feature.attributes.SDRAWTITLE}<tpl else>Title unknown</tpl><span class="follow">&gt;</span></div><div class="fp-container"><div class="fp-type"><tpl if="feature.attributes.TYPEDESC != null">{feature.attributes.TYPEDESC}<tpl else>Type unknown</tpl></div><div class="fp-date"><tpl if="feature.attributes.DDRAWDATE != null">{feature.attributes.DDRAWDATE}<tpl else>Date unknown</tpl></div></div>'),
-                            top: xy.y,
-                            left: xy.x
-                        });
-                        this.popup.element.on('tap', this.onTap, this);
-                    } else {
-                        this.popup.setFeature(evt.feature);
-                        this.popup.setTop(xy.y);
-                        this.popup.setLeft(xy.x);
-                    }
-                    this.popup.show();
-                },
-                "featureunselected": function(evt) {
-                    if (this.popup) {
-                        this.popup.hide();
-                    }
-                },
                 scope: this
             },
             renderers: ['Canvas'],
@@ -186,7 +157,48 @@ Ext.define("AsBuilt.view.Map",{
                     }
                 }),
                 new OpenLayers.Control.Attribution(),
-                new OpenLayers.Control.SelectFeature(drawings_vector, {autoActivate: true}),
+                new OpenLayers.Control.WMSGetFeatureInfo({
+                    infoFormat: "application/vnd.ogc.gml",
+                    maxFeatures: 1,
+                    layers: [drawings],
+                    autoActivate: true,
+                    eventListeners: {
+                        "nogetfeatureinfo": function(evt) {
+                            if (this.popup) {
+                                this.popup.hide();
+                            }
+                        },
+                        "getfeatureinfo": function(evt) {
+                            if (evt.features && evt.features.length === 1) {
+                                var feature = evt.features[0];
+                                feature.geometry = feature.geometry.transform("EPSG:4326", "EPSG:900913");
+                                var lonlat = new OpenLayers.LonLat(feature.geometry.x, feature.geometry.y);
+                                var xy = this.getMap().getViewPortPxFromLonLat(lonlat);
+                                if (!this.popup) {
+                                    this.popup = Ext.Viewport.add({
+                                        xtype: 'gxm_featurepopup',
+                                        cls: 'featurepopup', 
+                                        modal: false,
+                                        maxWidth: '17em',
+                                        feature: feature,
+                                        centered: false,
+                                        zIndex: 1000,
+                                        tpl: new Ext.XTemplate('<div class="fp-title"><tpl if="feature.attributes.SDRAWTITLE != null">{feature.attributes.SDRAWTITLE}<tpl else>Title unknown</tpl><span class="follow">&gt;</span></div><div class="fp-container"><div class="fp-type"><tpl if="feature.attributes.TYPEDESC != null">{feature.attributes.TYPEDESC}<tpl else>Type unknown</tpl></div><div class="fp-date"><tpl if="feature.attributes.DDRAWDATE != null">{feature.attributes.DDRAWDATE}<tpl else>Date unknown</tpl></div></div>'),
+                                        top: xy.y,  
+                                        left: xy.x  
+                                    });
+                                    this.popup.element.on('tap', this.onTap, this);
+                                } else {            
+                                    this.popup.setFeature(feature);
+                                    this.popup.setTop(xy.y);
+                                    this.popup.setLeft(xy.x);
+                                }
+                                this.popup.show();
+                            }
+                        },
+                        scope: this
+                    }
+                }),
                 new OpenLayers.Control.Geolocate({
                     bind: false,
                     autoActivate: true,
