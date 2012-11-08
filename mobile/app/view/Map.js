@@ -194,6 +194,8 @@ Ext.define("AsBuilt.view.Map",{
                             } else {
                                 if (this.feature) {
                                     drawings_vector.eraseFeatures([this.feature]);
+                                    this.feature.destroy();
+                                    this.feature = null;
                                 }
                                 if (this.popup) {
                                     this.popup.hide();
