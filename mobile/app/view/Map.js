@@ -167,14 +167,16 @@ Ext.define("AsBuilt.view.Map",{
                     autoActivate: true,
                     eventListeners: {
                         "getfeatureinfo": function(evt) {
-                            var erase = function() {
+                            var erase = function(destroy) {
                                 if (this.feature) {
                                     drawings_vector.eraseFeatures([this.feature]);
-                                    this.feature.destroy();
-                                    this.feature = null;
+                                    if (destroy === true) {
+                                        this.feature.destroy();
+                                        this.feature = null;
+                                    }
                                 }
                             };
-                            erase.call(this);
+                            erase.call(this, true);
                             if (evt.features && evt.features.length === 1) {
                                 var feature = evt.features[0];
                                 Ext.Viewport.down("gxm_featurelist").deselectAll();
@@ -196,6 +198,7 @@ Ext.define("AsBuilt.view.Map",{
                                         top: xy.y,  
                                         left: xy.x  
                                     });
+                                    this.popup.on('show', function() { this.feature && drawings_vector.drawFeature(this.feature, "select"); }, this);
                                     this.popup.on('hide', erase, this);
                                     this.popup.element.on('tap', this.onTap, this);
                                 } else {            
