@@ -2,6 +2,7 @@ Ext.define('AsBuilt.store.Notes', {
     extend: 'Ext.data.JsonStore',
 
     requires: [
+        'AsBuilt.util.Config',
         'AsBuilt.model.Note',
         'GXM.data.proxy.Protocol',
         'GXM.data.reader.Feature'

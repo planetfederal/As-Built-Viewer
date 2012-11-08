@@ -1,6 +1,6 @@
 Ext.define('AsBuilt.view.Drawing', {
     extend: 'Ext.Container',
-    requires: ['GXM.Map', 'Ext.SegmentedButton'],
+    requires: ['AsBuilt.util.Config', 'GXM.Map', 'Ext.SegmentedButton'],
     xtype: 'app_drawing',
 
     config: {

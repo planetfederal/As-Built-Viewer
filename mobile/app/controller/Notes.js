@@ -1,5 +1,5 @@
 Ext.define('AsBuilt.controller.Notes', {
-    requires: ['AsBuilt.view.Notes'],
+    requires: ['AsBuilt.util.Config', 'AsBuilt.view.Notes'],
     extend: 'Ext.app.Controller',
     config: {
         refs: {

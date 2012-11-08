@@ -2,6 +2,7 @@ Ext.define("AsBuilt.view.Map",{
     extend: 'GXM.Map',
     alias: 'widget.app_map',
     requires: [
+        'AsBuilt.util.Config',
         'GXM.widgets.FeaturePopup',
         'AsBuilt.view.Drawing'
     ],

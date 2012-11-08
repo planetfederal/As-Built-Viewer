@@ -7,8 +7,6 @@ Ext.Loader.setConfig({
     }
 });
 
-Ext.require('AsBuilt.util.Config');
-
 Ext.application({
     name: 'AsBuilt',
 
