@@ -163,15 +163,12 @@ Ext.define("AsBuilt.view.Map",{
                     layers: [drawings],
                     autoActivate: true,
                     eventListeners: {
-                        "nogetfeatureinfo": function(evt) {
-                            if (this.popup) {
-                                this.popup.hide();
-                            }
-                        },
                         "getfeatureinfo": function(evt) {
                             if (evt.features && evt.features.length === 1) {
                                 var feature = evt.features[0];
                                 feature.geometry = feature.geometry.transform("EPSG:4326", "EPSG:900913");
+                                drawings_vector.drawFeature(feature, "select");
+                                this.feature = feature;
                                 var lonlat = new OpenLayers.LonLat(feature.geometry.x, feature.geometry.y);
                                 var xy = this.getMap().getViewPortPxFromLonLat(lonlat);
                                 if (!this.popup) {
@@ -194,6 +191,13 @@ Ext.define("AsBuilt.view.Map",{
                                     this.popup.setLeft(xy.x);
                                 }
                                 this.popup.show();
+                            } else {
+                                if (this.feature) {
+                                    drawings_vector.eraseFeatures([this.feature]);
+                                }
+                                if (this.popup) {
+                                    this.popup.hide();
+                                }
                             }
                         },
                         scope: this
