@@ -3,7 +3,7 @@ Ext.define("AsBuilt.view.Map",{
     alias: 'widget.app_map',
     requires: [
         'AsBuilt.util.Config',
-        'GXM.widgets.FeaturePopup',
+        'AsBuilt.view.Popup',
         'AsBuilt.view.Drawing'
     ],
     initialize:function(){
@@ -183,28 +183,22 @@ Ext.define("AsBuilt.view.Map",{
                                 feature.geometry = feature.geometry.transform("EPSG:4326", "EPSG:900913");
                                 drawings_vector.drawFeature(feature, "select");
                                 this.feature = feature;
-                                var lonlat = new OpenLayers.LonLat(feature.geometry.x, feature.geometry.y);
-                                var xy = this.getMap().getViewPortPxFromLonLat(lonlat);
                                 if (!this.popup) {
                                     this.popup = Ext.Viewport.add({
-                                        xtype: 'gxm_featurepopup',
+                                        xtype: 'app_popup',
                                         cls: 'featurepopup', 
                                         modal: false,
                                         maxWidth: '17em',
                                         feature: feature,
                                         centered: false,
                                         zIndex: 1000,
-                                        tpl: new Ext.XTemplate('<div class="fp-title"><tpl if="feature.attributes.SDRAWTITLE != null">{feature.attributes.SDRAWTITLE}<tpl else>Title unknown</tpl><span class="follow">&gt;</span></div><div class="fp-container"><div class="fp-type"><tpl if="feature.attributes.TYPEDESC != null">{feature.attributes.TYPEDESC}<tpl else>Type unknown</tpl></div><div class="fp-date"><tpl if="feature.attributes.DDRAWDATE != null">{feature.attributes.DDRAWDATE}<tpl else>Date unknown</tpl></div></div>'),
-                                        top: xy.y,  
-                                        left: xy.x  
+                                        tpl: new Ext.XTemplate('<div class="fp-title"><tpl if="feature.attributes.SDRAWTITLE != null">{feature.attributes.SDRAWTITLE}<tpl else>Title unknown</tpl><span class="follow">&gt;</span></div><div class="fp-container"><div class="fp-type"><tpl if="feature.attributes.TYPEDESC != null">{feature.attributes.TYPEDESC}<tpl else>Type unknown</tpl></div><div class="fp-date"><tpl if="feature.attributes.DDRAWDATE != null">{feature.attributes.DDRAWDATE}<tpl else>Date unknown</tpl></div></div>')
                                     });
                                     this.popup.on('show', function() { this.feature && drawings_vector.drawFeature(this.feature, "select"); }, this);
                                     this.popup.on('hide', erase, this);
                                     this.popup.element.on('tap', this.onTap, this);
                                 } else {            
                                     this.popup.setFeature(feature);
-                                    this.popup.setTop(xy.y);
-                                    this.popup.setLeft(xy.x);
                                 }
                                 this.popup.show();
                             } else {
