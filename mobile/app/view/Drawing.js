@@ -13,6 +13,9 @@ Ext.define('AsBuilt.view.Drawing', {
             height: 50,
             items: [{
                 xtype: 'segmentedbutton',
+                defaults: {
+                    ui: 'drawing'
+                },
                 items: [{
                     text: "Details"
                 }, {
