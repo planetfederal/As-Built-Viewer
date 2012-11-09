@@ -113,9 +113,10 @@ Ext.define('AsBuilt.controller.Search', {
             for (key in values) {
                 if (key !== 'BBOX' && values[key] !== "" && values[key] !== null) {
                     filters.push(new OpenLayers.Filter.Comparison({
-                        type: '==',
+                        type: '~',
                         property: key,
-                        value: values[key]
+                        matchCase: false,
+                        value: '*' + values[key] + '*'
                     }));
                 }
             }
