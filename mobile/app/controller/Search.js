@@ -86,7 +86,6 @@ Ext.define('AsBuilt.controller.Search', {
         if (!sf) {
             var search = Ext.create("AsBuilt.view.Search", {
                 width: 625,
-                height: 300,
                 zIndex: 1050
             });
             search.showBy(showBy);
