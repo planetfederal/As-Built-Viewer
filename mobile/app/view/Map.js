@@ -292,7 +292,7 @@ Ext.define("AsBuilt.view.Map",{
 
     onTap: function() {
         this.popup.hide();
-        var f = this.popup.getFeature();
+        var f = this.feature;
         var drawing = Ext.create('AsBuilt.view.Drawing', {
             fid: f.fid,
             attributes: f.attributes
