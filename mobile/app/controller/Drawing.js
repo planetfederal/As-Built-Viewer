@@ -43,8 +43,7 @@ Ext.define('AsBuilt.controller.Drawing', {
         if (!details) {
             var panel = Ext.create('AsBuilt.view.DrawingDetails', {
                 attributes: this.getDrawing().getAttributes(), 
-                width: 325, 
-                height: 375
+                width: 325
             });
             panel.showBy(this.getDetailsButton());
         } else {
