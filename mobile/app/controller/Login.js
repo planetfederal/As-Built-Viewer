@@ -29,6 +29,12 @@ Ext.define('AsBuilt.controller.Login', {
                 field.setValue('');
             });
             this.getLogoffPanel().hide();
+            this.getMain().destroy();
+            var search = Ext.getStore('Search').getAt(0);
+            if (search) {
+                Ext.getStore('Search').remove(search);
+                Ext.getStore('Search').sync();
+            }
             Ext.Viewport.setActiveItem(login);
         }
     },
