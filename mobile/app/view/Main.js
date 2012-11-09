@@ -54,7 +54,7 @@ Ext.define("AsBuilt.view.Main", {
                                     panel.showBy(this);
                                 } else {
                                     if (panel.getHidden()) {
-                                        panel.show();
+                                        panel.showBy(this);
                                     } else {
                                         panel.hide();
                                     }

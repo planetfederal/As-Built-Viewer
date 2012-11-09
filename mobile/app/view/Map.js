@@ -220,6 +220,7 @@ Ext.define("AsBuilt.view.Map",{
                                 zIndex: 1000,
                                 showAnimation: null,
                                 hideAnimation: null,
+                                maxWidth: '5em',
                                 message: "Failed to retrieve location",
                                 buttons: [{text: 'OK'}],
                                 promptConfig: false,
@@ -230,6 +231,7 @@ Ext.define("AsBuilt.view.Map",{
                             Ext.Msg.show({
                                 title: 'Information', 
                                 zIndex: 1000,
+                                maxWidth: '5em',
                                 showAnimation: null,
                                 hideAnimation: null,
                                 message: "This device cannot retrieve location",

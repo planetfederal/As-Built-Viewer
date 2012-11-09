@@ -4,6 +4,8 @@ Ext.define('AsBuilt.controller.Login', {
     config: {
         refs: {
             main: 'main',
+            popup: 'app_popup',
+            searchForm: 'app_search',
             login: 'login',
             loginButton: 'button[text="Login"]',
             userButton: 'container[type="user"]',
@@ -34,6 +36,12 @@ Ext.define('AsBuilt.controller.Login', {
             if (search) {
                 Ext.getStore('Search').remove(search);
                 Ext.getStore('Search').sync();
+            }
+            if (this.getPopup()) {
+                this.getPopup().hide;
+            }
+            if (this.getSearchForm()) {
+                this.getSearchForm().hide();
             }
             Ext.Viewport.setActiveItem(login);
         }
