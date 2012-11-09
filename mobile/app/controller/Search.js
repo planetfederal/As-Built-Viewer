@@ -91,7 +91,7 @@ Ext.define('AsBuilt.controller.Search', {
             search.showBy(showBy);
         } else {
             if (sf.getHidden()) {
-                sf.show();
+                sf.showBy(showBy);
             } else {
                 sf.hide();
             }
