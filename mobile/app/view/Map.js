@@ -211,9 +211,33 @@ Ext.define("AsBuilt.view.Map",{
                     }
                 }),
                 new OpenLayers.Control.Geolocate({
-                    bind: false,
+                    bind: true,
                     autoActivate: true,
                     eventListeners: {
+                        "locationfailed": function() {
+                            Ext.Msg.show({
+                                title: 'Information',
+                                zIndex: 1000,
+                                showAnimation: null,
+                                hideAnimation: null,
+                                message: "Failed to retrieve location",
+                                buttons: [{text: 'OK'}],
+                                promptConfig: false,
+                                fn: function(){}
+                            });
+                        },
+                        "locationuncapable": function() {
+                            Ext.Msg.show({
+                                title: 'Information', 
+                                zIndex: 1000,
+                                showAnimation: null,
+                                hideAnimation: null,
+                                message: "This device cannot retrieve location",
+                                buttons: [{text: 'OK'}],
+                                promptConfig: false,
+                                fn: function(){}
+                            });
+                        },
                         "locationupdated": function(e) {
                             this.vector.removeAllFeatures();
                             var circle = new OpenLayers.Feature.Vector(
