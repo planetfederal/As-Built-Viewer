@@ -95,7 +95,7 @@ Ext.define("AsBuilt.view.Map",{
                     this._filter = evt.filter;
                 },
                 "loadend": function(evt) {
-                    if (evt.response.features.length === evt.object.protocol.maxFeatures) {
+                    if (evt.response && evt.response.features.length === evt.object.protocol.maxFeatures) {
                         if (!this.hitCount) {
                             this.hitCount = new OpenLayers.Protocol.WFS({
                                 version: "1.1.0",
@@ -211,7 +211,7 @@ Ext.define("AsBuilt.view.Map",{
                     }
                 }),
                 new OpenLayers.Control.Geolocate({
-                    bind: true,
+                    bind: window.location.search.match(/bind=(false)/) ? false : true,
                     autoActivate: true,
                     eventListeners: {
                         "locationfailed": function() {

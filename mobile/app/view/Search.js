@@ -27,6 +27,9 @@ Ext.define('AsBuilt.view.Search', {
                     label: 'Type',
                     value: "",
                     options: [{
+                        text: 'All types',
+                        value: ''
+                    }, {
                         text: 'MUNI Drawings Numbered Plans (MDNP)', 
                         value: 'MUNI Drawings Numbered Plans (MDNP)'
                     }, {
