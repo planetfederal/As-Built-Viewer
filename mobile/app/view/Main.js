@@ -76,7 +76,8 @@ Ext.define("AsBuilt.view.Main", {
                     type: 'mapped',
                     hidden: true,
                     defaults: {
-                        width: '7em'
+                        width: '7em',
+                        ui: 'filter'
                     },
                     items: [{
                         text: 'All'
@@ -90,15 +91,19 @@ Ext.define("AsBuilt.view.Main", {
                     flex: 1
                 }, {
                     iconMask: 'true',
+                    ui: 'filter',
                     iconCls: 'search'
                 }, {
                     text: 'Cancel',
+                    ui: 'filter',
                     hidden: true
                 }, {
                     text: 'Reset',
+                    ui: 'filter',
                     hidden: true
                 }, {
                     text: 'Modify Search',
+                    ui: 'filter',
                     hidden: true
                 }]
             }]

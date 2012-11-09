@@ -19,6 +19,7 @@ $base-color: #555;
 @include sencha-loading-spinner;
 // Your custom code goes here...
 @include sencha-button-ui('user', #720000, 'glossy');
+@include sencha-button-ui('filter',  #b5b5b5, 'glossy');
 .featurepopup > .x-inner > .x-html {
     padding: 0.3em !important;
 }
