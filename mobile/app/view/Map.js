@@ -200,7 +200,7 @@ Ext.define("AsBuilt.view.Map",{
                                 } else {            
                                     this.popup.setFeature(feature);
                                 }
-                                this.popup.show();
+                                this.popup.show(false);
                             } else {
                                 if (this.popup) {
                                     this.popup.hide();

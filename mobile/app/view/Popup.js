@@ -53,17 +53,8 @@ Ext.define("AsBuilt.view.Popup",{
                 // bottom
                 y -= elSize.height;
             }
-            // Needed to have the right position on the first display
-            // (no flash on the center of the map).
             me.setLeft(x);
             me.setTop(y);
-            // position in the next cycle - otherwise strange shifts can occur.
-            window.setTimeout(function() {
-                if (me.dom) {
-                    me.setLeft(x);
-                    me.setTop(y);
-                }
-            }, 0);
         }
     },
 
