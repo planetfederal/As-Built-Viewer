@@ -101,6 +101,11 @@ AsBuilt.plugins.Search = Ext.extend(gxp.plugins.Tool, {
      */
     contractSearchField: 'SCONTRACTTITLE',
 
+    /** api: config [contractSearchField]
+     *  ``String`` The search field to use for contract numbers.
+     */
+    contractNumberField: 'SCONTRACTNUM',
+
     /** api: config [cnnField]
      *  ``String`` The field containing CNN information.
      */
@@ -121,6 +126,7 @@ AsBuilt.plugins.Search = Ext.extend(gxp.plugins.Tool, {
     fileNumberLabel: "File Number",
     facilityNameLabel: "Facility name",
     contractTitleLabel: "Contract title",
+    contractNumberLabel: "Contract number",
     streetNameLabel: "Street name",
     streetNameEmpty: "Select a street",
     startIntersectionLabel: "Starting intersection",
@@ -224,7 +230,8 @@ AsBuilt.plugins.Search = Ext.extend(gxp.plugins.Tool, {
         var i = null, ii = null;
         var fields = [
             this.typeDescriptionSearchField, 
-            this.contractSearchField, 
+            this.contractSearchField,
+            this.contractNumberField,
             this.facilitySearchField, 
             this.documentSubjectSearchField, 
             this.fileNumberSearchField
@@ -467,6 +474,14 @@ AsBuilt.plugins.Search = Ext.extend(gxp.plugins.Tool, {
                         title: "Contracts",
                         items: [
                             {
+                                xtype: "gxp_autocompletecombo",
+                                fieldName: this.contractNumberField,
+                                url: url,
+                                minChars: 1,
+                                featureType: "VW_SCONTRACTNUM", /* TODO make configurable */
+                                featurePrefix: featureInfo[0],
+                                fieldLabel: this.contractNumberLabel
+                            }, {
                                 xtype: "gxp_autocompletecombo",
                                 fieldName: this.contractSearchField,
                                 url: url,
