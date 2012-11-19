@@ -50,6 +50,7 @@ Ext.define('AsBuilt.view.AutoComplete', {
                 }
             }, config));
         }
+        this.listPanel.down('list').deselectAll();
         return this.listPanel;
     },
 
@@ -69,7 +70,7 @@ Ext.define('AsBuilt.view.AutoComplete', {
     },
 
     showPicker: function() {
-        var store = this.getStore(), name = this.getName();
+        var store = this.getStore();
         //check if the store is empty, if it is, return
         if (!store || store.getCount() === 0) {
             return;
@@ -127,6 +128,7 @@ Ext.define('AsBuilt.view.AutoComplete', {
 
     keyUp: function() {
         if (this.getValue().length >= this.getMinChars()) {
+            this.getStore().removeAll();
             var value = '*' + this.getValue() + '*';
             var filter = new OpenLayers.Filter.Comparison({
                 property: this.getName(),
