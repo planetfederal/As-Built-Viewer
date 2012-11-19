@@ -57,7 +57,8 @@ Ext.define('AsBuilt.view.Search', {
                     label: 'Subject',
                     name: 'DOCSUBJECT'
                 }, {
-                    xtype: 'textfield',
+                    xtype: 'app_autocompletefield',
+                    featureType: AsBuilt.util.Config.getDrawingsTable(),
                     label: 'Number',
                     name: 'IDRAWNUM'
                 }, {
@@ -84,6 +85,11 @@ Ext.define('AsBuilt.view.Search', {
                     label: 'Number',
                     featureType: "VW_SCONTRACTNUM",
                     name: 'SCONTRACTNUM'
+                }, {
+                    xtype: 'app_autocompletefield',
+                    label: 'Title',
+                    featureType: "VW_SCONTRACTTITLE",
+                    name: 'SCONTRACTTITLE'
                 }]
             }, {
                 xtype: 'fieldset',
