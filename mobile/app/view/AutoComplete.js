@@ -6,23 +6,27 @@ Ext.define('AsBuilt.view.AutoComplete', {
         "Ext.data.Store",
         "GXM.data.proxy.Protocol",
         "Ext.util.DelayedTask",
-        'GXM.data.reader.Feature'
+        'Ext.data.reader.Json'
     ],
     config: {
         featureType: null,
         store: null,
         maxFeatures: 50,
         minChars: 1,
-        usePicker: false,
         defaultTabletPickerConfig: {
             zIndex: 1051
-        },
-        displayField: null,
-        valueField: null
+        }
     },
 
     getTabletPicker: function() {
         var config = this.getDefaultTabletPickerConfig();
+
+        var store = this.getStore();
+        var newStore = [];
+        var name = this.getName();
+        store.each(function(record) {
+            Ext.Array.include(newStore, record.data[name]);
+        });
 
         if (!this.listPanel) {
             this.listPanel = Ext.create('Ext.Panel', Ext.apply({
@@ -36,8 +40,8 @@ Ext.define('AsBuilt.view.AutoComplete', {
                 height: Ext.os.is.Phone ? '12.5em' : '22em',
                 items: {
                     xtype: 'list',
-                    store: this.getStore(),
-                    itemTpl: '<span class="x-list-label">{' + this.getDisplayField() + ':htmlEncode}</span>',
+                    store: newStore,
+                    itemTpl: '<span class="x-list-label">{field1:htmlEncode}</span>',
                     listeners: {
                         select : this.onListSelect,
                         itemtap: this.onListTap,
@@ -46,14 +50,13 @@ Ext.define('AsBuilt.view.AutoComplete', {
                 }
             }, config));
         }
-
         return this.listPanel;
     },
 
     onListSelect: function(item, record) {
         var me = this;
         if (record) {
-            me.setValue(record.get(this.getName()));
+            me.setValue(record.get('field1'));
         }
     },
 
@@ -66,7 +69,7 @@ Ext.define('AsBuilt.view.AutoComplete', {
     },
 
     showPicker: function() {
-        var store = this.getStore();
+        var store = this.getStore(), name = this.getName();
         //check if the store is empty, if it is, return
         if (!store || store.getCount() === 0) {
             return;
@@ -97,8 +100,6 @@ Ext.define('AsBuilt.view.AutoComplete', {
                 ]
             }
         });
-        this.setDisplayField(this.getName());
-        this.setValueField(this.getName());
         this.setStore(Ext.create("Ext.data.JsonStore", {
             model: modelName,
             proxy: {
@@ -114,7 +115,7 @@ Ext.define('AsBuilt.view.AutoComplete', {
                     outputFormat: 'json',
                     readFormat: new OpenLayers.Format.GeoJSON()
                 }),
-                reader: 'gxm_feature'
+                reader: 'json'
             }
         }));
         var task = Ext.create('Ext.util.DelayedTask', this.keyUp, this);

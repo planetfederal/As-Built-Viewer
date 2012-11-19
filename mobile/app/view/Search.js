@@ -1,6 +1,7 @@
 Ext.define('AsBuilt.view.Search', {
     extend: 'Ext.form.Panel',
     requires: [
+        'AsBuilt.util.Config',
         'AsBuilt.view.AutoComplete',
         'Ext.form.FieldSet', 
         'Ext.field.Select', 
@@ -51,7 +52,8 @@ Ext.define('AsBuilt.view.Search', {
                         value: 'BOE Numbered Plans'
                     }]
                 }, {
-                    xtype: 'textfield',
+                    xtype: 'app_autocompletefield',
+                    featureType: AsBuilt.util.Config.getDrawingsTable(),
                     label: 'Subject',
                     name: 'DOCSUBJECT'
                 }, {
@@ -78,8 +80,9 @@ Ext.define('AsBuilt.view.Search', {
                 xtype: 'fieldset',
                 title: 'Contract',
                 items: [{
-                    xtype: 'textfield',
+                    xtype: 'app_autocompletefield',
                     label: 'Number',
+                    featureType: "VW_SCONTRACTNUM",
                     name: 'SCONTRACTNUM'
                 }]
             }, {
