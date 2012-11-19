@@ -4,8 +4,7 @@ Ext.define('AsBuilt.store.Notes', {
     requires: [
         'AsBuilt.util.Config',
         'AsBuilt.model.Note',
-        'GXM.data.proxy.Protocol',
-        'GXM.data.reader.Feature'
+        'GXM.data.proxy.Protocol'
     ],
 
     config: {
@@ -24,7 +23,7 @@ Ext.define('AsBuilt.store.Notes', {
                 outputFormat: 'json',
                 readFormat: new OpenLayers.Format.GeoJSON()
             }),
-            reader: 'gxm_feature'
+            reader: 'json'
         }
     }
 });
