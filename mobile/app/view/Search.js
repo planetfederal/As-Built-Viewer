@@ -1,6 +1,11 @@
 Ext.define('AsBuilt.view.Search', {
     extend: 'Ext.form.Panel',
-    requires: ['Ext.form.FieldSet', 'Ext.field.Select', 'Ext.field.Text'],
+    requires: [
+        'AsBuilt.view.AutoComplete',
+        'Ext.form.FieldSet', 
+        'Ext.field.Select', 
+        'Ext.field.Text'
+    ],
     xtype: 'app_search',
 
     config: {
@@ -64,7 +69,8 @@ Ext.define('AsBuilt.view.Search', {
                 xtype: 'fieldset',
                 title: 'Facility',
                 items: [{
-                    xtype: 'textfield',
+                    xtype: 'app_autocompletefield',
+                    featureType: "VW_SFACILITYNAME",
                     label: 'Name',
                     name: 'SFACILITYNAME'
                 }]
