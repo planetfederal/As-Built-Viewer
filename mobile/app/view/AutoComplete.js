@@ -11,7 +11,8 @@ Ext.define('AsBuilt.view.AutoComplete', {
     config: {
         featureType: null,
         store: null,
-        maxFeatures: 10,
+        maxFeatures: 50,
+        minChars: 1,
         usePicker: false,
         defaultTabletPickerConfig: {
             zIndex: 1051
@@ -79,16 +80,11 @@ Ext.define('AsBuilt.view.AutoComplete', {
             list = listPanel.down('list'),
             index, record;
 
-        store = list.getStore();
-        index = store.find(this.getValueField(), this.getValue(), null, null, null, true);
-        record = store.getAt((index == -1) ? 0 : index);
-
         if (!listPanel.getParent()) {
             Ext.Viewport.add(listPanel);
         }
 
         listPanel.showBy(this.getComponent());
-        list.select(record, null, true);
     },
 
     initialize: function() {
@@ -129,14 +125,17 @@ Ext.define('AsBuilt.view.AutoComplete', {
     },
 
     keyUp: function() {
-        var value = '*' + this.getValue() + '*';
-        var filter = new OpenLayers.Filter.Comparison({
-            property: this.getName(),
-            type: '~',
-            value: value
-        });
-        this.getStore().load({filter: filter});
-        this.showPicker();
+        if (this.getValue().length >= this.getMinChars()) {
+            var value = '*' + this.getValue() + '*';
+            var filter = new OpenLayers.Filter.Comparison({
+                property: this.getName(),
+                type: '~',
+                matchCase: false,
+                value: value
+            });
+            this.getStore().on('load', this.showPicker, this, {single: true});
+            this.getStore().load({filter: filter});
+        }
     }
 
 });
