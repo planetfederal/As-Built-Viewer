@@ -25,7 +25,8 @@ Ext.define('AsBuilt.view.Drawing', {
                 xtype: 'spacer',
                 flex: 1
             }, {
-                text: "Done"
+                text: "Done",
+                type: "drawing_done"
             }]
         }]
     },
