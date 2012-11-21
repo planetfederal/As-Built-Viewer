@@ -5,7 +5,8 @@ Ext.define("AsBuilt.view.FeatureEditorForm",{
         'Ext.field.Text',
         'Ext.field.Number',
         'Ext.field.Checkbox',
-        'Ext.field.DatePicker'
+        'Ext.field.DatePicker',
+        'Ext.field.Select'
     ],
     config: {
         /** @cfg {Object}
@@ -14,6 +15,13 @@ Ext.define("AsBuilt.view.FeatureEditorForm",{
          *  schema. 
          */
         fieldConfig: null,
+        /** @cfg {Array}
+         *  List of field config names corresponding to feature attributes.  If
+         *  not provided, fields will be derived from attributes. If provided,
+         *  the field order from this list will be used, and fields missing in the
+         *  list will be excluded.
+         */
+        fields: null,
         language: "en",
         schema: null,
         regexes: {
@@ -32,37 +40,55 @@ Ext.define("AsBuilt.view.FeatureEditorForm",{
         }
     },
     initialize:function() {
-        var r = this.getRegexes();
-        this.getSchema().each(function(record) {
-            var type = record.get("type"), name = record.get("name");
-            if (type.match(/^[^:]*:?((Multi)?(Point|Line|Polygon|Curve|Surface|Geometry))/)) {
-                // exclude gml geometries
-                return;
+        var r = this.getRegexes(), fieldCfg, record;
+        var name, fields = [], schema = this.getSchema();
+        if (this.getFields()) {
+            for (var i=0, ii=this.getFields().length; i<ii; ++i) {
+                name = this.getFields()[i];
+                var idx = schema.findExact('name', name);
+                if (idx !== -1) {
+                    record = schema.getAt(idx);
+                    fieldCfg = this.recordToField(record);
+                    if (fieldCfg !== null) {
+                       fields.push(fieldCfg);
+                    }
+                }
             }
-            var fieldCfg = this.recordToField(record);
-            if (this.getFieldConfig() && this.getFieldConfig()[name]) {
-                Ext.apply(fieldCfg, this.getFieldConfig()[name]);
-            }
-            if (fieldCfg !== null) {
-                this.add(fieldCfg);
-            } 
-        }, this);
+        } else {
+            schema.each(function(record) {
+                var type = record.get("type"); 
+                name = record.get("name");
+                if (type.match(/^[^:]*:?((Multi)?(Point|Line|Polygon|Curve|Surface|Geometry))/)) {
+                    // exclude gml geometries
+                    return;
+                }
+                var fieldCfg = this.recordToField(record);
+                if (fieldCfg !== null) {
+                    fields.push(fieldCfg);
+                }
+            }, this);
+        }
+        this.add(fields);
         this.callParent();
     },
 
     recordToField: function(record, options) {
         options = options || {};
+        var name = record.get('name');
         var r = this.getRegexes();
         var type = record.get("type");
         type = type.split(":").pop();
         var fieldConfig = null;
-        options.name = record.get('name');
+        options.name = name;
         var restriction = record.get("restriction") || {};
         var annotation = record.get('annotation');
         if (annotation && annotation.appinfo) {
             options.label = Ext.decode(annotation.appinfo[0]).title[this.getLanguage()];
         } else {
             options.label = record.get('name');
+        }
+        if (this.getFieldConfig() && this.getFieldConfig()[name]) {
+            Ext.apply(options, this.getFieldConfig()[name]);
         }
         var i, ii;
         if (annotation && annotation.documentation) {
