@@ -22,6 +22,11 @@ Ext.define("AsBuilt.view.FeatureEditorForm",{
          *  list will be excluded.
          */
         fields: null,
+        /** @cfg {Array}
+         *  Optional list of field names (case sensitive) that are to be
+         *  excluded from the form.
+         */
+        excludeFields: null,
         language: "en",
         schema: null,
         regexes: {
@@ -75,6 +80,9 @@ Ext.define("AsBuilt.view.FeatureEditorForm",{
     recordToField: function(record, options) {
         options = options || {};
         var name = record.get('name');
+        if (this.getExcludeFields() && this.getExcludeFields().indexOf(name) !== -1) {
+            return null;
+        }
         var r = this.getRegexes();
         var type = record.get("type");
         type = type.split(":").pop();
