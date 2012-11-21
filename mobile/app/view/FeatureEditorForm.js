@@ -8,6 +8,12 @@ Ext.define("AsBuilt.view.FeatureEditorForm",{
         'Ext.field.DatePicker'
     ],
     config: {
+        /** @cfg {Object}
+         *  An object with as keys the field names, which will provide the ability
+         *  to override the xtype that is created by default based on the
+         *  schema. 
+         */
+        fieldConfig: null,
         language: "en",
         schema: null,
         regexes: {
@@ -28,9 +34,17 @@ Ext.define("AsBuilt.view.FeatureEditorForm",{
     initialize:function() {
         var r = this.getRegexes();
         this.getSchema().each(function(record) {
-            var field = this.recordToField(record);
-            if (field !== null) {
-                this.add(field);
+            var type = record.get("type"), name = record.get("name");
+            if (type.match(/^[^:]*:?((Multi)?(Point|Line|Polygon|Curve|Surface|Geometry))/)) {
+                // exclude gml geometries
+                return;
+            }
+            var fieldCfg = this.recordToField(record);
+            if (this.getFieldConfig() && this.getFieldConfig()[name]) {
+                Ext.apply(fieldCfg, this.getFieldConfig()[name]);
+            }
+            if (fieldCfg !== null) {
+                this.add(fieldCfg);
             } 
         }, this);
         this.callParent();
@@ -43,21 +57,32 @@ Ext.define("AsBuilt.view.FeatureEditorForm",{
         type = type.split(":").pop();
         var fieldConfig = null;
         options.name = record.get('name');
+        var restriction = record.get("restriction") || {};
         var annotation = record.get('annotation');
         if (annotation && annotation.appinfo) {
             options.label = Ext.decode(annotation.appinfo[0]).title[this.getLanguage()];
         } else {
             options.label = record.get('name');
         }
+        var i, ii;
         if (annotation && annotation.documentation) {
-            for (var i=0, ii=annotation.documentation.length; i<ii; ++i) {
+            for (i=0, ii=annotation.documentation.length; i<ii; ++i) {
                 if (annotation.documentation[i].lang === this.getLanguage()) {
                     options.placeHolder = annotation.documentation[i].textContent;
                     break;
                 }
             }
         }
-        if (type.match(r["text"])) {
+        if (restriction.enumeration) {
+            var store = [];
+            for (i=0, ii=restriction.enumeration.length; i<ii; ++i) {
+                store.push({text: restriction.enumeration[i], value: restriction.enumeration[i]});
+            }
+            fieldConfig = Ext.apply({
+                xtype: "selectfield",
+                options: store
+            }, options);
+        } else if (type.match(r["text"])) {
             fieldConfig = Ext.apply({
                 xtype: 'textfield'
             }, options);
