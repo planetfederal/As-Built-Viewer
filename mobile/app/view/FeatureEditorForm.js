@@ -54,10 +54,71 @@ Ext.define("AsBuilt.view.FeatureEditorForm",{
             )
         }
     },
+    doSave: function() {
+        var errors = this.validate();
+        if (errors.isValid()) {
+            var feature = this.getFeature();
+            var format = new OpenLayers.Format.WFST({
+                featurePrefix: AsBuilt.util.Config.getPrefix(),
+                featureType: AsBuilt.util.Config.getDrawingsTable(),
+                featureNS: AsBuilt.util.Config.getFeatureNS(),
+                geometryName: null,
+                version: "1.1.0"
+            });
+            var xml = format.write([feature]);
+            var url = AsBuilt.util.Config.getGeoserverUrl();
+            OpenLayers.Request.POST({
+                url: url,
+                callback: function(response) {
+                    // TODO more handling here
+                },
+                scope: this,
+                data: xml
+            });
+        } else {
+            var message = '';
+            Ext.each(errors.items,function(rec,i){
+                message += rec.getField() + ' ' + rec.getMessage() + "<br>";
+            });
+            Ext.Msg.show({
+                zIndex: 1000,
+                showAnimation: null,
+                hideAnimation: null,
+                message: message,
+                buttons: [{text: 'OK'}],
+                promptConfig: false,
+                fn: function(){}
+            });
+        }
+    },
+    doCancel: function() {
+        // TODO we should use a Feature model/record
+        this.reset();
+        var values = this.getValues(), feature = this.getFeature();
+        for (var name in values) {
+            feature.attributes[name] = values[name];
+        }
+    },
     initialize:function() {
+        this.add({
+            xtype: 'toolbar',
+            docked: 'bottom',
+            items: [{
+                xtype: 'spacer',
+                flex: 1
+            }, {
+                text: 'Save',
+                handler: 'doSave',
+                scope: this
+            }, {
+                text: 'Cancel',
+                handler: 'doCancel',
+                scope: this
+            }]
+        });
         Ext.applyIf(Ext.data.Validations, {
             range: function(config, value) {
-                return value !== undefined && value >= config.minValue && value <= config.maxValue;
+                return (value === null || (value >= config.minValue && value <= config.maxValue));
             }
         });
         var r = this.getRegexes(), fieldCfg, record;
@@ -104,7 +165,19 @@ Ext.define("AsBuilt.view.FeatureEditorForm",{
 
     validate: function() {
         var instance = Ext.create(this.modelId, this.getValues());
-        var errors = instance.validate();
+        return instance.validate();
+    },
+
+    onFieldChange: function(field, newValue, oldValue) {
+        var feature = this.getFeature(), name = field.getName();
+        if (!feature.modified) {
+            feature.modified = {
+                attributes: {}
+            };
+        }
+        feature.modified.attributes[name] = true;
+        feature.attributes[name] = newValue;
+        feature.state = OpenLayers.State.UPDATE;
     },
 
     recordToField: function(record, modelConfig) {
@@ -113,6 +186,10 @@ Ext.define("AsBuilt.view.FeatureEditorForm",{
             return null;
         }
         var options = {};
+        options.listeners = {
+            'change': this.onFieldChange,
+            scope: this
+        };
         if (this.getReadOnly() === true) {
             options.readOnly = true;
         }
