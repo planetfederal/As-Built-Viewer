@@ -4,7 +4,7 @@ Ext.define('AsBuilt.controller.Search', {
     config: {
         refs: {
             searchButton: 'button[iconCls="search"]',
-            cancelButton: 'button[text="Cancel"]',
+            cancelButton: 'button[type="cancel_search"]',
             modifyButton: 'button[text="Modify Search"]',
             resetButton: 'button[text="Reset"]',
             filterButton: 'button[text="Search"]',

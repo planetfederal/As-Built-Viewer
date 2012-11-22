@@ -95,6 +95,7 @@ Ext.define("AsBuilt.view.Main", {
                     iconCls: 'search'
                 }, {
                     text: 'Cancel',
+                    type: 'cancel_search',
                     ui: 'filter',
                     hidden: true
                 }, {
