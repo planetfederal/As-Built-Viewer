@@ -69,6 +69,35 @@ Ext.define("AsBuilt.view.Main", {
                 xtype: 'app_map'
             }, {
                 xtype: 'toolbar',
+                listeners: {
+                    dragend: {
+                        fn: function(event) {
+                            var deltaY = event.deltaY,
+                                height = Ext.getCmp('listcontainer').getHeight(),
+                                maxHeight = Ext.Viewport.getSize().height - 100,
+                                minHeight = 0,
+                                newHeight;
+                            // the toolbar has been moved up, increase the height of the table
+                            if (deltaY < 0) {
+                                newHeight = height + Math.abs(deltaY);
+                                if (newHeight <= maxHeight) {
+                                    Ext.getCmp('listcontainer').setHeight(newHeight);
+                                } else {
+                                    Ext.getCmp('listcontainer').setHeight(maxHeight);
+                                }
+                            } else if (deltaY > 0) {
+                                newHeight = height - deltaY;
+                                if (newHeight >= minHeight) {
+                                    Ext.getCmp('listcontainer').setHeight(newHeight);
+                                } else {
+                                    Ext.getCmp('listcontainer').setHeight(minHeight);
+                                }
+                            }
+                            Ext.Viewport.down('app_map').getMap().updateSize();
+                        },
+                        element: 'element'
+                    }
+                },
                 height: 50,
                 docked: 'bottom',
                 items: [{
