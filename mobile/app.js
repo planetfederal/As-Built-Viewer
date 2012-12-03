@@ -2,7 +2,7 @@ Ext.Loader.setConfig({
     enabled: true,
     disableCaching: false,
     paths: {
-        GXM: "externals/GXM/lib/GXM",
+        GXM: "externals/GXM/src/GXM",
         AsBuilt: "app"
     }
 });

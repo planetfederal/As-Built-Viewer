@@ -1,5 +1,5 @@
 Ext.define("AsBuilt.view.Popup",{
-    extend: 'GXM.widgets.FeaturePopup',
+    extend: 'GXM.FeaturePopup',
     alias: 'widget.app_popup',
     initialize:function(){
         this.callParent();
