@@ -18,7 +18,7 @@
 	url = https://github.com/hns/stick.git
 [submodule "mobile/externals/GXM"]
 	path = mobile/externals/GXM
-	url = https://github.com/opengeo/GXM.git
+	url = https://github.com/geoext/GXM.git
 [submodule "mobile/externals/openlayers"]
 	path = mobile/externals/openlayers
 	url = https://github.com/bartvde/openlayers.git
