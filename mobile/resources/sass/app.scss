@@ -24,6 +24,18 @@ $base-color: #555;
 .featurepopup > .x-inner > .x-html {
     padding: 0.3em !important;
 }
+div.table-cell {
+    display: table-cell;
+}
+.table-cell.col1 {
+    width: 400em;
+}
+.table-cell.col2 {
+    width: 25%;
+}
+.table-cell.col3 {
+    width: 7%;
+}
 span.follow {
     position: absolute;
     font-size: 1.2em;

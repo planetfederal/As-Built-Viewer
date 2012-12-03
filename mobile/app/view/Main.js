@@ -174,7 +174,7 @@ Ext.define("AsBuilt.view.Main", {
                                     Ext.Viewport.setActiveItem(drawing);
                                 }
                             },
-                            itemTpl: new Ext.XTemplate('<tpl if="feature.attributes.SDRAWTITLE != null">{feature.attributes.SDRAWTITLE}<tpl else>Title unknown</tpl> | <tpl if="feature.attributes.TYPEDESC != null">{feature.attributes.TYPEDESC}<tpl else>Type unknown</tpl> | <tpl if="feature.attributes.DDRAWDATE != null">{feature.attributes.DDRAWDATE}<tpl else>Date unknown</tpl>')
+                            itemTpl: new Ext.XTemplate('<div class="table-cell col1"><tpl if="feature.attributes.SDRAWTITLE != null">{feature.attributes.SDRAWTITLE}<tpl else>Unknown</tpl></div><div class="table-cell col2"><tpl if="feature.attributes.TYPEDESC != null">{feature.attributes.TYPEDESC}<tpl else>Type unknown</tpl></div><div class="table-cell col3"><tpl if="feature.attributes.DDRAWDATE != null">{feature.attributes.DDRAWDATE}<tpl else>Unknown</tpl></div>')
                         }));
                     }
                 }
