@@ -185,7 +185,7 @@ Ext.define("AsBuilt.view.Map",{
                                 this.feature = feature;
                                 if (!this.popup) {
                                     this.popup = Ext.Viewport.add({
-                                        xtype: 'app_popup',
+                                        xtype: 'gxm_featurepopup',
                                         cls: 'featurepopup', 
                                         modal: false,
                                         maxWidth: '17em',

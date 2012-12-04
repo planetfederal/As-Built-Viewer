@@ -4,7 +4,7 @@ Ext.define('AsBuilt.controller.Login', {
     config: {
         refs: {
             main: 'main',
-            popup: 'app_popup',
+            popup: 'gxm_featurepopup',
             searchForm: 'app_search',
             login: 'login',
             loginButton: 'button[text="Login"]',
