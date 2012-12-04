@@ -3,7 +3,7 @@ Ext.define("AsBuilt.view.Map",{
     alias: 'widget.app_map',
     requires: [
         'AsBuilt.util.Config',
-        'AsBuilt.view.Popup',
+        'GXM.FeaturePopup',
         'AsBuilt.view.Drawing'
     ],
     initialize:function(){
