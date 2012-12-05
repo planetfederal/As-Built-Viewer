@@ -25,45 +25,6 @@ Ext.define("AsBuilt.view.Main", {
                     xtype: 'container',
                     cls: 'title-container',
                     html: "As-Built Viewer"
-                }, {
-                    xtype: "spacer",
-                    flex: 1
-                }, {
-                    xtype: 'container',
-                    cls: 'user-container',
-                    listeners: {
-                        tap: {
-                            /* TODO could not find a good way to do this in a controller */
-                            fn: function() {
-                                var panel = Ext.ComponentQuery.query('panel[type="logoff"]')[0];
-                                if (!panel) {
-                                    panel = Ext.create('Ext.Panel', {
-                                        width: 150,
-                                        height: 75,
-                                        cls: 'logoff',
-                                        type: 'logoff',
-                                        zIndex: 1000,
-                                        items: [{
-                                            xtype: 'button',
-                                            type: 'user',
-                                            ui: 'user',
-                                            cls: 'userbutton',
-                                            text: "Log Off"
-                                        }]
-                                    });
-                                    panel.showBy(this);
-                                } else {
-                                    if (panel.getHidden()) {
-                                        panel.showBy(this);
-                                    } else {
-                                        panel.hide();
-                                    }
-                                }
-                            },
-                            element: 'element'
-                        }
-                    },
-                    type: 'user'
                 }]
             }, {
                 xtype: 'app_map'
