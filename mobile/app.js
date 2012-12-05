@@ -43,26 +43,6 @@ Ext.application({
     },
 
     launch: function() {
-        // TODO I don't see another way currently to get out of ST2 zIndex mess
-        // then to do this override, revisit when upgrading ST
-        Ext.Component.override({
-            updateZIndex: function(zIndex) {
-                // added code:
-                if (this.config && this.config.zIndex) {
-                    zIndex = this.config.zIndex;
-                }
-                // original code:
-                var domStyle = this.element.dom.style;
-
-                if (zIndex !== null) {
-                    domStyle.setProperty('z-index', zIndex, 'important');
-                }
-                else {
-                    domStyle.removeProperty('z-index');
-                }
-            }
-        });
-        // end of TODO
         // Destroy the #appLoadingIndicator element
         Ext.fly('appLoadingIndicator').destroy();
 
