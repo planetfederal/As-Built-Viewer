@@ -8,7 +8,7 @@ Ext.define('AsBuilt.view.Notes', {
         height: 200,
         zIndex: 1000,
         layout: 'fit',
-        type: 'notes',
+        id: 'notes',
         items: [{
             xtype: 'list',
             itemTpl: new Ext.XTemplate('<div class="notesNote">{NOTE}</div><div class="notesAuthor">Added {TIMESTAMP:this.formatTS} by {AUTHOR}</div>', {
@@ -29,12 +29,13 @@ Ext.define('AsBuilt.view.Notes', {
             layout: 'hbox',
             items: [{
                 xtype: 'textfield',
-                type: 'notefield',
+                id: 'notefield',
                 flex: 1,
                 placeHolder: 'Enter Note'
             }, {
                 xtype: 'button',
                 cls: 'addnotebutton',
+                id: 'addnote',
                 width: 75,
                 height: 40,
                 disabled: true,

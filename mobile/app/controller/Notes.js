@@ -3,13 +3,13 @@ Ext.define('AsBuilt.controller.Notes', {
     extend: 'Ext.app.Controller',
     config: {
         refs: {
-            list: 'panel[type="notes"]',
+            list: '#notes',
             drawing: 'app_drawing',
             details: 'app_drawingdetails',
-            addButton: 'button[text="Add"]',
+            addButton: '#addnote',
             main: 'main',
-            notesField: 'textfield[type="notefield"]',
-            notesButton: 'button[title="Notes"]'
+            notesField: '#notefield',
+            notesButton: '#notes_button'
         },
 
         control: {

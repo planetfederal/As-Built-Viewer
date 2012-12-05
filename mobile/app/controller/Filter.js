@@ -3,9 +3,9 @@ Ext.define('AsBuilt.controller.Filter', {
     config: {
         refs: {
             mapPanel: 'app_map',
-            allButton: 'button[text="All"]',
-            mappedButton: 'button[text="Mapped"]',
-            unmappedButton: 'button[text="Unmapped"]'
+            allButton: '#filter_all',
+            mappedButton: '#filter_mapped',
+            unmappedButton: '#filter_unmapped'
         },
 
         control: {

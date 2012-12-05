@@ -107,8 +107,8 @@ Ext.define("AsBuilt.view.Map",{
                             });
                         }
                         this.hitCount.read({filter: this._filter, callback: function(response) {
-                            var list = Ext.Viewport.down('toolbar[type="featurelist"]');
-                            var filter = Ext.Viewport.down('segmentedbutton[type="mapped"]');
+                            var list = Ext.Viewport.down('#featurelist-toolbar');
+                            var filter = Ext.Viewport.down('#mapped-group');
                             var pressed = filter.getPressedButtons();
                             var text = '';
                             if (pressed.length === 1) {
@@ -125,7 +125,7 @@ Ext.define("AsBuilt.view.Map",{
                             list.show();
                         }});
                     } else {
-                        Ext.Viewport.down('toolbar[type="featurelist"]').hide();
+                        Ext.Viewport.down('#featurelist-toolbar').hide();
                     }
                 },
                 scope: this

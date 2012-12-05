@@ -3,12 +3,12 @@ Ext.define('AsBuilt.controller.Search', {
     requires: ['AsBuilt.view.Search'],
     config: {
         refs: {
-            searchButton: 'button[iconCls="search"]',
-            cancelButton: 'button[type="cancel_search"]',
-            modifyButton: 'button[text="Modify Search"]',
-            resetButton: 'button[text="Reset"]',
-            filterButton: 'button[text="Search"]',
-            mappedButton: 'segmentedbutton[type="mapped"]',
+            searchButton: '#search',
+            cancelButton: '#cancel_search',
+            modifyButton: '#modify_search',
+            resetButton: '#reset_search',
+            filterButton: '#filter',
+            mappedButton: '#mapped-group',
             searchForm: 'app_search',
             mapPanel: 'app_map',
             main: 'main'

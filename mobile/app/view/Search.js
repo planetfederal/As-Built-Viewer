@@ -111,6 +111,7 @@ Ext.define('AsBuilt.view.Search', {
                 flex: 1
             }, {
                 xtype: 'button',
+                id: 'filter',
                 text: "Search"
             }, {
                 xtype: 'spacer',

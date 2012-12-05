@@ -17,16 +17,18 @@ Ext.define('AsBuilt.view.Drawing', {
                     ui: 'drawing'
                 },
                 items: [{
-                    text: "Details"
+                    text: "Details",
+                    id: 'details'
                 }, {
-                    text: "Notes"
+                    text: "Notes",
+                    id: "notes_button"
                 }]
             }, {
                 xtype: 'spacer',
                 flex: 1
             }, {
                 text: "Done",
-                type: "drawing_done"
+                id: "drawing_done"
             }]
         }]
     },

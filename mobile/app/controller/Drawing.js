@@ -5,10 +5,10 @@ Ext.define('AsBuilt.controller.Drawing', {
         refs: {
             main: 'main',
             drawing: 'app_drawing',
-            doneButton: 'button[type="drawing_done"]',
-            detailsButton: 'button[text="Details"]',
+            doneButton: '#drawing_done',
+            detailsButton: '#details',
             mapPanel: 'app_map',
-            notesList: 'panel[type="notes"]',
+            notesList: '#notes',
             details: 'app_drawingdetails',
             popup: 'gxm_featurepopup'
         },

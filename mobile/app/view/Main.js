@@ -63,18 +63,21 @@ Ext.define("AsBuilt.view.Main", {
                 docked: 'bottom',
                 items: [{
                     xtype: 'segmentedbutton',
-                    type: 'mapped',
+                    id: 'mapped-group',
                     hidden: true,
                     defaults: {
                         width: '7em',
                         ui: 'filter'
                     },
                     items: [{
-                        text: 'All'
+                        text: 'All',
+                        id: 'filter_all'
                     }, {
-                        text: 'Mapped'
+                        text: 'Mapped',
+                        id: 'filter_mapped'
                     }, {
-                        text: 'Unmapped'
+                        text: 'Unmapped',
+                        id: 'filter_unmapped'
                     }]
                 }, {
                     xtype: 'spacer',
@@ -82,18 +85,21 @@ Ext.define("AsBuilt.view.Main", {
                 }, {
                     iconMask: 'true',
                     ui: 'filter',
+                    id: 'search',
                     iconCls: 'search'
                 }, {
                     text: 'Cancel',
-                    type: 'cancel_search',
+                    id: 'cancel_search',
                     ui: 'filter',
                     hidden: true
                 }, {
                     text: 'Reset',
+                    id: 'reset_search',
                     ui: 'filter',
                     hidden: true
                 }, {
                     text: 'Modify Search',
+                    id: 'modify_search',
                     ui: 'filter',
                     hidden: true
                 }]
@@ -144,7 +150,7 @@ Ext.define("AsBuilt.view.Main", {
             items: [{
                 xtype: 'toolbar', 
                 docked: 'top', 
-                type: 'featurelist', 
+                id: 'featurelist-toolbar', 
                 ui: 'maxfeatures', 
                 hidden: true, 
                 items: [{
