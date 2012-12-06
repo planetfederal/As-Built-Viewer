@@ -17,17 +17,17 @@ Ext.define('AsBuilt.view.Drawing', {
                     ui: 'drawing'
                 },
                 items: [{
-                    text: "Details",
+                    text: AsBuilt.util.Config.getDetailsButtonText(),
                     id: 'details'
                 }, {
-                    text: "Notes",
+                    text: AsBuilt.util.Config.getNotesButtonText(),
                     id: "notes_button"
                 }]
             }, {
                 xtype: 'spacer',
                 flex: 1
             }, {
-                text: "Done",
+                text: AsBuilt.util.Config.getDoneButtonText(),
                 id: "drawing_done"
             }]
         }]
@@ -37,35 +37,36 @@ Ext.define('AsBuilt.view.Drawing', {
         var attributes = this.getAttributes();
         // get the notes
         Ext.getStore('Notes').on({'load': function(store, records) {
-            var item = this.down('segmentedbutton').getItems().items[1];
+            var item = this.down('segmentedbutton').getItems().items[1],
+                title = AsBuilt.util.Config.getNotesItemTitle();
             if (records.length > 0) {
                 item.setText(
-                    records.length + " Notes"
+                    records.length + " " + AsBuilt.util.Config.getNotesTextSuffix()
                 );
-                item.title = "Notes";
+                item.title = title;
                 AsBuilt.app.getController('Notes').showNotes();
             } else { 
                 item.setText(
-                    'Add Note'
+                    AsBuilt.util.Config.getAddNoteButtonText()
                 );
-                item.title = "Notes";
+                item.title = title;
             } 
         }, scope: this});
         Ext.getStore('Notes').load({
             filter: new OpenLayers.Filter.Comparison({
                 type: '==',
-                property: 'DOC_ID',
+                property: AsBuilt.util.Config.getDocumentIdField(),
                 value: this.getFid().split(".").pop()
             })
         });
         // remove first / and add file extension
-        var path = attributes.PATH;
+        var path = attributes[AsBuilt.util.Config.getPathField()];
         if (path.charAt(0) === "/") {
             path = path.substring(1);
         }
-        path = path + "." + attributes.FILETYPE;
-        var width = parseInt(attributes.WIDTH, 10);
-        var height = parseInt(attributes.HEIGHT, 10);
+        path = path + "." + attributes[AsBuilt.util.Config.getFileTypeField()];
+        var width = parseInt(attributes[AsBuilt.util.Config.getImageWidthField()], 10);
+        var height = parseInt(attributes[AsBuilt.util.Config.getImageHeightField()], 10);
         var map = new OpenLayers.Map({
             projection: "EPSG:404000",
             autoUpdateSize: false,
@@ -89,7 +90,7 @@ Ext.define('AsBuilt.view.Drawing', {
         map.addLayers([new OpenLayers.Layer.WMS(null,
             AsBuilt.util.Config.getGeoserverUrl(), {
                layers: AsBuilt.util.Config.getPrefix() + ":" + AsBuilt.util.Config.getImagesLayer(),
-               CQL_FILTER: "PATH='"+path+"'"
+               CQL_FILTER: AsBuilt.util.Config.getPathField() + "='" + path + "'"
             }, {
                buffer: 0,
                transitionEffect: "resize",

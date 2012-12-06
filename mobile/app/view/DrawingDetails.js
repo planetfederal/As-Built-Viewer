@@ -1,5 +1,6 @@
 Ext.define('AsBuilt.view.DrawingDetails', {
     extend: 'Ext.Panel',
+    requires: ['AsBuilt.util.Config'],
     xtype: 'app_drawingdetails',
 
     config: {
@@ -9,11 +10,16 @@ Ext.define('AsBuilt.view.DrawingDetails', {
 
     initialize: function() {
         var html = '<div class="drawingDetails">', attr = this.getAttributes();
-        html += this.createRow("Facility Name", attr.SFACILITYNAME);
-        html += this.createRow("Project Number", attr.SCONTRACTNUM);
-        html += this.createRow("Drawing Number", attr.IDRAWNUM);
-        html += this.createRow("Document Type", attr.TYPEDESC);
-        html += this.createRow("Drawing Date", attr.DDRAWDATE);
+        html += this.createRow(AsBuilt.util.Config.getFacilityNameTitle(), 
+            attr[AsBuilt.util.Config.getFacilityNameField()]);
+        html += this.createRow(AsBuilt.util.Config.getProjectNumberTitle(), 
+            attr[AsBuilt.util.Config.getContractNumberField()]);
+        html += this.createRow(AsBuilt.util.Config.getDrawingNumberTitle(), 
+            attr[AsBuilt.util.Config.getDrawingNumberField()]);
+        html += this.createRow(AsBuilt.util.Config.getDocumentTypeTitle(), 
+            attr[AsBuilt.util.Config.getTypeDescriptionField()]);
+        html += this.createRow(AsBuilt.util.Config.getDrawingDateTitle(), 
+            attr[AsBuilt.util.Config.getDrawingDateField()]);
         html += '</div>';
         this.setHtml(html);
         this.callParent();

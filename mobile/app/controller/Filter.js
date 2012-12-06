@@ -1,5 +1,13 @@
 Ext.define('AsBuilt.controller.Filter', {
     extend: 'Ext.app.Controller',
+    requires: [
+        'AsBuilt.util.Config'
+    ],
+    statics: {
+        'FILTER_ALL': 0,
+        'FILTER_MAPPED': 1,
+        'FILTER_UNMAPPED': 2
+    },
     config: {
         refs: {
             mapPanel: 'app_map',
@@ -44,7 +52,7 @@ Ext.define('AsBuilt.controller.Filter', {
     },
 
     filterAll: function() {
-        this.filter('all');
+        this.filter(this.self.FILTER_ALL);
     },
 
     filter: function(mode) {
@@ -64,17 +72,17 @@ Ext.define('AsBuilt.controller.Filter', {
             }
         };
         var nullGeomFilter = new OpenLayers.Filter.Comparison({
-            property: "GEOM",
+            property: AsBuilt.util.Config.getGeomField(),
             type: OpenLayers.Filter.Comparison.IS_NULL
         });
-        if (mode === 'all') {
+        if (mode === this.self.FILTER_ALL) {
             if (!vector._filter) {
                 vector.filter = null;
             } else {
                 vector.filter = vector._filter;
             }
             activateFixed();
-        } else if (mode === 'unmapped') {
+        } else if (mode === this.self.FILTER_UNMAPPED) {
             if (vector._filter) {
                 vector.filter = new OpenLayers.Filter.Logical({
                     type: OpenLayers.Filter.Logical.AND,
@@ -87,7 +95,7 @@ Ext.define('AsBuilt.controller.Filter', {
                 vector.filter = nullGeomFilter;
             }
             activateFixed();
-        } else if (mode === 'mapped') {
+        } else if (mode === this.self.FILTER_MAPPED) {
             // we need to add a filter for NOT (GEOM IS NULL)
             var mappedFilter = new OpenLayers.Filter.Logical({
                 type: OpenLayers.Filter.Logical.NOT,
@@ -117,11 +125,11 @@ Ext.define('AsBuilt.controller.Filter', {
     },
 
     filterMapped: function() {
-        this.filter('mapped');
+        this.filter(this.self.FILTER_MAPPED);
     },
 
     filterUnmapped: function() {
-        this.filter('unmapped');
+        this.filter(this.self.FILTER_UNMAPPED);
     }
 
 });

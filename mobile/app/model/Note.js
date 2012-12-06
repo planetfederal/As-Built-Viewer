@@ -1,6 +1,5 @@
 Ext.define('AsBuilt.model.Note', {
     extend: 'Ext.data.Model',
-
     config: {
         fields: [
             {name: 'DOC_ID', type: 'integer', mapping: 'attributes.DOC_ID'},

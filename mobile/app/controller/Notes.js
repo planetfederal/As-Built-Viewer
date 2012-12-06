@@ -34,9 +34,10 @@ Ext.define('AsBuilt.controller.Notes', {
         var note = this.getList().down('textfield').getValue();
         if (note !== "") {
             var attr = {};
-            attr["AUTHOR"] = this.getMain().getUser();
-            attr["NOTE"] = note;
-            attr["DOC_ID"] = this.getDrawing().getFid().split(".").pop();
+            var docIdField = AsBuilt.util.Config.getDocumentIdField();
+            attr[AsBuilt.util.Config.getAuthorField()] = this.getMain().getUser();
+            attr[AsBuilt.util.Config.getNoteField()] = note;
+            attr[docIdField] = this.getDrawing().getFid().split(".").pop();
             var feature = new OpenLayers.Feature.Vector(null, attr);
             feature.state = OpenLayers.State.INSERT;
             var format = new OpenLayers.Format.WFST({
@@ -55,8 +56,8 @@ Ext.define('AsBuilt.controller.Notes', {
                     Ext.getStore('Notes').load({
                         filter: new OpenLayers.Filter.Comparison({
                             type: '==',
-                            property: 'DOC_ID',
-                            value: attr["DOC_ID"]
+                            property: docIdField,
+                            value: attr[docIdField]
                         })
                     });
                     this.getList().down('textfield').setValue('');

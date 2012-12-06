@@ -66,12 +66,7 @@ Ext.define("AsBuilt.view.Map",{
         var style = new OpenLayers.Style({
             pointRadius: 0
         });
-        var selectStyle = new OpenLayers.Style({
-            pointRadius: 12,
-            fillColor: 'F98D0C',
-            strokeColor: 'E3E3D9',
-            strokeWidth: 4
-        });
+        var selectStyle = new OpenLayers.Style(AsBuilt.util.Config.getSelectStyle());
         var styleMap = new OpenLayers.StyleMap({
             "default": style,
             "select": selectStyle
@@ -85,7 +80,7 @@ Ext.define("AsBuilt.view.Map",{
                 featureNS: AsBuilt.util.Config.getFeatureNS(),
                 geometryName: AsBuilt.util.Config.getGeomField(),
                 version: "1.1.0",
-                maxFeatures: 100,
+                maxFeatures: AsBuilt.util.Config.getMaxFeatures(),
                 srsName: "EPSG:900913",
                 outputFormat: 'json',
                 readFormat: new OpenLayers.Format.GeoJSON()
@@ -114,14 +109,18 @@ Ext.define("AsBuilt.view.Map",{
                             if (pressed.length === 1) {
                                 text = pressed[0].getText().toLowerCase();
                             }
+                            // TODO make this check more stable (depends on i18n)
                             if (text === 'all') {
                                 text = '';
                             } else if (text !== '') {
                                 text = ' ' + text;
                             }
-                            list.down('container').setHtml('Your search returned ' + 
-                                response.numberOfFeatures + text + ' images. Showing the first ' + 
-                                evt.object.protocol.maxFeatures + '.');
+                            var tpl = new Ext.XTemplate(AsBuilt.util.Config.getMaxFeaturesTpl());
+                            list.down('container').setHtml(tpl.applyTemplate({
+                                number: response.numberOfFeatures,
+                                text: text,
+                                first: evt.object.protocol.maxFeatures
+                            }));
                             list.show();
                         }});
                     } else {
@@ -160,7 +159,7 @@ Ext.define("AsBuilt.view.Map",{
                 new OpenLayers.Control.WMSGetFeatureInfo({
                     infoFormat: "application/vnd.ogc.gml",
                     vendorParams: {
-                        buffer: 15
+                        buffer: AsBuilt.util.Config.getFeatureInfoBuffer()
                     },
                     maxFeatures: 1,
                     layers: [drawings],
@@ -192,9 +191,13 @@ Ext.define("AsBuilt.view.Map",{
                                         feature: feature,
                                         centered: false,
                                         zIndex: 1000,
-                                        tpl: new Ext.XTemplate('<div class="fp-title"><tpl if="feature.attributes.SDRAWTITLE != null">{feature.attributes.SDRAWTITLE}<tpl else>Title unknown</tpl><span class="follow">&gt;</span></div><div class="fp-container"><div class="fp-type"><tpl if="feature.attributes.TYPEDESC != null">{feature.attributes.TYPEDESC}<tpl else>Type unknown</tpl></div><div class="fp-date"><tpl if="feature.attributes.DDRAWDATE != null">{feature.attributes.DDRAWDATE}<tpl else>Date unknown</tpl></div></div>')
+                                        tpl: new Ext.XTemplate(AsBuilt.util.Config.getFeatureInfoTp())
                                     });
-                                    this.popup.on('show', function() { this.feature && drawings_vector.drawFeature(this.feature, "select"); }, this);
+                                    this.popup.on('show', function() { 
+                                        if (this.feature) { 
+                                            drawings_vector.drawFeature(this.feature, "select"); 
+                                        }
+                                    }, this);
                                     this.popup.on('hide', erase, this);
                                     this.popup.element.on('tap', this.onTap, this);
                                 } else {            
@@ -216,26 +219,26 @@ Ext.define("AsBuilt.view.Map",{
                     eventListeners: {
                         "locationfailed": function() {
                             Ext.Msg.show({
-                                title: 'Information',
+                                title: AsBuilt.util.Config.getLocationFailedTitle(),
                                 zIndex: 1000,
                                 showAnimation: null,
                                 hideAnimation: null,
                                 maxWidth: '5em',
-                                message: "Failed to retrieve location",
-                                buttons: [{text: 'OK'}],
+                                message: AsBuilt.util.Config.getLocationFailedMsg(),
+                                buttons: [Ext.MessageBox.OK],
                                 promptConfig: false,
                                 fn: function(){}
                             });
                         },
                         "locationuncapable": function() {
                             Ext.Msg.show({
-                                title: 'Information', 
+                                title: AsBuilt.util.Config.getLocationUncapableTitle(), 
                                 zIndex: 1000,
                                 maxWidth: '5em',
                                 showAnimation: null,
                                 hideAnimation: null,
-                                message: "This device cannot retrieve location",
-                                buttons: [{text: 'OK'}],
+                                message: AsBuilt.util.Config.getLocationUncapableMsg(),
+                                buttons: [Ext.MessageBox.OK],
                                 promptConfig: false,
                                 fn: function(){}
                             });
@@ -250,35 +253,20 @@ Ext.define("AsBuilt.view.Map",{
                                     0
                                 ),
                                 {},
-                                {
-                                    fillColor: '#000',
-                                    fillOpacity: 0.1,
-                                    strokeWidth: 0
-                                }
+                                AsBuilt.util.Config.getGeolocationAccuracyStyle()
                             );
                             this.vector.addFeatures([
                                 new OpenLayers.Feature.Vector(
                                     e.point,
                                     {},
-                                    {
-                                        graphicName: 'circle',
-                                        strokeColor: '#ff0000',
-                                        strokeWidth: 1,
-                                        fillOpacity: 0.5,
-                                        fillColor: '#0000ff',
-                                        pointRadius: 8
-                                    }
+                                    AsBuilt.util.Config.getGeolocationStyle()
                                 ),
                                 circle
                             ]);
                         },
                         scope: this
                     },
-                    geolocationOptions: {
-                        enableHighAccuracy: true,
-                        maximumAge: 0,
-                        timeout: 7000
-                    }
+                    geolocationOptions: AsBuilt.util.Config.getGeolocationOptions()
                 })
             ]
         });

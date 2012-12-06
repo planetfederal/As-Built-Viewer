@@ -23,79 +23,61 @@ Ext.define('AsBuilt.view.Search', {
         items: [{
             items: [{
                 xtype: 'fieldset',
-                title: 'Drawing',
+                title: AsBuilt.util.Config.getDrawingFieldset(),
                 items: [{
                     xtype: 'selectfield',
-                    name: 'TYPEDESC',
+                    name: AsBuilt.util.Config.getTypeDescriptionField(),
                     defaultTabletPickerConfig: {
                         zIndex: 1051
                     },
-                    label: 'Type',
+                    label: AsBuilt.util.Config.getTypeLabel(),
                     value: "",
-                    options: [{
-                        text: 'All types',
-                        value: ''
-                    }, {
-                        text: 'MUNI Drawings Numbered Plans (MDNP)', 
-                        value: 'MUNI Drawings Numbered Plans (MDNP)'
-                    }, {
-                        text: 'UnClassified Scans',
-                        value: 'UnClassified Scans'
-                    }, {
-                        text: 'MUNI SHOP Drawings (MUSH)',
-                        value: 'MUNI SHOP Drawings (MUSH)'
-                    }, {
-                        text: 'MUNI BART Drawings (MUBA)',
-                        value: 'MUNI BART Drawings (MUBA)'
-                    }, {
-                        text: 'BOE Numbered Plans',
-                        value: 'BOE Numbered Plans'
-                    }]
+                    options: AsBuilt.util.Config.getTypeOptions()
                 }, {
                     xtype: 'app_autocompletefield',
                     featureType: AsBuilt.util.Config.getDrawingsTable(),
-                    label: 'Subject',
-                    name: 'DOCSUBJECT'
+                    label: AsBuilt.util.Config.getDocumentSubjectLabel(),
+                    name: AsBuilt.util.Config.getDocumentSubjectField()
                 }, {
                     xtype: 'app_autocompletefield',
                     featureType: AsBuilt.util.Config.getDrawingsTable(),
-                    label: 'Number',
-                    name: 'IDRAWNUM'
+                    label: AsBuilt.util.Config.getDrawingNumberLabel(),
+                    name: AsBuilt.util.Config.getDrawingNumberField()
                 }, {
                     xtype: 'textfield',
-                    label: 'Date',
-                    name: 'DDRAWDATE'
+                    label: AsBuilt.util.Config.getDrawingDateLabel(),
+                    name: AsBuilt.util.Config.getDrawingDateField()
                 }]
             }] 
         }, {
             items: [{
                 xtype: 'fieldset',
-                title: 'Facility',
+                title: AsBuilt.util.Config.getFacilityFieldset(),
                 items: [{
                     xtype: 'app_autocompletefield',
-                    featureType: "VW_SFACILITYNAME",
-                    label: 'Name',
-                    name: 'SFACILITYNAME'
+                    featureType: AsBuilt.util.Config.getFacilityNameView(),
+                    label: AsBuilt.util.Config.getFacilityNameLabel(),
+                    name: AsBuilt.util.Config.getFacilityNameField()
                 }]
             }, {
                 xtype: 'fieldset',
-                title: 'Contract',
+                title: AsBuilt.util.Config.getContractFieldset(),
                 items: [{
                     xtype: 'app_autocompletefield',
-                    label: 'Number',
-                    featureType: "VW_SCONTRACTNUM",
-                    name: 'SCONTRACTNUM'
+                    label: AsBuilt.util.Config.getContractNumberLabel(),
+                    featureType: AsBuilt.util.Config.getContractNumberView(),
+                    name: AsBuilt.util.Config.getContractNumberField()
                 }, {
                     xtype: 'app_autocompletefield',
-                    label: 'Title',
-                    featureType: "VW_SCONTRACTTITLE",
-                    name: 'SCONTRACTTITLE'
+                    label: AsBuilt.util.Config.getContractTitleLabel(),
+                    featureType: AsBuilt.util.Config.getContractTitleView(),
+                    name: AsBuilt.util.Config.getContractTitleField()
                 }]
             }, {
                 xtype: 'fieldset',
                 items: [{
                     xtype: 'checkboxfield',
-                    label: 'Use map extent',
+                    label: AsBuilt.util.Config.getUseBBOXLabel(),
                     height: 40,
                     labelWidth: '70%',
                     name: "BBOX"
@@ -112,7 +94,7 @@ Ext.define('AsBuilt.view.Search', {
             }, {
                 xtype: 'button',
                 id: 'filter',
-                text: "Search"
+                text: AsBuilt.util.Config.getSearchButtonText()
             }, {
                 xtype: 'spacer',
                 flex: 1

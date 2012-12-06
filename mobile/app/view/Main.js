@@ -3,7 +3,8 @@ Ext.define("AsBuilt.view.Main", {
     xtype: 'main',
     requires: [
         'GXM.FeatureList',
-        'AsBuilt.view.Map'
+        'AsBuilt.view.Map',
+        'AsBuilt.util.Config'
     ],
     config: {
         user: null,
@@ -20,11 +21,11 @@ Ext.define("AsBuilt.view.Main", {
                 items: [{
                     xtype: 'container',
                     cls: 'header-container',
-                    html: "SFMTA"
+                    html: AsBuilt.util.Config.getHeaderText()
                 }, {
                     xtype: 'container',
                     cls: 'title-container',
-                    html: "As-Built Viewer"
+                    html: AsBuilt.util.Config.getTitleText()
                 }]
             }, {
                 xtype: 'app_map'
@@ -70,13 +71,13 @@ Ext.define("AsBuilt.view.Main", {
                         ui: 'filter'
                     },
                     items: [{
-                        text: 'All',
+                        text: AsBuilt.util.Config.getAllFilterButtonText(),
                         id: 'filter_all'
                     }, {
-                        text: 'Mapped',
+                        text: AsBuilt.util.Config.getMappedFilterButtonText(),
                         id: 'filter_mapped'
                     }, {
-                        text: 'Unmapped',
+                        text: AsBuilt.util.Config.getUnmappedFilterButtonText(),
                         id: 'filter_unmapped'
                     }]
                 }, {
@@ -88,17 +89,17 @@ Ext.define("AsBuilt.view.Main", {
                     id: 'search',
                     iconCls: 'search'
                 }, {
-                    text: 'Cancel',
+                    text: AsBuilt.util.Config.getCancelButtonText(),
                     id: 'cancel_search',
                     ui: 'filter',
                     hidden: true
                 }, {
-                    text: 'Reset',
+                    text: AsBuilt.util.Config.getResetButtonText(),
                     id: 'reset_search',
                     ui: 'filter',
                     hidden: true
                 }, {
-                    text: 'Modify Search',
+                    text: AsBuilt.util.Config.getModifySearchButtonText(),
                     id: 'modify_search',
                     ui: 'filter',
                     hidden: true
@@ -141,7 +142,7 @@ Ext.define("AsBuilt.view.Main", {
                                     Ext.Viewport.setActiveItem(drawing);
                                 }
                             },
-                            itemTpl: new Ext.XTemplate('<div class="table-cell col1"><tpl if="feature.attributes.SDRAWTITLE != null">{feature.attributes.SDRAWTITLE}<tpl else>Unknown</tpl></div><div class="table-cell col2"><tpl if="feature.attributes.TYPEDESC != null">{feature.attributes.TYPEDESC}<tpl else>Type unknown</tpl></div><div class="table-cell col3"><tpl if="feature.attributes.DDRAWDATE != null">{feature.attributes.DDRAWDATE}<tpl else>Unknown</tpl></div>')
+                            itemTpl: new Ext.XTemplate(AsBuilt.util.Config.getListItemTpl())
                         }));
                     }
                 }

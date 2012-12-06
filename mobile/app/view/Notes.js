@@ -1,6 +1,10 @@
 Ext.define('AsBuilt.view.Notes', {
     extend: 'Ext.Panel',
-    requires: ['Ext.dataview.List', 'Ext.field.Text'],
+    requires: [
+        'Ext.dataview.List', 
+        'Ext.field.Text',
+        'AsBuilt.util.Config'
+    ],
     xtype: 'app_notes',
 
     config: {
@@ -11,7 +15,7 @@ Ext.define('AsBuilt.view.Notes', {
         id: 'notes',
         items: [{
             xtype: 'list',
-            itemTpl: new Ext.XTemplate('<div class="notesNote">{NOTE}</div><div class="notesAuthor">Added {TIMESTAMP:this.formatTS} by {AUTHOR}</div>', {
+            itemTpl: new Ext.XTemplate(AsBuilt.util.Config.getNotesTpl(), {
                 formatTS: function(value) {
                     if (value !== null) {
                         return Ext.Date.format(Ext.Date.parse(value, 'c'), 'F j, Y, g:i a');
@@ -31,7 +35,7 @@ Ext.define('AsBuilt.view.Notes', {
                 xtype: 'textfield',
                 id: 'notefield',
                 flex: 1,
-                placeHolder: 'Enter Note'
+                placeHolder: AsBuilt.util.Config.getEnterNotePlaceholder()
             }, {
                 xtype: 'button',
                 cls: 'addnotebutton',
@@ -39,7 +43,7 @@ Ext.define('AsBuilt.view.Notes', {
                 width: 75,
                 height: 40,
                 disabled: true,
-                text: "Add"
+                text: AsBuilt.util.Config.getEnterNoteButtonText()
             }]
         }]
     }

@@ -1,6 +1,9 @@
 Ext.define('AsBuilt.controller.Search', {
     extend: 'Ext.app.Controller',
-    requires: ['AsBuilt.view.Search'],
+    requires: [
+        'AsBuilt.util.Config',
+        'AsBuilt.view.Search'
+    ],
     config: {
         refs: {
             searchButton: '#search',
