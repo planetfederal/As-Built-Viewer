@@ -21,6 +21,14 @@ $base-color: #555;
 @include sencha-button-ui('user', #720000, 'glossy');
 @include sencha-button-ui('filter',  #b5b5b5, 'glossy');
 @include sencha-button-ui('drawing', #505050, 'glossy');
+.notes-list .x-list-header {
+    padding: 0 0 0 0;
+    border: none;
+    background-image: none;
+}
+.note-group {
+    padding: 0.5em 0.5em;
+}
 .featurepopup > .x-inner > .x-html {
     padding: 0.3em !important;
 }

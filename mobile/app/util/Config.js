@@ -2,6 +2,8 @@ Ext.define('AsBuilt.util.Config', {
     singleton : true,
     config : {
 
+        noteHeaderColors: ['red', 'green', 'blue', 'yellow', 'brown', 'magenta', 'cyan', 'orange'],
+
         /**
          * @cfg {Array} bounds
          * Initial map extent in Spherical Mercator.
@@ -156,6 +158,12 @@ Ext.define('AsBuilt.util.Config', {
          * The name of the author field of the notesTable.
          */
         authorField: "AUTHOR",
+
+        /**
+         * @cfg {String} timestampField
+         * The name of the timestamp field of the notesTable.
+         */
+        timestampField: "TIMESTAMP",
 
         /**
          * @cfg {String} noteField

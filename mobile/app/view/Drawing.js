@@ -28,7 +28,7 @@ Ext.define('AsBuilt.view.Drawing', {
                 flex: 1
             }, {
                 text: AsBuilt.util.Config.getDoneButtonText(),
-                id: "drawing_done"
+                type: "drawing_done"
             }]
         }]
     },

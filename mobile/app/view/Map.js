@@ -191,7 +191,7 @@ Ext.define("AsBuilt.view.Map",{
                                         feature: feature,
                                         centered: false,
                                         zIndex: 1000,
-                                        tpl: new Ext.XTemplate(AsBuilt.util.Config.getFeatureInfoTp())
+                                        tpl: new Ext.XTemplate(AsBuilt.util.Config.getFeatureInfoTpl())
                                     });
                                     this.popup.on('show', function() { 
                                         if (this.feature) { 
