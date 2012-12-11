@@ -37,12 +37,18 @@ div.table-cell {
 }
 .table-cell.col1 {
     width: 400em;
+    border-right: 1px solid black;
+    padding-right: 0.5em;
 }
 .table-cell.col2 {
+    padding-left: 0.5em;
+    padding-right: 0.5em;
     width: 25%;
 }
 .table-cell.col3 {
     width: 7%;
+    padding-left: 0.5em;
+    border-left: 1px solid black;
 }
 span.follow {
     position: absolute;
