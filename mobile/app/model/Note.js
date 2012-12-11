@@ -3,8 +3,8 @@ Ext.define('AsBuilt.model.Note', {
     config: {
         fields: [
             {name: 'DOC_ID', type: 'integer', mapping: 'attributes.DOC_ID'},
-            {name: 'TIMESTAMP', type: 'datetime', mapping: 'attributes.TIMESTAMP'},
-            {name: 'AUTHOR', type: 'string', mapping: 'attributes.AUTHOR'},
+            {name: 'UPDATED_DT', type: 'datetime', mapping: 'attributes.UPDATED_DT'},
+            {name: 'CREATED_BY', type: 'string', mapping: 'attributes.CREATED_BY'},
             {name: 'NOTE', type: 'string', mapping: 'attributes.NOTE'}
         ]
     }

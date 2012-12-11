@@ -145,7 +145,7 @@ AsBuilt.ImagePopup = Ext.extend(GeoExt.Popup, {
                         meta.attr = 'style="white-space:normal"'; 
                         return value;
                     },
-                    'TIMESTAMP': function(value) {
+                    'UPDATED_DT': function(value) {
                         if (value !== "" && value !== undefined) {
                             return Date.parseDate(value, 'c').format('F j, Y, g:i a');
                         } else {
@@ -159,20 +159,20 @@ AsBuilt.ImagePopup = Ext.extend(GeoExt.Popup, {
                     }
                 },
                 columnConfig: {
-                    'TIMESTAMP': {
+                    'UPDATED_DT': {
                         editable: false,
                         width: 0.3*this.width
                     },
                     'NOTE': {
                         width: 0.5*this.width
                     },
-                    'AUTHOR': {
+                    'CREATED_BY': {
                         width: 0.2*this.width
                     }
                 },
                 createColumnModel: function(store) {
                     var columns = this.getColumns(store);
-                    var order = {'NOTE' :0, 'AUTHOR': 1, 'TIMESTAMP': 2};
+                    var order = {'NOTE' :0, 'CREATED_BY': 1, 'UPDATED_DT': 2};
                     columns.sort(function(a, b) {
                         return order[a.dataIndex] - order[b.dataIndex];
                     });
@@ -201,7 +201,7 @@ AsBuilt.ImagePopup = Ext.extend(GeoExt.Popup, {
                     text: 'Add Note',
                     handler: function() { 
                         editor.stopEditing();
-                        var recordType = GeoExt.data.FeatureRecord.create([{name: "DOC_ID"}, {name: "AUTHOR"}, {name: "NOTE"}]);
+                        var recordType = GeoExt.data.FeatureRecord.create([{name: "DOC_ID"}, {name: "CREATED_BY"}, {name: "NOTE"}]);
                         var feature = new OpenLayers.Feature.Vector();
                         feature.state = OpenLayers.State.INSERT;
                         this.grid.store.insert(0, new recordType({feature: feature, DOC_ID: docID}));

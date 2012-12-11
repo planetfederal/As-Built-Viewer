@@ -90,41 +90,55 @@ Ext.define("AsBuilt.view.Map",{
                     this._filter = evt.filter;
                 },
                 "loadend": function(evt) {
-                    if (evt.response && evt.response.features.length === evt.object.protocol.maxFeatures) {
-                        if (!this.hitCount) {
-                            this.hitCount = new OpenLayers.Protocol.WFS({
-                                version: "1.1.0",
-                                readOptions: {output: "object"},
-                                resultType: "hits",
-                                url: AsBuilt.util.Config.getGeoserverUrl(),
-                                featureType: AsBuilt.util.Config.getDrawingsTable(),
-                                featureNS: AsBuilt.util.Config.getFeatureNS()
-                            });
+                    if (evt.response && evt.response.success()) {
+                        if (evt.response.features.length === evt.object.protocol.maxFeatures) {
+                            if (!this.hitCount) {
+                                this.hitCount = new OpenLayers.Protocol.WFS({
+                                    version: "1.1.0",
+                                    readOptions: {output: "object"},
+                                    resultType: "hits",
+                                    url: AsBuilt.util.Config.getGeoserverUrl(),
+                                    featureType: AsBuilt.util.Config.getDrawingsTable(),
+                                    featureNS: AsBuilt.util.Config.getFeatureNS()
+                                });
+                            }
+                            this.hitCount.read({filter: this._filter, callback: function(response) {
+                                var list = Ext.Viewport.down('#featurelist-toolbar');
+                                var filter = Ext.Viewport.down('#mapped-group');
+                                var pressed = filter.getPressedButtons();
+                                var text = '';
+                                if (pressed.length === 1) {
+                                    text = pressed[0].getText().toLowerCase();
+                                }
+                                // TODO make this check more stable (depends on i18n)
+                                if (text === 'all') {
+                                    text = '';
+                                } else if (text !== '') {
+                                    text = ' ' + text;
+                                }
+                                var tpl = new Ext.XTemplate(AsBuilt.util.Config.getMaxFeaturesTpl());
+                                list.down('container').setHtml(tpl.applyTemplate({
+                                    number: response.numberOfFeatures,
+                                    text: text,
+                                    first: evt.object.protocol.maxFeatures
+                                }));
+                                list.show();
+                            }});
+                        } else {
+                            Ext.Viewport.down('#featurelist-toolbar').hide();
                         }
-                        this.hitCount.read({filter: this._filter, callback: function(response) {
-                            var list = Ext.Viewport.down('#featurelist-toolbar');
-                            var filter = Ext.Viewport.down('#mapped-group');
-                            var pressed = filter.getPressedButtons();
-                            var text = '';
-                            if (pressed.length === 1) {
-                                text = pressed[0].getText().toLowerCase();
-                            }
-                            // TODO make this check more stable (depends on i18n)
-                            if (text === 'all') {
-                                text = '';
-                            } else if (text !== '') {
-                                text = ' ' + text;
-                            }
-                            var tpl = new Ext.XTemplate(AsBuilt.util.Config.getMaxFeaturesTpl());
-                            list.down('container').setHtml(tpl.applyTemplate({
-                                number: response.numberOfFeatures,
-                                text: text,
-                                first: evt.object.protocol.maxFeatures
-                            }));
-                            list.show();
-                        }});
                     } else {
-                        Ext.Viewport.down('#featurelist-toolbar').hide();
+                        Ext.Msg.show({
+                            title: AsBuilt.util.Config.getFeaturesFailedTitle(),
+                            zIndex: 1000,
+                            showAnimation: null,
+                            hideAnimation: null,
+                            maxWidth: '5em', 
+                            message: AsBuilt.util.Config.getFeaturesFailedMsg(),
+                            buttons: [Ext.MessageBox.OK],
+                            promptConfig: false,
+                            fn: function(){}
+                        });     
                     }
                 },
                 scope: this

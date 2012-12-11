@@ -51,7 +51,7 @@ Ext.define('AsBuilt.util.Config', {
          * @cfg {String} notesTpl
          * The template used for displaying a note.
          */
-        notesTpl: '<div class="notesNote">{NOTE}</div><div class="notesAuthor">Added {TIMESTAMP:this.formatTS} by {AUTHOR}</div>',
+        notesTpl: '<div class="notesNote">{NOTE}</div><div class="notesAuthor">Added {UPDATED_DT:this.formatTS} by {CREATED_BY}</div>',
 
         /**
          * @cfg {Object} selectStyle
@@ -145,7 +145,7 @@ Ext.define('AsBuilt.util.Config', {
          * @cfg {String} notesTable
          * The featureType used to get the notes.
          */
-        notesTable: "NOTES",
+        notesTable: "DOCS_NOTES",
 
         /**
          * @cfg {String} geomField
@@ -157,13 +157,13 @@ Ext.define('AsBuilt.util.Config', {
          * @cfg {String} authorField
          * The name of the author field of the notesTable.
          */
-        authorField: "AUTHOR",
+        authorField: "CREATED_BY",
 
         /**
          * @cfg {String} timestampField
          * The name of the timestamp field of the notesTable.
          */
-        timestampField: "TIMESTAMP",
+        timestampField: "UPDATED_DT",
 
         /**
          * @cfg {String} noteField
@@ -301,10 +301,12 @@ Ext.define('AsBuilt.util.Config', {
         cancelButtonText: "Cancel",
         resetButtonText: "Reset",
         modifySearchButtonText: "Modify Search",
+        featuresFailedTitle: "Error",
+        featuresFailedMsg: "There was an error retrieving data.",
         locationFailedTitle: "Information",
-        locationFailedMsg: "Failed to retrieve location",
+        locationFailedMsg: "Failed to retrieve location.",
         locationUncapableTitle: "Information",
-        locationUncapableMsg: "This device cannot retrieve location",
+        locationUncapableMsg: "This device cannot retrieve location.",
         drawingFieldset: "Drawing",
         typeLabel: "Type",
         documentSubjectLabel: "Subject",
