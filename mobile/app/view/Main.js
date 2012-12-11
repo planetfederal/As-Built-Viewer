@@ -67,7 +67,7 @@ Ext.define("AsBuilt.view.Main", {
                     id: 'mapped-group',
                     hidden: true,
                     defaults: {
-                        width: '7em',
+                        width: '9em',
                         ui: 'filter'
                     },
                     items: [{

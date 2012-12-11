@@ -21,6 +21,9 @@ $base-color: #555;
 @include sencha-button-ui('user', #720000, 'glossy');
 @include sencha-button-ui('filter',  #b5b5b5, 'glossy');
 @include sencha-button-ui('drawing', #505050, 'glossy');
+.x-button.x-button-filter .x-button-label {
+    font-size: 1.2em;
+}
 .notes-list .x-list-header {
     padding: 0 0 0 0;
     border: none;
