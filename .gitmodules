@@ -21,4 +21,4 @@
 	url = https://github.com/geoext/GXM.git
 [submodule "mobile/externals/openlayers"]
 	path = mobile/externals/openlayers
-	url = https://github.com/bartvde/openlayers.git
+	url = https://github.com/ahocevar/openlayers.git

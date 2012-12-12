@@ -34,7 +34,8 @@ Ext.define("AsBuilt.view.Map",{
             units: "m",
             buffer: 0,
             transitionEffect: "resize",
-            tileLoadingDelay: 300
+            tileLoadingDelay: 300,
+            removeBackBufferDelay: 0
         };
 
         var streets = new OpenLayers.Layer.OSM("MapQuest OpenStreetMap",
@@ -59,7 +60,8 @@ Ext.define("AsBuilt.view.Map",{
             },{
                 buffer: 0,
                 isBaseLayer: false,
-                singleTile: true
+                singleTile: true,
+                removeBackBufferDelay: 0
             }
         );
 
