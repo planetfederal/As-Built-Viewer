@@ -59,6 +59,12 @@ Ext.define("AsBuilt.view.Map",{
                 styles: 'docs'
             },{
                 buffer: 0,
+                eventListeners: {
+                    'loadend': function() {
+                         // force reflow
+                         drawings.div.offsetLeft = drawings.div.offsetLeft;
+                    }
+                },
                 isBaseLayer: false,
                 singleTile: true,
                 removeBackBufferDelay: 0
