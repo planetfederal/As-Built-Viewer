@@ -200,7 +200,12 @@ Ext.define('AsBuilt.controller.Search', {
             message: 'Searching'
         });
         var loadend = function() {
-            this.findVectorLayer().events.un({'loadend': arguments.callee, scope: this});
+            var vector = this.findVectorLayer();
+            vector.events.un({'loadend': arguments.callee, scope: this});
+            var extent = vector.getDataExtent();
+            if (extent) {
+                this.getMapPanel().getMap().zoomToExtent(extent);
+            }
             this.getSearchForm().unmask();
             this.getSearchForm().hide();
             this.getCancelButton().hide();
