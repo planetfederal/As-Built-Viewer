@@ -121,7 +121,7 @@ Ext.define('AsBuilt.util.Config', {
          * @cfg {String} drawingsTable
          * The main featureType used in this application.
          */
-        drawingsTable: "DOCS_SORTBY",
+        drawingsTable: "DOCS",
 
         /**
          * @cfg {String} facilityNameView
