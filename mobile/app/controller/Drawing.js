@@ -6,7 +6,7 @@ Ext.define('AsBuilt.controller.Drawing', {
             main: 'main',
             drawing: 'app_drawing',
             doneButton: 'button[type="drawing_done"]',
-            detailsButton: '#details',
+            detailsButton: 'button[type="details"]',
             mapPanel: 'app_map',
             notesList: '#notes',
             details: 'app_drawingdetails',

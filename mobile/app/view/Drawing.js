@@ -18,10 +18,10 @@ Ext.define('AsBuilt.view.Drawing', {
                 },
                 items: [{
                     text: AsBuilt.util.Config.getDetailsButtonText(),
-                    id: 'details'
+                    type: 'details'
                 }, {
                     text: AsBuilt.util.Config.getNotesButtonText(),
-                    id: "notes_button"
+                    type: "notes_button"
                 }]
             }, {
                 xtype: 'spacer',

@@ -9,7 +9,7 @@ Ext.define('AsBuilt.controller.Notes', {
             addButton: '#addnote',
             main: 'main',
             notesField: '#notefield',
-            notesButton: '#notes_button'
+            notesButton: 'button[type="notes_button"]'
         },
 
         control: {
