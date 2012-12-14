@@ -33,6 +33,11 @@
         OpenLayers.Layer.WMS.prototype.DEFAULT_PARAMS.transparent = true;
         OpenLayers.DOTS_PER_INCH = 25.4 / 0.28;
         var app = new gxp.Viewer({
+            listeners: {
+                'portalready': function() {
+                    AsBuilt.SecurityPopup();
+                }
+            },
             portalItems: [{
                 region: "center",
                 layout: "border",
