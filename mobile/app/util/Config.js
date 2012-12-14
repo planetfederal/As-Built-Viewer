@@ -229,7 +229,7 @@ Ext.define('AsBuilt.util.Config', {
          * @cfg {String} drawingNumberField
          * The name of the drawing number field of the drawingsTable.
          */
-        drawingNumberField: "IDRAWNUM",
+        drawingNumberField: "FILENO",
 
         /**
          * @cfg {String} typeDescriptionField
