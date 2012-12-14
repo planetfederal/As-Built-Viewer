@@ -118,6 +118,8 @@ Ext.define('AsBuilt.controller.Filter', {
         var cql = null;
         if (vector.filter) {
             cql = new OpenLayers.Format.CQL().write(vector.filter);
+            // replace wildcards
+            cql = cql.replace(/\*/g, '%');
         }
         this.getWMSLayer().mergeNewParams({
             'CQL_FILTER': cql

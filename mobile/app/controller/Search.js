@@ -136,8 +136,14 @@ Ext.define('AsBuilt.controller.Search', {
         for (var i=0, ii=this.getMapPanel().getMap().layers.length; i<ii; ++i) {
             var lyr = this.getMapPanel().getMap().layers[i];
             if (lyr instanceof OpenLayers.Layer.WMS) {
+                var cql = null;
+                if (filter !== null) {
+                    cql = new OpenLayers.Format.CQL().write(filter);
+                    // replace wildcards
+                    cql = cql.replace(/\*/g, '%');
+                }
                 lyr.mergeNewParams({
-                    CQL_FILTER: filter !== null ? new OpenLayers.Format.CQL().write(filter): null
+                    CQL_FILTER: cql
                 });
             } else if (lyr instanceof OpenLayers.Layer.Vector && lyr.protocol) {
                 // store the original filter as well, so it's easier to manipulate in the Filter controller
