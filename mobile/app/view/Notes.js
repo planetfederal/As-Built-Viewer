@@ -35,13 +35,13 @@ Ext.define('AsBuilt.view.Notes', {
             layout: 'hbox',
             items: [{
                 xtype: 'textfield',
-                id: 'notefield',
+                type: 'notefield',
                 flex: 1,
                 placeHolder: AsBuilt.util.Config.getEnterNotePlaceholder()
             }, {
                 xtype: 'button',
                 cls: 'addnotebutton',
-                id: 'addnote',
+                type: 'addnote',
                 width: 75,
                 height: 40,
                 disabled: true,

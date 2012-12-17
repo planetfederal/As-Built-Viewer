@@ -6,9 +6,9 @@ Ext.define('AsBuilt.controller.Notes', {
             list: '#notes',
             drawing: 'app_drawing',
             details: 'app_drawingdetails',
-            addButton: '#addnote',
+            addButton: 'button[type="addnote"]',
             main: 'main',
-            notesField: '#notefield',
+            notesField: 'textfield[type="notefield"]',
             notesButton: 'button[type="notes_button"]'
         },
 
