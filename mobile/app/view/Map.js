@@ -100,7 +100,12 @@ Ext.define("AsBuilt.view.Map",{
                 "loadend": function(evt) {
                     if (evt.response) {
                         if (evt.response.success()) {
-                            if (evt.response.features.length === evt.object.protocol.maxFeatures) {
+                            var list = Ext.Viewport.down('#featurelist-toolbar');
+                            if (evt.response.features.length === 0) {
+                                list.down('container').setHtml(AsBuilt.util.Config.getNoFeaturesMsg());
+                                list.show();
+                            }
+                            else if (evt.response.features.length === evt.object.protocol.maxFeatures) {
                                 if (!this.hitCount) {
                                     this.hitCount = new OpenLayers.Protocol.WFS({
                                         version: "1.1.0",
@@ -112,7 +117,6 @@ Ext.define("AsBuilt.view.Map",{
                                     });
                                 }
                                 this.hitCount.read({filter: this._filter, callback: function(response) {
-                                    var list = Ext.Viewport.down('#featurelist-toolbar');
                                     var filter = Ext.Viewport.down('#mapped-group');
                                     var pressed = filter.getPressedButtons();
                                     var text = '';
@@ -134,7 +138,7 @@ Ext.define("AsBuilt.view.Map",{
                                     list.show();
                                 }});
                             } else {
-                                Ext.Viewport.down('#featurelist-toolbar').hide();
+                                list.hide();
                             }
                         } else {
                             Ext.Msg.show({

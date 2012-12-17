@@ -276,6 +276,7 @@ Ext.define('AsBuilt.util.Config', {
         ],
 
         /* start i18n */
+        noFeaturesMsg: "Your search returned 0 images.",
         enterNotePlaceholder: "Enter Note",
         headerText: "SFMTA",
         enterNoteButtonText: "Add",
