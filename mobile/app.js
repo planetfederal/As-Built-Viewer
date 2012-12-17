@@ -55,7 +55,7 @@ Ext.application({
             title: AsBuilt.util.Config.getSecurityTitle(),
             width: '50em',
             cls: 'security-popup',
-            zIndex: 1000,
+            zIndex: 1100,
             showAnimation: null,
             hideAnimation: null,
             message: AsBuilt.util.Config.getSecurityMsg(),
