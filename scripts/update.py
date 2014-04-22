@@ -1,16 +1,14 @@
-import sys; sys.path.insert(0,'/Library/Frameworks/GDAL.framework/Versions/1.8/Python/site-packages')
-
-from osgeo import gdal
-import os, sys
+import os, sys, gdal
 
 gdal.PushErrorHandler('CPLQuietErrorHandler')
 
-home = '/Users/bartvde/opengeo/projects/asbuilt/sfmta_images/'
+home = 'D:\sfmta_images'
 
-print 'set scan off;'
+f = open('updatedocs.sql', 'w')
+f.write('set scan off;\n')
 for root, dirs, files in os.walk(home):
     for name in files:
-        if os.path.splitext(name)[1] == '.TIF':
+        if os.path.splitext(name)[1].lower() == '.tif':
             input_file = os.path.join(root, name)
             dataset = gdal.Open(input_file)
             if not (dataset is None):
@@ -18,6 +16,8 @@ for root, dirs, files in os.walk(home):
                 sizey = dataset.RasterYSize
                 path = '/' + input_file[len(home):-4]
                 sql = 'UPDATE DOCS SET WIDTH = ' + str(sizex) +', HEIGHT = ' + str(sizey) + ' WHERE PATH=\''+path+'\';'
-                print sql
+                f.write(sql + '\n')
+                dataset = None
+				
 
-print 'COMMIT;'
+f.write('COMMIT;')
