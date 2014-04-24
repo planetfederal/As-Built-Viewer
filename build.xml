@@ -6,7 +6,7 @@
     </description>
 
     <property name="build" location="build"/>
-    <property name="ringo" location="externals/ringojs-fork"/>
+    <property name="ringo" location="externals/ringo"/>
     <property name="app.proxy.geoserver" value="http://sfmta.demo.opengeo.org/geoserver"/>
     <property name="app.port" value="8080"/>
     <property name="app.deploy.geoserver" value="/geoserver/"/>
@@ -28,7 +28,7 @@
         </exec>
 
         <echo message="building ringo jars"/>
-        <ant dir="${ringo}" target="jar"/>
+        <ant dir="${ringo}" target="jar" inheritAll="false"/>
 
     </target>
 
