@@ -14,7 +14,7 @@ for root, dirs, files in os.walk(home):
             if not (dataset is None):
                 sizex = dataset.RasterXSize
                 sizey = dataset.RasterYSize
-                path = '/' + input_file[len(home):-4]
+                path = input_file[len(home):-4].replace('\\', '/')
                 sql = 'UPDATE DOCS SET WIDTH = ' + str(sizex) +', HEIGHT = ' + str(sizey) + ' WHERE PATH=\''+path+'\';'
                 f.write(sql + '\n')
                 dataset = None
