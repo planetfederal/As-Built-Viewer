@@ -1,6 +1,6 @@
 Ext.define('AsBuilt.view.Drawing', {
     extend: 'Ext.Container',
-    requires: ['AsBuilt.util.Config', 'GXM.Map', 'Ext.SegmentedButton'],
+    requires: ['GXM.Button', 'AsBuilt.util.Config', 'GXM.Map', 'Ext.SegmentedButton'],
     xtype: 'app_drawing',
 
     config: {
@@ -67,6 +67,7 @@ Ext.define('AsBuilt.view.Drawing', {
         path = path + "." + attributes[AsBuilt.util.Config.getFileTypeField()];
         var width = parseInt(attributes[AsBuilt.util.Config.getImageWidthField()], 10);
         var height = parseInt(attributes[AsBuilt.util.Config.getImageHeightField()], 10);
+        var vector = new OpenLayers.Layer.Vector();
         var map = new OpenLayers.Map({
             projection: "EPSG:404000",
             autoUpdateSize: false,
@@ -84,7 +85,8 @@ Ext.define('AsBuilt.view.Drawing', {
                         interval : 100,
                         enableKinetic : true
                     }
-                })
+                }),
+                new OpenLayers.Control.DrawFeature(vector, OpenLayers.Handler.Path)
             ]
         });
         map.addLayers([new OpenLayers.Layer.WMS(null,
@@ -96,7 +98,7 @@ Ext.define('AsBuilt.view.Drawing', {
                transitionEffect: "resize",
                tileLoadingDelay: 300
             }
-        )]);
+        ), vector]);
         var mapZoom = 3;
         var res = map.getResolutionForZoom(mapZoom);
         var size = Ext.Viewport.getSize(), w = size.width, h = size.height;
@@ -104,6 +106,10 @@ Ext.define('AsBuilt.view.Drawing', {
         var factorY = (1 - ((res*h)/height/2));
         var center = [factorX*width, -factorY*height];
         this.add(Ext.create('GXM.Map', {map: map, mapCenter: center, mapZoom: mapZoom}));
+        var btn = this.down('segmentedbutton').add(Ext.create('GXM.Button', {
+            control: map.controls[1],
+            text: "Draw"
+        }));
         this.callParent(arguments);
     }
 });
