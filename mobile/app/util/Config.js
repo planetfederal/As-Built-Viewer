@@ -319,7 +319,9 @@ Ext.define('AsBuilt.util.Config', {
         contractNumberLabel: "Number",
         contractTitleLabel: "Title",
         useBBOXLabel: "Use map extent",
-        searchButtonText: "Search"
+        searchButtonText: "Search",
+        drawLineButtonText: "Draw Line",
+        drawCircleButtonText: "Draw Circle"
         /* end i18n */
     },
     constructor: function(config) {

@@ -115,9 +115,9 @@ Ext.define('AsBuilt.view.Drawing', {
         this.add(Ext.create('GXM.Map', {map: map, mapCenter: center, mapZoom: mapZoom}));
         this.down('segmentedbutton').add(Ext.create('GXM.Button', {
             control: map.controls[1],
-            text: "Draw Line"
+            text: AsBuilt.util.Config.getDrawLineButtonText()
         }), Ext.create("GXM.Button", {
-            text: "Draw Circle",
+            text: AsBuilt.util.Config.getDrawCircleButtonText(),
             control: map.controls[2]
         }));
         this.callParent(arguments);
