@@ -67,7 +67,13 @@ Ext.define('AsBuilt.view.Drawing', {
         path = path + "." + attributes[AsBuilt.util.Config.getFileTypeField()];
         var width = parseInt(attributes[AsBuilt.util.Config.getImageWidthField()], 10);
         var height = parseInt(attributes[AsBuilt.util.Config.getImageHeightField()], 10);
-        var vector = new OpenLayers.Layer.Vector();
+        var vector = new OpenLayers.Layer.Vector(null, {
+            styleMap: new OpenLayers.StyleMap({
+                temporary : OpenLayers.Util.applyDefaults({
+                    pointRadius : 16
+                }, OpenLayers.Feature.Vector.style.temporary)
+            })
+        });
         var map = new OpenLayers.Map({
             projection: "EPSG:404000",
             autoUpdateSize: false,
@@ -86,7 +92,8 @@ Ext.define('AsBuilt.view.Drawing', {
                         enableKinetic : true
                     }
                 }),
-                new OpenLayers.Control.DrawFeature(vector, OpenLayers.Handler.Path)
+                new OpenLayers.Control.DrawFeature(vector, OpenLayers.Handler.Path),
+                new OpenLayers.Control.DrawFeature(vector, OpenLayers.Handler.RegularPolygon, {handlerOptions: {sides: 40}})
             ]
         });
         map.addLayers([new OpenLayers.Layer.WMS(null,
@@ -106,9 +113,12 @@ Ext.define('AsBuilt.view.Drawing', {
         var factorY = (1 - ((res*h)/height/2));
         var center = [factorX*width, -factorY*height];
         this.add(Ext.create('GXM.Map', {map: map, mapCenter: center, mapZoom: mapZoom}));
-        var btn = this.down('segmentedbutton').add(Ext.create('GXM.Button', {
+        this.down('segmentedbutton').add(Ext.create('GXM.Button', {
             control: map.controls[1],
-            text: "Draw"
+            text: "Draw Line"
+        }), Ext.create("GXM.Button", {
+            text: "Draw Circle",
+            control: map.controls[2]
         }));
         this.callParent(arguments);
     }
