@@ -178,6 +178,12 @@ Ext.define('AsBuilt.util.Config', {
         documentIdField: "DOC_ID",
 
         /**
+         * @cfg {String} noteIdField
+         * The primary key of the notesTable.
+         */
+        noteIdField: "NOTE_ID",
+
+        /**
          * @cfg {String} pathField
          * The name of the (file)path field of the drawingsTable.
          */

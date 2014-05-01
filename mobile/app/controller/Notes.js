@@ -3,6 +3,7 @@ Ext.define('AsBuilt.controller.Notes', {
     extend: 'Ext.app.Controller',
     config: {
         refs: {
+            map: '#drawing_map',
             list: '#notes',
             table: '#notes-list',
             drawing: 'app_drawing',
@@ -33,8 +34,16 @@ Ext.define('AsBuilt.controller.Notes', {
     },
 
     enableDrawButtons: function() {
-        var count = this.getTable().getSelectionCount();
-        if (count >= 1) {
+        var records = this.getTable().getSelection();
+        if (records.length >= 1) {
+            var record = records[0];
+            var annotation = record.get('ANNOTATION');
+            var vector = this.getMap().getMap().layers[1];
+            vector.removeAllFeatures();
+            if (annotation !== null) {
+                var features = new OpenLayers.Format.GeoJSON().read(annotation);
+                vector.addFeatures(features);
+            }
             this.getDrawLineButton().enable();
             this.getDrawCircleButton().enable();
         }
@@ -42,6 +51,33 @@ Ext.define('AsBuilt.controller.Notes', {
 
     enableAdd: function() {
         this.getAddButton().enable();
+    },
+
+    saveAnnotation: function(layer) {
+        // get the current selected note
+        var record = this.getTable().getSelection()[0];
+        var noteId = record.get(AsBuilt.util.Config.getNoteIdField());
+        var attr = {};
+        attr['ANNOTATION'] = new OpenLayers.Format.GeoJSON().write(layer.features);
+        var feature = new OpenLayers.Feature.Vector(null, attr);
+        feature.fid = noteId;
+        feature.state = OpenLayers.State.UPDATE;
+        var format = new OpenLayers.Format.WFST({
+            featurePrefix: AsBuilt.util.Config.getPrefix(),
+            featureType: AsBuilt.util.Config.getNotesTable(),
+            geometryName: null,
+            featureNS: AsBuilt.util.Config.getFeatureNS(),
+            version: "1.1.0"
+        });
+        var xml = format.write([feature]);
+        var url = AsBuilt.util.Config.getGeoserverUrl();
+        OpenLayers.Request.POST({
+            url: url,
+            callback: function(response) {
+                record.set('ANNOTATION', attr['ANNOTATION']);
+            },
+            data: xml
+        });
     },
 
     addNote: function() {
