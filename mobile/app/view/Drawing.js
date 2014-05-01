@@ -113,13 +113,13 @@ Ext.define('AsBuilt.view.Drawing', {
         var factorY = (1 - ((res*h)/height/2));
         var center = [factorX*width, -factorY*height];
         this.add(Ext.create('GXM.Map', {map: map, mapCenter: center, mapZoom: mapZoom}));
-        this.down('segmentedbutton').add(Ext.create('GXM.Button', {
+        this.down('segmentedbutton').add([Ext.create('GXM.Button', {
             control: map.controls[1],
             text: AsBuilt.util.Config.getDrawLineButtonText()
         }), Ext.create("GXM.Button", {
             text: AsBuilt.util.Config.getDrawCircleButtonText(),
             control: map.controls[2]
-        }));
+        })]);
         this.callParent(arguments);
     }
 });
