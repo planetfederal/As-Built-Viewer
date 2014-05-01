@@ -4,12 +4,15 @@ Ext.define('AsBuilt.controller.Notes', {
     config: {
         refs: {
             list: '#notes',
+            table: '#notes-list',
             drawing: 'app_drawing',
             details: 'app_drawingdetails',
             addButton: 'button[type="addnote"]',
             main: 'main',
             notesField: 'textfield[type="notefield"]',
-            notesButton: 'button[type="notes_button"]'
+            notesButton: 'button[type="notes_button"]',
+            drawLineButton: 'button[type="draw_line"]',
+            drawCircleButton: 'button[type="draw_circle"]'
         },
 
         control: {
@@ -21,9 +24,20 @@ Ext.define('AsBuilt.controller.Notes', {
             },
             notesField: {
                 keyup: 'enableAdd'
+            },
+            table: {
+                selectionchange: 'enableDrawButtons' 
             }
         }
 
+    },
+
+    enableDrawButtons: function() {
+        var count = this.getTable().getSelectionCount();
+        if (count >= 1) {
+            this.getDrawLineButton().enable();
+            this.getDrawCircleButton().enable();
+        }
     },
 
     enableAdd: function() {

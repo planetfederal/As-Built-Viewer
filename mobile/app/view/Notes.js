@@ -15,6 +15,7 @@ Ext.define('AsBuilt.view.Notes', {
         id: 'notes',
         items: [{
             xtype: 'list',
+            id: 'notes-list',
             cls: 'notes-list',
             grouped: true,
             itemTpl: new Ext.XTemplate(AsBuilt.util.Config.getNotesTpl(), {
