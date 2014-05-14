@@ -65,6 +65,7 @@ AsBuilt.plugins.GeoRowEditor = Ext.extend(Ext.ux.grid.RowEditor, {
             this.feature.layer.map.addControl(this.modifyControl);
         }
         this.modifyControl.activate();
+        this.feature.layer.projection = this.feature.layer.map.getProjectionObject();
         this.modifyControl.selectFeature(this.feature);
     },
 
