@@ -27,18 +27,6 @@ Ext.namespace("AsBuilt");
  */
 AsBuilt.ImagePopup = Ext.extend(GeoExt.Popup, {
 
-    /** api: config[attributesTitle]
-     *  ``String``
-     *  Title for attributes tab (i18n).
-     */
-    attributesTitle: "Notes",
-
-    /** api: config[previewTitle]
-     *  ``String``
-     *  Title for image preview tab (i18n).
-     */
-    previewTitle: "Image preview",
-
     unsavedTitle: "Unsaved changes",
     unsavedMsg: "You have unsaved changes to the notes on this image.  Are you sure you want to continue?",
 
@@ -110,12 +98,16 @@ AsBuilt.ImagePopup = Ext.extend(GeoExt.Popup, {
         }
         var editor = new Ext.ux.grid.RowEditor({saveText: 'Update'});
         this.items = [{
-            xtype: "tabpanel",
+            xtype: "container",
+            layout: "vbox",
+            layoutConfig: {
+                align: 'stretch'
+            },
             border: false,
-            activeTab: 0,
             items: [{
                 xtype: 'app_imagemappanel',
                 ref: "../mappanel",
+                height: 275,
                 layerName: layerName,
                 center: center,
                 zoom: zoom,
@@ -125,7 +117,6 @@ AsBuilt.ImagePopup = Ext.extend(GeoExt.Popup, {
                 imageHeight: height,
                 path: path,
                 border: false,
-                title: this.previewTitle,
                 bbar: [
                     {
                         hidden: this.readOnly,
@@ -136,11 +127,12 @@ AsBuilt.ImagePopup = Ext.extend(GeoExt.Popup, {
                     }
                 ]
             }, {
+                xtype: 'container',
+                layout: 'fit',
+                flex: 1,
+                items: [{
                 xtype: "gxp_featuregrid",
                 ref: "../grid",
-                viewConfig: {
-                    forceFit: true
-                },
                 customRenderers: {
                     'NOTE': function(value, meta) { 
                         meta.attr = 'style="white-space:normal"'; 
@@ -244,10 +236,8 @@ AsBuilt.ImagePopup = Ext.extend(GeoExt.Popup, {
                     },
                     scope: this
                 }],
-                store: mgr.featureStore,
-                width: this.width,
-                height: this.height,
-                title: this.attributesTitle
+                store: mgr.featureStore
+                }]
             }]
         }];
         AsBuilt.ImagePopup.superclass.initComponent.call(this);
