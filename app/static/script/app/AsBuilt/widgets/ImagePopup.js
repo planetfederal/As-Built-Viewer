@@ -131,112 +131,112 @@ AsBuilt.ImagePopup = Ext.extend(GeoExt.Popup, {
                 layout: 'fit',
                 flex: 1,
                 items: [{
-                xtype: "gxp_featuregrid",
-                ref: "../grid",
-                customRenderers: {
-                    'NOTE': function(value, meta) { 
-                        meta.attr = 'style="white-space:normal"'; 
-                        return value;
-                    },
-                    'UPDATED_DT': function(value) {
-                        if (value !== "" && value !== undefined) {
-                            return Date.parseDate(value, 'c').format('F j, Y, g:i a');
-                        } else {
+                    xtype: "gxp_featuregrid",
+                    ref: "../grid",
+                    customRenderers: {
+                        'NOTE': function(value, meta) { 
+                            meta.attr = 'style="white-space:normal"'; 
                             return value;
-                        }
-                    }
-                },
-                customEditors: {
-                    'NOTE': {
-                        xtype: 'textarea'
-                    }
-                },
-                columnConfig: {
-                    'UPDATED_DT': {
-                        editable: false,
-                        width: 0.3*this.width
-                    },
-                    'NOTE': {
-                        width: 0.5*this.width
-                    },
-                    'CREATED_BY': {
-                        width: 0.2*this.width
-                    }
-                },
-                createColumnModel: function(store) {
-                    var columns = this.getColumns(store);
-                    var order = {'NOTE' :0, 'CREATED_BY': 1, 'UPDATED_DT': 2};
-                    columns.sort(function(a, b) {
-                        return order[a.dataIndex] - order[b.dataIndex];
-                    });
-                    return new Ext.grid.ColumnModel(columns);
-                },
-                ignoreFields: ['DOC_ID', 'ANNOTATION'],
-                sm: new Ext.grid.RowSelectionModel({
-                    listeners: {
-                        selectionchange: function(sm) {
-                            if (!this.readOnly) {
-                                this.grid.removeBtn.setDisabled(sm.getCount() < 1);
+                        },
+                        'UPDATED_DT': function(value) {
+                            if (value !== "" && value !== undefined) {
+                                return Date.parseDate(value, 'c').format('F j, Y, g:i a');
+                            } else {
+                                return value;
                             }
-                            var record = sm.getSelected();
-                            if (record) {
-                                var json = record.get('ANNOTATION');
-                                if (!this.annotationLayer) {
-                                    this.annotationLayer = new OpenLayers.Layer.Vector();
-                                    this.mappanel.map.addLayer(this.annotationLayer);
+                        }
+                    },
+                    customEditors: {
+                        'NOTE': {
+                            xtype: 'textarea'
+                        }
+                    },
+                    columnConfig: {
+                        'UPDATED_DT': {
+                            editable: false,
+                            width: 0.3*this.width
+                        },
+                        'NOTE': {
+                            width: 0.5*this.width
+                        },
+                        'CREATED_BY': {
+                            width: 0.2*this.width
+                        }
+                    },
+                    createColumnModel: function(store) {
+                        var columns = this.getColumns(store);
+                        var order = {'NOTE' :0, 'CREATED_BY': 1, 'UPDATED_DT': 2};
+                        columns.sort(function(a, b) {
+                            return order[a.dataIndex] - order[b.dataIndex];
+                        });
+                        return new Ext.grid.ColumnModel(columns);
+                    },
+                    ignoreFields: ['DOC_ID', 'ANNOTATION'],
+                    sm: new Ext.grid.RowSelectionModel({
+                        listeners: {
+                            selectionchange: function(sm) {
+                                if (!this.readOnly) {
+                                    this.grid.removeBtn.setDisabled(sm.getCount() < 1);
                                 }
-                                this.annotationLayer.removeAllFeatures();
-                                if (!this.format) {
-                                    this.format = new OpenLayers.Format.GeoJSON();
+                                var record = sm.getSelected();
+                                if (record) {
+                                    var json = record.get('ANNOTATION');
+                                    if (!this.annotationLayer) {
+                                        this.annotationLayer = new OpenLayers.Layer.Vector();
+                                        this.mappanel.map.addLayer(this.annotationLayer);
+                                    }
+                                    this.annotationLayer.removeAllFeatures();
+                                    if (!this.format) {
+                                        this.format = new OpenLayers.Format.GeoJSON();
+                                    }
+                                    if (!Ext.isEmpty(json)) {
+                                        var features = this.format.read(json);
+                                        this.annotationLayer.addFeatures(features);
+                                    }
                                 }
-                                if (!Ext.isEmpty(json)) {
-                                    var features = this.format.read(json);
-                                    this.annotationLayer.addFeatures(features);
-                                }
+                            },
+                            scope: this
+                        }
+                    }),
+                    plugins: this.readOnly ? undefined : [editor],
+                    bbar: this.readOnly ? undefined : [{
+                        text: "Save",
+                        iconCls: 'save',
+                        handler: function() {
+                            this.grid.store.save();
+                        },
+                        scope: this
+                    }],
+                    tbar: this.readOnly ? undefined : [{
+                        iconCls: 'add',
+                        text: 'Add Note',
+                        handler: function() { 
+                            editor.stopEditing();
+                            var recordType = GeoExt.data.FeatureRecord.create([{name: "DOC_ID"}, {name: "CREATED_BY"}, {name: "NOTE"}]);
+                            var feature = new OpenLayers.Feature.Vector();
+                            feature.state = OpenLayers.State.INSERT;
+                            this.grid.store.insert(0, new recordType({feature: feature, DOC_ID: docID}));
+                            this.grid.getView().refresh();
+                            this.grid.getSelectionModel().selectRow(0);
+                            editor.startEditing(0);
+                        },
+                        scope: this
+                    },{
+                        iconCls: 'delete',
+                        ref: '../removeBtn',
+                        text: 'Remove Note',
+                        disabled: true,
+                        handler: function(){
+                            editor.stopEditing();
+                            var s = this.grid.getSelectionModel().getSelections();
+                            for(var i = 0, r; r = s[i]; i++){
+                                r.getFeature().state = OpenLayers.State.DELETE;
+                                this.grid.store.remove(r);
                             }
                         },
                         scope: this
-                    }
-                }),
-                plugins: this.readOnly ? undefined : [editor],
-                bbar: this.readOnly ? undefined : [{
-                    text: "Save",
-                    iconCls: 'save',
-                    handler: function() {
-                        this.grid.store.save();
-                    },
-                    scope: this
-                }],
-                tbar: this.readOnly ? undefined : [{
-                    iconCls: 'add',
-                    text: 'Add Note',
-                    handler: function() { 
-                        editor.stopEditing();
-                        var recordType = GeoExt.data.FeatureRecord.create([{name: "DOC_ID"}, {name: "CREATED_BY"}, {name: "NOTE"}]);
-                        var feature = new OpenLayers.Feature.Vector();
-                        feature.state = OpenLayers.State.INSERT;
-                        this.grid.store.insert(0, new recordType({feature: feature, DOC_ID: docID}));
-                        this.grid.getView().refresh();
-                        this.grid.getSelectionModel().selectRow(0);
-                        editor.startEditing(0);
-                    },
-                    scope: this
-                },{
-                    iconCls: 'delete',
-                    ref: '../removeBtn',
-                    text: 'Remove Note',
-                    disabled: true,
-                    handler: function(){
-                        editor.stopEditing();
-                        var s = this.grid.getSelectionModel().getSelections();
-                        for(var i = 0, r; r = s[i]; i++){
-                            r.getFeature().state = OpenLayers.State.DELETE;
-                            this.grid.store.remove(r);
-                        }
-                    },
-                    scope: this
-                }],
-                store: mgr.featureStore
+                    }],
+                    store: mgr.featureStore
                 }]
             }]
         }];
