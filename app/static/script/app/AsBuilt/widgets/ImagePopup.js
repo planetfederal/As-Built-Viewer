@@ -115,6 +115,7 @@ AsBuilt.ImagePopup = Ext.extend(GeoExt.Popup, {
             activeTab: 0,
             items: [{
                 xtype: 'app_imagemappanel',
+                ref: "../mappanel",
                 layerName: layerName,
                 center: center,
                 zoom: zoom,
@@ -178,11 +179,29 @@ AsBuilt.ImagePopup = Ext.extend(GeoExt.Popup, {
                     });
                     return new Ext.grid.ColumnModel(columns);
                 },
-                ignoreFields: ['DOC_ID'],
-                sm: this.readOnly ? undefined : new Ext.grid.RowSelectionModel({
+                ignoreFields: ['DOC_ID', 'ANNOTATION'],
+                sm: new Ext.grid.RowSelectionModel({
                     listeners: {
                         selectionchange: function(sm) {
-                            this.grid.removeBtn.setDisabled(sm.getCount() < 1);
+                            if (!this.readOnly) {
+                                this.grid.removeBtn.setDisabled(sm.getCount() < 1);
+                            }
+                            var record = sm.getSelected();
+                            if (record) {
+                                var json = record.get('ANNOTATION');
+                                if (!Ext.isEmpty(json)) {
+                                    if (!this.annotationLayer) {
+                                        this.annotationLayer = new OpenLayers.Layer.Vector();
+                                        this.mappanel.map.addLayer(this.annotationLayer);
+                                    }
+                                    this.annotationLayer.removeAllFeatures();
+                                    if (!this.format) {
+                                        this.format = new OpenLayers.Format.GeoJSON();
+                                    }
+                                    var features = this.format.read(json);
+                                    this.annotationLayer.addFeatures(features);
+                                }
+                            }
                         },
                         scope: this
                     }
@@ -269,6 +288,12 @@ AsBuilt.ImagePopup = Ext.extend(GeoExt.Popup, {
             data: request,
             scope: this
         });
+    },
+
+    beforeDestroy: function() {
+        delete this.annotationLayer;
+        delete this.format;
+        AsBuilt.ImagePopup..superclass.beforeDestroy.call(this);
     }
 
 });
