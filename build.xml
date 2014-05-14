@@ -8,7 +8,7 @@
     <property name="build" location="build"/>
     <property name="ringo" location="externals/ringo"/>
     <property name="app.proxy.geoserver" value="http://sfmta.demo.opengeo.org/geoserver"/>
-    <property name="app.port" value="8080"/>
+    <property name="app.port" value="9080"/>
     <property name="app.deploy.geoserver" value="/geoserver/"/>
     <condition property="git" value="git.cmd" else="git">
         <os family="windows"/>
