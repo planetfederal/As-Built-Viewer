@@ -189,15 +189,15 @@ AsBuilt.ImagePopup = Ext.extend(GeoExt.Popup, {
                             var record = sm.getSelected();
                             if (record) {
                                 var json = record.get('ANNOTATION');
+                                if (!this.annotationLayer) {
+                                    this.annotationLayer = new OpenLayers.Layer.Vector();
+                                    this.mappanel.map.addLayer(this.annotationLayer);
+                                }
+                                this.annotationLayer.removeAllFeatures();
+                                if (!this.format) {
+                                    this.format = new OpenLayers.Format.GeoJSON();
+                                }
                                 if (!Ext.isEmpty(json)) {
-                                    if (!this.annotationLayer) {
-                                        this.annotationLayer = new OpenLayers.Layer.Vector();
-                                        this.mappanel.map.addLayer(this.annotationLayer);
-                                    }
-                                    this.annotationLayer.removeAllFeatures();
-                                    if (!this.format) {
-                                        this.format = new OpenLayers.Format.GeoJSON();
-                                    }
                                     var features = this.format.read(json);
                                     this.annotationLayer.addFeatures(features);
                                 }
@@ -293,7 +293,7 @@ AsBuilt.ImagePopup = Ext.extend(GeoExt.Popup, {
     beforeDestroy: function() {
         delete this.annotationLayer;
         delete this.format;
-        AsBuilt.ImagePopup..superclass.beforeDestroy.call(this);
+        AsBuilt.ImagePopup.superclass.beforeDestroy.call(this);
     }
 
 });
