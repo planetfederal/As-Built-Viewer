@@ -40,6 +40,7 @@ AsBuilt.plugins.GeoRowEditor = Ext.extend(Ext.ux.grid.RowEditor, {
                             geometry: null});
                         feature.geometry = evt.feature.geometry.clone();
                         feature.state =  OpenLayers.State.UPDATE;
+                        feature.layer.projection = feature.layer.map.getProjectionObject();
                         this.record.set("state", feature.state);
                     },
                     scope: this
