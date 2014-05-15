@@ -13,10 +13,14 @@ Ext.define('AsBuilt.controller.Notes', {
             notesField: 'textfield[type="notefield"]',
             notesButton: 'button[type="notes_button"]',
             drawLineButton: 'button[type="draw_line"]',
-            drawCircleButton: 'button[type="draw_circle"]'
+            drawCircleButton: 'button[type="draw_circle"]',
+            visibilityCheck: 'checkboxfield[type="show_annotations"]'
         },
 
         control: {
+            visibilityCheck: {
+                change: 'showVectorLayer'
+            },
             notesButton: {
                 tap: 'showNotes'
             },
@@ -31,6 +35,11 @@ Ext.define('AsBuilt.controller.Notes', {
             }
         }
 
+    },
+
+    showVectorLayer: function(cb, newValue, oldValue) {
+        var vector = this.getMap().getMap().layers[1];
+        vector.setVisibility(newValue);
     },
 
     enableDrawButtons: function() {

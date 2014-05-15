@@ -1,6 +1,6 @@
 Ext.define('AsBuilt.view.Drawing', {
     extend: 'Ext.Container',
-    requires: ['GXM.Button', 'AsBuilt.util.Config', 'GXM.Map', 'Ext.SegmentedButton'],
+    requires: ['GXM.Button', 'AsBuilt.util.Config', 'GXM.Map', 'Ext.field.Checkbox', 'Ext.SegmentedButton'],
     xtype: 'app_drawing',
 
     config: {
@@ -23,6 +23,15 @@ Ext.define('AsBuilt.view.Drawing', {
                     text: AsBuilt.util.Config.getNotesButtonText(),
                     type: "notes_button"
                 }]
+            }, {
+                xtype: 'spacer',
+                width: 50
+            }, {
+                xtype: 'checkboxfield',
+                checked: true,
+                type: "show_annotations",
+                label: 'Show Annotations',
+                labelWidth: 150
             }, {
                 xtype: 'spacer',
                 flex: 1
