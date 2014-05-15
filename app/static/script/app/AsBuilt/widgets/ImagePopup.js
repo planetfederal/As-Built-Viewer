@@ -88,7 +88,7 @@ AsBuilt.ImagePopup = Ext.extend(GeoExt.Popup, {
         var path = this.getPath();
         var layerName, center, zoom;
         var projection = null;
-        if (feature.attributes.LAYER !== null) {
+        if (!Ext.isEmpty(feature.attributes.LAYER)) {
             layerName = this.rectifiedLayerName;
             projection = "EPSG:3857";
             center = new OpenLayers.LonLat(this.location.geometry.x, this.location.geometry.y);
@@ -107,7 +107,7 @@ AsBuilt.ImagePopup = Ext.extend(GeoExt.Popup, {
             items: [{
                 xtype: 'app_imagemappanel',
                 ref: "../mappanel",
-                height: 225,
+                height: 240,
                 layerName: layerName,
                 center: center,
                 zoom: zoom,
