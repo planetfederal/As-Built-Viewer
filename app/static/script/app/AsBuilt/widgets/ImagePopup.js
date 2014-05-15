@@ -107,7 +107,7 @@ AsBuilt.ImagePopup = Ext.extend(GeoExt.Popup, {
             items: [{
                 xtype: 'app_imagemappanel',
                 ref: "../mappanel",
-                height: 275,
+                height: 225,
                 layerName: layerName,
                 center: center,
                 zoom: zoom,
@@ -116,23 +116,14 @@ AsBuilt.ImagePopup = Ext.extend(GeoExt.Popup, {
                 imageWidth: width,
                 imageHeight: height,
                 path: path,
-                border: false,
-                bbar: [
-                    {
-                        hidden: this.readOnly,
-                        handler: this.downloadImage,
-                        scope: this,
-                        text: "Download",
-                        iconCls: "download"
-                    }
-                ]
+                border: false
             }, {
                 xtype: 'container',
                 layout: 'fit',
                 flex: 1,
                 items: [{
                     xtype: "gxp_featuregrid",
-                    ref: "../grid",
+                    ref: "../../grid",
                     customRenderers: {
                         'NOTE': function(value, meta) { 
                             meta.attr = 'style="white-space:normal"'; 
@@ -199,14 +190,6 @@ AsBuilt.ImagePopup = Ext.extend(GeoExt.Popup, {
                         }
                     }),
                     plugins: this.readOnly ? undefined : [editor],
-                    bbar: this.readOnly ? undefined : [{
-                        text: "Save",
-                        iconCls: 'save',
-                        handler: function() {
-                            this.grid.store.save();
-                        },
-                        scope: this
-                    }],
                     tbar: this.readOnly ? undefined : [{
                         iconCls: 'add',
                         text: 'Add Note',
@@ -235,6 +218,19 @@ AsBuilt.ImagePopup = Ext.extend(GeoExt.Popup, {
                             }
                         },
                         scope: this
+                    }, '-', {
+                        text: "Save",
+                        iconCls: 'save',
+                        handler: function() {
+                            this.grid.store.save();
+                        },
+                        scope: this
+                    }, '->', {
+                        hidden: this.readOnly,
+                        handler: this.downloadImage,
+                        scope: this,
+                        text: "Download",
+                        iconCls: "download"
                     }],
                     store: mgr.featureStore
                 }]
