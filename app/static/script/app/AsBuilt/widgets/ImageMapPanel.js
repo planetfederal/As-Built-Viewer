@@ -53,6 +53,19 @@ AsBuilt.ImageMapPanel = Ext.extend(GeoExt.MapPanel, {
                     this.map.setCenter(center, 3);
                 }, 
                 scope: this
+            }, '-', {
+                xtype: 'checkbox',
+                checked: true,
+                listeners: {
+                    'check': function(cb, checked) {
+                        var layer = this.ownerCt.ownerCt.annotationLayer;
+                        if (layer) {
+                            layer.setVisibility(checked);
+                        }
+                    },
+                    scope: this
+                },
+                boxLabel: 'Show Annotations'
             }];
         }
         this.items = [{
