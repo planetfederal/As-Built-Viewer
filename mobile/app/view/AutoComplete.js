@@ -49,6 +49,8 @@ Ext.define('AsBuilt.view.AutoComplete', {
                     }
                 }
             }, config));
+        } else {
+            this.listPanel.down('list').setStore(newStore);
         }
         this.listPanel.down('list').deselectAll();
         return this.listPanel;
