@@ -83,6 +83,11 @@ Ext.define('AsBuilt.view.Drawing', {
                 }
             },
             styleMap: new OpenLayers.StyleMap({
+                'default': new OpenLayers.Style({
+                    fillColor: "#FF0000",
+                    fillOpacity: 0,
+                    strokeColor: "#FF0000"
+                }),
                 temporary : OpenLayers.Util.applyDefaults({
                     pointRadius : 16
                 }, OpenLayers.Feature.Vector.style.temporary)

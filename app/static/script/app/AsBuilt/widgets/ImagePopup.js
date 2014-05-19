@@ -173,7 +173,14 @@ AsBuilt.ImagePopup = Ext.extend(GeoExt.Popup, {
                                 if (record) {
                                     var json = record.get('ANNOTATION');
                                     if (!this.annotationLayer) {
-                                        this.annotationLayer = new OpenLayers.Layer.Vector();
+                                        var stylemap = new OpenLayers.StyleMap({
+                                            'default': new OpenLayers.Style({
+                                                fillColor: "#FF0000",
+                                                fillOpacity: 0,
+                                                strokeColor: "#FF0000"
+                                            })
+                                        });
+                                        this.annotationLayer = new OpenLayers.Layer.Vector(null, {styleMap: stylemap});
                                         this.mappanel.map.addLayer(this.annotationLayer);
                                     }
                                     this.annotationLayer.removeAllFeatures();
