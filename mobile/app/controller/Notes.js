@@ -5,7 +5,7 @@ Ext.define('AsBuilt.controller.Notes', {
         refs: {
             map: '#drawing_map',
             list: '#notes',
-            table: '#notes-list',
+            table: 'list[type="notes-list"]',
             drawing: 'app_drawing',
             details: 'app_drawingdetails',
             addButton: 'button[type="addnote"]',
