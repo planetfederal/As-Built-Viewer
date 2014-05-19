@@ -197,22 +197,26 @@ AsBuilt.ImagePopup = Ext.extend(GeoExt.Popup, {
                         }
                     }),
                     plugins: this.readOnly ? undefined : [editor],
-                    tbar: this.readOnly ? undefined : [{
+                    tbar: [{
                         iconCls: 'add',
                         text: 'Add Note',
-                        handler: function() { 
-                            editor.stopEditing();
-                            var recordType = GeoExt.data.FeatureRecord.create([{name: "DOC_ID"}, {name: "CREATED_BY"}, {name: "NOTE"}]);
-                            var feature = new OpenLayers.Feature.Vector();
-                            feature.state = OpenLayers.State.INSERT;
-                            this.grid.store.insert(0, new recordType({feature: feature, DOC_ID: docID}));
-                            this.grid.getView().refresh();
-                            this.grid.getSelectionModel().selectRow(0);
-                            editor.startEditing(0);
+                        handler: function() {
+                            Ext.MessageBox.prompt('Insert new note', 'Note', function(btn, text) {
+                                var recordType = GeoExt.data.FeatureRecord.create([{name: "DOC_ID"}, {name: "CREATED_BY"}, {name: "NOTE"}]);
+                                var feature = new OpenLayers.Feature.Vector(null, {"NOTE": text, "DOC_ID": docID});
+                                feature.state = OpenLayers.State.INSERT;
+                                var record = new recordType();
+                                record.beginEdit();
+                                record.set('feature', feature);
+                                record.endEdit(); 
+                                this.grid.store.insert(0, record);
+                                this.grid.store.save();
+                            }, this, true);
                         },
                         scope: this
                     },{
                         iconCls: 'delete',
+                        hidden: this.readOnly,
                         ref: '../removeBtn',
                         text: 'Remove Note',
                         disabled: true,
@@ -228,6 +232,7 @@ AsBuilt.ImagePopup = Ext.extend(GeoExt.Popup, {
                     }, '-', {
                         text: "Save",
                         iconCls: 'save',
+                        hidden: this.readOnly,
                         handler: function() {
                             this.grid.store.save();
                         },
