@@ -27,7 +27,6 @@ Ext.define('AsBuilt.view.AutoComplete', {
         store.each(function(record) {
             Ext.Array.include(newStore, record.data[name]);
         });
-
         if (!this.listPanel) {
             this.listPanel = Ext.create('Ext.Panel', Ext.apply({
                 left: 0,
@@ -84,13 +83,20 @@ Ext.define('AsBuilt.view.AutoComplete', {
 
         var listPanel = this.getTabletPicker(),
             list = listPanel.down('list'),
+            count = store.getCount(),
             index, record;
 
-        if (!listPanel.getParent()) {
-            Ext.Viewport.add(listPanel);
+        if (count > 1) {
+            if (!listPanel.getParent()) {
+                Ext.Viewport.add(listPanel);
+            }
+            listPanel.showBy(this.getComponent());
+        } else {
+            if (count === 1) {
+                this.setValue(store.getAt(0).get('field1'));
+                this.onListTap();
+            }
         }
-
-        listPanel.showBy(this.getComponent());
     },
 
     initialize: function() {
