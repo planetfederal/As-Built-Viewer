@@ -107,7 +107,7 @@ AsBuilt.ImagePopup = Ext.extend(GeoExt.Popup, {
             items: [{
                 xtype: 'app_imagemappanel',
                 ref: "../mappanel",
-                height: 240,
+                flex: 1,
                 layerName: layerName,
                 center: center,
                 zoom: zoom,
@@ -120,7 +120,7 @@ AsBuilt.ImagePopup = Ext.extend(GeoExt.Popup, {
             }, {
                 xtype: 'container',
                 layout: 'fit',
-                flex: 1,
+                height: 200,
                 items: [{
                     xtype: "gxp_featuregrid",
                     ref: "../../grid",
