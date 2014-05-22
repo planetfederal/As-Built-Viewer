@@ -118,7 +118,8 @@ AsBuilt.ImageMapPanel = Ext.extend(GeoExt.MapPanel, {
         this.layers.push(new OpenLayers.Layer.WMS(
             null,
             this.url,
-            {layers: this.layerName, CQL_FILTER: "PATH='"+this.path+"'"}
+            {layers: this.layerName, CQL_FILTER: "PATH='"+this.path+"'"},
+            {singleTile: true}
         ));
 
         AsBuilt.ImageMapPanel.superclass.initComponent.call(this);
