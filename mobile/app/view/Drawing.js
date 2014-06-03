@@ -96,6 +96,24 @@ Ext.define('AsBuilt.view.Drawing', {
                 }, OpenLayers.Feature.Vector.style.temporary)
             })
         });
+        var DeleteFeature = OpenLayers.Class(OpenLayers.Control, {
+            initialize: function(layer, options) {
+                OpenLayers.Control.prototype.initialize.apply(this, [options]);
+                this.layer = layer;
+                this.handler = new OpenLayers.Handler.Feature(
+                    this, layer, {click: this.clickFeature}
+                );
+            },
+            clickFeature: function(feature) {
+                this.layer.destroyFeatures([feature]);
+                this.layer.events.triggerEvent("afterfeaturemodified", {object: this.layer});
+            },
+            setMap: function(map) {
+                this.handler.setMap(map);
+                OpenLayers.Control.prototype.setMap.apply(this, arguments);
+            },
+            CLASS_NAME: "OpenLayers.Control.DeleteFeature"
+        });
         var map = new OpenLayers.Map({
             projection: "EPSG:404000",
             autoUpdateSize: false,
@@ -116,7 +134,8 @@ Ext.define('AsBuilt.view.Drawing', {
                 }),
                 new OpenLayers.Control.DrawFeature(vector, OpenLayers.Handler.Path),
                 new OpenLayers.Control.DrawFeature(vector, OpenLayers.Handler.RegularPolygon, {handlerOptions: {sides: 40}}),
-                new OpenLayers.Control.ModifyFeature(vector)
+                new OpenLayers.Control.ModifyFeature(vector),
+                new DeleteFeature(vector)
             ]
         });
         map.addLayers([new OpenLayers.Layer.WMS(null,
@@ -151,6 +170,11 @@ Ext.define('AsBuilt.view.Drawing', {
             disabled: true,
             type: "modify",
             control: map.controls[3]
+        }), Ext.create("GXM.Button", {
+            text: "Delete",
+            disabled: true,
+            type: "delete",
+            control: map.controls[4]
         })]);
         this.callParent(arguments);
     }

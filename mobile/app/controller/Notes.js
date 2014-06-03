@@ -15,6 +15,7 @@ Ext.define('AsBuilt.controller.Notes', {
             drawLineButton: 'button[type="draw_line"]',
             drawCircleButton: 'button[type="draw_circle"]',
             modifyButton: 'button[type="modify"]',
+            deleteButton: 'button[type="delete"]',
             visibilityCheck: 'checkboxfield[type="show_annotations"]'
         },
 
@@ -57,6 +58,7 @@ Ext.define('AsBuilt.controller.Notes', {
             this.getDrawLineButton().enable();
             this.getDrawCircleButton().enable();
             this.getModifyButton().enable();
+            this.getDeleteButton().enable();
         }
     },
 
