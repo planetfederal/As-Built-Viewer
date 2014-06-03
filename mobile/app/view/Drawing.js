@@ -80,14 +80,17 @@ Ext.define('AsBuilt.view.Drawing', {
             eventListeners: {
                 'featureadded': function(evt) {
                     AsBuilt.app.getController('Notes').saveAnnotation(evt.object);
+                },
+                'afterfeaturemodified': function(evt) {
+                    AsBuilt.app.getController('Notes').saveAnnotation(evt.object);
                 }
             },
             styleMap: new OpenLayers.StyleMap({
-                'default': new OpenLayers.Style({
+                'default': OpenLayers.Util.applyDefaults({
                     fillColor: "#FF0000",
                     fillOpacity: 0,
                     strokeColor: "#FF0000"
-                }),
+                }, OpenLayers.Feature.Vector.style['default']),
                 temporary : OpenLayers.Util.applyDefaults({
                     pointRadius : 16
                 }, OpenLayers.Feature.Vector.style.temporary)
@@ -112,7 +115,8 @@ Ext.define('AsBuilt.view.Drawing', {
                     }
                 }),
                 new OpenLayers.Control.DrawFeature(vector, OpenLayers.Handler.Path),
-                new OpenLayers.Control.DrawFeature(vector, OpenLayers.Handler.RegularPolygon, {handlerOptions: {sides: 40}})
+                new OpenLayers.Control.DrawFeature(vector, OpenLayers.Handler.RegularPolygon, {handlerOptions: {sides: 40}}),
+                new OpenLayers.Control.ModifyFeature(vector)
             ]
         });
         map.addLayers([new OpenLayers.Layer.WMS(null,
@@ -142,6 +146,11 @@ Ext.define('AsBuilt.view.Drawing', {
             disabled: true,
             type: "draw_circle",
             control: map.controls[2]
+        }), Ext.create("GXM.Button", {
+            text: "Modify",
+            disabled: true,
+            type: "modify",
+            control: map.controls[3]
         })]);
         this.callParent(arguments);
     }
