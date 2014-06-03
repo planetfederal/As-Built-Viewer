@@ -111,15 +111,23 @@ Ext.define('AsBuilt.controller.Notes', {
             OpenLayers.Request.POST({
                 url: url,
                 callback: function(response) {
+                    var result = format.read(response.responseXML || response.responseText);
+                    var id = result.insertIds[0];
                     // reload store
                     Ext.getStore('Notes').load({
+                        callback: function() {
+                            this.getList().down('textfield').setValue('');
+                            this.showNotes();
+                            var record = Ext.getStore('Notes').findRecord('NOTE_ID', id);
+                            this.getTable().select(record);
+                        },
+                        scope: this,
                         filter: new OpenLayers.Filter.Comparison({
                             type: '==',
                             property: docIdField,
                             value: attr[docIdField]
                         })
                     });
-                    this.getList().down('textfield').setValue('');
                 },
                 scope: this,
                 data: xml
