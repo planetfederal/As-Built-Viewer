@@ -159,20 +159,24 @@ Ext.define('AsBuilt.view.Drawing', {
             control: map.controls[1],
             text: "Draw Line",
             type: "draw_line",
+            exclusiveGroup: 'annotation',
             disabled: true
         }), Ext.create("GXM.Button", {
             text: "Draw Circle",
+            exclusiveGroup: 'annotation',
             disabled: true,
             type: "draw_circle",
             control: map.controls[2]
         }), Ext.create("GXM.Button", {
             text: "Modify",
             disabled: true,
+            exclusiveGroup: 'annotation',
             type: "modify",
             control: map.controls[3]
         }), Ext.create("GXM.Button", {
             text: "Delete",
             disabled: true,
+            exclusiveGroup: 'annotation',
             type: "delete",
             control: map.controls[4]
         })]);
