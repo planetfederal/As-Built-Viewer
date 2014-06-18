@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link rel="stylesheet" type="text/css" href="http://extjs.cachefly.net/ext-3.4.0/resources/css/ext-all.css">
+    <script type="text/javascript" src="http://extjs.cachefly.net/ext-3.4.0/adapter/ext/ext-base.js"></script>
+    <script type="text/javascript" src="http://extjs.cachefly.net/ext-3.4.0/ext-all.js"></script>
+    <script src="http://openlayers.org/api/OpenLayers.js"></script>
+    <script type="text/javascript">
+      Ext.ns('Ext.ux.util');
+      Ext.ux.util.HiddenForm = function(url,fields){
+          if (!Ext.isArray(fields))
+              return;
+          var body = Ext.getBody(),
+          frame = body.createChild({
+              tag:'iframe',
+              cls:'x-hidden',
+              id:'hiddenform-iframe',
+              name:'iframe'
+          }),
+          form = body.createChild({
+              tag:'form',
+              cls:'x-hidden',
+              method: 'POST',
+              /* TODO uncomment the next line if you want to switch to multipart form data */
+              /* encType: "multipart/form-data",*/
+              id:'hiddenform-form',
+              action: url,
+              target:'iframe'
+          });
+          Ext.each(fields, function(el,i){
+              if (!Ext.isArray(el))
+                  return false;
+              form.createChild({
+                  tag:'input',
+                  type:'text',
+                  cls:'x-hidden',
+                  id: 'hiddenform-' + el[0],
+                  name: el[0],
+                  value: el[1]
+              });
+          });
+          form.dom.submit();
+          return frame;
+      };
+      var format = new OpenLayers.Format.WPSExecute();
+      var path = 'MR1130_MUNI-METRO_OCEAN_AVE_RECONST_&_IMPROV_PROJECTS/CL-11870.TIF';
+      var layerName = 'asbuilt:images';
+      var request = format.write({
+          identifier: 'gs:GetFullCoverage',
+          dataInputs: [{
+              identifier: 'name',
+              data: {
+                  literalData: {
+                      value: layerName
+                  }
+              }
+          }, {
+              identifier: 'filter',
+              data: {
+                  complexData: {
+                      mimeType: 'text/plain; subtype=cql',
+                      value: "path = '" + path + "'"
+                  }
+              }
+          }],
+          responseForm: {
+              rawDataOutput: {
+                  mimeType: "image/tiff",
+                  identifier: "result"
+              }
+          }
+      });
+      Ext.onReady(function() {
+          // TODO replace with main dispatcher
+          var url = 'http://localhost/geoserver/TestWfsPost?';
+          // TODO remove url param, we do not want to send this
+          // TODO decide on the name of the body parameter
+          Ext.ux.util.HiddenForm(url, [['url', 'http://sfmta.demo.opengeo.org/geoserver/ows'], ['body', Ext.util.Format.htmlEncode(request)]]);
+      }); 
+    </script>
+</head>
+<body>
+Test Form
+</body>
+</html>
