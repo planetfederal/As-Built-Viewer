@@ -30,6 +30,7 @@ Ext.ux.util.HiddenForm = function(url,fields){
             tag:'form',
             cls:'x-hidden',
             method: 'POST',
+            encType: 'multipart/form-data',
             id:'hiddenform-form',
             action: url,
             target:'iframe'
@@ -320,8 +321,8 @@ AsBuilt.ImagePopup = Ext.extend(GeoExt.Popup, {
                 }
             }
         });
-        var url = this.url.replace('ows', 'TestWfsPost');
-        Ext.ux.util.HiddenForm(url, [['url', this.absoluteUrl], ['body', Ext.util.Format.htmlEncode(request)]]);
+        //var url = this.url.replace('ows', 'TestWfsPost');
+        Ext.ux.util.HiddenForm(this.url, [['body', Ext.util.Format.htmlEncode(request)]]);
     },
 
     beforeDestroy: function() {
