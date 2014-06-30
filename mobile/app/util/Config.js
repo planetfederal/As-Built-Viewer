@@ -311,6 +311,8 @@ Ext.define('AsBuilt.util.Config', {
         featuresFailedTitle: "Error",
         featuresFailedMsg: "There was an error retrieving data.",
         locationFailedTitle: "Information",
+        userFailedTitle: "Error retrieving user",
+        userFailedMsg: "There was an error retrieving the user from SharePoint. The application cannot load correctly.",
         locationFailedMsg: "Failed to retrieve location.",
         locationUncapableTitle: "Information",
         locationUncapableMsg: "This device cannot retrieve location.",

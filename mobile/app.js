@@ -64,11 +64,34 @@ Ext.application({
             fn: function(){}
         });
 
+        // Get user from sharepoint
         // Initialize the main view
-        // TODO: detect user from SharePoint
-        Ext.Viewport.add(Ext.create('AsBuilt.view.Main', {
-            user: 'Dummy User'
-        }));
+        var url = './_api/SP.UserProfiles.PeopleManager/GetMyProperties';
+        Ext.Ajax.request({
+            url: url,
+            headers: {
+                "accept": "application/json;odata=verbose"
+            },
+            success: function(response) {
+                var data = Ext.decode(response.responseText);
+                var userName = data.d.AccountName.split('\\')[1];
+                Ext.Viewport.add(Ext.create('AsBuilt.view.Main', {
+                    user: userName
+                }));
+            },
+            failure: function() {
+                Ext.Msg.show({
+                    zIndex: 1000,
+                    title: AsBuilt.util.Config.getUserFailedTitle(),
+                    showAnimation: null,
+                    hideAnimation: null,
+                    message: AsBuilt.util.Config.getUserFailedMsg(),
+                    buttons: [Ext.MessageBox.OK],
+                    promptConfig: false,
+                    fn: function() {}
+                });
+            }
+        });
     },
 
     onUpdated: function() {
