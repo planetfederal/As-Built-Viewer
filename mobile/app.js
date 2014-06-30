@@ -66,7 +66,7 @@ Ext.application({
 
         // Get user from sharepoint
         // Initialize the main view
-        var url = './_api/SP.UserProfiles.PeopleManager/GetMyProperties';
+        var url = '/sites/asbuilt/_api/SP.UserProfiles.PeopleManager/GetMyProperties';
         Ext.Ajax.request({
             url: url,
             headers: {
