@@ -172,6 +172,24 @@ Ext.define('AsBuilt.util.Config', {
         noteField: "NOTE",
 
         /**
+         * @cfg {String} statusField
+         * The name of the status field of the notesTable.
+         */
+        statusField: "STATUS",
+
+        /**
+         * @cfg {String} initialStatusValue
+         * The initial value of the status field of the notesTable.
+         */
+        initialStatusValue: "Submitted",
+
+        /**
+         * @cfg {String} annotationField
+         * The name of the annotation field of the notesTable.
+         */
+        annotationField: "ANNOTATION",
+
+        /**
          * @cfg {String} documentIdField
          * The primary key of the drawingsTable.
          */

@@ -48,7 +48,8 @@ Ext.define('AsBuilt.controller.Notes', {
         var records = this.getTable().getSelection();
         if (records.length >= 1) {
             var record = records[0];
-            var annotation = record.get('ANNOTATION');
+            var annotationField = AsBuilt.util.Config.getAnnotationField();
+            var annotation = record.get(annotationField);
             var vector = this.getMap().getMap().layers[1];
             vector.removeAllFeatures();
             if (annotation !== null) {
@@ -71,7 +72,8 @@ Ext.define('AsBuilt.controller.Notes', {
         var record = this.getTable().getSelection()[0];
         var noteId = record.get(AsBuilt.util.Config.getNoteIdField());
         var attr = {};
-        attr['ANNOTATION'] = new OpenLayers.Format.GeoJSON().write(layer.features);
+        var annotationField = AsBuilt.util.Config.getAnnotationField();
+        attr[annotationField] = new OpenLayers.Format.GeoJSON().write(layer.features);
         var feature = new OpenLayers.Feature.Vector(null, attr);
         feature.fid = noteId;
         feature.state = OpenLayers.State.UPDATE;
@@ -87,7 +89,7 @@ Ext.define('AsBuilt.controller.Notes', {
         OpenLayers.Request.POST({
             url: url,
             callback: function(response) {
-                record.set('ANNOTATION', attr['ANNOTATION']);
+                record.set(annotationField, attr[annotationField]);
             },
             data: xml
         });
@@ -100,6 +102,7 @@ Ext.define('AsBuilt.controller.Notes', {
             var docIdField = AsBuilt.util.Config.getDocumentIdField();
             attr[AsBuilt.util.Config.getAuthorField()] = this.getMain().getUser();
             attr[AsBuilt.util.Config.getNoteField()] = note;
+            attr[AsBuilt.util.Config.getStatusField()] = AsBuilt.util.Config.getInitialStatusValue();
             attr[docIdField] = this.getDrawing().getFid().split(".").pop();
             var feature = new OpenLayers.Feature.Vector(null, attr);
             feature.state = OpenLayers.State.INSERT;
