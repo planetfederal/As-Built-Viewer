@@ -180,6 +180,11 @@ AsBuilt.ImagePopup = Ext.extend(GeoExt.Popup, {
                     customEditors: {
                         'NOTE': {
                             xtype: 'textarea'
+                        },
+                        'STATUS': {
+                            xtype: 'combo',
+                            triggerAction: 'all',
+                            store: ['Submitted' , 'Reviewed', 'Closed']
                         }
                     },
                     columnConfig: {
