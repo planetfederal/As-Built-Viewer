@@ -147,6 +147,7 @@ AsBuilt.ImagePopup = Ext.extend(GeoExt.Popup, {
                 xtype: 'app_imagemappanel',
                 ref: "../mappanel",
                 flex: 1,
+                hidden: feature.attributes.WIDTH === null || feature.attributes.HEIGHT === null,
                 layerName: layerName,
                 center: center,
                 zoom: zoom,
