@@ -327,7 +327,6 @@ AsBuilt.ImagePopup = Ext.extend(GeoExt.Popup, {
                 }
             }
         });
-        //var url = this.url.replace('ows', 'TestWfsPost');
         Ext.ux.util.HiddenForm(this.url, [['body', Ext.util.Format.htmlEncode(request)]]);
     },
 
