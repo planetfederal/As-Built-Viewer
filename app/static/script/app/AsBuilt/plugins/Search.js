@@ -8,6 +8,32 @@
 
 Ext.ns("AsBuilt.plugins");
 
+// TODO remove OpenLayers override
+// see https://github.com/openlayers/openlayers/pull/968
+// TODO remove use of "global" AsBuilt.viewParams
+OpenLayers.Format.WFST.v1.prototype.writers["wfs"]["GetFeature"] = function(options) {
+    var node = this.createElementNSPlus("wfs:GetFeature", {
+        attributes: {
+            service: "WFS",
+            version: this.version,
+            handle: options && options.handle,
+            outputFormat: options && options.outputFormat,
+            maxFeatures: options && options.maxFeatures,
+            viewParams: AsBuilt.viewParams,
+            "xsi:schemaLocation": this.schemaLocationAttr(options)
+        }
+    });
+    if (typeof this.featureType == "string") {
+        this.writeNode("Query", options, node);
+    } else {
+        for (var i=0,len = this.featureType.length; i<len; i++) {
+            options.featureType = this.featureType[i];
+            this.writeNode("Query", options, node);
+        }
+    }
+    return node;
+};
+
 // better sorting for streets store so that 2nd street comes before 10th street
 Ext.override(Ext.data.Store, {
 
@@ -489,6 +515,25 @@ AsBuilt.plugins.Search = Ext.extend(gxp.plugins.Tool, {
                                 featureType: "VW_SCONTRACTTITLE", /* TODO make configurable */
                                 featurePrefix: featureInfo[0],
                                 fieldLabel: this.contractTitleLabel
+                            }
+                        ]
+                    }, {
+                        xtype: "fieldset",
+                        title: "Note",
+                        items: [
+                            {
+                                xtype: "textfield",
+                                fieldLabel: "Note",
+                                listeners: {
+                                    "change": function() {
+                                        var val = this.getValue();
+                                        if (val !== "") {
+                                            AsBuilt.viewParams = "text:" + val;
+                                        } else {
+                                            AsBuilt.viewParams = undefined;
+                                        }
+                                    }
+                                }
                             }
                         ]
                     }
