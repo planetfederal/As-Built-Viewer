@@ -21,7 +21,7 @@ Ext.define('AsBuilt.view.Notes', {
             itemTpl: new Ext.XTemplate(AsBuilt.util.Config.getNotesTpl(), {
                 formatTS: function(value) {
                     if (value !== null) {
-                        return Ext.Date.format(Ext.Date.parse(value, 'c'), 'F j, Y, g:i a');
+                        return Ext.Date.format(Ext.Date.parse(value.substring(0, value.indexOf('Z')), 'c'), 'F j, Y');
                     } else {
                         return "";
                     }
