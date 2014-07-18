@@ -12,6 +12,10 @@ Ext.ns("AsBuilt.plugins");
 // see https://github.com/openlayers/openlayers/pull/968
 // TODO remove use of "global" AsBuilt.viewParams
 OpenLayers.Format.WFST.v1.prototype.writers["wfs"]["GetFeature"] = function(options) {
+    var viewParams;
+    if (!(options.filter instanceof OpenLayers.Filter.FeatureId)) {
+        viewParams = AsBuilt.viewParams;
+    }
     var node = this.createElementNSPlus("wfs:GetFeature", {
         attributes: {
             service: "WFS",
@@ -19,7 +23,7 @@ OpenLayers.Format.WFST.v1.prototype.writers["wfs"]["GetFeature"] = function(opti
             handle: options && options.handle,
             outputFormat: options && options.outputFormat,
             maxFeatures: options && options.maxFeatures,
-            viewParams: AsBuilt.viewParams,
+            viewParams: viewParams,
             "xsi:schemaLocation": this.schemaLocationAttr(options)
         }
     });
