@@ -136,6 +136,13 @@ AsBuilt.ImagePopup = Ext.extend(GeoExt.Popup, {
             layerName = this.layerName;
         }
         var editor = new Ext.ux.grid.RowEditor({saveText: 'Update'});
+        var dateFunc = function(value) {
+            if (value !== "" && value !== undefined) {
+                return Date.parseDate(value.substring(0, value.indexOf('Z')), 'c').format('F j, Y');
+            } else {
+                return value;
+            }
+        };
         this.items = [{
             xtype: "container",
             layout: "vbox",
@@ -169,13 +176,8 @@ AsBuilt.ImagePopup = Ext.extend(GeoExt.Popup, {
                             meta.attr = 'style="white-space:normal"'; 
                             return value;
                         },
-                        'UPDATED_DT': function(value) {
-                            if (value !== "" && value !== undefined) {
-                                return Date.parseDate(value, 'c').format('F j, Y, g:i a');
-                            } else {
-                                return value;
-                            }
-                        }
+                        'UPDATED_DT': dateFunc,
+                        'CREATED_DT': dateFunc
                     },
                     customEditors: {
                         'NOTE': {
@@ -189,8 +191,10 @@ AsBuilt.ImagePopup = Ext.extend(GeoExt.Popup, {
                     },
                     columnConfig: {
                         'UPDATED_DT': {
-                            editable: false,
-                            width: 0.3*this.width
+                            editable: false
+                        },
+                        'CREATED_DT': {
+                            editable: false
                         },
                         'NOTE': {
                             width: 0.5*this.width
