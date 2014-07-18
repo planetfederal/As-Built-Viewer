@@ -31,6 +31,7 @@
         OpenLayers.ImgPath = "../externals/openlayers/img/";
         OpenLayers.Layer.WMS.prototype.DEFAULT_PARAMS.transparent = true;
         OpenLayers.DOTS_PER_INCH = 25.4 / 0.28;
+        var geoserver = "/geoserver";
 
         var portalsReady = 0;
         var createViewport = function() {
@@ -48,7 +49,7 @@
             }
         };
 
-        var localGeoserver = "/geoserver/ows";
+        var localGeoserver = geoserver + "/ows";
         var layerName = "asbuilt:images";
         // this is the base path on the server where rectified images will be saved
         var saveBasePath = "/usr/share/opengeo-suite-data/geoserver_data/sfmta_rectified_images/"

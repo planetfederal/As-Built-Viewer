@@ -32,6 +32,7 @@
         OpenLayers.ImgPath = "../externals/openlayers/img/";
         OpenLayers.Layer.WMS.prototype.DEFAULT_PARAMS.transparent = true;
         OpenLayers.DOTS_PER_INCH = 25.4 / 0.28;
+        var geoserver = '/geoserver';
         var app = new gxp.Viewer({
             listeners: {
                 'portalready': function() {
@@ -130,7 +131,7 @@
                         anchored: false,
                         layerName: "asbuilt:images",
                         rectifiedLayerName: "asbuilt:sfmta_rectified_images",
-                        url: "/geoserver/wms",
+                        url: geoserver + "/wms",
                         width: 600,
                         height: 400
                     }
@@ -138,7 +139,7 @@
                     ptype: "app_geocoder",
                     outputTarget: "paneltbar",
                     outputConfig: {
-                        url: "/geoserver/wfs",
+                        url: geoserver + "/wfs",
                         featureType: "SFADDRESSPOINTS",
                         featurePrefix: "asbuilt",
                         srsName: "EPSG:900913",
@@ -223,7 +224,7 @@
             defaultSourceType: "gxp_wmssource",
             sources: {
                 local: {    
-                    url: "/geoserver/ows",
+                    url: geoserver + "/ows",
                     title: "Local GeoServer",
                     version: "1.1.1"
                 },
