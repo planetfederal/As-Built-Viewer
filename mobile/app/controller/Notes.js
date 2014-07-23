@@ -12,6 +12,7 @@ Ext.define('AsBuilt.controller.Notes', {
             main: 'main',
             notesField: 'textfield[type="notefield"]',
             notesButton: 'button[type="notes_button"]',
+            zoomButton: 'button[type="zoom_button"]',
             drawLineButton: 'button[type="draw_line"]',
             drawCircleButton: 'button[type="draw_circle"]',
             modifyButton: 'button[type="modify"]',
@@ -25,6 +26,9 @@ Ext.define('AsBuilt.controller.Notes', {
             },
             notesButton: {
                 tap: 'showNotes'
+            },
+            zoomButton: {
+                tap: 'zoomToTitle'
             },
             addButton: {
                 tap: 'addNote'
@@ -140,6 +144,13 @@ Ext.define('AsBuilt.controller.Notes', {
                 data: xml
             });
         }
+    },
+
+    zoomToTitle: function() {
+        var map = this.getMap().getMap();
+        var extent = map.getMaxExtent();
+        var center = new OpenLayers.LonLat(0.83*extent.right, 0.84*extent.bottom);
+        map.setCenter(center, 4);
     },
 
     showNotes: function() {

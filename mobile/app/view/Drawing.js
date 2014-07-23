@@ -22,6 +22,9 @@ Ext.define('AsBuilt.view.Drawing', {
                 }, {
                     text: AsBuilt.util.Config.getNotesButtonText(),
                     type: "notes_button"
+                }, {
+                    text: "Zoom",
+                    type: "zoom_button"
                 }]
             }, {
                 xtype: 'spacer',
